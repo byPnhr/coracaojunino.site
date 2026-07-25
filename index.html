@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrilha Coração Junino</title>
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bordo-escuro: #4a0000;
+            --bordo-medio: #7a0c0c;
+            --dourado: #d4af37;
+            --dourado-claro: #f3e5ab;
+            --fundo-palha: #e8ded1;
+            --card-palha: #f4eee3;
+            --texto-escuro: #361f12;
+            --texto-suave: #634b3c;
+            --azul-card: #203a54;
+            --borda-card: rgba(180, 150, 90, 0.4);
+            --sombra-bento: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--fundo-palha);
+            background-image: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--texto-escuro);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER E MENU TOP */
+        .top-hero-bar {
+            background: linear-gradient(135deg, rgba(40,0,0,0.95), rgba(80,0,0,0.9));
+            border-bottom: 2px solid var(--dourado);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 60px;
+        }
+
+        .btn-adm-trigger {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--dourado);
+            border: 1px solid var(--dourado);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-adm-trigger:hover {
+            background: var(--dourado);
+            color: var(--bordo-escuro);
+        }
+
+        .hero-nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-nav button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .hero-nav button:hover, .hero-nav button.active {
+            color: var(--dourado);
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        /* ESTRUTURA DO CARROSSEL DE ABAS */
+        .viewport {
+            width: 100vw;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 700vw;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .tab-screen {
+            width: 100vw;
+            min-height: calc(100vh - 120px);
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARDS PADRÃO */
+        .bento-card {
+            background-color: var(--card-palha);
+            border-radius: 18px;
+            border: 1px solid var(--borda-card);
+            box-shadow: var(--sombra-bento);
+            padding: 35px;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .title-bento {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--bordo-medio);
+        }
+
+        .title-bento::after {
+            content: '♡';
+            display: block;
+            font-size: 0.9rem;
+            color: var(--dourado);
+            margin-top: -5px;
+        }
+
+        /* ABA INÍCIO */
+        .hero-banner-card {
+            background: none;
+            padding: 0;
+            border: 2px solid var(--dourado);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-main-area {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
+                        url('imagens/colorida.jpeg') center/cover;
+            padding: 60px 40px;
+            text-align: center;
+            color: #fff;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo-coracao {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 180px;
+            height: auto;
+            z-index: 10;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        .hero-main-area h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.8rem;
+            color: #f7e7a9;
+            font-weight: 400;
+            line-height: 1.1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero-main-area h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            margin-top: -5px;
+        }
+
+        .hero-divider {
+            font-size: 1.2rem;
+            color: var(--dourado);
+            margin: 10px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 60%;
+            max-width: 400px;
+        }
+
+        .hero-divider::before, .hero-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--dourado), transparent);
+        }
+
+        .hero-subtext {
+            color: #fcecd2;
+            font-size: 1.1rem;
+            max-width: 500px;
+            line-height: 1.5;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        /* HISTÓRIA E POLAROIDS */
+        .history-layout { display: flex; gap: 30px; align-items: center; justify-content: space-between; }
+        .history-photos { width: 320px; display: flex; flex-direction: column; gap: 15px; }
+        .photo-polaroid { 
+            background: #fff; 
+            padding: 10px 10px 20px 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            transform: rotate(-3deg); 
+            border-radius: 4px; 
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .photo-polaroid:hover { transform: scale(1.03) rotate(0deg); }
+        .photo-polaroid:nth-child(2) { transform: rotate(4deg); margin-top: -30px; }
+        .photo-polaroid:nth-child(2):hover { transform: scale(1.03) rotate(0deg); }
+        .photo-polaroid img { width: 100%; height: 160px; object-fit: cover; }
+        .btn-bordo { background: var(--bordo-medio); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-bordo:hover { background: var(--bordo-escuro); }
+
+        /* INSCRIÇÕES */
+        .card-inscricoes { background: linear-gradient(135deg, #e3ecf5 0%, #cbdbe8 100%); text-align: center; }
+        .btn-azul { background: var(--azul-card); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin: 20px 0; }
+        .quote-inscricoes { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--azul-card); margin-top: 15px; }
+
+        /* NOVIDADES */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .news-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--borda-card); box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: relative;}
+        .news-card img { width: 100%; height: 160px; object-fit: cover; cursor: pointer; transition: 0.3s; }
+        .news-card img:hover { filter: brightness(0.9); }
+        .news-card-body { padding: 15px; }
+        .news-card-body h4 { color: var(--bordo-medio); margin-bottom: 8px; font-family: 'Cinzel', serif; }
+
+        /* GALERIA */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+        .gallery-item { 
+            position: relative; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            height: 180px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+            cursor: pointer;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: #fff; padding: 6px 10px; font-size: 0.8rem; text-align: center; }
+
+        /* PATROCINADORES & APOIADORES */
+        .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
+        .sponsor-box { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--borda-card); position: relative; }
+        .sponsor-box i { font-size: 2rem; color: var(--bordo-medio); margin-bottom: 10px; }
+
+        /* VISUALIZADOR DE FOTOS (LIGHTBOX) */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .lightbox-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+            border: 2px solid var(--dourado);
+            object-fit: contain;
+        }
+        .lightbox-caption {
+            color: var(--dourado-claro);
+            margin-top: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-lightbox:hover { color: var(--dourado); }
+
+        /* MODAL E PAINEL ADM */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--card-palha);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--dourado);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--bordo-escuro);
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--borda-card);
+        }
+
+        .auth-tab-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            color: var(--texto-suave);
+        }
+
+        .auth-tab-btn.active {
+            color: var(--bordo-medio);
+            border-bottom: 3px solid var(--bordo-medio);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--borda-card);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-delete {
+            background: #a82323;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-delete:hover {
+            background: #7a0c0c;
+        }
+
+        /* SISTEMA DE AVISOS NOTIFICAÇÃO (TOAST) */
+        .toast-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .custom-toast {
+            min-width: 280px;
+            background: #fff;
+            border-left: 6px solid var(--dourado);
+            padding: 14px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--texto-escuro);
+            font-weight: 500;
+            font-size: 0.9rem;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        .custom-toast.success { border-left-color: #2e7d32; }
+        .custom-toast.error { border-left-color: #c62828; }
+        .custom-toast.warning { border-left-color: #f57c00; }
+
+        .custom-toast i { font-size: 1.3rem; }
+        .custom-toast.success i { color: #2e7d32; }
+        .custom-toast.error i { color: #c62828; }
+        .custom-toast.warning i { color: #f57c00; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(50px); }
+        }
+
+        /* MODAL DE CONFIRMAÇÃO ESTILIZADO */
+        .confirm-modal-content {
+            text-align: center;
+        }
+
+        .confirm-modal-icon {
+            font-size: 3rem;
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+
+        .confirm-modal-title {
+            font-family: 'Cinzel', serif;
+            color: var(--bordo-medio);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .confirm-modal-text {
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-cancel {
+            background: #777;
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* RODAPÉ FIXO */
+        .footer-bar {
+            background: linear-gradient(135deg, var(--bordo-escuro) 0%, var(--bordo-medio) 100%);
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid var(--dourado);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-contacts { display: flex; gap: 20px; }
+        .footer-contact-item { display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 0.8rem; }
+        .footer-contact-item i { color: var(--dourado); font-size: 1.2rem; }
+
+        @media (max-width: 850px) {
+            .hero-logo-coracao { width: 130px; top: -10px; left: 10px; }
+            .hero-main-area h2 { font-size: 3.5rem; }
+            .hero-main-area h1 { font-size: 2rem; }
+            .top-hero-bar { flex-direction: column; height: auto; padding: 10px; gap: 10px; }
+            .history-layout { flex-direction: column; }
+            .history-photos { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR SUPERIOR -->
+    <header class="top-hero-bar">
+        <button class="btn-adm-trigger" id="btnAuthTrigger" onclick="abrirModalLogin()"><i class="fa-solid fa-lock"></i> LOGIN / ADM</button>
+        <nav class="hero-nav">
+            <button class="active" onclick="goToTab(0)">INÍCIO</button>
+            <button onclick="goToTab(1)">HISTÓRIA</button>
+            <button onclick="goToTab(2)">INSCRIÇÕES</button>
+            <button onclick="goToTab(3)">NOVIDADES</button>
+            <button onclick="goToTab(4)">PATROCINADORES</button>
+            <button onclick="goToTab(5)">APOIADORES</button>
+            <button onclick="goToTab(6)">GALERIA</button>
+        </nav>
+    </header>
+
+    <!-- TRILHO DO CARROSSEL DE ABAS -->
+    <div class="viewport">
+        <div class="slider-track" id="sliderTrack">
+
+            <!-- ABA 0: INÍCIO -->
+            <section class="tab-screen">
+                <div class="bento-card hero-banner-card">
+                    <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao">
+                    
+                    <div class="hero-main-area">
+                        <h2>Sejam Bem-vindos</h2>
+                        <h1>AO NOSSO SITE!</h1>
+                        <div class="hero-divider">♡</div>
+                        <p class="hero-subtext">Aqui começa a nossa história, se fortalece nossa cultura e pulsa o coração junino.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 1: HISTÓRIA -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                        <h3 class="title-bento" style="margin-bottom:0;">HISTÓRIA</h3>
+                        <button id="btnEditarHistoria" class="btn-adm-trigger" style="display:none;" onclick="abrirEdicaoHistoria()"><i class="fa-solid fa-pen"></i> EDITAR HISTÓRIA</button>
+                    </div>
+                    <div class="history-layout">
+                        <div style="flex:1;">
+                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!</p>
+                            <button class="btn-bordo" onclick="goToTab(2)">Junte-se a nós</button>
+                        </div>
+                        <div class="history-photos">
+                            <div class="photo-polaroid" onclick="zoomFoto(document.getElementById('historiaImg1').src, document.getElementById('historiaCap1').innerText)">
+                                <img id="historiaImg1" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400" alt="Foto Apresentação">
+                                <small id="historiaCap1" style="display:none;">Momentos inesquecíveis em nossas apresentações</small>
+                            </div>
+                            <div class="photo-polaroid" onclick="zoomFoto(document.getElementById('historiaImg2').src, document.getElementById('historiaCap2').innerText)">
+                                <img id="historiaImg2" src="https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400" alt="Foto Ensaio">
+                                <small id="historiaCap2" style="display:none;">Bastidores e preparação dos nossos ensaios</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 2: INSCRIÇÕES -->
+            <section class="tab-screen">
+                <div class="bento-card card-inscricoes">
+                    <h3 class="title-bento" style="color:var(--azul-card);">INSCRIÇÕES</h3>
+                    <p style="font-size:1.1rem; color:#333;">Venha fazer parte da nossa família! A dança nos move, a cultura nos une e aqui você tem um lugar garantido.</p>
+                    <a href="https://forms.gle/jHQorXVkmDU9vJGz5" target="_blank" class="btn-azul">FAÇA SUA INSCRIÇÃO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <div class="quote-inscricoes">"Dançar é mais que movimento, é celebrar nossas raízes e criar memórias que ficam para sempre."</div>
+                </div>
+            </section>
+
+            <!-- ABA 3: NOVIDADES -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h3 class="title-bento">NOVIDADES</h3>
+                    <div id="container-novidades" class="news-grid"></div>
+                </div>
+            </section>
+
+            <!-- ABA 4: PATROCINADORES -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h3 class="title-bento">PATROCINADORES</h3>
+                    <div id="container-patrocinadores" class="sponsors-grid"></div>
+                </div>
+            </section>
+
+            <!-- ABA 5: APOIADORES -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h3 class="title-bento" style="color:var(--azul-card);">APOIADORES</h3>
+                    <div id="container-apoiadores" class="sponsors-grid"></div>
+                </div>
+            </section>
+
+            <!-- ABA 6: GALERIA -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h3 class="title-bento" style="color:var(--dourado);">GALERIA DE FOTOS</h3>
+                    <div id="container-galeria" class="gallery-grid"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- LIGHTBOX / ZOOM DA FOTO -->
+    <div class="lightbox-overlay" id="lightboxModal" onclick="fecharZoom()">
+        <div class="lightbox-container" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-xmark close-lightbox" onclick="fecharZoom()"></i>
+            <img src="" id="lightboxImg" class="lightbox-img" alt="Zoom Foto">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DE AUTENTICAÇÃO -->
+    <div class="modal-overlay" id="modalLogin">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModalLogin()"></i>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="tabLoginBtn" onclick="mudarAbaAuth('login')">ENTRAR</button>
+                <button class="auth-tab-btn" id="tabCadBtn" onclick="mudarAbaAuth('cadastro')">NOVO DIRETOR</button>
+            </div>
+
+            <!-- FORMULARIO DE LOGIN -->
+            <div id="formLogin">
+                <div class="form-group">
+                    <label>Usuário:</label>
+                    <input type="text" id="loginUser" placeholder="Ex: admin">
+                </div>
+                <div class="form-group">
+                    <label>Senha:</label>
+                    <input type="password" id="loginPass" placeholder="••••••••">
+                </div>
+                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="fazerLogin()">ENTRAR</button>
+            </div>
+
+            <!-- FORMULARIO DE CADASTRO -->
+            <div id="formCadastro" style="display:none;">
+                <div class="form-group">
+                    <label style="color: var(--bordo-medio); font-weight: bold;"><i class="fa-solid fa-key"></i> Código de Autorização da Diretoria:</label>
+                    <input type="password" id="cadCodigoAuth" placeholder="Informe o código interno da diretoria" style="border: 2px solid var(--dourado);">
+                </div>
+                <hr style="margin: 10px 0; border: 0; border-top: 1px dashed var(--borda-card);">
+                <div class="form-group">
+                    <label>Nome Completo:</label>
+                    <input type="text" id="cadNome" placeholder="Ex: Maria Silva">
+                </div>
+                <div class="form-group">
+                    <label>Usuário para Login:</label>
+                    <input type="text" id="cadUser" placeholder="Ex: mariasilva">
+                </div>
+                <div class="form-group">
+                    <label>Senha:</label>
+                    <input type="password" id="cadPass" placeholder="••••••••">
+                </div>
+                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="cadastrarUsuario()">CRIAR CONTA DA DIRETORIA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL DO PAINEL ADM -->
+    <div class="modal-overlay" id="modalPainelAdm">
+        <div class="modal-content" style="max-width: 600px;">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharPainelAdm()"></i>
+            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:5px; font-family:'Cinzel', serif;">PAINEL ADM</h3>
+            <p id="saudacaoUsuario" style="text-align:center; font-size:0.85rem; color:var(--texto-suave); margin-bottom:15px;"></p>
+            
+            <div class="form-group">
+                <label>O que deseja gerenciar?</label>
+                <select id="tipoConteudo" onchange="alternarCamposAdm()">
+                    <option value="patrocinador">Novo Patrocinador</option>
+                    <option value="apoiador">Novo Apoiador</option>
+                    <option value="novidade">Nova Novidade</option>
+                    <option value="galeria">Nova Foto na Galeria</option>
+                    <option value="historia">Editar História da Quadrilha</option>
+                </select>
+            </div>
+
+            <!-- CAMPOS PARA PATROCINADOR / APOIADOR -->
+            <div id="camposSponsor">
+                <div class="form-group">
+                    <label>Nome da Empresa / Parceiro:</label>
+                    <input type="text" id="sponsorNome" placeholder="Ex: Mercado Central">
+                </div>
+                <div class="form-group">
+                    <label>Descrição / Slogan:</label>
+                    <input type="text" id="sponsorDesc" placeholder="Ex: Sempre apoiando a nossa cultura local.">
+                </div>
+                <div class="form-group">
+                    <label>Ícone (FontAwesome class):</label>
+                    <input type="text" id="sponsorIcone" placeholder="Ex: fa-building (opcional)">
+                    <small style="font-size:0.7rem; color:#666;">Ex: fa-building, fa-store, fa-heart, fa-handshake, fa-star</small>
+                </div>
+            </div>
+
+            <!-- CAMPOS PARA NOVIDADE -->
+            <div id="camposNovidade" style="display:none;">
+                <div class="form-group">
+                    <label>Título da Novidade:</label>
+                    <input type="text" id="novidadeTitulo" placeholder="Ex: Ensaio Geral Confirmado">
+                </div>
+                <div class="form-group">
+                    <label>URL da Imagem:</label>
+                    <input type="text" id="novidadeImg" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <textarea id="novidadeDesc" rows="3" placeholder="Detalhes da publicação..."></textarea>
+                </div>
+            </div>
+
+            <!-- CAMPOS PARA GALERIA -->
+            <div id="camposGaleria" style="display:none;">
+                <div class="form-group">
+                    <label>URL da Foto:</label>
+                    <input type="text" id="galeriaImg" placeholder="https://exemplo.com/foto.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Legenda / Evento:</label>
+                    <input type="text" id="galeriaLegenda" placeholder="Ex: São João 2026">
+                </div>
+            </div>
+
+            <!-- CAMPOS PARA EDITAR HISTÓRIA -->
+            <div id="camposHistoria" style="display:none;">
+                <div class="form-group">
+                    <label>Texto da História:</label>
+                    <textarea id="editHistoriaTexto" rows="5" placeholder="Escreva a história aqui..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>URL Foto 1:</label>
+                    <input type="text" id="editHistoriaImg1" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Legenda Foto 1:</label>
+                    <input type="text" id="editHistoriaCap1" placeholder="Ex: Momentos nas apresentações">
+                </div>
+                <div class="form-group">
+                    <label>URL Foto 2:</label>
+                    <input type="text" id="editHistoriaImg2" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Legenda Foto 2:</label>
+                    <input type="text" id="editHistoriaCap2" placeholder="Ex: Ensaio geral">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn-bordo" style="flex:2;" onclick="salvarConteudoAdm()">SALVAR E PUBLICAR</button>
+                <button class="btn-bordo" style="flex:1; background:#555;" onclick="fazerLogout()">SAIR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CUSTOMIZADO DE CONFIRMAÇÃO DE EXCLUSÃO -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="confirm-modal-content">
+                <i class="fa-solid fa-triangle-exclamation confirm-modal-icon"></i>
+                <h3 class="confirm-modal-title">Tem certeza?</h3>
+                <p class="confirm-modal-text" id="confirmModalText">Esta ação removerá o item permanentemente.</p>
+                <div class="confirm-actions">
+                    <button class="btn-cancel" onclick="fecharConfirmModal(false)">Cancelar</button>
+                    <button class="btn-bordo" style="margin-top:0;" onclick="fecharConfirmModal(true)">Sim, Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTAINER DAS NOTIFICAÇÕES (TOASTS) -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- RODAPÉ FIXO -->
+    <footer class="footer-bar">
+        <div style="font-size:0.9rem; font-weight:bold; color:var(--dourado);">CORAÇÃO JUNINO</div>
+        <div class="footer-contacts">
+            <a href="#" class="footer-contact-item"><i class="fa-brands fa-instagram"></i> @coracaojuninoal</a>
+            <a href="#" class="footer-contact-item"><i class="fa-brands fa-whatsapp"></i> (82) 99375-1078</a>
+        </div>
+        <div style="font-size:0.75rem;">© 2026 Coração Junino. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- LÓGICA EM JAVASCRIPT -->
+    <script>
+        const CODIGO_DIRETORIA = "DirecaoCJ2027"; 
+
+        /* SISTEMA DE NOTIFICAÇÕES (TOASTS) */
+        function showToast(mensagem, tipo = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `custom-toast ${tipo}`;
+            
+            let iconClass = 'fa-circle-check';
+            if(tipo === 'error') iconClass = 'fa-circle-xmark';
+            if(tipo === 'warning') iconClass = 'fa-triangle-exclamation';
+
+            toast.innerHTML = `<i class="fa-solid ${iconClass}"></i> <span>${mensagem}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease-out forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        /* SISTEMA DE CONFIRMAÇÃO MODAL */
+        let confirmResolver = null;
+
+        function customConfirm(mensagem) {
+            document.getElementById('confirmModalText').innerText = mensagem;
+            document.getElementById('confirmModal').style.display = 'flex';
+            return new Promise((resolve) => {
+                confirmResolver = resolve;
+            });
+        }
+
+        function fecharConfirmModal(resultado) {
+            document.getElementById('confirmModal').style.display = 'none';
+            if(confirmResolver) confirmResolver(resultado);
+        }
+
+        /* BANCO DE DADOS LOCAL (LOCALSTORAGE) */
+        let appData = JSON.parse(localStorage.getItem('coracao_junino_db')) || {
+            usuarios: [{ user: 'Laylladm', pass: '27022009L', nome: 'Direção Geral' }],
+            patrocinadores: [],
+            apoiadores: [],
+            novidades: [],
+            galeria: [],
+            historia: {
+                texto: "Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!",
+                img1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400",
+                cap1: "Momentos inesquecíveis em nossas apresentações",
+                img2: "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400",
+                cap2: "Bastidores e preparação dos nossos ensaios"
+            }
+        };
+
+        let usuarioLogado = JSON.parse(sessionStorage.getItem('coracao_user_logado')) || null;
+
+        function salvarDB() {
+            localStorage.setItem('coracao_junino_db', JSON.stringify(appData));
+        }
+
+        /* NAVEGAÇÃO DE ABAS */
+        function goToTab(index) {
+            document.getElementById('sliderTrack').style.transform = `translateX(-${index * 100}vw)`;
+            const buttons = document.querySelectorAll('.hero-nav button');
+            buttons.forEach((btn, i) => {
+                if(i === index) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
+
+        /* LIGHTBOX (ZOOM FOTOS) */
+        function zoomFoto(url, legenda) {
+            document.getElementById('lightboxImg').src = url;
+            document.getElementById('lightboxCaption').innerText = legenda || '';
+            document.getElementById('lightboxModal').style.display = 'flex';
+        }
+
+        function fecharZoom() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        /* MODAIS E AUTHENTICAÇÃO */
+        function abrirModalLogin() {
+            if(usuarioLogado) {
+                abrirPainelAdm();
+            } else {
+                document.getElementById('modalLogin').style.display = 'flex';
+            }
+        }
+
+        function fecharModalLogin() {
+            document.getElementById('modalLogin').style.display = 'none';
+        }
+
+        function mudarAbaAuth(aba) {
+            if(aba === 'login') {
+                document.getElementById('formLogin').style.display = 'block';
+                document.getElementById('formCadastro').style.display = 'none';
+                document.getElementById('tabLoginBtn').classList.add('active');
+                document.getElementById('tabCadBtn').classList.remove('active');
+            } else {
+                document.getElementById('formLogin').style.display = 'none';
+                document.getElementById('formCadastro').style.display = 'block';
+                document.getElementById('tabLoginBtn').classList.remove('active');
+                document.getElementById('tabCadBtn').classList.add('active');
+            }
+        }
+
+        function cadastrarUsuario() {
+            const codigo = document.getElementById('cadCodigoAuth').value;
+            const nome = document.getElementById('cadNome').value;
+            const user = document.getElementById('cadUser').value.toLowerCase().trim();
+            const pass = document.getElementById('cadPass').value;
+
+            if(codigo !== CODIGO_DIRETORIA) {
+                showToast("Código de autorização da diretoria incorreto!", "error");
+                return;
+            }
+
+            if(!nome || !user || !pass) {
+                showToast("Preencha todos os campos!", "warning");
+                return;
+            }
+
+            const existe = appData.usuarios.find(u => u.user === user);
+            if(existe) {
+                showToast("Este nome de usuário já está em uso!", "warning");
+                return;
+            }
+
+            appData.usuarios.push({ nome, user, pass });
+            salvarDB();
+            showToast("Conta da Diretoria criada com sucesso!", "success");
+            mudarAbaAuth('login');
+        }
+
+        function fazerLogin() {
+            const user = document.getElementById('loginUser').value.toLowerCase().trim();
+            const pass = document.getElementById('loginPass').value;
+
+            const conta = appData.usuarios.find(u => u.user === user && u.pass === pass);
+
+            if(conta) {
+                usuarioLogado = conta;
+                sessionStorage.setItem('coracao_user_logado', JSON.stringify(conta));
+                fecharModalLogin();
+                atualizarInterfaceAuth();
+                showToast(`Bem-vindo(a), ${conta.nome}!`, "success");
+                abrirPainelAdm();
+            } else {
+                showToast("Usuário ou senha incorretos!", "error");
+            }
+        }
+
+        function fazerLogout() {
+            usuarioLogado = null;
+            sessionStorage.removeItem('coracao_user_logado');
+            fecharPainelAdm();
+            atualizarInterfaceAuth();
+            showToast("Você saiu do sistema.", "warning");
+        }
+
+        function atualizarInterfaceAuth() {
+            const btnTrigger = document.getElementById('btnAuthTrigger');
+            const btnEditarHistoria = document.getElementById('btnEditarHistoria');
+            
+            if(usuarioLogado) {
+                btnTrigger.innerHTML = `<i class="fa-solid fa-user-gear"></i> PAINEL ADM`;
+                if(btnEditarHistoria) btnEditarHistoria.style.display = 'inline-block';
+            } else {
+                btnTrigger.innerHTML = `<i class="fa-solid fa-lock"></i> LOGIN / ADM`;
+                if(btnEditarHistoria) btnEditarHistoria.style.display = 'none';
+            }
+            renderizarConteudo();
+        }
+
+        /* PAINEL ADM */
+        function abrirPainelAdm() {
+            document.getElementById('saudacaoUsuario').innerText = `Logado como: ${usuarioLogado.nome}`;
+            document.getElementById('modalPainelAdm').style.display = 'flex';
+        }
+
+        function fecharPainelAdm() {
+            document.getElementById('modalPainelAdm').style.display = 'none';
+        }
+
+        function alternarCamposAdm() {
+            const tipo = document.getElementById('tipoConteudo').value;
+            document.getElementById('camposSponsor').style.display = (tipo === 'patrocinador' || tipo === 'apoiador') ? 'block' : 'none';
+            document.getElementById('camposNovidade').style.display = (tipo === 'novidade') ? 'block' : 'none';
+            document.getElementById('camposGaleria').style.display = (tipo === 'galeria') ? 'block' : 'none';
+            document.getElementById('camposHistoria').style.display = (tipo === 'historia') ? 'block' : 'none';
+
+            if(tipo === 'historia') {
+                document.getElementById('editHistoriaTexto').value = appData.historia.texto;
+                document.getElementById('editHistoriaImg1').value = appData.historia.img1;
+                document.getElementById('editHistoriaCap1').value = appData.historia.cap1;
+                document.getElementById('editHistoriaImg2').value = appData.historia.img2;
+                document.getElementById('editHistoriaCap2').value = appData.historia.cap2;
+            }
+        }
+
+        function abrirEdicaoHistoria() {
+            if(!usuarioLogado) return;
+            abrirPainelAdm();
+            document.getElementById('tipoConteudo').value = 'historia';
+            alternarCamposAdm();
+        }
+
+        function salvarConteudoAdm() {
+            const tipo = document.getElementById('tipoConteudo').value;
+
+            if(tipo === 'patrocinador' || tipo === 'apoiador') {
+                const nome = document.getElementById('sponsorNome').value;
+                const desc = document.getElementById('sponsorDesc').value;
+                const icone = document.getElementById('sponsorIcone').value || 'fa-star';
+
+                if(!nome) { showToast("Informe o nome do parceiro!", "warning"); return; }
+
+                const item = { id: Date.now(), nome, desc, icone };
+                if(tipo === 'patrocinador') appData.patrocinadores.push(item);
+                else appData.apoiadores.push(item);
+
+                showToast("Cadastrado com sucesso!", "success");
+            } 
+            else if(tipo === 'novidade') {
+                const titulo = document.getElementById('novidadeTitulo').value;
+                const img = document.getElementById('novidadeImg').value;
+                const desc = document.getElementById('novidadeDesc').value;
+
+                if(!titulo || !img) { showToast("Preencha título e imagem!", "warning"); return; }
+
+                appData.novidades.push({ id: Date.now(), titulo, img, desc });
+                showToast("Novidade publicada com sucesso!", "success");
+            } 
+            else if(tipo === 'galeria') {
+                const img = document.getElementById('galeriaImg').value;
+                const legenda = document.getElementById('galeriaLegenda').value;
+
+                if(!img) { showToast("Cole a URL da foto!", "warning"); return; }
+
+                appData.galeria.push({ id: Date.now(), img, legenda });
+                showToast("Foto adicionada à galeria!", "success");
+            }
+            else if(tipo === 'historia') {
+                appData.historia = {
+                    texto: document.getElementById('editHistoriaTexto').value,
+                    img1: document.getElementById('editHistoriaImg1').value,
+                    cap1: document.getElementById('editHistoriaCap1').value,
+                    img2: document.getElementById('editHistoriaImg2').value,
+                    cap2: document.getElementById('editHistoriaCap2').value
+                };
+                showToast("História atualizada com sucesso!", "success");
+            }
+
+            salvarDB();
+            renderizarConteudo();
+            fecharPainelAdm();
+        }
+
+        async function deletarItem(categoria, id) {
+            const confirmado = await customConfirm("Deseja realmente excluir este item?");
+            if(!confirmado) return;
+
+            appData[categoria] = appData[categoria].filter(item => item.id !== id);
+            salvarDB();
+            renderizarConteudo();
+            showToast("Item removido com sucesso!", "success");
+        }
+
+        /* RENDERIZAÇÃO DE DADOS NA TELA */
+        function renderizarConteudo() {
+            // Renderizar História
+            if(appData.historia) {
+                document.getElementById('historiaTexto').innerText = appData.historia.texto;
+                document.getElementById('historiaImg1').src = appData.historia.img1;
+                document.getElementById('historiaCap1').innerText = appData.historia.cap1;
+                document.getElementById('historiaImg2').src = appData.historia.img2;
+                document.getElementById('historiaCap2').innerText = appData.historia.cap2;
+            }
+
+            // Renderizar Patrocinadores
+            const cPatro = document.getElementById('container-patrocinadores');
+            cPatro.innerHTML = appData.patrocinadores.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhum patrocinador cadastrado ainda.</p>';
+            appData.patrocinadores.forEach(p => {
+                cPatro.innerHTML += `
+                    <div class="sponsor-box">
+                        <i class="fa-solid ${p.icone}"></i>
+                        <h4>${p.nome}</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-suave);">${p.desc}</p>
+                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('patrocinadores', ${p.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                    </div>
+                `;
+            });
+
+            // Renderizar Apoiadores
+            const cApoi = document.getElementById('container-apoiadores');
+            cApoi.innerHTML = appData.apoiadores.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhum apoiador cadastrado ainda.</p>';
+            appData.apoiadores.forEach(a => {
+                cApoi.innerHTML += `
+                    <div class="sponsor-box">
+                        <i class="fa-solid ${a.icone}"></i>
+                        <h4>${a.nome}</h4>
+                        <p style="font-size:0.85rem; color:var(--texto-suave);">${a.desc}</p>
+                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('apoiadores', ${a.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                    </div>
+                `;
+            });
+
+            // Renderizar Novidades
+            const cNov = document.getElementById('container-novidades');
+            cNov.innerHTML = appData.novidades.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhuma novidade publicada ainda.</p>';
+            appData.novidades.forEach(n => {
+                cNov.innerHTML += `
+                    <div class="news-card">
+                        <img src="${n.img}" onclick="zoomFoto('${n.img}', '${n.titulo}')" alt="Imagem Novidade">
+                        <div class="news-card-body">
+                            <h4>${n.titulo}</h4>
+                            <p style="font-size:0.85rem; color:var(--texto-suave);">${n.desc}</p>
+                            ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('novidades', ${n.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Renderizar Galeria
+            const cGal = document.getElementById('container-galeria');
+            cGal.innerHTML = appData.galeria.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhuma foto adicionada à galeria.</p>';
+            appData.galeria.forEach(g => {
+                cGal.innerHTML += `
+                    <div class="gallery-item" onclick="zoomFoto('${g.img}', '${g.legenda}')">
+                        <img src="${g.img}" alt="Galeria">
+                        ${g.legenda ? `<div class="gallery-caption">${g.legenda}</div>` : ''}
+                        ${usuarioLogado ? `<button class="btn-delete" style="position:absolute; top:5px; right:5px; margin:0;" onclick="event.stopPropagation(); deletarItem('galeria', ${g.id})"><i class="fa-solid fa-trash"></i></button>` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        // Inicialização
+        window.onload = () => {
+            atualizarInterfaceAuth();
+        };
+    </script>
+</body>
+</html>
