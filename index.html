@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quadrilha Coração Junino ❤️</title>
     
-    <!-- ÍCONE DA ABA (FAVICON) DO CORAÇÃO -->
-    <link rel="icon" href="imagens/original.png" type="image/png">
-
-    <!-- Fontes Google -->
+    <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -25,7 +21,9 @@
             --card-palha: #f4eee3;
             --texto-escuro: #361f12;
             --texto-suave: #634b3c;
-            --azul-card: #203a54;
+            --azul-presidente: #1d3557;
+            --amarelo-junino: #e0a96d;
+            --vermelho-junino: #9e2a2b;
             --borda-card: rgba(180, 150, 90, 0.4);
             --sombra-bento: 0 10px 25px rgba(0,0,0,0.18);
         }
@@ -48,25 +46,32 @@
             flex-direction: column;
         }
 
-        /* HEADER E MENU TOP */
+        /* BARRA SUPERIOR */
         .top-hero-bar {
             background: linear-gradient(135deg, rgba(40,0,0,0.95), rgba(80,0,0,0.9));
             border-bottom: 2px solid var(--dourado);
-            padding: 10px 40px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            height: 60px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .user-nav-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-adm-trigger {
             background: rgba(212, 175, 55, 0.2);
             color: var(--dourado);
             border: 1px solid var(--dourado);
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 15px;
             font-size: 0.75rem;
             cursor: pointer;
@@ -81,20 +86,21 @@
 
         .hero-nav {
             display: flex;
-            gap: 15px;
+            gap: 6px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .hero-nav button {
             background: transparent;
             border: none;
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.72rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            padding: 6px 14px;
+            padding: 6px 10px;
             border-radius: 20px;
             transition: 0.3s;
         }
@@ -104,7 +110,7 @@
             background: rgba(212, 175, 55, 0.15);
         }
 
-        /* ESTRUTURA DO CARROSSEL DE ABAS */
+        /* ESTRUTURA DAS ABAS DO CARROSSEL */
         .viewport {
             width: 100vw;
             flex: 1;
@@ -113,1088 +119,892 @@
 
         .slider-track {
             display: flex;
-            width: 700vw;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 1100vw;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .tab-screen {
             width: 100vw;
             min-height: calc(100vh - 120px);
-            padding: 30px 20px;
+            padding: 25px 15px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        /* CARDS PADRÃO */
         .bento-card {
             background-color: var(--card-palha);
             border-radius: 18px;
             border: 1px solid var(--borda-card);
             box-shadow: var(--sombra-bento);
-            padding: 35px;
+            padding: 30px;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1000px;
             position: relative;
         }
 
         .title-bento {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
             color: var(--bordo-medio);
         }
 
-        .title-bento::after {
-            content: '♡';
-            display: block;
-            font-size: 0.9rem;
-            color: var(--dourado);
-            margin-top: -5px;
+        /* ABA PADRINHOS */
+        .padrinhos-container {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
         }
 
-        /* ABA INÍCIO */
-        .hero-banner-card {
-            background: none;
-            padding: 0;
-            border: 2px solid var(--dourado);
+        .padrinho-card {
+            background: #fff;
             border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hero-main-area {
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
-                        url('imagens/colorida.jpeg') center/cover;
-            padding: 60px 40px;
-            text-align: center;
-            color: #fff;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-logo-coracao {
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            width: 180px;
-            height: auto;
-            z-index: 10;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
-        }
-
-        .hero-main-area h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.8rem;
-            color: #f7e7a9;
-            font-weight: 400;
-            line-height: 1.1;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
-
-        .hero-main-area h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            letter-spacing: 4px;
-            font-weight: 800;
-            color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            margin-top: -5px;
-        }
-
-        .hero-divider {
-            font-size: 1.2rem;
-            color: var(--dourado);
-            margin: 10px 0 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 60%;
-            max-width: 400px;
-        }
-
-        .hero-divider::before, .hero-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--dourado), transparent);
-        }
-
-        .hero-subtext {
-            color: #fcecd2;
-            font-size: 1.1rem;
-            max-width: 500px;
-            line-height: 1.5;
-            font-weight: 300;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-        }
-
-        /* HISTÓRIA E POLAROIDS */
-        .history-layout { display: flex; gap: 30px; align-items: center; justify-content: space-between; }
-        .history-photos { width: 320px; display: flex; flex-direction: column; gap: 15px; }
-        .photo-polaroid { 
-            background: #fff; 
-            padding: 10px 10px 20px 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
-            transform: rotate(-3deg); 
-            border-radius: 4px; 
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .photo-polaroid:hover { transform: scale(1.03) rotate(0deg); }
-        .photo-polaroid:nth-child(2) { transform: rotate(4deg); margin-top: -30px; }
-        .photo-polaroid:nth-child(2):hover { transform: scale(1.03) rotate(0deg); }
-        .photo-polaroid img { width: 100%; height: 160px; object-fit: cover; }
-        .btn-bordo { background: var(--bordo-medio); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; border: none; cursor: pointer; transition: 0.3s; }
-        .btn-bordo:hover { background: var(--bordo-escuro); }
-
-        /* INSCRIÇÕES */
-        .card-inscricoes { background: linear-gradient(135deg, #e3ecf5 0%, #cbdbe8 100%); text-align: center; }
-        .btn-azul { background: var(--azul-card); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin: 20px 0; }
-        .quote-inscricoes { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--azul-card); margin-top: 15px; }
-
-        /* NOVIDADES */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .news-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--borda-card); box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: relative;}
-        .news-card img { width: 100%; height: 160px; object-fit: cover; cursor: pointer; transition: 0.3s; }
-        .news-card img:hover { filter: brightness(0.9); }
-        .news-card-body { padding: 15px; }
-        .news-card-body h4 { color: var(--bordo-medio); margin-bottom: 8px; font-family: 'Cinzel', serif; }
-
-        /* GALERIA */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-        .gallery-item { 
-            position: relative; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            height: 180px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-            cursor: pointer;
-        }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-        .gallery-item:hover img { transform: scale(1.08); }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: #fff; padding: 6px 10px; font-size: 0.8rem; text-align: center; }
-
-        /* PATROCINADORES & APOIADORES */
-        .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
-        .sponsor-box { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--borda-card); position: relative; }
-        .sponsor-box i { font-size: 2rem; color: var(--bordo-medio); margin-bottom: 10px; }
-
-        /* VISUALIZADOR DE FOTOS (LIGHTBOX) */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-        .lightbox-container {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.8);
             border: 2px solid var(--dourado);
-            object-fit: contain;
-        }
-        .lightbox-caption {
-            color: var(--dourado-claro);
-            margin-top: 15px;
-            font-size: 1.1rem;
+            padding: 25px;
             text-align: center;
-            font-family: 'Cinzel', serif;
+            width: 100%;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: #fff;
-            font-size: 2rem;
+
+        .padrinho-card.active { display: block; }
+
+        .padrinho-img {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--dourado);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .padrinho-misterioso-box {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2b2b2b, #4a4a4a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--dourado);
+            border: 4px solid var(--dourado);
+        }
+
+        .nav-btn-padrinho {
+            background: var(--bordo-medio);
+            color: var(--dourado);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
             cursor: pointer;
+            z-index: 10;
+            position: absolute;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .nav-btn-padrinho:hover { background: var(--bordo-escuro); transform: scale(1.1); }
+        .btn-prev { left: -15px; }
+        .btn-next { right: -15px; }
+
+        /* ABA DIRETORES (8 QUADRADOS MÉDIOS INTERCALADOS) */
+        .diretores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .diretor-box {
+            border-radius: 14px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #fff;
+        }
+
+        .diretor-box:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+
+        .diretor-box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            margin-bottom: 10px;
+        }
+
+        .bg-azul { background: linear-gradient(135deg, var(--azul-presidente), #2a4d69); border: 2px solid var(--dourado); }
+        .bg-amarelo { background: linear-gradient(135deg, #c9933b, #d4af37); color: var(--texto-escuro); border: 2px solid var(--bordo-medio); }
+        .bg-vermelho { background: linear-gradient(135deg, var(--vermelho-junino), #7a0c0c); border: 2px solid var(--dourado); }
+
+        /* ABA CORAÇÃO TOKTOK */
+        .toktok-feed {
+            width: 100%;
+            max-width: 380px;
+            height: 600px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 20px;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            border: 3px solid var(--dourado);
+            position: relative;
+        }
+
+        .toktok-feed::-webkit-scrollbar { display: none; }
+        .toktok-feed { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .toktok-post {
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toktok-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .toktok-side-actions {
+            position: absolute;
+            right: 12px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .toktok-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
             transition: 0.2s;
         }
-        .close-lightbox:hover { color: var(--dourado); }
 
-        /* MODAL E PAINEL ADM */
-        .modal-overlay {
+        .toktok-btn.active { color: #ff3366; }
+
+        .toktok-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        /* ABA REPERTÓRIO */
+        .repertorio-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--bordo-medio);
+        }
+
+        .repertorio-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: var(--fundo-palha);
+            border-radius: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .repertorio-item audio { height: 35px; outline: none; }
+
+        /* OUTRAS SEÇÕES */
+        .grid-midia {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .midia-box {
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: #000;
+        }
+
+        .midia-box img, .midia-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* MODAIS */
+        .modal-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.8);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 15px;
         }
 
-        .modal-content {
+        .modal-box {
             background: var(--card-palha);
-            padding: 30px;
-            border-radius: 15px;
             border: 2px solid var(--dourado);
-            width: 90%;
-            max-width: 500px;
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            max-width: 480px;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
-        .close-modal {
+        .close-btn {
             position: absolute;
-            top: 15px; right: 15px;
-            cursor: pointer;
+            top: 12px;
+            right: 15px;
             font-size: 1.2rem;
+            cursor: pointer;
             color: var(--bordo-escuro);
         }
 
-        .auth-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--borda-card);
-        }
-
-        .auth-tab-btn {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            background: transparent;
-            font-weight: bold;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            color: var(--texto-suave);
-        }
-
-        .auth-tab-btn.active {
-            color: var(--bordo-medio);
-            border-bottom: 3px solid var(--bordo-medio);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
+        .form-control {
+            margin-bottom: 12px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            padding: 10px;
+        .form-control input, .form-control select, .form-control textarea {
+            padding: 8px 12px;
             border-radius: 8px;
             border: 1px solid var(--borda-card);
-            font-family: 'Poppins', sans-serif;
-            background: #fff;
+            font-family: inherit;
         }
 
-        .btn-delete {
-            background: #a82323;
+        .btn-junino {
+            background: var(--bordo-medio);
             color: #fff;
+            padding: 10px 20px;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.75rem;
-            margin-top: 8px;
-            transition: 0.2s;
+            transition: 0.3s;
+        }
+        .btn-junino:hover { background: var(--bordo-escuro); }
+
+        /* TOAST */
+        #toastArea { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        .toast {
+            background: #fff; border-left: 5px solid var(--dourado);
+            padding: 12px 18px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 0.85rem; margin-top: 8px;
         }
 
-        .btn-delete:hover {
-            background: #7a0c0c;
-        }
-
-        /* SISTEMA DE AVISOS NOTIFICAÇÃO (TOAST) */
-        .toast-container {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .custom-toast {
-            min-width: 280px;
-            background: #fff;
-            border-left: 6px solid var(--dourado);
-            padding: 14px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--texto-escuro);
-            font-weight: 500;
-            font-size: 0.9rem;
-            animation: slideIn 0.3s ease-out forwards;
-        }
-
-        .custom-toast.success { border-left-color: #2e7d32; }
-        .custom-toast.error { border-left-color: #c62828; }
-        .custom-toast.warning { border-left-color: #f57c00; }
-
-        .custom-toast i { font-size: 1.3rem; }
-        .custom-toast.success i { color: #2e7d32; }
-        .custom-toast.error i { color: #c62828; }
-        .custom-toast.warning i { color: #f57c00; }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(50px); }
-        }
-
-        /* MODAL DE CONFIRMAÇÃO ESTILIZADO */
-        .confirm-modal-content {
-            text-align: center;
-        }
-
-        .confirm-modal-icon {
-            font-size: 3rem;
-            color: var(--dourado);
-            margin-bottom: 15px;
-        }
-
-        .confirm-modal-title {
-            font-family: 'Cinzel', serif;
-            color: var(--bordo-medio);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .confirm-modal-text {
-            color: var(--texto-suave);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        .confirm-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .btn-cancel {
-            background: #777;
-            color: #fff;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* RODAPÉ FIXO */
-        .footer-bar {
-            background: linear-gradient(135deg, var(--bordo-escuro) 0%, var(--bordo-medio) 100%);
-            color: #fff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 2px solid var(--dourado);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .footer-contacts { display: flex; gap: 20px; }
-        .footer-contact-item { display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 0.8rem; }
-        .footer-contact-item i { color: var(--dourado); font-size: 1.2rem; }
-
-        @media (max-width: 850px) {
-            .hero-logo-coracao { width: 130px; top: -10px; left: 10px; }
-            .hero-main-area h2 { font-size: 3.5rem; }
-            .hero-main-area h1 { font-size: 2rem; }
-            .top-hero-bar { flex-direction: column; height: auto; padding: 10px; gap: 10px; }
-            .history-layout { flex-direction: column; }
-            .history-photos { width: 100%; }
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .title-bento { font-size: 1.5rem; }
+            .btn-prev { left: -5px; }
+            .btn-next { right: -5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV BAR SUPERIOR -->
+    <!-- BARRA DE NAVEGAÇÃO -->
     <header class="top-hero-bar">
-        <button class="btn-adm-trigger" id="btnAuthTrigger" onclick="abrirModalLogin()"><i class="fa-solid fa-lock"></i> LOGIN / ADM</button>
+        <div class="user-nav-status">
+            <button class="btn-adm-trigger" id="btnLogin" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> LOGIN / CADASTRAR</button>
+            <span id="userTag" style="color:var(--dourado-claro); font-size:0.75rem; font-weight:bold;"></span>
+        </div>
         <nav class="hero-nav">
-            <button class="active" onclick="goToTab(0)">INÍCIO</button>
-            <button onclick="goToTab(1)">HISTÓRIA</button>
-            <button onclick="goToTab(2)">INSCRIÇÕES</button>
-            <button onclick="goToTab(3)">NOVIDADES</button>
-            <button onclick="goToTab(4)">PATROCINADORES</button>
-            <button onclick="goToTab(5)">APOIADORES</button>
-            <button onclick="goToTab(6)">GALERIA</button>
+            <button class="active" onclick="mudarAba(0)">INÍCIO</button>
+            <button onclick="mudarAba(1)">HISTÓRIA</button>
+            <button onclick="mudarAba(2)">INSCRIÇÕES</button>
+            <button onclick="mudarAba(3)">PADRINHOS</button>
+            <button onclick="mudarAba(4)">DIRETORES</button>
+            <button onclick="mudarAba(5)">CORAÇÃO TOKTOK</button>
+            <button onclick="mudarAba(6)">REPERTÓRIOS</button>
+            <button onclick="mudarAba(7)">NOVIDADES</button>
+            <button onclick="mudarAba(8)">GALERIA</button>
         </nav>
     </header>
 
-    <!-- TRILHO DO CARROSSEL DE ABAS -->
+    <!-- TRILHO DAS ABAS -->
     <div class="viewport">
         <div class="slider-track" id="sliderTrack">
 
             <!-- ABA 0: INÍCIO -->
             <section class="tab-screen">
-                <div class="bento-card hero-banner-card">
-                    <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao">
-                    
-                    <div class="hero-main-area">
-                        <h2>Sejam Bem-vindos</h2>
-                        <h1>AO NOSSO SITE!</h1>
-                        <div class="hero-divider">♡</div>
-                        <p class="hero-subtext">Aqui começa a nossa história, se fortalece nossa cultura e pulsa o coração junino.</p>
-                    </div>
+                <div class="bento-card" style="text-align:center;">
+                    <h1 style="font-family:'Great Vibes', cursive; font-size: 3.5rem; color:var(--bordo-medio);">Quadrilha Coração Junino</h1>
+                    <p style="font-size: 1.1rem; color:var(--texto-suave); margin-top:10px;">Seja bem-vindo ao nosso cantinho oficial! Acompanhe fotos, vídeos, repertórios e novidades do nosso grupo.</p>
                 </div>
             </section>
 
             <!-- ABA 1: HISTÓRIA -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-                        <h3 class="title-bento" style="margin-bottom:0;">HISTÓRIA</h3>
-                        <button id="btnEditarHistoria" class="btn-adm-trigger" style="display:none;" onclick="abrirEdicaoHistoria()"><i class="fa-solid fa-pen"></i> EDITAR HISTÓRIA</button>
-                    </div>
-                    <div class="history-layout">
-                        <div style="flex:1;">
-                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!</p>
-                            <button class="btn-bordo" onclick="goToTab(2)">Junte-se a nós</button>
-                        </div>
-                        <div class="history-photos">
-                            <div class="photo-polaroid" onclick="zoomFoto(document.getElementById('historiaImg1').src, document.getElementById('historiaCap1').innerText)">
-                                <img id="historiaImg1" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400" alt="Foto Apresentação">
-                                <small id="historiaCap1" style="display:none;">Momentos inesquecíveis em nossas apresentações</small>
-                            </div>
-                            <div class="photo-polaroid" onclick="zoomFoto(document.getElementById('historiaImg2').src, document.getElementById('historiaCap2').innerText)">
-                                <img id="historiaImg2" src="https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400" alt="Foto Ensaio">
-                                <small id="historiaCap2" style="display:none;">Bastidores e preparação dos nossos ensaios</small>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="title-bento">NOSSA HISTÓRIA</h2>
+                    <p style="line-height:1.8; text-align:justify;">Nossa trajetória começou com o sonho de valorizar as tradições e trazer para o arraial a verdadeira energia do São João. Com amor, dedicação e união de cada dançarino e diretor, levamos aos palcos um espetáculo inesquecível a cada temporada.</p>
                 </div>
             </section>
 
             <!-- ABA 2: INSCRIÇÕES -->
             <section class="tab-screen">
-                <div class="bento-card card-inscricoes">
-                    <h3 class="title-bento" style="color:var(--azul-card);">INSCRIÇÕES</h3>
-                    <p style="font-size:1.1rem; color:#333;">Venha fazer parte da nossa família! A dança nos move, a cultura nos une e aqui você tem um lugar garantido.</p>
-                    <a href="https://forms.gle/jHQorXVkmDU9vJGz5" target="_blank" class="btn-azul">FAÇA SUA INSCRIÇÃO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    <div class="quote-inscricoes">"Dançar é mais que movimento, é celebrar nossas raízes e criar memórias que ficam para sempre."</div>
+                <div class="bento-card" style="text-align:center;">
+                    <h2 class="title-bento">FAÇA PARTE DA FAMÍLIA</h2>
+                    <p style="margin-bottom:20px;">As inscrições para a nova temporada já estão abertas!</p>
+                    <a href="https://forms.gle" target="_blank" class="btn-junino" style="text-decoration:none; display:inline-block;">PREENCHER FORMULÁRIO DE INSCRIÇÃO</a>
                 </div>
             </section>
 
-            <!-- ABA 3: NOVIDADES -->
+            <!-- ABA 3: PADRINHOS -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h3 class="title-bento">NOVIDADES</h3>
-                    <div id="container-novidades" class="news-grid"></div>
+                    <h2 class="title-bento">PADRINHOS D'ALMA</h2>
+                    <div class="padrinhos-container">
+                        <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+
+                        <!-- Padrinho 1 (Casal) -->
+                        <div class="padrinho-card active" id="pad-0">
+                            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" class="padrinho-img" alt="Padrinhos">
+                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Seu Zé & Dona Maria</h3>
+                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:8px;">Padrinhos de Honra (Casal)</p>
+                            <p style="font-size:0.9rem; color:var(--texto-suave);">Sempre presentes desde a fundação da quadrilha, nos apoiando em todos os momentos com carinho e dedicação.</p>
+                        </div>
+
+                        <!-- Padrinho 2 (Individual) -->
+                        <div class="padrinho-card" id="pad-1">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" class="padrinho-img" alt="Padrinho">
+                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Antônio Carlos</h3>
+                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:8px;">Padrinho do Figurino</p>
+                            <p style="font-size:0.9rem; color:var(--texto-suave);">Um defensor apaixonado da nossa cultura, responsável por apoiar a confecção de nossas roupas e brilhos.</p>
+                        </div>
+
+                        <!-- Padrinho 3 (Misterioso) -->
+                        <div class="padrinho-card" id="pad-2">
+                            <div class="padrinho-misterioso-box">
+                                <i class="fa-solid fa-user-secret"></i>
+                            </div>
+                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Padrinho Misterioso 🤫</h3>
+                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:8px;">Em Breve...</p>
+                            <p style="font-size:0.9rem; color:var(--texto-suave);">Um grande nome ainda não revelado! Fiquem atentos para a revelação oficial.</p>
+                        </div>
+
+                        <button class="nav-btn-padrinho btn-next" onclick="mudarPadrinho(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </section>
 
-            <!-- ABA 4: PATROCINADORES -->
+            <!-- ABA 4: DIRETORES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h3 class="title-bento">PATROCINADORES</h3>
-                    <div id="container-patrocinadores" class="sponsors-grid"></div>
+                    <h2 class="title-bento">DIRETORIA EXECUTIVA</h2>
+                    <div class="diretores-grid" id="gridDiretores"></div>
                 </div>
             </section>
 
-            <!-- ABA 5: APOIADORES -->
+            <!-- ABA 5: CORAÇÃO TOKTOK -->
             <section class="tab-screen">
-                <div class="bento-card">
-                    <h3 class="title-bento" style="color:var(--azul-card);">APOIADORES</h3>
-                    <div id="container-apoiadores" class="sponsors-grid"></div>
+                <div class="bento-card" style="display:flex; flex-direction:column; align-items:center;">
+                    <h2 class="title-bento" style="margin-bottom:10px;">CORAÇÃO TOKTOK 📱</h2>
+                    <div class="toktok-feed" id="toktokFeed"></div>
                 </div>
             </section>
 
-            <!-- ABA 6: GALERIA -->
+            <!-- ABA 6: REPERTÓRIOS -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h3 class="title-bento" style="color:var(--dourado);">GALERIA DE FOTOS</h3>
-                    <div id="container-galeria" class="gallery-grid"></div>
+                    <h2 class="title-bento">REPERTÓRIOS MUSICAIS</h2>
+                    <div id="repertorioLista"></div>
+                </div>
+            </section>
+
+            <!-- ABA 7: NOVIDADES -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h2 class="title-bento">NOVIDADES</h2>
+                    <div id="gridNovidades" class="grid-midia"></div>
+                </div>
+            </section>
+
+            <!-- ABA 8: GALERIA -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h2 class="title-bento">GALERIA DE FOTOS E VÍDEOS</h2>
+                    <div id="gridGaleria" class="grid-midia"></div>
                 </div>
             </section>
 
         </div>
     </div>
 
-    <!-- LIGHTBOX / ZOOM DA FOTO -->
-    <div class="lightbox-overlay" id="lightboxModal" onclick="fecharZoom()">
-        <div class="lightbox-container" onclick="event.stopPropagation()">
-            <i class="fa-solid fa-xmark close-lightbox" onclick="fecharZoom()"></i>
-            <img src="" id="lightboxImg" class="lightbox-img" alt="Zoom Foto">
-            <div id="lightboxCaption" class="lightbox-caption"></div>
-        </div>
-    </div>
+    <!-- MODAL AUTH -->
+    <div class="modal-bg" id="modalAuth">
+        <div class="modal-box">
+            <span class="close-btn" onclick="fecharModal('modalAuth')">&times;</span>
+            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Acesso ao Site</h3>
 
-    <!-- MODAL DE AUTENTICAÇÃO -->
-    <div class="modal-overlay" id="modalLogin">
-        <div class="modal-content">
-            <i class="fa-solid fa-xmark close-modal" onclick="fecharModalLogin()"></i>
-            
-            <div class="auth-tabs">
-                <button class="auth-tab-btn active" id="tabLoginBtn" onclick="mudarAbaAuth('login')">ENTRAR</button>
-                <button class="auth-tab-btn" id="tabCadBtn" onclick="mudarAbaAuth('cadastro')">NOVO DIRETOR</button>
-            </div>
-
-            <!-- FORMULARIO DE LOGIN -->
-            <div id="formLogin">
-                <div class="form-group">
-                    <label>Usuário:</label>
-                    <input type="text" id="loginUser" placeholder="Ex: admin">
-                </div>
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" id="loginPass" placeholder="••••••••">
-                </div>
-                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="fazerLogin()">ENTRAR</button>
-            </div>
-
-            <!-- FORMULARIO DE CADASTRO -->
-            <div id="formCadastro" style="display:none;">
-                <div class="form-group">
-                    <label style="color: var(--bordo-medio); font-weight: bold;"><i class="fa-solid fa-key"></i> Código de Autorização da Diretoria:</label>
-                    <input type="password" id="cadCodigoAuth" placeholder="Informe o código interno da diretoria" style="border: 2px solid var(--dourado);">
-                </div>
-                <hr style="margin: 10px 0; border: 0; border-top: 1px dashed var(--borda-card);">
-                <div class="form-group">
-                    <label>Nome Completo:</label>
-                    <input type="text" id="cadNome" placeholder="Ex: Maria Silva">
-                </div>
-                <div class="form-group">
-                    <label>Usuário para Login:</label>
-                    <input type="text" id="cadUser" placeholder="Ex: mariasilva">
-                </div>
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" id="cadPass" placeholder="••••••••">
-                </div>
-                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="cadastrarUsuario()">CRIAR CONTA DA DIRETORIA</button>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- MODAL DO PAINEL ADM -->
-    <div class="modal-overlay" id="modalPainelAdm">
-        <div class="modal-content" style="max-width: 600px;">
-            <i class="fa-solid fa-xmark close-modal" onclick="fecharPainelAdm()"></i>
-            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:5px; font-family:'Cinzel', serif;">PAINEL ADM</h3>
-            <p id="saudacaoUsuario" style="text-align:center; font-size:0.85rem; color:var(--texto-suave); margin-bottom:15px;"></p>
-            
-            <div class="form-group">
-                <label>O que deseja gerenciar?</label>
-                <select id="tipoConteudo" onchange="alternarCamposAdm()">
-                    <option value="patrocinador">Novo Patrocinador</option>
-                    <option value="apoiador">Novo Apoiador</option>
-                    <option value="novidade">Nova Novidade</option>
-                    <option value="galeria">Nova Foto na Galeria</option>
-                    <option value="historia">Editar História da Quadrilha</option>
+            <div class="form-control">
+                <label>Perfil:</label>
+                <select id="authTipo" onchange="alternarAuthCampos()">
+                    <option value="visitante">Visitante (Comentar e Curtir)</option>
+                    <option value="diretor">Diretoria (Editar Site)</option>
                 </select>
             </div>
 
-            <!-- CAMPOS PARA PATROCINADOR / APOIADOR -->
-            <div id="camposSponsor">
-                <div class="form-group">
-                    <label>Nome da Empresa / Parceiro:</label>
-                    <input type="text" id="sponsorNome" placeholder="Ex: Mercado Central">
-                </div>
-                <div class="form-group">
-                    <label>Descrição / Slogan:</label>
-                    <input type="text" id="sponsorDesc" placeholder="Ex: Sempre apoiando a nossa cultura local.">
-                </div>
-                <div class="form-group">
-                    <label>Ícone (FontAwesome class):</label>
-                    <input type="text" id="sponsorIcone" placeholder="Ex: fa-building (opcional)">
-                    <small style="font-size:0.7rem; color:#666;">Ex: fa-building, fa-store, fa-heart, fa-handshake, fa-star</small>
-                </div>
+            <div class="form-control" id="campoChaveDiretor" style="display:none;">
+                <label style="color:var(--bordo-medio); font-weight:bold;">Chave da Diretoria:</label>
+                <input type="password" id="authChave" placeholder="Insira a chave secreta">
             </div>
 
-            <!-- CAMPOS PARA NOVIDADE -->
-            <div id="camposNovidade" style="display:none;">
-                <div class="form-group">
-                    <label>Título da Novidade:</label>
-                    <input type="text" id="novidadeTitulo" placeholder="Ex: Ensaio Geral Confirmado">
-                </div>
-                <div class="form-group">
-                    <label>Escolher Foto do Computador/Celular:</label>
-                    <input type="file" id="novidadeImgFile" accept="image/*">
-                </div>
-                <div class="form-group">
-                    <label>Descrição:</label>
-                    <textarea id="novidadeDesc" rows="3" placeholder="Detalhes da publicação..."></textarea>
-                </div>
+            <div class="form-control">
+                <label>Seu Nome:</label>
+                <input type="text" id="authNome" placeholder="Ex: João Silva">
             </div>
 
-            <!-- CAMPOS PARA GALERIA -->
-            <div id="camposGaleria" style="display:none;">
-                <div class="form-group">
-                    <label>Escolher Foto do Computador/Celular:</label>
-                    <input type="file" id="galeriaImgFile" accept="image/*">
-                </div>
-                <div class="form-group">
-                    <label>Legenda / Evento:</label>
-                    <input type="text" id="galeriaLegenda" placeholder="Ex: São João 2026">
-                </div>
+            <div class="form-control">
+                <label>Usuário:</label>
+                <input type="text" id="authUser" placeholder="Ex: joao123">
             </div>
 
-            <!-- CAMPOS PARA EDITAR HISTÓRIA -->
-            <div id="camposHistoria" style="display:none;">
-                <div class="form-group">
-                    <label>Texto da História:</label>
-                    <textarea id="editHistoriaTexto" rows="5" placeholder="Escreva a história aqui..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Foto 1 (Escolher Arquivo):</label>
-                    <input type="file" id="editHistoriaImg1File" accept="image/*">
-                </div>
-                <div class="form-group">
-                    <label>Legenda Foto 1:</label>
-                    <input type="text" id="editHistoriaCap1" placeholder="Ex: Momentos nas apresentações">
-                </div>
-                <div class="form-group">
-                    <label>Foto 2 (Escolher Arquivo):</label>
-                    <input type="file" id="editHistoriaImg2File" accept="image/*">
-                </div>
-                <div class="form-group">
-                    <label>Legenda Foto 2:</label>
-                    <input type="text" id="editHistoriaCap2" placeholder="Ex: Ensaio geral">
-                </div>
+            <div class="form-control">
+                <label>Senha:</label>
+                <input type="password" id="authPass" placeholder="••••••••">
             </div>
 
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <button class="btn-bordo" style="flex:2;" onclick="salvarConteudoAdm()">SALVAR E PUBLICAR</button>
-                <button class="btn-bordo" style="flex:1; background:#555;" onclick="fazerLogout()">SAIR</button>
+            <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="autenticar()">ENTRAR / REGISTRAR</button>
+        </div>
+    </div>
+
+    <!-- MODAL DETALHES DIRETOR -->
+    <div class="modal-bg" id="modalDiretor">
+        <div class="modal-box" style="text-align:center;">
+            <span class="close-btn" onclick="fecharModal('modalDiretor')">&times;</span>
+            <img id="dirFoto" src="" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--dourado); margin-bottom:10px;">
+            <h3 id="dirNome" style="color:var(--bordo-medio);"></h3>
+            <p id="dirCargo" style="color:var(--dourado); font-weight:bold; margin-bottom:10px;"></p>
+            <p id="dirBio" style="font-size:0.9rem; color:var(--texto-suave); line-height:1.5;"></p>
+        </div>
+    </div>
+
+    <!-- MODAL COMENTÁRIOS TOKTOK -->
+    <div class="modal-bg" id="modalComentarios">
+        <div class="modal-box">
+            <span class="close-btn" onclick="fecharModal('modalComentarios')">&times;</span>
+            <h4 style="color:var(--bordo-medio); margin-bottom:12px;">Comentários</h4>
+            <div id="listaComentarios" style="max-height:200px; overflow-y:auto; margin-bottom:12px; font-size:0.85rem;"></div>
+            <div class="form-control">
+                <input type="text" id="inputComentario" placeholder="Escreva um comentário...">
+                <button class="btn-junino" style="margin-top:6px;" onclick="salvarComentarioToktok()">Enviar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL CUSTOMIZADO DE CONFIRMAÇÃO DE EXCLUSÃO -->
-    <div class="modal-overlay" id="confirmModal">
-        <div class="modal-content" style="max-width: 400px;">
-            <div class="confirm-modal-content">
-                <i class="fa-solid fa-triangle-exclamation confirm-modal-icon"></i>
-                <h3 class="confirm-modal-title">Tem certeza?</h3>
-                <p class="confirm-modal-text" id="confirmModalText">Esta ação removerá o item permanentemente.</p>
-                <div class="confirm-actions">
-                    <button class="btn-cancel" onclick="fecharConfirmModal(false)">Cancelar</button>
-                    <button class="btn-bordo" style="margin-top:0;" onclick="fecharConfirmModal(true)">Confirmar Exclusão</button>
+    <!-- PAINEL EDITAR (DIRETORIA) -->
+    <div class="modal-bg" id="modalPainel">
+        <div class="modal-box" style="max-width:550px;">
+            <span class="close-btn" onclick="fecharModal('modalPainel')">&times;</span>
+            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Painel da Diretoria</h3>
+
+            <div class="form-control">
+                <label>O que deseja adicionar?</label>
+                <select id="painelOpcao" onchange="alternarCamposPainel()">
+                    <option value="toktok">Vídeo/Foto no Coraçãotoktok</option>
+                    <option value="repertorio">Música no Repertório</option>
+                    <option value="galeria">Mídia na Galeria</option>
+                </select>
+            </div>
+
+            <!-- TOKTOK -->
+            <div id="painelToktok">
+                <div class="form-control">
+                    <label>Selecione o Arquivo (Vídeo ou Foto):</label>
+                    <input type="file" id="fileToktok" accept="video/*,image/*">
+                </div>
+                <div class="form-control">
+                    <label>Legenda:</label>
+                    <input type="text" id="descToktok" placeholder="Descrição do vídeo">
                 </div>
             </div>
+
+            <!-- REPERTÓRIO -->
+            <div id="painelRepertorio" style="display:none;">
+                <div class="form-control">
+                    <label>Ano / Tema:</label>
+                    <input type="text" id="repAno" placeholder="Ex: 2026 - O Amor no Sertão">
+                </div>
+                <div class="form-control">
+                    <label>Nome da Música:</label>
+                    <input type="text" id="repNome" placeholder="Ex: Musicas do Ensaio">
+                </div>
+                <div class="form-control">
+                    <label>Arquivo de Áudio (MP3/WAV):</label>
+                    <input type="file" id="fileRepertorio" accept="audio/*">
+                </div>
+            </div>
+
+            <!-- GALERIA -->
+            <div id="painelGaleria" style="display:none;">
+                <div class="form-control">
+                    <label>Arquivo (Imagem ou Vídeo):</label>
+                    <input type="file" id="fileGaleria" accept="image/*,video/*">
+                </div>
+            </div>
+
+            <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="salvarPainel()">PUBLICAR NO SITE</button>
         </div>
     </div>
 
-    <!-- CONTAINER DE TOASTS -->
-    <div class="toast-container" id="toastContainer"></div>
+    <!-- AREA DE TOAST -->
+    <div id="toastArea"></div>
 
-    <!-- RODAPÉ FIXO -->
-    <footer class="footer-bar">
-        <div>
-            <strong style="color:var(--dourado);">Quadrilha Coração Junino</strong>
-            <p style="font-size:0.75rem; color:#ccc;">Preservando a cultura e a paixão pelo São João.</p>
-        </div>
-        <div class="footer-contacts">
-            <a href="https://instagram.com" target="_blank" class="footer-contact-item"><i class="fa-brands fa-instagram"></i> @coracaojunino</a>
-            <a href="https://wa.me/5500000000000" target="_blank" class="footer-contact-item"><i class="fa-brands fa-whatsapp"></i> Contato / Shows</a>
-        </div>
-    </footer>
-
-    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
-        // ESTADO GLOBAL
-        const CODIGO_AUTORIZACAO_SECRET = "DirecaoCJ2027"; 
-        let usuarioLogado = null;
-        let acaoConfirmacaoPendente = null;
+        const CHAVE_DIRETORIA = "JUNINO2026";
+        let usuarioAtual = null;
+        let padrinhoIndex = 0;
+        let idToktokComentando = null;
 
-        // BANCO DE DADOS (LOCALSTORAGE)
-        let dadosSite = JSON.parse(localStorage.getItem('coracao_junino_db')) || {
-            usuarios: [{ user: 'lay', pass: '270209', nome: 'Diretoria Principal' }],
-            historia: {
-                texto: "Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!",
-                img1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400",
-                cap1: "Momentos inesquecíveis em nossas apresentações",
-                img2: "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400",
-                cap2: "Bastidores e preparação dos nossos ensaios"
-            },
-            novidades: [],
-            patrocinadores: [],
-            apoiadores: [],
+        // ESTRUTURA DO BANCO DE DADOS LOCAL
+        let db = JSON.parse(localStorage.getItem('coracao_junino_v3')) || {
+            usuarios: [
+                { user: 'admin', pass: 'admin123', nome: 'Diretor Geral', eDiretor: true }
+            ],
+            diretores: [
+                { id: 1, nome: "Carlos Eduardo", cargo: "Presidente", cor: "bg-azul", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300", bio: "Fundador e responsável geral pelas decisões da quadrilha." },
+                { id: 2, nome: "Ana Paula", cargo: "Vice-Presidente", cor: "bg-amarelo", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300", bio: "Auxilia na coordenação de todos os setores e eventos." },
+                { id: 3, nome: "Marcio Silva", cargo: "Marcador Principal", cor: "bg-vermelho", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300", bio: "Comanda os passos e a vibração durante as apresentações." },
+                { id: 4, nome: "Juliana Costa", cargo: "Diretora de Figurino", cor: "bg-amarelo", foto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300", bio: "Cuida da criação, confecção e cores dos trajes do grupo." },
+                { id: 5, nome: "Roberto Alves", cargo: "Diretor Financeiro", cor: "bg-vermelho", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300", bio: "Gestão do orçamento, parcerias e mensalidades." },
+                { id: 6, nome: "Fernanda Lima", cargo: "Coreógrafa", cor: "bg-amarelo", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300", bio: "Responsável pelo alinhamento dos passos e dança." },
+                { id: 7, nome: "Lucas Mendes", cargo: "Diretor de Eventos", cor: "bg-vermelho", foto: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300", bio: "Planejamento das festas, ensaios e logística." },
+                { id: 8, nome: "Beatriz Ramos", cargo: "Comunicação e Mídia", cor: "bg-amarelo", foto: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300", bio: "Responsável pelas redes sociais e pelo site da quadrilha." }
+            ],
+            toktok: [],
+            repertorios: [],
             galeria: []
         };
 
-        function salvarDB() {
-            localStorage.setItem('coracao_junino_db', JSON.stringify(dadosSite));
+        function salvarBD() {
+            localStorage.setItem('coracao_junino_v3', JSON.stringify(db));
         }
 
-        // SISTEMA DE NOTIFICAÇÃO (TOAST)
-        function mostrarToast(mensagem, tipo = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `custom-toast ${tipo}`;
-            
-            let icone = 'fa-info-circle';
-            if(tipo === 'success') icone = 'fa-check-circle';
-            if(tipo === 'error') icone = 'fa-circle-xmark';
-            if(tipo === 'warning') icone = 'fa-triangle-exclamation';
-
-            toast.innerHTML = `<i class="fa-solid ${icone}"></i> <span>${mensagem}</span>`;
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.style.animation = 'fadeOut 0.3s ease-out forwards';
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
+        function toast(msg) {
+            const area = document.getElementById('toastArea');
+            const el = document.createElement('div');
+            el.className = 'toast';
+            el.innerText = msg;
+            area.appendChild(el);
+            setTimeout(() => el.remove(), 3000);
         }
 
-        // MODAL DE CONFIRMAÇÃO ESTILIZADO
-        function pedirConfirmacao(mensagem, acao) {
-            document.getElementById('confirmModalText').innerText = mensagem;
-            document.getElementById('confirmModal').style.display = 'flex';
-            acaoConfirmacaoPendente = acao;
-        }
-
-        function fecharConfirmModal(confirmado) {
-            document.getElementById('confirmModal').style.display = 'none';
-            if(confirmado && typeof acaoConfirmacaoPendente === 'function') {
-                acaoConfirmacaoPendente();
-            }
-            acaoConfirmacaoPendente = null;
-        }
-
-        // CONVERSOR DE ARQUIVO PARA BASE64 (PARA SALVAR AS FOTOS NO BROWSER)
-        function lerArquivoFoto(inputElement) {
+        function lerArquivoBase64(input) {
             return new Promise((resolve) => {
-                const file = inputElement.files[0];
-                if (!file) {
-                    resolve(null);
-                    return;
-                }
+                const file = input.files[0];
+                if (!file) return resolve(null);
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    resolve(e.target.result);
-                };
+                reader.onload = (e) => resolve({ data: e.target.result, eVideo: file.type.startsWith('video/') });
                 reader.readAsDataURL(file);
             });
         }
 
-        // CONTROLADOR DE ABAS
-        function goToTab(index) {
-            const track = document.getElementById('sliderTrack');
-            track.style.transform = `translateX(-${index * 100}vw)`;
-            
-            const buttons = document.querySelectorAll('.hero-nav button');
-            buttons.forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-            });
+        /* NAVEGAÇÃO DE ABAS */
+        function mudarAba(i) {
+            document.getElementById('sliderTrack').style.transform = `translateX(-${i * 100}vw)`;
+            const btns = document.querySelectorAll('.hero-nav button');
+            btns.forEach((b, idx) => b.classList.toggle('active', idx === i));
         }
 
-        // LIGHTBOX
-        function zoomFoto(src, caption) {
-            if(!src) return;
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightboxCaption').innerText = caption || '';
-            document.getElementById('lightboxModal').style.display = 'flex';
+        /* PADRINHOS */
+        function mudarPadrinho(d) {
+            document.getElementById(`pad-${padrinhoIndex}`).classList.remove('active');
+            padrinhoIndex = (padrinhoIndex + d + 3) % 3;
+            document.getElementById(`pad-${padrinhoIndex}`).classList.add('active');
         }
 
-        function fecharZoom() {
-            document.getElementById('lightboxModal').style.display = 'none';
-        }
-
-        // AUTENTICAÇÃO E MODAIS
-        function abrirModalLogin() {
-            if(usuarioLogado) {
-                abrirPainelAdm();
+        /* AUTENTICAÇÃO */
+        function abrirModalAuth() {
+            if (usuarioAtual && usuarioAtual.eDiretor) {
+                document.getElementById('modalPainel').style.display = 'flex';
             } else {
-                document.getElementById('modalLogin').style.display = 'flex';
+                document.getElementById('modalAuth').style.display = 'flex';
             }
         }
 
-        function fecharModalLogin() {
-            document.getElementById('modalLogin').style.display = 'none';
+        function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function alternarAuthCampos() {
+            const t = document.getElementById('authTipo').value;
+            document.getElementById('campoChaveDiretor').style.display = (t === 'diretor') ? 'block' : 'none';
         }
 
-        function mudarAbaAuth(aba) {
-            document.getElementById('tabLoginBtn').classList.toggle('active', aba === 'login');
-            document.getElementById('tabCadBtn').classList.toggle('active', aba === 'cadastro');
-            document.getElementById('formLogin').style.display = aba === 'login' ? 'block' : 'none';
-            document.getElementById('formCadastro').style.display = aba === 'cadastro' ? 'block' : 'none';
-        }
+        function autenticar() {
+            const tipo = document.getElementById('authTipo').value;
+            const chave = document.getElementById('authChave').value.trim();
+            const nome = document.getElementById('authNome').value.trim();
+            const user = document.getElementById('authUser').value.trim();
+            const pass = document.getElementById('authPass').value.trim();
 
-        function fazerLogin() {
-            const u = document.getElementById('loginUser').value.trim();
-            const p = document.getElementById('loginPass').value.trim();
+            if (!user || !pass) { toast("Preencha Usuário e Senha!"); return; }
 
-            const user = dadosSite.usuarios.find(x => x.user === u && x.pass === p);
-            if(user) {
-                usuarioLogado = user;
-                fecharModalLogin();
-                atualizarInterfaceAuth();
-                mostrarToast(`Bem-vindo(a), ${user.nome}!`, 'success');
-                abrirPainelAdm();
-            } else {
-                mostrarToast('Usuário ou senha inválidos.', 'error');
-            }
-        }
+            let achado = db.usuarios.find(x => x.user === user);
 
-        function cadastrarUsuario() {
-            const cod = document.getElementById('cadCodigoAuth').value.trim();
-            const nome = document.getElementById('cadNome').value.trim();
-            const user = document.getElementById('cadUser').value.trim();
-            const pass = document.getElementById('cadPass').value.trim();
-
-            if(cod !== CODIGO_AUTORIZACAO_SECRET) {
-                mostrarToast('Código de autorização da diretoria incorreto!', 'error');
-                return;
-            }
-            if(!nome || !user || !pass) {
-                mostrarToast('Preencha todos os campos do cadastro.', 'warning');
-                return;
-            }
-            if(dadosSite.usuarios.some(x => x.user === user)) {
-                mostrarToast('Este nome de usuário já está em uso.', 'warning');
-                return;
-            }
-
-            dadosSite.usuarios.push({ user, pass, nome });
-            salvarDB();
-            mostrarToast('Diretor cadastrado com sucesso! Agora faça o login.', 'success');
-            mudarAbaAuth('login');
-            document.getElementById('loginUser').value = user;
-        }
-
-        function fazerLogout() {
-            usuarioLogado = null;
-            fecharPainelAdm();
-            atualizarInterfaceAuth();
-            mostrarToast('Você saiu do modo de administração.', 'info');
-        }
-
-        function atualizarInterfaceAuth() {
-            const btnAuth = document.getElementById('btnAuthTrigger');
-            const btnHist = document.getElementById('btnEditarHistoria');
-
-            if(usuarioLogado) {
-                btnAuth.innerHTML = `<i class="fa-solid fa-user-gear"></i> PAINEL ADM`;
-                btnHist.style.display = 'inline-block';
-            } else {
-                btnAuth.innerHTML = `<i class="fa-solid fa-lock"></i> LOGIN / ADM`;
-                btnHist.style.display = 'none';
-            }
-            renderizarConteudo();
-        }
-
-        // PAINEL ADM
-        function abrirPainelAdm() {
-            document.getElementById('saudacaoUsuario').innerText = `Conectado como: ${usuarioLogado.nome}`;
-            document.getElementById('modalPainelAdm').style.display = 'flex';
-            alternarCamposAdm();
-        }
-
-        function fecharPainelAdm() {
-            document.getElementById('modalPainelAdm').style.display = 'none';
-        }
-
-        function abrirEdicaoHistoria() {
-            if(!usuarioLogado) return;
-            abrirPainelAdm();
-            document.getElementById('tipoConteudo').value = 'historia';
-            alternarCamposAdm();
-        }
-
-        function alternarCamposAdm() {
-            const tipo = document.getElementById('tipoConteudo').value;
-            document.getElementById('camposSponsor').style.display = (tipo === 'patrocinador' || tipo === 'apoiador') ? 'block' : 'none';
-            document.getElementById('camposNovidade').style.display = (tipo === 'novidade') ? 'block' : 'none';
-            document.getElementById('camposGaleria').style.display = (tipo === 'galeria') ? 'block' : 'none';
-            document.getElementById('camposHistoria').style.display = (tipo === 'historia') ? 'block' : 'none';
-
-            if(tipo === 'historia') {
-                document.getElementById('editHistoriaTexto').value = dadosSite.historia.texto;
-                document.getElementById('editHistoriaCap1').value = dadosSite.historia.cap1;
-                document.getElementById('editHistoriaCap2').value = dadosSite.historia.cap2;
-            }
-        }
-
-        async function salvarConteudoAdm() {
-            const tipo = document.getElementById('tipoConteudo').value;
-
-            if(tipo === 'patrocinador' || tipo === 'apoiador') {
-                const nome = document.getElementById('sponsorNome').value.trim();
-                const desc = document.getElementById('sponsorDesc').value.trim();
-                let icone = document.getElementById('sponsorIcone').value.trim() || 'fa-star';
-
-                if(!nome) { mostrarToast('Informe o nome do parceiro.', 'warning'); return; }
-                if(!icone.startsWith('fa-')) icone = 'fa-' + icone;
-
-                const item = { id: Date.now(), nome, desc, icone };
-                if(tipo === 'patrocinador') dadosSite.patrocinadores.push(item);
-                else dadosSite.apoiadores.push(item);
-                
-                mostrarToast('Parceiro adicionado com sucesso!', 'success');
-
-                document.getElementById('sponsorNome').value = '';
-                document.getElementById('sponsorDesc').value = '';
-                document.getElementById('sponsorIcone').value = '';
-            }
-            else if(tipo === 'novidade') {
-                const titulo = document.getElementById('novidadeTitulo').value.trim();
-                const desc = document.getElementById('novidadeDesc').value.trim();
-                const imgInput = document.getElementById('novidadeImgFile');
-                const imgBase64 = await lerArquivoFoto(imgInput);
-
-                if(!titulo || !imgBase64) { 
-                    mostrarToast('Preencha o título e selecione a foto.', 'warning'); 
-                    return; 
+            if (achado) {
+                if (achado.pass === pass) {
+                    usuarioAtual = achado;
+                    fecharModal('modalAuth');
+                    atualizarUserUI();
+                    toast(`Bem-vindo, ${achado.nome}!`);
+                } else {
+                    toast("Senha incorreta!");
                 }
+            } else {
+                if (tipo === 'diretor' && chave !== CHAVE_DIRETORIA) {
+                    toast("Chave da diretoria inválida!");
+                    return;
+                }
+                if (!nome) { toast("Informe seu nome!"); return; }
 
-                dadosSite.novidades.push({ id: Date.now(), titulo, desc, img: imgBase64 });
-                mostrarToast('Novidade publicada!', 'success');
-
-                document.getElementById('novidadeTitulo').value = '';
-                document.getElementById('novidadeDesc').value = '';
-                imgInput.value = '';
+                usuarioAtual = { user, pass, nome, eDiretor: (tipo === 'diretor') };
+                db.usuarios.push(usuarioAtual);
+                salvarBD();
+                fecharModal('modalAuth');
+                atualizarUserUI();
+                toast("Cadastro realizado com sucesso!");
             }
-            else if(tipo === 'galeria') {
-                const legenda = document.getElementById('galeriaLegenda').value.trim();
-                const imgInput = document.getElementById('galeriaImgFile');
-                const imgBase64 = await lerArquivoFoto(imgInput);
-
-                if(!imgBase64) { mostrarToast('Selecione uma foto.', 'warning'); return; }
-
-                dadosSite.galeria.push({ id: Date.now(), legenda, img: imgBase64 });
-                mostrarToast('Foto adicionada à galeria!', 'success');
-
-                document.getElementById('galeriaLegenda').value = '';
-                imgInput.value = '';
-            }
-            else if(tipo === 'historia') {
-                const texto = document.getElementById('editHistoriaTexto').value.trim();
-                const cap1 = document.getElementById('editHistoriaCap1').value.trim();
-                const cap2 = document.getElementById('editHistoriaCap2').value.trim();
-
-                const img1Input = document.getElementById('editHistoriaImg1File');
-                const img2Input = document.getElementById('editHistoriaImg2File');
-
-                const img1Base64 = await lerArquivoFoto(img1Input);
-                const img2Base64 = await lerArquivoFoto(img2Input);
-
-                if(texto) dadosSite.historia.texto = texto;
-                if(img1Base64) dadosSite.historia.img1 = img1Base64;
-                if(cap1) dadosSite.historia.cap1 = cap1;
-                if(img2Base64) dadosSite.historia.img2 = img2Base64;
-                if(cap2) dadosSite.historia.cap2 = cap2;
-
-                mostrarToast('História atualizada com sucesso!', 'success');
-                img1Input.value = '';
-                img2Input.value = '';
-            }
-
-            salvarDB();
-            renderizarConteudo();
-            fecharPainelAdm();
         }
 
-        function deletarItem(categoria, id) {
-            pedirConfirmacao('Tem certeza de que deseja remover este item?', () => {
-                dadosSite[categoria] = dadosSite[categoria].filter(x => x.id !== id);
-                salvarDB();
-                renderizarConteudo();
-                mostrarToast('Item removido com sucesso.', 'info');
+        function atualizarUserUI() {
+            const btn = document.getElementById('btnLogin');
+            const tag = document.getElementById('userTag');
+
+            if (usuarioAtual) {
+                tag.innerText = `${usuarioAtual.nome} (${usuarioAtual.eDiretor ? 'Diretor' : 'Visitante'})`;
+                btn.innerHTML = usuarioAtual.eDiretor ? `<i class="fa-solid fa-gear"></i> PAINEL ADM` : `<i class="fa-solid fa-sign-out"></i> SAIR`;
+                btn.onclick = usuarioAtual.eDiretor ? () => document.getElementById('modalPainel').style.display = 'flex' : logout;
+            } else {
+                tag.innerText = '';
+                btn.innerHTML = `<i class="fa-solid fa-user"></i> LOGIN / CADASTRAR`;
+                btn.onclick = abrirModalAuth;
+            }
+        }
+
+        function logout() {
+            usuarioAtual = null;
+            atualizarUserUI();
+            toast("Sessão encerrada.");
+        }
+
+        /* RENDERS */
+        function renderDiretores() {
+            const grid = document.getElementById('gridDiretores');
+            grid.innerHTML = db.diretores.map(d => `
+                <div class="diretor-box ${d.cor}" onclick="abrirDirModal(${d.id})">
+                    <img src="${d.foto}">
+                    <h4>${d.nome}</h4>
+                    <small style="font-weight:bold;">${d.cargo}</small>
+                </div>
+            `).join('');
+        }
+
+        function abrirDirModal(id) {
+            const d = db.diretores.find(x => x.id === id);
+            if (!d) return;
+            document.getElementById('dirFoto').src = d.foto;
+            document.getElementById('dirNome').innerText = d.nome;
+            document.getElementById('dirCargo').innerText = d.cargo;
+            document.getElementById('dirBio').innerText = d.bio;
+            document.getElementById('modalDiretor').style.display = 'flex';
+        }
+
+        function renderToktok() {
+            const feed = document.getElementById('toktokFeed');
+            if (db.toktok.length === 0) {
+                feed.innerHTML = `<div style="color:#fff; text-align:center; padding:60px 10px;">Nenhum vídeo no Coraçãotoktok ainda.</div>`;
+                return;
+            }
+
+            // Exibir do mais antigo para o mais novo
+            const listaOrdenada = [...db.toktok].reverse();
+
+            feed.innerHTML = listaOrdenada.map(item => `
+                <div class="toktok-post">
+                    ${item.eVideo ? `<video class="toktok-media" src="${item.media}" controls loop></video>` : `<img class="toktok-media" src="${item.media}">`}
+                    
+                    <div class="toktok-side-actions">
+                        <button class="toktok-btn ${item.curtidas.includes(usuarioAtual?.user) ? 'active' : ''}" onclick="curtirToktok(${item.id})">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <span style="color:#fff; font-size:0.7rem; margin-top:-10px;">${item.curtidas.length}</span>
+
+                        <button class="toktok-btn" onclick="abrirComentariosToktok(${item.id})">
+                            <i class="fa-solid fa-comment"></i>
+                        </button>
+                        <span style="color:#fff; font-size:0.7rem; margin-top:-10px;">${item.comentarios.length}</span>
+                    </div>
+
+                    <div class="toktok-caption">
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function curtirToktok(id) {
+            if (!usuarioAtual) { toast("Faça login para curtir!"); return; }
+            const item = db.toktok.find(x => x.id === id);
+            if (!item) return;
+
+            const idx = item.curtidas.indexOf(usuarioAtual.user);
+            if (idx > -1) item.curtidas.splice(idx, 1);
+            else item.curtidas.push(usuarioAtual.user);
+
+            salvarBD();
+            renderToktok();
+        }
+
+        function abrirComentariosToktok(id) {
+            idToktokComentando = id;
+            const item = db.toktok.find(x => x.id === id);
+            const lista = document.getElementById('listaComentarios');
+
+            lista.innerHTML = item.comentarios.map(c => `
+                <div style="background:#fff; padding:6px 10px; border-radius:6px; margin-bottom:5px;">
+                    <strong>${c.autor}:</strong> ${c.texto}
+                </div>
+            `).join('') || '<p style="color:#777;">Seja o primeiro a comentar!</p>';
+
+            document.getElementById('modalComentarios').style.display = 'flex';
+        }
+
+        function salvarComentarioToktok() {
+            if (!usuarioAtual) { toast("Faça login para comentar!"); return; }
+            const txt = document.getElementById('inputComentario').value.trim();
+            if (!txt) return;
+
+            const item = db.toktok.find(x => x.id === idToktokComentando);
+            item.comentarios.push({ autor: usuarioAtual.nome, texto: txt });
+
+            salvarBD();
+            document.getElementById('inputComentario').value = '';
+            abrirComentariosToktok(idToktokComentando);
+            renderToktok();
+        }
+
+        function renderRepertorio() {
+            const container = document.getElementById('repertorioLista');
+            if (db.repertorios.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#777;">Nenhuma música cadastrada.</p>`;
+                return;
+            }
+
+            const grupos = {};
+            db.repertorios.forEach(r => {
+                if (!grupos[r.ano]) grupos[r.ano] = [];
+                grupos[r.ano].push(r);
             });
+
+            container.innerHTML = Object.keys(grupos).map(ano => `
+                <div class="repertorio-card">
+                    <h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif;"><i class="fa-solid fa-music"></i> ${ano}</h4>
+                    ${grupos[ano].map(m => `
+                        <div class="repertorio-item">
+                            <strong>${m.nome}</strong>
+                            <audio src="${m.audio}" controls></audio>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
         }
 
-        // RENDERIZAÇÃO NA TELA
-        function renderizarConteudo() {
-            // HISTÓRIA
-            document.getElementById('historiaTexto').innerText = dadosSite.historia.texto;
-            document.getElementById('historiaImg1').src = dadosSite.historia.img1;
-            document.getElementById('historiaCap1').innerText = dadosSite.historia.cap1;
-            document.getElementById('historiaImg2').src = dadosSite.historia.img2;
-            document.getElementById('historiaCap2').innerText = dadosSite.historia.cap2;
+        function renderGaleria() {
+            const g = document.getElementById('gridGaleria');
+            g.innerHTML = db.galeria.map(i => `
+                <div class="midia-box">
+                    ${i.eVideo ? `<video src="${i.media}" controls></video>` : `<img src="${i.media}">`}
+                </div>
+            `).join('');
+        }
 
-            // NOVIDADES
-            const containerNov = document.getElementById('container-novidades');
-            if(dadosSite.novidades.length === 0) {
-                containerNov.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhuma novidade publicada no momento.</p>';
-            } else {
-                containerNov.innerHTML = dadosSite.novidades.map(item => `
-                    <div class="news-card">
-                        <img src="${item.img}" alt="${item.titulo}" onclick="zoomFoto('${item.img}', '${item.titulo}')">
-                        <div class="news-card-body">
-                            <h4>${item.titulo}</h4>
-                            <p style="font-size:0.85rem; color:#555;">${item.desc}</p>
-                            ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('novidades', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
-                        </div>
-                    </div>
-                `).join('');
+        /* PAINEL DE EDIÇÃO DA DIREÇÃO */
+        function alternarCamposPainel() {
+            const op = document.getElementById('painelOpcao').value;
+            document.getElementById('painelToktok').style.display = (op === 'toktok') ? 'block' : 'none';
+            document.getElementById('painelRepertorio').style.display = (op === 'repertorio') ? 'block' : 'none';
+            document.getElementById('painelGaleria').style.display = (op === 'galeria') ? 'block' : 'none';
+        }
+
+        async function salvarPainel() {
+            const op = document.getElementById('painelOpcao').value;
+
+            if (op === 'toktok') {
+                const res = await lerArquivoBase64(document.getElementById('fileToktok'));
+                const desc = document.getElementById('descToktok').value.trim();
+                if (!res) { toast("Selecione um arquivo de foto ou vídeo!"); return; }
+
+                db.toktok.push({ id: Date.now(), media: res.data, eVideo: res.eVideo, desc, curtidas: [], comentarios: [] });
+            } 
+            else if (op === 'repertorio') {
+                const ano = document.getElementById('repAno').value.trim();
+                const nome = document.getElementById('repNome').value.trim();
+                const res = await lerArquivoBase64(document.getElementById('fileRepertorio'));
+                if (!res || !ano || !nome) { toast("Preencha todos os campos do repertório!"); return; }
+
+                db.repertorios.push({ id: Date.now(), ano, nome, audio: res.data });
+            }
+            else if (op === 'galeria') {
+                const res = await lerArquivoBase64(document.getElementById('fileGaleria'));
+                if (!res) { toast("Selecione uma imagem ou vídeo!"); return; }
+
+                db.galeria.unshift({ id: Date.now(), media: res.data, eVideo: res.eVideo });
             }
 
-            // PATROCINADORES
-            const containerPat = document.getElementById('container-patrocinadores');
-            if(dadosSite.patrocinadores.length === 0) {
-                containerPat.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhum patrocinador cadastrado.</p>';
-            } else {
-                containerPat.innerHTML = dadosSite.patrocinadores.map(item => `
-                    <div class="sponsor-box">
-                        <i class="fa-solid ${item.icone}"></i>
-                        <h4 style="color:var(--bordo-medio);">${item.nome}</h4>
-                        <p style="font-size:0.8rem; color:#666;">${item.desc}</p>
-                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('patrocinadores', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
-                    </div>
-                `).join('');
-            }
+            salvarBD();
+            renderTudo();
+            fecharModal('modalPainel');
+            toast("Conteúdo publicado com sucesso!");
+        }
 
-            // APOIADORES
-            const containerApo = document.getElementById('container-apoiadores');
-            if(dadosSite.apoiadores.length === 0) {
-                containerApo.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhum apoiador cadastrado.</p>';
-            } else {
-                containerApo.innerHTML = dadosSite.apoiadores.map(item => `
-                    <div class="sponsor-box">
-                        <i class="fa-solid ${item.icone}"></i>
-                        <h4 style="color:var(--azul-card);">${item.nome}</h4>
-                        <p style="font-size:0.8rem; color:#666;">${item.desc}</p>
-                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('apoiadores', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
-                    </div>
-                `).join('');
-            }
-
-            // GALERIA
-            const containerGal = document.getElementById('container-galeria');
-            if(dadosSite.galeria.length === 0) {
-                containerGal.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhuma foto na galeria.</p>';
-            } else {
-                containerGal.innerHTML = dadosSite.galeria.map(item => `
-                    <div class="gallery-item" onclick="zoomFoto('${item.img}', '${item.legenda}')">
-                        <img src="${item.img}" alt="Foto Galeria">
-                        ${item.legenda ? `<div class="gallery-caption">${item.legenda}</div>` : ''}
-                        ${usuarioLogado ? `<button class="btn-delete" style="position:absolute; top:5px; right:5px; margin:0;" onclick="event.stopPropagation(); deletarItem('galeria', ${item.id})"><i class="fa-solid fa-trash"></i></button>` : ''}
-                    </div>
-                `).join('');
-            }
+        function renderTudo() {
+            renderDiretores();
+            renderToktok();
+            renderRepertorio();
+            renderGaleria();
         }
 
         // INICIALIZAÇÃO
-        renderizarConteudo();
+        renderTudo();
     </script>
 </body>
 </html>
