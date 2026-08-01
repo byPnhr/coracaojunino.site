@@ -380,6 +380,92 @@
             object-fit: cover;
         }
 
+        /* ESTILOS ESTILO REDE SOCIAL PARA OS COMENTÁRIOS */
+        .comentario-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            align-items: flex-start;
+        }
+
+        .comentario-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bordo-medio);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .comentario-conteudo {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .comentario-autor {
+            font-weight: 700;
+            color: var(--bordo-escuro);
+            margin-right: 5px;
+        }
+
+        .comentario-acoes {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-responder-comentario {
+            background: none;
+            border: none;
+            color: var(--bordo-medio);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.72rem;
+            transition: 0.2s;
+        }
+        .btn-responder-comentario:hover { text-decoration: underline; }
+
+        .respostas-container {
+            margin-left: 20px;
+            margin-top: 8px;
+            border-left: 2px solid var(--borda-card);
+            padding-left: 10px;
+        }
+
+        .reply-banner {
+            background: rgba(122, 12, 12, 0.1);
+            border-left: 3px solid var(--bordo-medio);
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            color: var(--bordo-escuro);
+        }
+
+        .reply-banner button {
+            background: none;
+            border: none;
+            color: #ff3333;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         /* MODAIS E ABAS DE AUTH */
         .modal-bg {
             position: fixed;
@@ -668,15 +754,23 @@
         </div>
     </div>
 
-    <!-- MODAL COMENTÁRIOS TOKTOK -->
+    <!-- MODAL COMENTÁRIOS TOKTOK (ESTILO REDE SOCIAL) -->
     <div class="modal-bg" id="modalComentarios">
         <div class="modal-box">
             <span class="close-btn" onclick="fecharModal('modalComentarios')">&times;</span>
-            <h4 style="color:var(--bordo-medio); margin-bottom:12px;">Comentários</h4>
-            <div id="listaComentarios" style="max-height:200px; overflow-y:auto; margin-bottom:12px; font-size:0.85rem;"></div>
+            <h4 style="color:var(--bordo-medio); margin-bottom:15px; border-bottom:1px solid var(--borda-card); padding-bottom:8px;">Comentários</h4>
+            
+            <div id="listaComentarios" style="max-height:300px; overflow-y:auto; margin-bottom:15px; padding-right:5px;"></div>
+
+            <!-- AVISO DE RESPOSTA ATIVA -->
+            <div id="replyBanner" class="reply-banner" style="display:none;">
+                <span>Respondendo a <strong id="replyTargetName"></strong></span>
+                <button onclick="cancelarResposta()">&times; Cancelar</button>
+            </div>
+
             <div class="form-control">
                 <input type="text" id="inputComentario" placeholder="Escreva um comentário...">
-                <button class="btn-junino" style="margin-top:6px;" onclick="salvarComentarioToktok()">Enviar</button>
+                <button class="btn-junino" style="margin-top:6px;" onclick="salvarComentarioToktok()">Publicar</button>
             </div>
         </div>
     </div>
@@ -744,6 +838,7 @@
         let usuarioAtual = null;
         let padrinhoIndex = 0;
         let idToktokComentando = null;
+        let idComentarioRespondendo = null; // ID do comentário pai caso esteja respondendo
 
         // BANCO LOCAL
         let db = JSON.parse(localStorage.getItem('coracao_junino_v3')) || {
@@ -973,7 +1068,7 @@
             fecharModal('modalPainel');
         }
 
-        /* CORAÇÃO TOKTOK - AÇÕES DE VISITANTE/DIRETOR */
+        /* CORAÇÃO TOKTOK */
         function renderizarToktok() {
             const feed = document.getElementById('toktokFeed');
             if (db.toktok.length === 0) {
@@ -1013,20 +1108,60 @@
             }
         }
 
+        /* SITEMA DE COMENTÁRIOS ESTILO REDE SOCIAL (COM RESPOSTAS) */
         function abrirComentarios(id) {
             idToktokComentando = id;
+            cancelarResposta();
             let item = db.toktok.find(x => x.id === id);
+            renderizarComentariosModal(item);
+            document.getElementById('modalComentarios').style.display = 'flex';
+        }
+
+        function renderizarComentariosModal(item) {
             const lista = document.getElementById('listaComentarios');
-            
-            if (item.comentarios.length === 0) {
-                lista.innerHTML = `<p style="color:var(--texto-suave);">Nenhum comentário ainda. Seja o primeiro!</p>`;
-            } else {
-                lista.innerHTML = item.comentarios.map(c => `
-                    <p style="margin-bottom:6px;"><strong>${c.autor}:</strong> ${c.texto}</p>
-                `).join('');
+            if (!item.comentarios || item.comentarios.length === 0) {
+                lista.innerHTML = `<p style="color:var(--texto-suave); text-align:center; padding:15px;">Nenhum comentário ainda. Seja o primeiro!</p>`;
+                return;
             }
 
-            document.getElementById('modalComentarios').style.display = 'flex';
+            lista.innerHTML = item.comentarios.map(c => `
+                <div class="comentario-item">
+                    <div class="comentario-avatar">${c.autor ? c.autor.charAt(0) : 'U'}</div>
+                    <div class="comentario-conteudo">
+                        <div><span class="comentario-autor">${c.autor}:</span>${c.texto}</div>
+                        <div class="comentario-acoes">
+                            <button class="btn-responder-comentario" onclick="prepararResposta(${c.id}, '${c.autor}')">Responder</button>
+                        </div>
+
+                        ${c.respostas && c.respostas.length > 0 ? `
+                            <div class="respostas-container">
+                                ${c.respostas.map(r => `
+                                    <div class="comentario-item">
+                                        <div class="comentario-avatar" style="width:24px; height:24px; font-size:0.65rem; background:var(--dourado); color:var(--texto-escuro);">${r.autor ? r.autor.charAt(0) : 'U'}</div>
+                                        <div class="comentario-conteudo">
+                                            <div><span class="comentario-autor">${r.autor}:</span>${r.texto}</div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function prepararResposta(comentarioId, autorNome) {
+            if (!usuarioAtual) { toast("Você precisa entrar para responder!"); return; }
+            idComentarioRespondendo = comentarioId;
+            document.getElementById('replyTargetName').innerText = autorNome;
+            document.getElementById('replyBanner').style.display = 'flex';
+            document.getElementById('inputComentario').focus();
+        }
+
+        function cancelarResposta() {
+            idComentarioRespondendo = null;
+            const banner = document.getElementById('replyBanner');
+            if (banner) banner.style.display = 'none';
         }
 
         function salvarComentarioToktok() {
@@ -1035,12 +1170,35 @@
             if (!txt) return;
 
             let item = db.toktok.find(x => x.id === idToktokComentando);
-            if (item) {
-                item.comentarios.push({ autor: usuarioAtual.nome, texto: txt });
-                salvarBD();
-                document.getElementById('inputComentario').value = '';
-                abrirComentarios(idToktokComentando);
+            if (!item) return;
+
+            if (!item.comentarios) item.comentarios = [];
+
+            if (idComentarioRespondendo) {
+                // É UMA RESPOSTA A UM COMENTÁRIO EXISTENTE
+                let cPai = item.comentarios.find(c => c.id === idComentarioRespondendo);
+                if (cPai) {
+                    if (!cPai.respostas) cPai.respostas = [];
+                    cPai.respostas.push({
+                        id: Date.now(),
+                        autor: usuarioAtual.nome,
+                        texto: txt
+                    });
+                }
+            } else {
+                // NOVO COMENTÁRIO PRINCIPAL
+                item.comentarios.push({
+                    id: Date.now(),
+                    autor: usuarioAtual.nome,
+                    texto: txt,
+                    respostas: []
+                });
             }
+
+            salvarBD();
+            document.getElementById('inputComentario').value = '';
+            cancelarResposta();
+            renderizarComentariosModal(item);
         }
 
         /* REPERTÓRIO E GALERIA */
