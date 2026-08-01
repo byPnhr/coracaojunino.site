@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quadrilha Coração Junino ❤️</title>
 
     <!-- Título com o Emoji de Coração -->
-<title>Quadrilha Coração Junino ❤️</title>
+    <title>Quadrilha Coração Junino ❤️</title>
 
-<!-- Ícone de Coração na Aba do Navegador (Favicon) -->
-<link rel="icon" href="data:imagens/original.png">
+    <!-- Ícone de Coração na Aba do Navegador (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
     
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +89,18 @@
             color: var(--bordo-escuro);
         }
 
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff8888;
+            border: 1px solid #ff8888;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .btn-logout:hover { background: #ff8888; color: #fff; }
+
         .hero-nav {
             display: flex;
             gap: 6px;
@@ -125,7 +136,7 @@
 
         .slider-track {
             display: flex;
-            width: 1100vw;
+            width: 900vw;
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -221,7 +232,7 @@
         .btn-prev { left: -15px; }
         .btn-next { right: -15px; }
 
-        /* ABA DIRETORES (8 QUADRADOS MÉDIOS INTERCALADOS) */
+        /* ABA DIRETORES */
         .diretores-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -326,7 +337,7 @@
             font-size: 0.85rem;
         }
 
-        /* ABA REPERTÓRIO */
+        /* REPERTÓRIO & GALERIA */
         .repertorio-card {
             background: #fff;
             border-radius: 12px;
@@ -349,7 +360,6 @@
 
         .repertorio-item audio { height: 35px; outline: none; }
 
-        /* OUTRAS SEÇÕES */
         .grid-midia {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -370,7 +380,7 @@
             object-fit: cover;
         }
 
-        /* MODAIS */
+        /* MODAIS E ABAS DE AUTH */
         .modal-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -401,6 +411,28 @@
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--bordo-escuro);
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--borda-card);
+            margin-bottom: 20px;
+        }
+
+        .auth-tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            font-weight: 700;
+            color: var(--texto-suave);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .auth-tab-btn.active {
+            color: var(--bordo-medio);
+            border-bottom: 3px solid var(--bordo-medio);
         }
 
         .form-control {
@@ -437,7 +469,6 @@
             font-size: 0.85rem; margin-top: 8px;
         }
 
-        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .title-bento { font-size: 1.5rem; }
             .btn-prev { left: -5px; }
@@ -450,7 +481,7 @@
     <!-- BARRA DE NAVEGAÇÃO -->
     <header class="top-hero-bar">
         <div class="user-nav-status">
-            <button class="btn-adm-trigger" id="btnLogin" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> LOGIN / CADASTRAR</button>
+            <button class="btn-adm-trigger" id="btnLogin" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR</button>
             <span id="userTag" style="color:var(--dourado-claro); font-size:0.75rem; font-weight:bold;"></span>
         </div>
         <nav class="hero-nav">
@@ -502,7 +533,6 @@
                     <div class="padrinhos-container">
                         <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
 
-                        <!-- Padrinho 1 (Casal) -->
                         <div class="padrinho-card active" id="pad-0">
                             <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" class="padrinho-img" alt="Padrinhos">
                             <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Seu Zé & Dona Maria</h3>
@@ -510,7 +540,6 @@
                             <p style="font-size:0.9rem; color:var(--texto-suave);">Sempre presentes desde a fundação da quadrilha, nos apoiando em todos os momentos com carinho e dedicação.</p>
                         </div>
 
-                        <!-- Padrinho 2 (Individual) -->
                         <div class="padrinho-card" id="pad-1">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" class="padrinho-img" alt="Padrinho">
                             <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Antônio Carlos</h3>
@@ -518,7 +547,6 @@
                             <p style="font-size:0.9rem; color:var(--texto-suave);">Um defensor apaixonado da nossa cultura, responsável por apoiar a confecção de nossas roupas e brilhos.</p>
                         </div>
 
-                        <!-- Padrinho 3 (Misterioso) -->
                         <div class="padrinho-card" id="pad-2">
                             <div class="padrinho-misterioso-box">
                                 <i class="fa-solid fa-user-secret"></i>
@@ -576,41 +604,56 @@
         </div>
     </div>
 
-    <!-- MODAL AUTH -->
+    <!-- MODAL AUTH SEPARADO (ENTRAR / REGISTRAR) -->
     <div class="modal-bg" id="modalAuth">
         <div class="modal-box">
             <span class="close-btn" onclick="fecharModal('modalAuth')">&times;</span>
-            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Acesso ao Site</h3>
-
-            <div class="form-control">
-                <label>Perfil:</label>
-                <select id="authTipo" onchange="alternarAuthCampos()">
-                    <option value="visitante">Visitante (Comentar e Curtir)</option>
-                    <option value="diretor">Diretoria (Editar Site)</option>
-                </select>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="tabEntrarBtn" onclick="trocarAbaAuth('entrar')">ENTRAR</button>
+                <button class="auth-tab-btn" id="tabRegistrarBtn" onclick="trocarAbaAuth('registrar')">CADASTRAR-SE</button>
             </div>
 
-            <div class="form-control" id="campoChaveDiretor" style="display:none;">
-                <label style="color:var(--bordo-medio); font-weight:bold;">Chave da Diretoria:</label>
-                <input type="password" id="authChave" placeholder="Insira a chave secreta">
+            <!-- FORMULÁRIO ENTRAR -->
+            <div id="formEntrar">
+                <div class="form-control">
+                    <label>Usuário:</label>
+                    <input type="text" id="loginUser" placeholder="Seu usuário">
+                </div>
+                <div class="form-control">
+                    <label>Senha:</label>
+                    <input type="password" id="loginPass" placeholder="••••••••">
+                </div>
+                <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="fazerLogin()">ENTRAR</button>
             </div>
 
-            <div class="form-control">
-                <label>Seu Nome:</label>
-                <input type="text" id="authNome" placeholder="Ex: João Silva">
+            <!-- FORMULÁRIO REGISTRAR -->
+            <div id="formRegistrar" style="display:none;">
+                <div class="form-control">
+                    <label>Tipo de Conta:</label>
+                    <select id="regTipo" onchange="alternarCampoChave()">
+                        <option value="visitante">Visitante (Curtir e Comentar)</option>
+                        <option value="diretor">Diretor (Gerenciar o Site)</option>
+                    </select>
+                </div>
+                <div class="form-control" id="campoChaveDiretor" style="display:none;">
+                    <label style="color:var(--bordo-medio); font-weight:bold;">Chave de Acesso da Diretoria:</label>
+                    <input type="password" id="regChave" placeholder="Insira a chave secreta">
+                </div>
+                <div class="form-control">
+                    <label>Seu Nome Completo:</label>
+                    <input type="text" id="regNome" placeholder="Ex: Maria Silva">
+                </div>
+                <div class="form-control">
+                    <label>Usuário:</label>
+                    <input type="text" id="regUser" placeholder="Ex: maria123">
+                </div>
+                <div class="form-control">
+                    <label>Senha:</label>
+                    <input type="password" id="regPass" placeholder="••••••••">
+                </div>
+                <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="fazerRegistro()">CRIAR CONTA</button>
             </div>
-
-            <div class="form-control">
-                <label>Usuário:</label>
-                <input type="text" id="authUser" placeholder="Ex: joao123">
-            </div>
-
-            <div class="form-control">
-                <label>Senha:</label>
-                <input type="password" id="authPass" placeholder="••••••••">
-            </div>
-
-            <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="autenticar()">ENTRAR / REGISTRAR</button>
         </div>
     </div>
 
@@ -638,16 +681,16 @@
         </div>
     </div>
 
-    <!-- PAINEL EDITAR (DIRETORIA) -->
+    <!-- PAINEL EDITAR (SÓ VISÍVEL E ACESSÍVEL PARA DIRETORIA) -->
     <div class="modal-bg" id="modalPainel">
         <div class="modal-box" style="max-width:550px;">
             <span class="close-btn" onclick="fecharModal('modalPainel')">&times;</span>
-            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Painel da Diretoria</h3>
+            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Painel de Edição da Diretoria</h3>
 
             <div class="form-control">
                 <label>O que deseja adicionar?</label>
                 <select id="painelOpcao" onchange="alternarCamposPainel()">
-                    <option value="toktok">Vídeo/Foto no Coraçãotoktok</option>
+                    <option value="toktok">Vídeo/Foto no CoraçãoTokTok</option>
                     <option value="repertorio">Música no Repertório</option>
                     <option value="galeria">Mídia na Galeria</option>
                 </select>
@@ -689,7 +732,7 @@
                 </div>
             </div>
 
-            <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="salvarPainel()">PUBLICAR NO SITE</button>
+            <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="salvarPainel()">PUBLICAR CONTEÚDO</button>
         </div>
     </div>
 
@@ -702,7 +745,7 @@
         let padrinhoIndex = 0;
         let idToktokComentando = null;
 
-        // ESTRUTURA DO BANCO DE DADOS LOCAL
+        // BANCO LOCAL
         let db = JSON.parse(localStorage.getItem('coracao_junino_v3')) || {
             usuarios: [
                 { user: 'Lay', pass: '270209', nome: 'Diretor Geral', eDiretor: true }
@@ -745,7 +788,7 @@
             });
         }
 
-        /* NAVEGAÇÃO DE ABAS */
+        /* NAVEGAÇÃO DE ABAS DO SITE */
         function mudarAba(i) {
             document.getElementById('sliderTrack').style.transform = `translateX(-${i * 100}vw)`;
             const btns = document.querySelectorAll('.hero-nav button');
@@ -759,56 +802,83 @@
             document.getElementById(`pad-${padrinhoIndex}`).classList.add('active');
         }
 
-        /* AUTENTICAÇÃO */
+        /* AUTENTICAÇÃO E REGISTRO */
         function abrirModalAuth() {
             if (usuarioAtual && usuarioAtual.eDiretor) {
                 document.getElementById('modalPainel').style.display = 'flex';
-            } else {
+            } else if (!usuarioAtual) {
                 document.getElementById('modalAuth').style.display = 'flex';
             }
         }
 
         function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        function alternarAuthCampos() {
-            const t = document.getElementById('authTipo').value;
-            document.getElementById('campoChaveDiretor').style.display = (t === 'diretor') ? 'block' : 'none';
+        function trocarAbaAuth(tipo) {
+            document.getElementById('tabEntrarBtn').classList.toggle('active', tipo === 'entrar');
+            document.getElementById('tabRegistrarBtn').classList.toggle('active', tipo === 'registrar');
+            document.getElementById('formEntrar').style.display = (tipo === 'entrar') ? 'block' : 'none';
+            document.getElementById('formRegistrar').style.display = (tipo === 'registrar') ? 'block' : 'none';
         }
 
-        function autenticar() {
-            const tipo = document.getElementById('authTipo').value;
-            const chave = document.getElementById('authChave').value.trim();
-            const nome = document.getElementById('authNome').value.trim();
-            const user = document.getElementById('authUser').value.trim();
-            const pass = document.getElementById('authPass').value.trim();
+        function alternarCampoChave() {
+            const tipo = document.getElementById('regTipo').value;
+            document.getElementById('campoChaveDiretor').style.display = (tipo === 'diretor') ? 'block' : 'none';
+        }
 
-            if (!user || !pass) { toast("Preencha Usuário e Senha!"); return; }
+        function fazerLogin() {
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
 
-            let achado = db.usuarios.find(x => x.user === user);
+            if (!user || !pass) { toast("Preencha usuário e senha!"); return; }
 
-            if (achado) {
-                if (achado.pass === pass) {
-                    usuarioAtual = achado;
-                    fecharModal('modalAuth');
-                    atualizarUserUI();
-                    toast(`Bem-vindo, ${achado.nome}!`);
-                } else {
-                    toast("Senha incorreta!");
-                }
-            } else {
-                if (tipo === 'diretor' && chave !== CHAVE_DIRETORIA) {
-                    toast("Chave da diretoria inválida!");
-                    return;
-                }
-                if (!nome) { toast("Informe seu nome!"); return; }
+            let encontrado = db.usuarios.find(u => u.user === user && u.pass === pass);
 
-                usuarioAtual = { user, pass, nome, eDiretor: (tipo === 'diretor') };
-                db.usuarios.push(usuarioAtual);
-                salvarBD();
+            if (encontrado) {
+                usuarioAtual = encontrado;
                 fecharModal('modalAuth');
                 atualizarUserUI();
-                toast("Cadastro realizado com sucesso!");
+                toast(`Bem-vindo, ${usuarioAtual.nome}!`);
+            } else {
+                toast("Usuário ou senha incorretos!");
             }
+        }
+
+        function fazerRegistro() {
+            const tipo = document.getElementById('regTipo').value;
+            const chave = document.getElementById('regChave').value.trim();
+            const nome = document.getElementById('regNome').value.trim();
+            const user = document.getElementById('regUser').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+
+            if (!nome || !user || !pass) { toast("Preencha todos os campos!"); return; }
+
+            if (db.usuarios.some(u => u.user === user)) {
+                toast("Este usuário já existe! Escolha outro.");
+                return;
+            }
+
+            let eDiretor = false;
+            if (tipo === 'diretor') {
+                if (chave !== CHAVE_DIRETORIA) {
+                    toast("Chave da diretoria incorreta!");
+                    return;
+                }
+                eDiretor = true;
+            }
+
+            usuarioAtual = { user, pass, nome, eDiretor };
+            db.usuarios.push(usuarioAtual);
+            salvarBD();
+
+            fecharModal('modalAuth');
+            atualizarUserUI();
+            toast("Conta criada com sucesso!");
+        }
+
+        function fazerLogout() {
+            usuarioAtual = null;
+            atualizarUserUI();
+            toast("Você saiu da conta.");
         }
 
         function atualizarUserUI() {
@@ -816,35 +886,34 @@
             const tag = document.getElementById('userTag');
 
             if (usuarioAtual) {
-                tag.innerText = `${usuarioAtual.nome} (${usuarioAtual.eDiretor ? 'Diretor' : 'Visitante'})`;
-                btn.innerHTML = usuarioAtual.eDiretor ? `<i class="fa-solid fa-gear"></i> PAINEL ADM` : `<i class="fa-solid fa-sign-out"></i> SAIR`;
-                btn.onclick = usuarioAtual.eDiretor ? () => document.getElementById('modalPainel').style.display = 'flex' : logout;
+                if (usuarioAtual.eDiretor) {
+                    btn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> PAINEL DA DIRETORIA`;
+                    tag.innerHTML = `Diretor(a): ${usuarioAtual.nome} <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
+                } else {
+                    btn.style.display = 'none';
+                    tag.innerHTML = `Olá, ${usuarioAtual.nome} (Visitante) <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
+                }
             } else {
-                tag.innerText = '';
-                btn.innerHTML = `<i class="fa-solid fa-user"></i> LOGIN / CADASTRAR`;
-                btn.onclick = abrirModalAuth;
+                btn.style.display = 'inline-block';
+                btn.innerHTML = `<i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR`;
+                tag.innerHTML = '';
             }
+            renderizarToktok();
         }
 
-        function logout() {
-            usuarioAtual = null;
-            atualizarUserUI();
-            toast("Sessão encerrada.");
-        }
-
-        /* RENDERS */
-        function renderDiretores() {
+        /* CARREGAR DIRETORES */
+        function renderizarDiretores() {
             const grid = document.getElementById('gridDiretores');
             grid.innerHTML = db.diretores.map(d => `
-                <div class="diretor-box ${d.cor}" onclick="abrirDirModal(${d.id})">
-                    <img src="${d.foto}">
+                <div class="diretor-box ${d.cor}" onclick="abrirDetalheDiretor(${d.id})">
+                    <img src="${d.foto}" alt="${d.nome}">
                     <h4>${d.nome}</h4>
-                    <small style="font-weight:bold;">${d.cargo}</small>
+                    <p style="font-size:0.8rem; opacity:0.9;">${d.cargo}</p>
                 </div>
             `).join('');
         }
 
-        function abrirDirModal(id) {
+        function abrirDetalheDiretor(id) {
             const d = db.diretores.find(x => x.id === id);
             if (!d) return;
             document.getElementById('dirFoto').src = d.foto;
@@ -854,116 +923,7 @@
             document.getElementById('modalDiretor').style.display = 'flex';
         }
 
-        function renderToktok() {
-            const feed = document.getElementById('toktokFeed');
-            if (db.toktok.length === 0) {
-                feed.innerHTML = `<div style="color:#fff; text-align:center; padding:60px 10px;">Nenhum vídeo no Coraçãotoktok ainda.</div>`;
-                return;
-            }
-
-            // Exibir do mais antigo para o mais novo
-            const listaOrdenada = [...db.toktok].reverse();
-
-            feed.innerHTML = listaOrdenada.map(item => `
-                <div class="toktok-post">
-                    ${item.eVideo ? `<video class="toktok-media" src="${item.media}" controls loop></video>` : `<img class="toktok-media" src="${item.media}">`}
-                    
-                    <div class="toktok-side-actions">
-                        <button class="toktok-btn ${item.curtidas.includes(usuarioAtual?.user) ? 'active' : ''}" onclick="curtirToktok(${item.id})">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                        <span style="color:#fff; font-size:0.7rem; margin-top:-10px;">${item.curtidas.length}</span>
-
-                        <button class="toktok-btn" onclick="abrirComentariosToktok(${item.id})">
-                            <i class="fa-solid fa-comment"></i>
-                        </button>
-                        <span style="color:#fff; font-size:0.7rem; margin-top:-10px;">${item.comentarios.length}</span>
-                    </div>
-
-                    <div class="toktok-caption">
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function curtirToktok(id) {
-            if (!usuarioAtual) { toast("Faça login para curtir!"); return; }
-            const item = db.toktok.find(x => x.id === id);
-            if (!item) return;
-
-            const idx = item.curtidas.indexOf(usuarioAtual.user);
-            if (idx > -1) item.curtidas.splice(idx, 1);
-            else item.curtidas.push(usuarioAtual.user);
-
-            salvarBD();
-            renderToktok();
-        }
-
-        function abrirComentariosToktok(id) {
-            idToktokComentando = id;
-            const item = db.toktok.find(x => x.id === id);
-            const lista = document.getElementById('listaComentarios');
-
-            lista.innerHTML = item.comentarios.map(c => `
-                <div style="background:#fff; padding:6px 10px; border-radius:6px; margin-bottom:5px;">
-                    <strong>${c.autor}:</strong> ${c.texto}
-                </div>
-            `).join('') || '<p style="color:#777;">Seja o primeiro a comentar!</p>';
-
-            document.getElementById('modalComentarios').style.display = 'flex';
-        }
-
-        function salvarComentarioToktok() {
-            if (!usuarioAtual) { toast("Faça login para comentar!"); return; }
-            const txt = document.getElementById('inputComentario').value.trim();
-            if (!txt) return;
-
-            const item = db.toktok.find(x => x.id === idToktokComentando);
-            item.comentarios.push({ autor: usuarioAtual.nome, texto: txt });
-
-            salvarBD();
-            document.getElementById('inputComentario').value = '';
-            abrirComentariosToktok(idToktokComentando);
-            renderToktok();
-        }
-
-        function renderRepertorio() {
-            const container = document.getElementById('repertorioLista');
-            if (db.repertorios.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#777;">Nenhuma música cadastrada.</p>`;
-                return;
-            }
-
-            const grupos = {};
-            db.repertorios.forEach(r => {
-                if (!grupos[r.ano]) grupos[r.ano] = [];
-                grupos[r.ano].push(r);
-            });
-
-            container.innerHTML = Object.keys(grupos).map(ano => `
-                <div class="repertorio-card">
-                    <h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif;"><i class="fa-solid fa-music"></i> ${ano}</h4>
-                    ${grupos[ano].map(m => `
-                        <div class="repertorio-item">
-                            <strong>${m.nome}</strong>
-                            <audio src="${m.audio}" controls></audio>
-                        </div>
-                    `).join('')}
-                </div>
-            `).join('');
-        }
-
-        function renderGaleria() {
-            const g = document.getElementById('gridGaleria');
-            g.innerHTML = db.galeria.map(i => `
-                <div class="midia-box">
-                    ${i.eVideo ? `<video src="${i.media}" controls></video>` : `<img src="${i.media}">`}
-                </div>
-            `).join('');
-        }
-
-        /* PAINEL DE EDIÇÃO DA DIREÇÃO */
+        /* PAINEL ADMINISTRATIVO (SÓ DIRETORIA) */
         function alternarCamposPainel() {
             const op = document.getElementById('painelOpcao').value;
             document.getElementById('painelToktok').style.display = (op === 'toktok') ? 'block' : 'none';
@@ -975,42 +935,154 @@
             const op = document.getElementById('painelOpcao').value;
 
             if (op === 'toktok') {
-                const res = await lerArquivoBase64(document.getElementById('fileToktok'));
+                const f = await lerArquivoBase64(document.getElementById('fileToktok'));
                 const desc = document.getElementById('descToktok').value.trim();
-                if (!res) { toast("Selecione um arquivo de foto ou vídeo!"); return; }
+                if (!f) { toast("Selecione um arquivo de imagem/vídeo!"); return; }
+                
+                db.toktok.unshift({ id: Date.now(), src: f.data, eVideo: f.eVideo, desc, curtiu: false, comentarios: [] });
+                salvarBD();
+                renderizarToktok();
+                toast("Publicado no TokTok!");
 
-                db.toktok.push({ id: Date.now(), media: res.data, eVideo: res.eVideo, desc, curtidas: [], comentarios: [] });
-            } 
-            else if (op === 'repertorio') {
+            } else if (op === 'repertorio') {
                 const ano = document.getElementById('repAno').value.trim();
                 const nome = document.getElementById('repNome').value.trim();
-                const res = await lerArquivoBase64(document.getElementById('fileRepertorio'));
-                if (!res || !ano || !nome) { toast("Preencha todos os campos do repertório!"); return; }
+                const f = await lerArquivoBase64(document.getElementById('fileRepertorio'));
+                if (!ano || !nome || !f) { toast("Preencha todos os campos do repertório!"); return; }
 
-                db.repertorios.push({ id: Date.now(), ano, nome, audio: res.data });
+                let grupo = db.repertorios.find(r => r.ano === ano);
+                if (!grupo) {
+                    grupo = { ano, musicas: [] };
+                    db.repertorios.push(grupo);
+                }
+                grupo.musicas.push({ nome, src: f.data });
+                salvarBD();
+                renderizarRepertorio();
+                toast("Música adicionada ao repertório!");
+
+            } else if (op === 'galeria') {
+                const f = await lerArquivoBase64(document.getElementById('fileGaleria'));
+                if (!f) { toast("Selecione um arquivo!"); return; }
+
+                db.galeria.unshift({ id: Date.now(), src: f.data, eVideo: f.eVideo });
+                salvarBD();
+                renderizarGaleria();
+                toast("Mídia adicionada à galeria!");
             }
-            else if (op === 'galeria') {
-                const res = await lerArquivoBase64(document.getElementById('fileGaleria'));
-                if (!res) { toast("Selecione uma imagem ou vídeo!"); return; }
 
-                db.galeria.unshift({ id: Date.now(), media: res.data, eVideo: res.eVideo });
-            }
-
-            salvarBD();
-            renderTudo();
             fecharModal('modalPainel');
-            toast("Conteúdo publicado com sucesso!");
         }
 
-        function renderTudo() {
-            renderDiretores();
-            renderToktok();
-            renderRepertorio();
-            renderGaleria();
+        /* CORAÇÃO TOKTOK - AÇÕES DE VISITANTE/DIRETOR */
+        function renderizarToktok() {
+            const feed = document.getElementById('toktokFeed');
+            if (db.toktok.length === 0) {
+                feed.innerHTML = `<p style="color:#fff; text-align:center; padding-top:200px;">Nenhum vídeo publicado ainda.</p>`;
+                return;
+            }
+
+            feed.innerHTML = db.toktok.map(item => `
+                <div class="toktok-post">
+                    ${item.eVideo 
+                        ? `<video class="toktok-media" src="${item.src}" controls loop></video>` 
+                        : `<img class="toktok-media" src="${item.src}">`}
+                    
+                    <div class="toktok-side-actions">
+                        <button class="toktok-btn ${item.curtiu ? 'active' : ''}" onclick="curtirToktok(${item.id})">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <button class="toktok-btn" onclick="abrirComentarios(${item.id})">
+                            <i class="fa-solid fa-comment"></i>
+                        </button>
+                    </div>
+
+                    <div class="toktok-caption">
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function curtirToktok(id) {
+            if (!usuarioAtual) { toast("Você precisa entrar para curtir!"); return; }
+            let item = db.toktok.find(x => x.id === id);
+            if (item) {
+                item.curtiu = !item.curtiu;
+                salvarBD();
+                renderizarToktok();
+            }
+        }
+
+        function abrirComentarios(id) {
+            idToktokComentando = id;
+            let item = db.toktok.find(x => x.id === id);
+            const lista = document.getElementById('listaComentarios');
+            
+            if (item.comentarios.length === 0) {
+                lista.innerHTML = `<p style="color:var(--texto-suave);">Nenhum comentário ainda. Seja o primeiro!</p>`;
+            } else {
+                lista.innerHTML = item.comentarios.map(c => `
+                    <p style="margin-bottom:6px;"><strong>${c.autor}:</strong> ${c.texto}</p>
+                `).join('');
+            }
+
+            document.getElementById('modalComentarios').style.display = 'flex';
+        }
+
+        function salvarComentarioToktok() {
+            if (!usuarioAtual) { toast("Você precisa entrar para comentar!"); return; }
+            const txt = document.getElementById('inputComentario').value.trim();
+            if (!txt) return;
+
+            let item = db.toktok.find(x => x.id === idToktokComentando);
+            if (item) {
+                item.comentarios.push({ autor: usuarioAtual.nome, texto: txt });
+                salvarBD();
+                document.getElementById('inputComentario').value = '';
+                abrirComentarios(idToktokComentando);
+            }
+        }
+
+        /* REPERTÓRIO E GALERIA */
+        function renderizarRepertorio() {
+            const el = document.getElementById('repertorioLista');
+            if (db.repertorios.length === 0) {
+                el.innerHTML = `<p style="color:var(--texto-suave);">Nenhum repertório cadastrado.</p>`;
+                return;
+            }
+
+            el.innerHTML = db.repertorios.map(r => `
+                <div class="repertorio-card">
+                    <h3 style="color:var(--bordo-medio); margin-bottom:10px;">${r.ano}</h3>
+                    ${r.musicas.map(m => `
+                        <div class="repertorio-item">
+                            <span><strong>${m.nome}</strong></span>
+                            <audio src="${m.src}" controls></audio>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        function renderizarGaleria() {
+            const el = document.getElementById('gridGaleria');
+            if (db.galeria.length === 0) {
+                el.innerHTML = `<p style="color:var(--texto-suave);">Nenhuma mídia cadastrada na galeria.</p>`;
+                return;
+            }
+
+            el.innerHTML = db.galeria.map(g => `
+                <div class="midia-box">
+                    ${g.eVideo ? `<video src="${g.src}" controls></video>` : `<img src="${g.src}">`}
+                </div>
+            `).join('');
         }
 
         // INICIALIZAÇÃO
-        renderTudo();
+        renderizarDiretores();
+        renderizarToktok();
+        renderizarRepertorio();
+        renderizarGaleria();
     </script>
 </body>
 </html>
