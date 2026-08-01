@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quadrilha Coração Junino</title>
-
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quadrilha Coração Junino ❤️</title>
     
     <!-- ÍCONE DA ABA (FAVICON) DO CORAÇÃO -->
     <link rel="icon" href="imagens/original.png" type="image/png">
 
-    <!-- Fontes e Estilos abaixo... -->
     <!-- Fontes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -406,6 +400,7 @@
             border-radius: 8px;
             border: 1px solid var(--borda-card);
             font-family: 'Poppins', sans-serif;
+            background: #fff;
         }
 
         .btn-delete {
@@ -741,8 +736,8 @@
                     <input type="text" id="novidadeTitulo" placeholder="Ex: Ensaio Geral Confirmado">
                 </div>
                 <div class="form-group">
-                    <label>URL da Imagem:</label>
-                    <input type="text" id="novidadeImg" placeholder="https://exemplo.com/imagem.jpg">
+                    <label>Selecione a Imagem do Arquivo:</label>
+                    <input type="file" id="novidadeImgFile" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label>Descrição:</label>
@@ -753,8 +748,8 @@
             <!-- CAMPOS PARA GALERIA -->
             <div id="camposGaleria" style="display:none;">
                 <div class="form-group">
-                    <label>URL da Foto:</label>
-                    <input type="text" id="galeriaImg" placeholder="https://exemplo.com/foto.jpg">
+                    <label>Selecione a Foto do Arquivo:</label>
+                    <input type="file" id="galeriaImgFile" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label>Legenda / Evento:</label>
@@ -769,16 +764,16 @@
                     <textarea id="editHistoriaTexto" rows="5" placeholder="Escreva a história aqui..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>URL Foto 1:</label>
-                    <input type="text" id="editHistoriaImg1" placeholder="https://...">
+                    <label>Foto 1 (Arquivo):</label>
+                    <input type="file" id="editHistoriaImg1File" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label>Legenda Foto 1:</label>
                     <input type="text" id="editHistoriaCap1" placeholder="Ex: Momentos nas apresentações">
                 </div>
                 <div class="form-group">
-                    <label>URL Foto 2:</label>
-                    <input type="text" id="editHistoriaImg2" placeholder="https://...">
+                    <label>Foto 2 (Arquivo):</label>
+                    <input type="file" id="editHistoriaImg2File" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label>Legenda Foto 2:</label>
@@ -802,40 +797,66 @@
                 <p class="confirm-modal-text" id="confirmModalText">Esta ação removerá o item permanentemente.</p>
                 <div class="confirm-actions">
                     <button class="btn-cancel" onclick="fecharConfirmModal(false)">Cancelar</button>
-                    <button class="btn-bordo" style="margin-top:0;" onclick="fecharConfirmModal(true)">Sim, Excluir</button>
+                    <button class="btn-bordo" style="margin-top:0;" onclick="fecharConfirmModal(true)">Confirmar Exclusão</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONTAINER DAS NOTIFICAÇÕES (TOASTS) -->
+    <!-- CONTAINER DE TOASTS -->
     <div class="toast-container" id="toastContainer"></div>
 
     <!-- RODAPÉ FIXO -->
     <footer class="footer-bar">
-        <div style="font-size:0.9rem; font-weight:bold; color:var(--dourado);">CORAÇÃO JUNINO</div>
-        <div class="footer-contacts">
-            <a href="#" class="footer-contact-item"><i class="fa-brands fa-instagram"></i> @coracaojuninoal</a>
-            <a href="#" class="footer-contact-item"><i class="fa-brands fa-whatsapp"></i> (82) 99375-1078</a>
+        <div>
+            <strong style="color:var(--dourado);">Quadrilha Coração Junino</strong>
+            <p style="font-size:0.75rem; color:#ccc;">Preservando a cultura e a paixão pelo São João.</p>
         </div>
-        <div style="font-size:0.75rem;">© 2026 Coração Junino. Todos os direitos reservados.</div>
+        <div class="footer-contacts">
+            <a href="https://instagram.com" target="_blank" class="footer-contact-item"><i class="fa-brands fa-instagram"></i> @coracaojunino</a>
+            <a href="https://wa.me/5500000000000" target="_blank" class="footer-contact-item"><i class="fa-brands fa-whatsapp"></i> Contato / Shows</a>
+        </div>
     </footer>
 
-    <!-- LÓGICA EM JAVASCRIPT -->
+    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
-        const CODIGO_DIRETORIA = "DirecaoCJ2027"; 
+        // ESTADO GLOBAL
+        const CODIGO_AUTORIZACAO_SECRET = "JUNINO2026"; 
+        let usuarioLogado = null;
+        let acaoConfirmacaoPendente = null;
 
-        /* SISTEMA DE NOTIFICAÇÕES (TOASTS) */
-        function showToast(mensagem, tipo = 'success') {
+        // BANCO DE DADOS (LOCALSTORAGE)
+        let dadosSite = JSON.parse(localStorage.getItem('coracao_junino_db')) || {
+            usuarios: [{ user: 'admin', pass: 'admin123', nome: 'Diretoria Principal' }],
+            historia: {
+                texto: "Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!",
+                img1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400",
+                cap1: "Momentos inesquecíveis em nossas apresentações",
+                img2: "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400",
+                cap2: "Bastidores e preparação dos nossos ensaios"
+            },
+            novidades: [],
+            patrocinadores: [],
+            apoiadores: [],
+            galeria: []
+        };
+
+        function salvarDB() {
+            localStorage.setItem('coracao_junino_db', JSON.stringify(dadosSite));
+        }
+
+        // SISTEMA DE NOTIFICAÇÃO (TOAST)
+        function mostrarToast(mensagem, tipo = 'info') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `custom-toast ${tipo}`;
             
-            let iconClass = 'fa-circle-check';
-            if(tipo === 'error') iconClass = 'fa-circle-xmark';
-            if(tipo === 'warning') iconClass = 'fa-triangle-exclamation';
+            let icone = 'fa-info-circle';
+            if(tipo === 'success') icone = 'fa-check-circle';
+            if(tipo === 'error') icone = 'fa-circle-xmark';
+            if(tipo === 'warning') icone = 'fa-triangle-exclamation';
 
-            toast.innerHTML = `<i class="fa-solid ${iconClass}"></i> <span>${mensagem}</span>`;
+            toast.innerHTML = `<i class="fa-solid ${icone}"></i> <span>${mensagem}</span>`;
             container.appendChild(toast);
 
             setTimeout(() => {
@@ -844,58 +865,53 @@
             }, 3500);
         }
 
-        /* SISTEMA DE CONFIRMAÇÃO MODAL */
-        let confirmResolver = null;
-
-        function customConfirm(mensagem) {
+        // MODAL DE CONFIRMAÇÃO ESTILIZADO
+        function pedirConfirmacao(mensagem, acao) {
             document.getElementById('confirmModalText').innerText = mensagem;
             document.getElementById('confirmModal').style.display = 'flex';
+            acaoConfirmacaoPendente = acao;
+        }
+
+        function fecharConfirmModal(confirmado) {
+            document.getElementById('confirmModal').style.display = 'none';
+            if(confirmado && typeof acaoConfirmacaoPendente === 'function') {
+                acaoConfirmacaoPendente();
+            }
+            acaoConfirmacaoPendente = null;
+        }
+
+        // CONVERSOR DE ARQUIVO PARA BASE64 (PARA SALVAR AS FOTOS NO BROWSER)
+        function lerArquivoFoto(inputElement) {
             return new Promise((resolve) => {
-                confirmResolver = resolve;
+                const file = inputElement.files[0];
+                if (!file) {
+                    resolve(null);
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    resolve(e.target.result);
+                };
+                reader.readAsDataURL(file);
             });
         }
 
-        function fecharConfirmModal(resultado) {
-            document.getElementById('confirmModal').style.display = 'none';
-            if(confirmResolver) confirmResolver(resultado);
-        }
-
-        /* BANCO DE DADOS LOCAL (LOCALSTORAGE) */
-        let appData = JSON.parse(localStorage.getItem('coracao_junino_db')) || {
-            usuarios: [{ user: 'lay', pass: '270209', nome: 'Direção Geral' }],
-            patrocinadores: [],
-            apoiadores: [],
-            novidades: [],
-            galeria: [],
-            historia: {
-                texto: "Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina. Levando o brilho dos nossos figurinos e o ritmo da nossa sanfona por todos os arraiás!",
-                img1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400",
-                cap1: "Momentos inesquecíveis em nossas apresentações",
-                img2: "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400",
-                cap2: "Bastidores e preparação dos nossos ensaios"
-            }
-        };
-
-        let usuarioLogado = JSON.parse(sessionStorage.getItem('coracao_user_logado')) || null;
-
-        function salvarDB() {
-            localStorage.setItem('coracao_junino_db', JSON.stringify(appData));
-        }
-
-        /* NAVEGAÇÃO DE ABAS */
+        // CONTROLADOR DE ABAS
         function goToTab(index) {
-            document.getElementById('sliderTrack').style.transform = `translateX(-${index * 100}vw)`;
+            const track = document.getElementById('sliderTrack');
+            track.style.transform = `translateX(-${index * 100}vw)`;
+            
             const buttons = document.querySelectorAll('.hero-nav button');
             buttons.forEach((btn, i) => {
-                if(i === index) btn.classList.add('active');
-                else btn.classList.remove('active');
+                btn.classList.toggle('active', i === index);
             });
         }
 
-        /* LIGHTBOX (ZOOM FOTOS) */
-        function zoomFoto(url, legenda) {
-            document.getElementById('lightboxImg').src = url;
-            document.getElementById('lightboxCaption').innerText = legenda || '';
+        // LIGHTBOX
+        function zoomFoto(src, caption) {
+            if(!src) return;
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').innerText = caption || '';
             document.getElementById('lightboxModal').style.display = 'flex';
         }
 
@@ -903,7 +919,7 @@
             document.getElementById('lightboxModal').style.display = 'none';
         }
 
-        /* MODAIS E AUTHENTICAÇÃO */
+        // AUTENTICAÇÃO E MODAIS
         function abrirModalLogin() {
             if(usuarioLogado) {
                 abrirPainelAdm();
@@ -917,95 +933,91 @@
         }
 
         function mudarAbaAuth(aba) {
-            if(aba === 'login') {
-                document.getElementById('formLogin').style.display = 'block';
-                document.getElementById('formCadastro').style.display = 'none';
-                document.getElementById('tabLoginBtn').classList.add('active');
-                document.getElementById('tabCadBtn').classList.remove('active');
+            document.getElementById('tabLoginBtn').classList.toggle('active', aba === 'login');
+            document.getElementById('tabCadBtn').classList.toggle('active', aba === 'cadastro');
+            document.getElementById('formLogin').style.display = aba === 'login' ? 'block' : 'none';
+            document.getElementById('formCadastro').style.display = aba === 'cadastro' ? 'block' : 'none';
+        }
+
+        function fazerLogin() {
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value.trim();
+
+            const user = dadosSite.usuarios.find(x => x.user === u && x.pass === p);
+            if(user) {
+                usuarioLogado = user;
+                fecharModalLogin();
+                atualizarInterfaceAuth();
+                mostrarToast(`Bem-vindo(a), ${user.nome}!`, 'success');
+                abrirPainelAdm();
             } else {
-                document.getElementById('formLogin').style.display = 'none';
-                document.getElementById('formCadastro').style.display = 'block';
-                document.getElementById('tabLoginBtn').classList.remove('active');
-                document.getElementById('tabCadBtn').classList.add('active');
+                mostrarToast('Usuário ou senha inválidos.', 'error');
             }
         }
 
         function cadastrarUsuario() {
-            const codigo = document.getElementById('cadCodigoAuth').value;
-            const nome = document.getElementById('cadNome').value;
-            const user = document.getElementById('cadUser').value.toLowerCase().trim();
-            const pass = document.getElementById('cadPass').value;
+            const cod = document.getElementById('cadCodigoAuth').value.trim();
+            const nome = document.getElementById('cadNome').value.trim();
+            const user = document.getElementById('cadUser').value.trim();
+            const pass = document.getElementById('cadPass').value.trim();
 
-            if(codigo !== CODIGO_DIRETORIA) {
-                showToast("Código de autorização da diretoria incorreto!", "error");
+            if(cod !== CODIGO_AUTORIZACAO_SECRET) {
+                mostrarToast('Código de autorização da diretoria incorreto!', 'error');
                 return;
             }
-
             if(!nome || !user || !pass) {
-                showToast("Preencha todos os campos!", "warning");
+                mostrarToast('Preencha todos os campos do cadastro.', 'warning');
+                return;
+            }
+            if(dadosSite.usuarios.some(x => x.user === user)) {
+                mostrarToast('Este nome de usuário já está em uso.', 'warning');
                 return;
             }
 
-            const existe = appData.usuarios.find(u => u.user === user);
-            if(existe) {
-                showToast("Este nome de usuário já está em uso!", "warning");
-                return;
-            }
-
-            appData.usuarios.push({ nome, user, pass });
+            dadosSite.usuarios.push({ user, pass, nome });
             salvarDB();
-            showToast("Conta da Diretoria criada com sucesso!", "success");
+            mostrarToast('Diretor cadastrado com sucesso! Agora faça o login.', 'success');
             mudarAbaAuth('login');
-        }
-
-        function fazerLogin() {
-            const user = document.getElementById('loginUser').value.toLowerCase().trim();
-            const pass = document.getElementById('loginPass').value;
-
-            const conta = appData.usuarios.find(u => u.user === user && u.pass === pass);
-
-            if(conta) {
-                usuarioLogado = conta;
-                sessionStorage.setItem('coracao_user_logado', JSON.stringify(conta));
-                fecharModalLogin();
-                atualizarInterfaceAuth();
-                showToast(`Bem-vindo(a), ${conta.nome}!`, "success");
-                abrirPainelAdm();
-            } else {
-                showToast("Usuário ou senha incorretos!", "error");
-            }
+            document.getElementById('loginUser').value = user;
         }
 
         function fazerLogout() {
             usuarioLogado = null;
-            sessionStorage.removeItem('coracao_user_logado');
             fecharPainelAdm();
             atualizarInterfaceAuth();
-            showToast("Você saiu do sistema.", "warning");
+            mostrarToast('Você saiu do modo de administração.', 'info');
         }
 
         function atualizarInterfaceAuth() {
-            const btnTrigger = document.getElementById('btnAuthTrigger');
-            const btnEditarHistoria = document.getElementById('btnEditarHistoria');
-            
+            const btnAuth = document.getElementById('btnAuthTrigger');
+            const btnHist = document.getElementById('btnEditarHistoria');
+
             if(usuarioLogado) {
-                btnTrigger.innerHTML = `<i class="fa-solid fa-user-gear"></i> PAINEL ADM`;
-                if(btnEditarHistoria) btnEditarHistoria.style.display = 'inline-block';
+                btnAuth.innerHTML = `<i class="fa-solid fa-user-gear"></i> PAINEL ADM`;
+                btnHist.style.display = 'inline-block';
             } else {
-                btnTrigger.innerHTML = `<i class="fa-solid fa-lock"></i> LOGIN / ADM`;
-                if(btnEditarHistoria) btnEditarHistoria.style.display = 'none';
+                btnAuth.innerHTML = `<i class="fa-solid fa-lock"></i> LOGIN / ADM`;
+                btnHist.style.display = 'none';
             }
             renderizarConteudo();
         }
 
-        /* PAINEL ADM */
+        // PAINEL ADM
         function abrirPainelAdm() {
-            document.getElementById('saudacaoUsuario').innerText = `Logado como: ${usuarioLogado.nome}`;
+            document.getElementById('saudacaoUsuario').innerText = `Conectado como: ${usuarioLogado.nome}`;
             document.getElementById('modalPainelAdm').style.display = 'flex';
+            alternarCamposAdm();
         }
 
         function fecharPainelAdm() {
             document.getElementById('modalPainelAdm').style.display = 'none';
+        }
+
+        function abrirEdicaoHistoria() {
+            if(!usuarioLogado) return;
+            abrirPainelAdm();
+            document.getElementById('tipoConteudo').value = 'historia';
+            alternarCamposAdm();
         }
 
         function alternarCamposAdm() {
@@ -1016,65 +1028,84 @@
             document.getElementById('camposHistoria').style.display = (tipo === 'historia') ? 'block' : 'none';
 
             if(tipo === 'historia') {
-                document.getElementById('editHistoriaTexto').value = appData.historia.texto;
-                document.getElementById('editHistoriaImg1').value = appData.historia.img1;
-                document.getElementById('editHistoriaCap1').value = appData.historia.cap1;
-                document.getElementById('editHistoriaImg2').value = appData.historia.img2;
-                document.getElementById('editHistoriaCap2').value = appData.historia.cap2;
+                document.getElementById('editHistoriaTexto').value = dadosSite.historia.texto;
+                document.getElementById('editHistoriaCap1').value = dadosSite.historia.cap1;
+                document.getElementById('editHistoriaCap2').value = dadosSite.historia.cap2;
             }
         }
 
-        function abrirEdicaoHistoria() {
-            if(!usuarioLogado) return;
-            abrirPainelAdm();
-            document.getElementById('tipoConteudo').value = 'historia';
-            alternarCamposAdm();
-        }
-
-        function salvarConteudoAdm() {
+        async function salvarConteudoAdm() {
             const tipo = document.getElementById('tipoConteudo').value;
 
             if(tipo === 'patrocinador' || tipo === 'apoiador') {
-                const nome = document.getElementById('sponsorNome').value;
-                const desc = document.getElementById('sponsorDesc').value;
-                const icone = document.getElementById('sponsorIcone').value || 'fa-star';
+                const nome = document.getElementById('sponsorNome').value.trim();
+                const desc = document.getElementById('sponsorDesc').value.trim();
+                let icone = document.getElementById('sponsorIcone').value.trim() || 'fa-star';
 
-                if(!nome) { showToast("Informe o nome do parceiro!", "warning"); return; }
+                if(!nome) { mostrarToast('Informe o nome do parceiro.', 'warning'); return; }
+                if(!icone.startsWith('fa-')) icone = 'fa-' + icone;
 
                 const item = { id: Date.now(), nome, desc, icone };
-                if(tipo === 'patrocinador') appData.patrocinadores.push(item);
-                else appData.apoiadores.push(item);
+                if(tipo === 'patrocinador') dadosSite.patrocinadores.push(item);
+                else dadosSite.apoiadores.push(item);
+                
+                mostrarToast('Parceiro adicionado com sucesso!', 'success');
 
-                showToast("Cadastrado com sucesso!", "success");
-            } 
+                document.getElementById('sponsorNome').value = '';
+                document.getElementById('sponsorDesc').value = '';
+                document.getElementById('sponsorIcone').value = '';
+            }
             else if(tipo === 'novidade') {
-                const titulo = document.getElementById('novidadeTitulo').value;
-                const img = document.getElementById('novidadeImg').value;
-                const desc = document.getElementById('novidadeDesc').value;
+                const titulo = document.getElementById('novidadeTitulo').value.trim();
+                const desc = document.getElementById('novidadeDesc').value.trim();
+                const imgInput = document.getElementById('novidadeImgFile');
+                const imgBase64 = await lerArquivoFoto(imgInput);
 
-                if(!titulo || !img) { showToast("Preencha título e imagem!", "warning"); return; }
+                if(!titulo || !imgBase64) { 
+                    mostrarToast('Preencha o título e selecione a foto.', 'warning'); 
+                    return; 
+                }
 
-                appData.novidades.push({ id: Date.now(), titulo, img, desc });
-                showToast("Novidade publicada com sucesso!", "success");
-            } 
+                dadosSite.novidades.push({ id: Date.now(), titulo, desc, img: imgBase64 });
+                mostrarToast('Novidade publicada!', 'success');
+
+                document.getElementById('novidadeTitulo').value = '';
+                document.getElementById('novidadeDesc').value = '';
+                imgInput.value = '';
+            }
             else if(tipo === 'galeria') {
-                const img = document.getElementById('galeriaImg').value;
-                const legenda = document.getElementById('galeriaLegenda').value;
+                const legenda = document.getElementById('galeriaLegenda').value.trim();
+                const imgInput = document.getElementById('galeriaImgFile');
+                const imgBase64 = await lerArquivoFoto(imgInput);
 
-                if(!img) { showToast("Cole a URL da foto!", "warning"); return; }
+                if(!imgBase64) { mostrarToast('Selecione uma foto.', 'warning'); return; }
 
-                appData.galeria.push({ id: Date.now(), img, legenda });
-                showToast("Foto adicionada à galeria!", "success");
+                dadosSite.galeria.push({ id: Date.now(), legenda, img: imgBase64 });
+                mostrarToast('Foto adicionada à galeria!', 'success');
+
+                document.getElementById('galeriaLegenda').value = '';
+                imgInput.value = '';
             }
             else if(tipo === 'historia') {
-                appData.historia = {
-                    texto: document.getElementById('editHistoriaTexto').value,
-                    img1: document.getElementById('editHistoriaImg1').value,
-                    cap1: document.getElementById('editHistoriaCap1').value,
-                    img2: document.getElementById('editHistoriaImg2').value,
-                    cap2: document.getElementById('editHistoriaCap2').value
-                };
-                showToast("História atualizada com sucesso!", "success");
+                const texto = document.getElementById('editHistoriaTexto').value.trim();
+                const cap1 = document.getElementById('editHistoriaCap1').value.trim();
+                const cap2 = document.getElementById('editHistoriaCap2').value.trim();
+
+                const img1Input = document.getElementById('editHistoriaImg1File');
+                const img2Input = document.getElementById('editHistoriaImg2File');
+
+                const img1Base64 = await lerArquivoFoto(img1Input);
+                const img2Base64 = await lerArquivoFoto(img2Input);
+
+                if(texto) dadosSite.historia.texto = texto;
+                if(img1Base64) dadosSite.historia.img1 = img1Base64;
+                if(cap1) dadosSite.historia.cap1 = cap1;
+                if(img2Base64) dadosSite.historia.img2 = img2Base64;
+                if(cap2) dadosSite.historia.cap2 = cap2;
+
+                mostrarToast('História atualizada com sucesso!', 'success');
+                img1Input.value = '';
+                img2Input.value = '';
             }
 
             salvarDB();
@@ -1082,89 +1113,88 @@
             fecharPainelAdm();
         }
 
-        async function deletarItem(categoria, id) {
-            const confirmado = await customConfirm("Deseja realmente excluir este item?");
-            if(!confirmado) return;
-
-            appData[categoria] = appData[categoria].filter(item => item.id !== id);
-            salvarDB();
-            renderizarConteudo();
-            showToast("Item removido com sucesso!", "success");
+        function deletarItem(categoria, id) {
+            pedirConfirmacao('Tem certeza de que deseja remover este item?', () => {
+                dadosSite[categoria] = dadosSite[categoria].filter(x => x.id !== id);
+                salvarDB();
+                renderizarConteudo();
+                mostrarToast('Item removido com sucesso.', 'info');
+            });
         }
 
-        /* RENDERIZAÇÃO DE DADOS NA TELA */
+        // RENDERIZAÇÃO NA TELA
         function renderizarConteudo() {
-            // Renderizar História
-            if(appData.historia) {
-                document.getElementById('historiaTexto').innerText = appData.historia.texto;
-                document.getElementById('historiaImg1').src = appData.historia.img1;
-                document.getElementById('historiaCap1').innerText = appData.historia.cap1;
-                document.getElementById('historiaImg2').src = appData.historia.img2;
-                document.getElementById('historiaCap2').innerText = appData.historia.cap2;
-            }
+            // HISTÓRIA
+            document.getElementById('historiaTexto').innerText = dadosSite.historia.texto;
+            document.getElementById('historiaImg1').src = dadosSite.historia.img1;
+            document.getElementById('historiaCap1').innerText = dadosSite.historia.cap1;
+            document.getElementById('historiaImg2').src = dadosSite.historia.img2;
+            document.getElementById('historiaCap2').innerText = dadosSite.historia.cap2;
 
-            // Renderizar Patrocinadores
-            const cPatro = document.getElementById('container-patrocinadores');
-            cPatro.innerHTML = appData.patrocinadores.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhum patrocinador cadastrado ainda.</p>';
-            appData.patrocinadores.forEach(p => {
-                cPatro.innerHTML += `
-                    <div class="sponsor-box">
-                        <i class="fa-solid ${p.icone}"></i>
-                        <h4>${p.nome}</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-suave);">${p.desc}</p>
-                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('patrocinadores', ${p.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
-                    </div>
-                `;
-            });
-
-            // Renderizar Apoiadores
-            const cApoi = document.getElementById('container-apoiadores');
-            cApoi.innerHTML = appData.apoiadores.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhum apoiador cadastrado ainda.</p>';
-            appData.apoiadores.forEach(a => {
-                cApoi.innerHTML += `
-                    <div class="sponsor-box">
-                        <i class="fa-solid ${a.icone}"></i>
-                        <h4>${a.nome}</h4>
-                        <p style="font-size:0.85rem; color:var(--texto-suave);">${a.desc}</p>
-                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('apoiadores', ${a.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
-                    </div>
-                `;
-            });
-
-            // Renderizar Novidades
-            const cNov = document.getElementById('container-novidades');
-            cNov.innerHTML = appData.novidades.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhuma novidade publicada ainda.</p>';
-            appData.novidades.forEach(n => {
-                cNov.innerHTML += `
+            // NOVIDADES
+            const containerNov = document.getElementById('container-novidades');
+            if(dadosSite.novidades.length === 0) {
+                containerNov.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhuma novidade publicada no momento.</p>';
+            } else {
+                containerNov.innerHTML = dadosSite.novidades.map(item => `
                     <div class="news-card">
-                        <img src="${n.img}" onclick="zoomFoto('${n.img}', '${n.titulo}')" alt="Imagem Novidade">
+                        <img src="${item.img}" alt="${item.titulo}" onclick="zoomFoto('${item.img}', '${item.titulo}')">
                         <div class="news-card-body">
-                            <h4>${n.titulo}</h4>
-                            <p style="font-size:0.85rem; color:var(--texto-suave);">${n.desc}</p>
-                            ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('novidades', ${n.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                            <h4>${item.titulo}</h4>
+                            <p style="font-size:0.85rem; color:#555;">${item.desc}</p>
+                            ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('novidades', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
                         </div>
                     </div>
-                `;
-            });
+                `).join('');
+            }
 
-            // Renderizar Galeria
-            const cGal = document.getElementById('container-galeria');
-            cGal.innerHTML = appData.galeria.length ? '' : '<p style="grid-column: 1/-1; text-align:center; color:#888;">Nenhuma foto adicionada à galeria.</p>';
-            appData.galeria.forEach(g => {
-                cGal.innerHTML += `
-                    <div class="gallery-item" onclick="zoomFoto('${g.img}', '${g.legenda}')">
-                        <img src="${g.img}" alt="Galeria">
-                        ${g.legenda ? `<div class="gallery-caption">${g.legenda}</div>` : ''}
-                        ${usuarioLogado ? `<button class="btn-delete" style="position:absolute; top:5px; right:5px; margin:0;" onclick="event.stopPropagation(); deletarItem('galeria', ${g.id})"><i class="fa-solid fa-trash"></i></button>` : ''}
+            // PATROCINADORES
+            const containerPat = document.getElementById('container-patrocinadores');
+            if(dadosSite.patrocinadores.length === 0) {
+                containerPat.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhum patrocinador cadastrado.</p>';
+            } else {
+                containerPat.innerHTML = dadosSite.patrocinadores.map(item => `
+                    <div class="sponsor-box">
+                        <i class="fa-solid ${item.icone}"></i>
+                        <h4 style="color:var(--bordo-medio);">${item.nome}</h4>
+                        <p style="font-size:0.8rem; color:#666;">${item.desc}</p>
+                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('patrocinadores', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
                     </div>
-                `;
-            });
+                `).join('');
+            }
+
+            // APOIADORES
+            const containerApo = document.getElementById('container-apoiadores');
+            if(dadosSite.apoiadores.length === 0) {
+                containerApo.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhum apoiador cadastrado.</p>';
+            } else {
+                containerApo.innerHTML = dadosSite.apoiadores.map(item => `
+                    <div class="sponsor-box">
+                        <i class="fa-solid ${item.icone}"></i>
+                        <h4 style="color:var(--azul-card);">${item.nome}</h4>
+                        <p style="font-size:0.8rem; color:#666;">${item.desc}</p>
+                        ${usuarioLogado ? `<button class="btn-delete" onclick="deletarItem('apoiadores', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // GALERIA
+            const containerGal = document.getElementById('container-galeria');
+            if(dadosSite.galeria.length === 0) {
+                containerGal.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:#777;">Nenhuma foto na galeria.</p>';
+            } else {
+                containerGal.innerHTML = dadosSite.galeria.map(item => `
+                    <div class="gallery-item" onclick="zoomFoto('${item.img}', '${item.legenda}')">
+                        <img src="${item.img}" alt="Foto Galeria">
+                        ${item.legenda ? `<div class="gallery-caption">${item.legenda}</div>` : ''}
+                        ${usuarioLogado ? `<button class="btn-delete" style="position:absolute; top:5px; right:5px; margin:0;" onclick="event.stopPropagation(); deletarItem('galeria', ${item.id})"><i class="fa-solid fa-trash"></i></button>` : ''}
+                    </div>
+                `).join('');
+            }
         }
 
-        // Inicialização
-        window.onload = () => {
-            atualizarInterfaceAuth();
-        };
+        // INICIALIZAÇÃO
+        renderizarConteudo();
     </script>
 </body>
 </html>
