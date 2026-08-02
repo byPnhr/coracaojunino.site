@@ -6,30 +6,27 @@
 
     <title>Quadrilha Coração Junino ❤️</title>
 
-    <!-- Ícone de Coração na Aba do Navegador -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
     
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bordo-escuro: #4a0000;
-            --bordo-medio: #7a0c0c;
-            --dourado: #d4af37;
-            --dourado-claro: #f3e5ab;
-            --fundo-palha: #e8ded1;
-            --card-palha: #f4eee3;
-            --texto-escuro: #361f12;
-            --texto-suave: #634b3c;
-            --azul-presidente: #1d3557;
-            --amarelo-junino: #e0a96d;
-            --vermelho-junino: #9e2a2b;
-            --borda-card: rgba(180, 150, 90, 0.4);
-            --sombra-bento: 0 10px 25px rgba(0,0,0,0.18);
+            --bordo-profundo: #2b0202;
+            --bordo-editorial: #4a0808;
+            --dourado-champagne: #e2c08d;
+            --dourado-suave: #c5a059;
+            --fundo-creme: #f9f6f0;
+            --card-alvo: #ffffff;
+            --texto-solido: #1c1917;
+            --texto-mutado: #78716c;
+            --borda-fina: rgba(197, 160, 89, 0.25);
+            --sombra-editorial: 0 20px 40px -15px rgba(43, 2, 2, 0.08);
+            --sombra-hover: 0 25px 50px -12px rgba(43, 2, 2, 0.18);
         }
 
         * {
@@ -39,14 +36,9 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--fundo-palha);
-            /* Marca d'água sutil e padrão junino de fundo */
-            background-image: 
-                radial-gradient(circle, rgba(122, 12, 12, 0.05) 1px, transparent 1px),
-                linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px);
-            background-size: 24px 24px, 40px 40px;
-            color: var(--texto-escuro);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--fundo-creme);
+            color: var(--texto-solido);
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
@@ -54,63 +46,53 @@
             position: relative;
         }
 
-        /* DECORAÇÃO BANDEIROLAS JUNINAS TOPO DA PÁGINA */
-        .bandeirolas-decor {
-            width: 100%;
-            height: 18px;
-            background: repeating-linear-gradient(
-                90deg,
-                #9e2a2b 0px, #9e2a2b 20px,
-                #d4af37 20px, #d4af37 40px,
-                #1d3557 40px, #1d3557 60px,
-                #25d366 60px, #25d366 80px
-            );
-            clip-path: polygon(
-                0 0, 100% 0, 100% 50%, 
-                95% 100%, 90% 50%, 85% 100%, 80% 50%, 75% 100%, 70% 50%, 65% 100%, 60% 50%, 
-                55% 100%, 50% 50%, 45% 100%, 40% 50%, 35% 100%, 30% 50%, 25% 100%, 20% 50%, 
-                15% 100%, 10% 50%, 5% 100%, 0 50%
-            );
-            position: sticky;
-            top: 0;
-            z-index: 101;
+        /* TEXTURA EDITORIAL DISCRETA */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--dourado-suave) 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* BARRA SUPERIOR */
+        /* BARRA SUPERIOR ELEGANTE (GLASSMORPHISM) */
         .top-hero-bar {
-            background: linear-gradient(135deg, rgba(40,0,0,0.98), rgba(80,0,0,0.95));
-            border-bottom: 2px solid var(--dourado);
-            padding: 10px 20px;
+            background: rgba(43, 2, 2, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--borda-fina);
+            padding: 14px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
-            top: 18px;
+            top: 0;
             z-index: 100;
             flex-wrap: wrap;
             gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .brand-logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .logo-emblem {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            border: 2px solid var(--dourado);
-            background: var(--bordo-escuro);
+            border: 1px solid var(--dourado-champagne);
+            background: var(--bordo-profundo);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--dourado);
-            font-size: 1.3rem;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            color: var(--dourado-champagne);
+            font-size: 1.1rem;
             overflow: hidden;
+            transition: transform 0.4s ease;
         }
 
         .logo-emblem img {
@@ -121,54 +103,16 @@
 
         .brand-title {
             font-family: 'Cinzel', serif;
-            color: var(--dourado-claro);
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .user-nav-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-adm-trigger {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--dourado);
-            border: 1px solid var(--dourado);
-            padding: 7px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            cursor: pointer;
+            color: var(--dourado-champagne);
             font-weight: 700;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
-
-        .btn-adm-trigger:hover {
-            background: var(--dourado);
-            color: var(--bordo-escuro);
-        }
-
-        .btn-logout {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ff8888;
-            border: 1px solid #ff8888;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            cursor: pointer;
-        }
-        .btn-logout:hover { background: #ff8888; color: #fff; }
 
         .hero-nav {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -176,23 +120,42 @@
         .hero-nav button {
             background: transparent;
             border: none;
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 600;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.72rem;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            padding: 6px 12px;
-            border-radius: 20px;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .hero-nav button:hover, .hero-nav button.active {
-            color: var(--dourado);
-            background: rgba(212, 175, 55, 0.2);
+            color: var(--dourado-champagne);
+            background: rgba(226, 192, 141, 0.08);
+        }
+
+        .btn-adm-trigger {
+            background: transparent;
+            color: var(--dourado-champagne);
+            border: 1px solid var(--dourado-suave);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-adm-trigger:hover {
+            background: var(--dourado-champagne);
+            color: var(--bordo-profundo);
         }
 
         /* ESTRUTURA DAS ABAS */
@@ -200,185 +163,203 @@
             width: 100vw;
             flex: 1;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .slider-track {
             display: flex;
             width: 1100vw;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tab-screen {
             width: 100vw;
-            min-height: calc(100vh - 140px);
-            padding: 30px 15px;
+            min-height: calc(100vh - 80px);
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
         }
 
         .bento-card {
-            background-color: var(--card-palha);
-            border-radius: 20px;
-            border: 2px solid var(--borda-card);
-            box-shadow: var(--sombra-bento);
-            padding: 35px;
+            background-color: var(--card-alvo);
+            border-radius: 24px;
+            border: 1px solid var(--borda-fina);
+            box-shadow: var(--sombra-editorial);
+            padding: 48px;
             width: 100%;
-            max-width: 1050px;
+            max-width: 1100px;
             position: relative;
-        }
-
-        /* Molduras decorativas nas pontas do card */
-        .bento-card::before {
-            content: '🌽';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-
-        .bento-card::after {
-            content: '🪗';
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.2rem;
-            opacity: 0.6;
         }
 
         .title-bento {
             font-family: 'Cinzel', serif;
             font-size: 2.2rem;
-            font-weight: 800;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 25px;
-            color: var(--bordo-medio);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            margin-bottom: 30px;
+            color: var(--bordo-profundo);
+            letter-spacing: 1px;
+            position: relative;
         }
 
-        /* ABA INÍCIO & CARDS NOTÍCIAS */
+        .title-bento::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--dourado-suave);
+            margin: 12px auto 0;
+        }
+
+        /* HERO EDITORIAL NA HOMEPAGE */
+        .hero-banner-editorial {
+            background: linear-gradient(135deg, var(--bordo-profundo), var(--bordo-editorial));
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--borda-fina);
+        }
+
+        .hero-banner-editorial h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--dourado-champagne);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        /* CARDS NOTÍCIAS (EDITORIAL) */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .news-card {
             background: #fff;
-            border-radius: 14px;
-            border: 1px solid var(--borda-card);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
         }
 
         .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-hover);
         }
 
         .news-img {
-            height: 180px;
+            height: 210px;
             width: 100%;
             object-fit: cover;
-            background: #eee;
+            background: var(--fundo-creme);
         }
 
         .news-body {
-            padding: 18px;
+            padding: 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
         .news-title {
+            font-family: 'Cinzel', serif;
             font-weight: 700;
-            color: var(--bordo-escuro);
+            color: var(--bordo-profundo);
             font-size: 1.1rem;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
         .news-excerpt {
-            font-size: 0.85rem;
-            color: var(--texto-suave);
-            line-height: 1.4;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+            line-height: 1.6;
+            margin-bottom: 20px;
             flex: 1;
         }
 
         .news-date {
             font-size: 0.75rem;
-            color: var(--dourado);
+            color: var(--dourado-suave);
             font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* ABA INSCRIÇÕES */
+        /* INSCRIÇÕES ELEGANTES */
         .inscricao-box {
             text-align: center;
-            padding: 40px 20px;
-            background: #fff;
+            padding: 60px 30px;
+            background: var(--fundo-creme);
             border-radius: 20px;
-            border: 2px dashed var(--dourado);
-            box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--borda-fina);
         }
 
         .btn-forms-inscricao {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--bordo-medio), var(--bordo-escuro));
-            color: var(--dourado-claro);
-            padding: 16px 36px;
+            gap: 12px;
+            background: var(--bordo-profundo);
+            color: var(--dourado-champagne);
+            padding: 18px 42px;
             border-radius: 40px;
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(122, 12, 12, 0.35);
-            transition: 0.3s;
-            border: 2px solid var(--dourado);
-            margin-top: 25px;
+            box-shadow: 0 10px 25px rgba(43, 2, 2, 0.2);
+            transition: 0.3s ease;
+            border: 1px solid var(--dourado-suave);
+            margin-top: 30px;
         }
 
         .btn-forms-inscricao:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(122, 12, 12, 0.5);
+            background: var(--bordo-editorial);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(43, 2, 2, 0.3);
         }
 
-        /* ABA HISTÓRIA */
+        /* HISTÓRIA EDITORIAL */
         .story-container {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
             line-height: 1.8;
-            font-size: 1rem;
-            color: var(--texto-escuro);
+            color: var(--texto-solido);
             text-align: justify;
         }
 
         .story-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
         }
 
         .story-gallery img {
             width: 100%;
-            height: 200px;
+            height: 240px;
             object-fit: cover;
             border-radius: 12px;
-            border: 3px solid var(--dourado);
+            border: 1px solid var(--borda-fina);
         }
 
-        /* ABA PADRINHOS */
+        /* PADRINHOS EDITORIAL */
         .padrinhos-container {
             position: relative;
-            max-width: 750px;
+            max-width: 650px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -386,164 +367,175 @@
 
         .padrinho-card {
             background: #fff;
-            border-radius: 18px;
-            border: 2px solid var(--dourado);
-            padding: 30px;
+            border-radius: 120px 120px 20px 20px; /* Moldura estilo Arco */
+            border: 1px solid var(--borda-fina);
+            padding: 40px 30px;
             text-align: center;
             width: 100%;
             display: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: var(--sombra-editorial);
         }
 
         .padrinho-card.active { display: block; }
 
         .padrinho-img {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--dourado);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 2px solid var(--dourado-champagne);
         }
 
         .padrinho-misterioso-box {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2b2b2b, #4a4a4a);
+            background: linear-gradient(135deg, var(--bordo-profundo), #1a0000);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--dourado);
-            border: 4px solid var(--dourado);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-size: 3.5rem;
+            color: var(--dourado-champagne);
+            border: 2px solid var(--dourado-suave);
         }
 
         .nav-btn-padrinho {
-            background: var(--bordo-medio);
-            color: var(--dourado);
-            border: none;
-            width: 45px;
-            height: 45px;
+            background: var(--card-alvo);
+            color: var(--bordo-profundo);
+            border: 1px solid var(--borda-fina);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
             z-index: 10;
             position: absolute;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
         }
-        .nav-btn-padrinho:hover { background: var(--bordo-escuro); transform: scale(1.1); }
-        .btn-prev { left: -20px; }
-        .btn-next { right: -20px; }
+        .nav-btn-padrinho:hover { background: var(--bordo-profundo); color: var(--dourado-champagne); }
+        .btn-prev { left: -24px; }
+        .btn-next { right: -24px; }
 
-        /* ABA DIRETORES (8 QUADRADOS) */
+        /* DIRETORES (8 QUADRADOS SOFISTICADOS) */
         .diretores-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
         }
 
         .diretor-box {
-            border-radius: 16px;
-            padding: 22px 15px;
+            background: #fff;
+            border-radius: 80px 80px 16px 16px; /* Moldura Estilo Arco Moderno */
+            padding: 30px 20px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            color: #fff;
+            transition: all 0.4s ease;
+            border: 1px solid var(--borda-fina);
+            box-shadow: var(--sombra-editorial);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .diretor-box:hover { transform: translateY(-6px); box-shadow: 0 8px 22px rgba(0,0,0,0.3); }
-
-        .diretor-box img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .diretor-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
+            border-color: var(--dourado-suave);
         }
 
-        .bg-azul { background: linear-gradient(135deg, var(--azul-presidente), #2a4d69); border: 2px solid var(--dourado); }
-        .bg-amarelo { background: linear-gradient(135deg, #c9933b, #d4af37); color: var(--texto-escuro); border: 2px solid var(--bordo-medio); }
-        .bg-vermelho { background: linear-gradient(135deg, var(--vermelho-junino), #7a0c0c); border: 2px solid var(--dourado); }
+        .diretor-box img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--dourado-champagne);
+            margin-bottom: 16px;
+        }
 
-        /* MENSAGEM / PATROCINADORES E APOIADORES */
+        .diretor-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--bordo-profundo);
+            margin-bottom: 4px;
+        }
+
+        .diretor-box span {
+            font-size: 0.78rem;
+            color: var(--dourado-suave);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* PATROCINADORES & APOIADORES */
         .patrocinio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .patrocinio-item {
             background: #fff;
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 16px;
+            padding: 24px;
             text-align: center;
-            border: 1px solid var(--borda-card);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--borda-fina);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         .patrocinio-item img {
             width: 100%;
-            height: 120px;
+            height: 100px;
             object-fit: contain;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .patrocinio-box {
             text-align: center;
-            padding: 40px 20px;
-            background: #fff;
-            border-radius: 16px;
-            border: 2px dashed var(--dourado);
-            margin-top: 25px;
+            padding: 50px 20px;
+            background: var(--fundo-creme);
+            border-radius: 20px;
+            border: 1px solid var(--borda-fina);
+            margin-top: 30px;
         }
 
         .btn-wsp {
-            background: #25d366;
+            background: #128c7e;
             color: #fff;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 30px;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: 0.3s;
         }
 
-        .btn-wsp:hover { background: #1ebd56; transform: translateY(-2px); }
+        .btn-wsp:hover { background: #075e54; transform: translateY(-2px); }
 
-        /* CORAÇÃO TOKTOK */
+        /* CORAÇÃO TOKTOK SOFISTICADO */
         .toktok-feed {
             width: 100%;
             max-width: 380px;
-            height: 600px;
+            height: 620px;
             margin: 0 auto;
             background: #000;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
-            border: 4px solid var(--dourado);
+            border: 1px solid var(--dourado-suave);
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .toktok-feed::-webkit-scrollbar { display: none; }
-        .toktok-feed { -ms-overflow-style: none; scrollbar-width: none; }
 
         .toktok-post {
             width: 100%;
@@ -564,44 +556,37 @@
 
         .toktok-side-actions {
             position: absolute;
-            right: 12px;
-            bottom: 60px;
+            right: 14px;
+            bottom: 70px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 20px;
             align-items: center;
             z-index: 5;
         }
 
-        .action-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .toktok-btn {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: 0.2s;
         }
 
-        .toktok-btn.active { color: #ff3366; }
+        .toktok-btn.active { color: #ff3366; border-color: #ff3366; }
 
         .action-count {
             color: #fff;
-            font-size: 0.75rem;
-            font-weight: bold;
+            font-size: 0.72rem;
+            font-weight: 600;
             margin-top: 4px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .toktok-caption {
@@ -609,56 +594,55 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 15px;
+            padding: 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.9));
             color: #fff;
             font-size: 0.85rem;
         }
 
-        /* REPERTÓRIO & GALERIA */
+        /* REPERTÓRIO & GALERIA EDITORIAL */
         .repertorio-card {
             background: #fff;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 6px solid var(--bordo-medio);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--borda-fina);
+            box-shadow: var(--sombra-editorial);
         }
 
         .repertorio-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 15px;
-            background: var(--fundo-palha);
+            padding: 14px 18px;
+            background: var(--fundo-creme);
             border-radius: 10px;
-            margin-top: 10px;
+            margin-top: 12px;
             flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .repertorio-item audio { height: 38px; outline: none; flex: 1; min-width: 220px; }
-
-        .grid-midia {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             gap: 15px;
         }
 
+        .repertorio-item audio { height: 36px; outline: none; flex: 1; min-width: 220px; }
+
+        .grid-midia {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
         .midia-box {
-            height: 190px;
-            border-radius: 12px;
+            height: 200px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             background: #000;
             cursor: pointer;
-            border: 2px solid transparent;
-            transition: 0.3s;
+            border: 1px solid var(--borda-fina);
+            transition: 0.4s ease;
         }
 
         .midia-box:hover {
-            border-color: var(--dourado);
             transform: scale(1.02);
+            border-color: var(--dourado-suave);
         }
 
         .midia-box img, .midia-box video {
@@ -667,187 +651,134 @@
             object-fit: cover;
         }
 
-        /* COMENTÁRIOS E ANINHAMENTO */
-        .comentarios-secao {
-            margin-top: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 12px;
-            max-height: 250px;
-            overflow-y: auto;
-            color: #333;
-        }
-
-        .comentario-item {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            align-items: flex-start;
-        }
-
-        .comentario-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--bordo-medio);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.75rem;
-            flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .comentario-conteudo {
-            flex: 1;
-            background: #f0f0f0;
-            padding: 8px 12px;
-            border-radius: 12px;
-        }
-
-        .comentario-autor { font-weight: 700; color: var(--bordo-escuro); margin-right: 5px; }
-
-        .btn-responder-comentario {
-            background: none;
-            border: none;
-            color: var(--bordo-medio);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            font-size: 0.72rem;
-            margin-top: 4px;
-        }
-
-        .respostas-container {
-            margin-left: 20px;
-            margin-top: 8px;
-            border-left: 2px solid var(--dourado);
-            padding-left: 10px;
-        }
-
-        /* MODAIS E PAINEL ADMINISTRATIVO */
+        /* MODAIS E PAINEL ADMINISTRATIVO SOFISTICADO */
         .modal-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.85);
+            background: rgba(28, 25, 23, 0.85);
+            backdrop-filter: blur(6px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            padding: 15px;
+            padding: 20px;
         }
 
         .modal-box {
-            background: var(--card-palha);
-            border: 2px solid var(--dourado);
-            border-radius: 18px;
-            padding: 25px;
+            background: var(--card-alvo);
+            border: 1px solid var(--borda-fina);
+            border-radius: 20px;
+            padding: 35px;
             width: 100%;
-            max-width: 550px;
+            max-width: 580px;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
         }
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 18px;
-            font-size: 1.3rem;
+            top: 20px;
+            right: 22px;
+            font-size: 1.2rem;
             cursor: pointer;
-            color: var(--bordo-escuro);
+            color: var(--texto-mutado);
+            transition: 0.2s;
         }
 
+        .close-btn:hover { color: var(--bordo-profundo); }
+
         .form-control {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
 
         .form-control label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--bordo-escuro);
+            color: var(--bordo-profundo);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-control input, .form-control select, .form-control textarea {
-            padding: 10px 12px;
+            padding: 12px 14px;
             border-radius: 8px;
-            border: 1px solid var(--borda-card);
+            border: 1px solid rgba(0,0,0,0.12);
             font-family: inherit;
             background: #fff;
+            font-size: 0.9rem;
         }
 
         .btn-junino {
-            background: linear-gradient(135deg, var(--bordo-medio), var(--bordo-escuro));
-            color: #fff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 700;
+            background: var(--bordo-profundo);
+            color: var(--dourado-champagne);
+            padding: 14px 28px;
+            border: 1px solid var(--dourado-suave);
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
-            margin-top: 10px;
-            border: 1px solid var(--dourado);
+            margin-top: 15px;
         }
-        .btn-junino:hover { background: var(--bordo-escuro); }
+        .btn-junino:hover { background: var(--bordo-editorial); }
 
         /* TELA DE ZOOM DA GALERIA */
         #zoomModal img, #zoomModal video {
             max-width: 90vw;
             max-height: 85vh;
-            border-radius: 10px;
-            border: 3px solid var(--dourado);
+            border-radius: 12px;
+            border: 1px solid var(--dourado-champagne);
         }
 
         /* TOAST NOTIFICAÇÕES */
-        #toastArea { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        #toastArea { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
         .toast {
-            background: #fff; border-left: 5px solid var(--dourado);
-            padding: 12px 18px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 0.85rem; margin-top: 8px; font-weight: 600;
+            background: var(--bordo-profundo); color: var(--dourado-champagne);
+            border: 1px solid var(--dourado-suave);
+            padding: 14px 22px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 0.85rem; margin-top: 10px; font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            .title-bento { font-size: 1.6rem; }
+            .title-bento { font-size: 1.7rem; }
+            .hero-banner-editorial h1 { font-size: 2.3rem; }
             .btn-prev { left: -10px; }
             .btn-next { right: -10px; }
             .top-hero-bar { justify-content: center; text-align: center; }
+            .bento-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- DECORAÇÃO BANDEIROLAS JUNINAS -->
-    <div class="bandeirolas-decor"></div>
-
-    <!-- BARRA DE NAVEGAÇÃO -->
+    <!-- BARRA DE NAVEGAÇÃO GLASSMORPHISM -->
     <header class="top-hero-bar">
         <div class="brand-logo-container">
             <div class="logo-emblem" id="siteLogoBox">
-                <i class="fa-solid fa-heart" style="color:#ff3366;"></i>
+                <i class="fa-solid fa-heart" style="color:var(--dourado-champagne);"></i>
             </div>
             <div class="brand-title">Coração Junino</div>
         </div>
 
         <nav class="hero-nav">
-            <button class="active" onclick="mudarAba(0)"><i class="fa-solid fa-house"></i> Início</button>
-            <button onclick="mudarAba(1)"><i class="fa-solid fa-book-open"></i> História</button>
-            <button onclick="mudarAba(2)"><i class="fa-solid fa-pen-to-square"></i> Inscrições</button>
-            <button onclick="mudarAba(3)"><i class="fa-solid fa-crown"></i> Padrinhos</button>
-            <button onclick="mudarAba(4)"><i class="fa-solid fa-user-tie"></i> Diretores</button>
-            <button onclick="mudarAba(5)"><i class="fa-solid fa-handshake"></i> Patrocinadores</button>
-            <button onclick="mudarAba(6)"><i class="fa-solid fa-heart-pulse"></i> Apoiadores</button>
-            <button onclick="mudarAba(7)"><i class="fa-solid fa-video"></i> Coração Tok</button>
-            <button onclick="mudarAba(8)"><i class="fa-solid fa-music"></i> Repertório</button>
-            <button onclick="mudarAba(9)"><i class="fa-solid fa-bullhorn"></i> Novidades</button>
-            <button onclick="mudarAba(10)"><i class="fa-solid fa-images"></i> Galeria</button>
+            <button class="active" onclick="mudarAba(0)">Início</button>
+            <button onclick="mudarAba(1)">História</button>
+            <button onclick="mudarAba(2)">Inscrições</button>
+            <button onclick="mudarAba(3)">Padrinhos</button>
+            <button onclick="mudarAba(4)">Diretores</button>
+            <button onclick="mudarAba(5)">Patrocinadores</button>
+            <button onclick="mudarAba(6)">Apoiadores</button>
+            <button onclick="mudarAba(7)">Coração Tok</button>
+            <button onclick="mudarAba(8)">Repertório</button>
+            <button onclick="mudarAba(9)">Novidades</button>
+            <button onclick="mudarAba(10)">Galeria</button>
         </nav>
 
         <div class="user-nav-status">
@@ -862,24 +793,23 @@
             <!-- ABA 0: INÍCIO -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-fire" style="color:var(--vermelho-junino);"></i> Bem-vindo à Coração Junino</h1>
-                    <p style="text-align:center; color:var(--texto-suave);">Acompanhe as últimas notícias, avisos e destaques da nossa quadrilha junina!</p>
-                    
-                    <div class="news-grid" id="gridNoticiasInicio">
-                        <!-- Cards de Notícias Renderizados via JavaScript -->
+                    <div class="hero-banner-editorial">
+                        <h1>Espetáculo & Tradição</h1>
+                        <p style="font-family:'Cormorant Garamond', serif; font-size:1.2rem; color:var(--dourado-champagne);">Acompanhe as últimas publicações, ensaios e comunicados da nossa quadrilha.</p>
                     </div>
+
+                    <h2 class="title-bento">Últimas Notícias</h2>
+                    <div class="news-grid" id="gridNoticiasInicio"></div>
                 </div>
             </section>
 
             <!-- ABA 1: HISTÓRIA -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-scroll"></i> Nossa História</h1>
+                    <h1 class="title-bento">Nossa Trajetória</h1>
                     <div class="story-container">
                         <p id="textoHistoria">Fundada com o fogo da paixão e a alegria do São João, a Quadrilha Junina Coração Junino leva a tradição nordestina, a dança e o encanto do arrasta-pé para os palcos de todo o país. Nossos passos carregam a ancestralidade, o ritmo da sanfona e o amor pela nossa cultura.</p>
-                        <div class="story-gallery" id="galeriaHistoria">
-                            <!-- Fotos da história serão inseridas aqui -->
-                        </div>
+                        <div class="story-gallery" id="galeriaHistoria"></div>
                     </div>
                 </div>
             </section>
@@ -887,14 +817,14 @@
             <!-- ABA 2: INSCRIÇÕES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-id-card"></i> Faça sua Inscrição</h1>
+                    <h1 class="title-bento">Seja Integrante</h1>
                     <div class="inscricao-box">
-                        <i class="fa-solid fa-users-viewfinder" style="font-size: 3.5rem; color:var(--bordo-medio); margin-bottom: 15px;"></i>
-                        <h2 style="color:var(--bordo-escuro); margin-bottom: 10px;">Quer Dançar na Coração Junino?</h2>
-                        <p style="color:var(--texto-suave); max-width: 600px; margin: 0 auto;">Venha fazer parte da família mais apaixonada do São João! Clique no botão abaixo para preencher nossa ficha de inscrição oficial.</p>
+                        <i class="fa-solid fa-gem" style="font-size: 2.5rem; color:var(--dourado-suave); margin-bottom: 20px;"></i>
+                        <h2 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); margin-bottom: 12px;">Faça parte do nosso elenco</h2>
+                        <p style="color:var(--texto-mutado); max-width: 550px; margin: 0 auto; line-height: 1.6;">Inscreva-se para as seletivas do nosso novo ciclo junino. Preencha os dados no formulário oficial abaixo.</p>
                         <br>
                         <a href="https://forms.google.com" target="_blank" id="btnFormsInscricao" class="btn-forms-inscricao">
-                            <i class="fa-solid fa-file-signature"></i> Preencher Formulário de Inscrição
+                            <i class="fa-solid fa-paper-plane"></i> Acessar Ficha de Inscrição
                         </a>
                     </div>
                 </div>
@@ -903,48 +833,45 @@
             <!-- ABA 3: PADRINHOS -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-award"></i> Nossos Padrinhos</h1>
+                    <h1 class="title-bento">Padrinhos Oficiais</h1>
                     <div class="padrinhos-container">
-                        <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-arrow-left"></i></button>
                         
                         <div id="padrinhosList" style="width: 100%;">
                             <!-- Card Fixo do Padrinho Misterioso -->
                             <div class="padrinho-card active">
                                 <div class="padrinho-misterioso-box">
-                                    <i class="fa-solid fa-user-secret"></i>
+                                    <i class="fa-solid fa-mask"></i>
                                 </div>
-                                <h3 style="color:var(--bordo-escuro); font-size: 1.4rem;">Padrinho Misterioso</h3>
-                                <p style="color:var(--dourado); font-weight:700; margin-bottom: 10px;">???</p>
-                                <p style="color:var(--texto-suave);">Aguarde a grande revelação oficial da nossa quadrilha para este ciclo junino!</p>
+                                <h3 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); font-size: 1.3rem;">Padrinho Misterioso</h3>
+                                <p style="color:var(--dourado-suave); font-weight:700; margin-bottom: 12px; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Revelação em Breve</p>
+                                <p style="color:var(--texto-mutado); font-size:0.9rem;">Aguarde a revelação do nome do nosso padrinho para esta temporada.</p>
                             </div>
                         </div>
 
-                        <button class="nav-btn-padrinho btn-next" onclick="mudarPadrinho(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button class="nav-btn-padrinho btn-next" onclick="mudarPadrinho(1)"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </section>
 
-            <!-- ABA 4: DIRETORES (8 QUADRADOS) -->
+            <!-- ABA 4: DIRETORES (8 QUADRADOS EDITORIAL) -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-user-shield"></i> Corpo Diretivo</h1>
-                    <div class="diretores-grid" id="gridDiretores">
-                        <!-- 8 Quadrados dos Diretores são gerados dinamicamente via JS -->
-                    </div>
+                    <h1 class="title-bento">Corpo Diretivo</h1>
+                    <div class="diretores-grid" id="gridDiretores"></div>
                 </div>
             </section>
 
             <!-- ABA 5: PATROCINADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-handshake"></i> Patrocinadores</h1>
-                    <p style="text-align:center; color:var(--texto-suave);">Marcas que incentivam e fortalecem o nosso espetáculo.</p>
+                    <h1 class="title-bento">Patrocinadores</h1>
+                    <p style="text-align:center; color:var(--texto-mutado);">Marcas parceiras que apoiam a nossa arte.</p>
                     <div class="patrocinio-grid" id="gridPatrocinadores"></div>
                     <div class="patrocinio-box">
-                        <i class="fa-solid fa-briefcase"></i>
-                        <h3>Quer patrocinar o nosso espetáculo?</h3>
-                        <p style="color:var(--texto-suave); margin-top:5px;">Sua marca em destaque nos maiores palcos juninos.</p>
-                        <a href="https://wa.me/" target="_blank" class="btn-wsp"><i class="fa-brands fa-whatsapp"></i> Seja um Patrocinador</a>
+                        <h3 style="font-family:'Cinzel', serif; color:var(--bordo-profundo);">Deseja Patrocinar o Espetáculo?</h3>
+                        <p style="color:var(--texto-mutado); margin-top:6px;">Agende uma reunião com a nossa diretoria comercial.</p>
+                        <a href="https://wa.me/" target="_blank" class="btn-wsp"><i class="fa-brands fa-whatsapp"></i> Falar com Comercial</a>
                     </div>
                 </div>
             </section>
@@ -952,8 +879,8 @@
             <!-- ABA 6: APOIADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-heart-pulse"></i> Apoiadores</h1>
-                    <p style="text-align:center; color:var(--texto-suave);">Agradecemos a todos que colaboram com o nosso sonho!</p>
+                    <h1 class="title-bento">Apoiadores</h1>
+                    <p style="text-align:center; color:var(--texto-mutado);">Instituições e parceiros que tornam este sonho possível.</p>
                     <div class="patrocinio-grid" id="gridApoiadores"></div>
                 </div>
             </section>
@@ -961,22 +888,18 @@
             <!-- ABA 7: CORAÇÃO TOKTOK -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-mobile-screen"></i> Coração Tok</h1>
-                    <div class="toktok-feed" id="toktokFeed">
-                        <!-- Posts estilo TikTok carregados via Javascript -->
-                    </div>
+                    <h1 class="title-bento">Coração Tok</h1>
+                    <div class="toktok-feed" id="toktokFeed"></div>
                 </div>
             </section>
 
             <!-- ABA 8: REPERTÓRIO -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-compact-disc"></i> Repertório Oficial</h1>
+                    <h1 class="title-bento">Repertório Musical</h1>
                     <div class="repertorio-card">
-                        <h2 style="color:var(--bordo-escuro); margin-bottom:15px;" id="tituloRepertorio">Repertório 2027</h2>
-                        <div id="listaMusicas">
-                            <!-- Musicas Locais serao inseridas via JS -->
-                        </div>
+                        <h2 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); margin-bottom:20px;" id="tituloRepertorio">Playlist Oficial</h2>
+                        <div id="listaMusicas"></div>
                     </div>
                 </div>
             </section>
@@ -984,7 +907,7 @@
             <!-- ABA 9: NOVIDADES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-bullhorn"></i> Mural de Novidades</h1>
+                    <h1 class="title-bento">Mural de Novidades</h1>
                     <div id="listaNovidades"></div>
                 </div>
             </section>
@@ -992,10 +915,8 @@
             <!-- ABA 10: GALERIA -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h1 class="title-bento"><i class="fa-solid fa-photo-film"></i> Mural da Galeria</h1>
-                    <div class="grid-midia" id="gridGaleria">
-                        <!-- Fotos e Vídeos renderizados via JS -->
-                    </div>
+                    <h1 class="title-bento">Galeria de Fotos & Vídeos</h1>
+                    <div class="grid-midia" id="gridGaleria"></div>
                 </div>
             </section>
 
@@ -1006,31 +927,28 @@
     <div class="modal-bg" id="modalPainel">
         <div class="modal-box">
             <span class="close-btn" onclick="fecharModais()">&times;</span>
-            <h2 style="color:var(--bordo-escuro); text-align:center; margin-bottom:15px;"><i class="fa-solid fa-sliders"></i> Painel da Diretoria</h2>
+            <h2 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); text-align:center; margin-bottom:20px;"><i class="fa-solid fa-sliders"></i> Painel da Diretoria</h2>
             
             <div class="form-control">
-                <label>Selecione a Aba que deseja Editar/Adicionar Conteúdo:</label>
+                <label>Selecione a Aba para Gerenciar:</label>
                 <select id="selAbaEdit" onchange="alternarCamposPainel()">
-                    <option value="logo">Logo / Marca D'água do Site</option>
-                    <option value="inicio">Início (Adicionar Notícia em Quadrado)</option>
-                    <option value="historia">História (Editar Texto / Adicionar Foto)</option>
+                    <option value="logo">Logo / Emblema do Site</option>
+                    <option value="inicio">Início (Publicar Notícia)</option>
+                    <option value="historia">História (Editar Texto)</option>
                     <option value="inscricoes">Inscrições (Link do Forms)</option>
                     <option value="padrinhos">Padrinhos (Adicionar Padrinho)</option>
                     <option value="diretores">Diretores (Editar os 8 Quadrados)</option>
                     <option value="patrocinadores">Patrocinadores</option>
                     <option value="apoiadores">Apoiadores</option>
-                    <option value="toktok">Coração Tok (Adicionar Vídeo)</option>
-                    <option value="repertorio">Repertório (Adicionar Música Áudio)</option>
-                    <option value="galeria">Galeria (Adicionar Foto/Vídeo com Zoom)</option>
+                    <option value="toktok">Coração Tok (Upload de Vídeo)</option>
+                    <option value="repertorio">Repertório (Upload de Áudio Local)</option>
+                    <option value="galeria">Galeria (Upload de Foto/Vídeo)</option>
                 </select>
             </div>
 
-            <hr style="margin:15px 0; border:0; border-top:1px solid var(--borda-card);">
+            <hr style="margin:20px 0; border:0; border-top:1px solid var(--borda-fina);">
 
-            <!-- FORMULÁRIOS DINÂMICOS -->
-            <div id="painelCampos">
-                <!-- Inserido dinamicamente pelo Javascript -->
-            </div>
+            <div id="painelCampos"></div>
 
             <button class="btn-junino" onclick="salvarAlteracaoPainel()"><i class="fa-solid fa-floppy-disk"></i> Salvar Alterações</button>
         </div>
@@ -1040,10 +958,10 @@
     <div class="modal-bg" id="modalDiretor">
         <div class="modal-box" style="text-align:center;">
             <span class="close-btn" onclick="fecharModais()">&times;</span>
-            <img id="modalDiretorImg" src="" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:4px solid var(--dourado); margin-bottom:15px;">
-            <h2 id="modalDiretorNome" style="color:var(--bordo-escuro);"></h2>
-            <p id="modalDiretorCargo" style="color:var(--dourado); font-weight:bold; margin-bottom:15px;"></p>
-            <p id="modalDiretorDesc" style="color:var(--texto-suave); font-size:0.95rem; line-height:1.6; text-align:justify;"></p>
+            <img id="modalDiretorImg" src="" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid var(--dourado-champagne); margin-bottom:18px;">
+            <h2 id="modalDiretorNome" style="font-family:'Cinzel', serif; color:var(--bordo-profundo);"></h2>
+            <p id="modalDiretorCargo" style="color:var(--dourado-suave); font-weight:700; margin-bottom:15px; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;"></p>
+            <p id="modalDiretorDesc" style="color:var(--texto-mutado); font-size:0.95rem; line-height:1.6; text-align:justify;"></p>
         </div>
     </div>
 
@@ -1060,21 +978,21 @@
         let appData = {
             logo: '',
             noticias: [
-                { titulo: 'Ensaio Geral Neste Domingo!', resumo: 'Contamos com a presença de todos os integrantes para o nosso ensaio técnico.', data: '10/05/2026', img: '' }
+                { titulo: 'Ensaio Geral Neste Domingo', resumo: 'Convocamos todo o elenco para o alinhamento técnico do novo espetáculo.', data: '10/05/2026', img: '' }
             ],
             historiaTexto: 'Fundada com o fogo da paixão e a alegria do São João, a Quadrilha Junina Coração Junino leva a tradição nordestina, a dança e o encanto do arrasta-pé para os palcos de todo o país.',
             historiaFotos: [],
             linkForms: 'https://forms.google.com',
             padrinhos: [],
             diretores: [
-                { nome: 'Diretor 1', cargo: 'Presidente', desc: 'Liderança e representação geral da quadrilha.', cor: 'bg-azul', foto: '' },
-                { nome: 'Diretor 2', cargo: 'Vice-Presidente', desc: 'Apoio executivo e coordenação de projetos.', cor: 'bg-azul', foto: '' },
-                { nome: 'Diretor 3', cargo: 'Diretor Cultural', desc: 'Desenvolvimento do tema e figurinos.', cor: 'bg-vermelho', foto: '' },
-                { nome: 'Diretor 4', cargo: 'Diretor Financeiro', desc: 'Gestão de recursos e patrocínios.', cor: 'bg-amarelo', foto: '' },
-                { nome: 'Diretor 5', cargo: 'Coreógrafo', desc: 'Criação e ensaio das movimentações.', cor: 'bg-vermelho', foto: '' },
-                { nome: 'Diretor 6', cargo: 'Coordenador de Destaques', desc: 'Organização e ensaio dos casais principais.', cor: 'bg-amarelo', foto: '' },
-                { nome: 'Diretor 7', cargo: 'Diretor de Logística', desc: 'Transporte e montagem do cenário.', cor: 'bg-azul', foto: '' },
-                { nome: 'Diretor 8', cargo: 'Comunicação', desc: 'Redes sociais e assessoria.', cor: 'bg-amarelo', foto: '' }
+                { nome: 'Diretor 1', cargo: 'Presidente', desc: 'Liderança e representação geral da quadrilha.', foto: '' },
+                { nome: 'Diretor 2', cargo: 'Vice-Presidente', desc: 'Apoio executivo e coordenação de projetos.', foto: '' },
+                { nome: 'Diretor 3', cargo: 'Diretor Cultural', desc: 'Desenvolvimento do tema e figurinos.', foto: '' },
+                { nome: 'Diretor 4', cargo: 'Diretor Financeiro', desc: 'Gestão de recursos e patrocínios.', foto: '' },
+                { nome: 'Diretor 5', cargo: 'Coreógrafo', desc: 'Criação e ensaio das movimentações.', foto: '' },
+                { nome: 'Diretor 6', cargo: 'Coordenador de Destaques', desc: 'Organização e ensaio dos casais principais.', foto: '' },
+                { nome: 'Diretor 7', cargo: 'Diretor de Logística', desc: 'Transporte e montagem do cenário.', foto: '' },
+                { nome: 'Diretor 8', cargo: 'Comunicação', desc: 'Redes sociais e assessoria.', foto: '' }
             ],
             patrocinadores: [],
             apoiadores: [],
@@ -1083,7 +1001,6 @@
             galeria: []
         };
 
-        // INICIALIZAÇÃO
         window.onload = function() {
             carregarDadosSalvos();
             renderizarNoticias();
@@ -1100,12 +1017,11 @@
             const toastArea = document.getElementById('toastArea');
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--bordo-medio);"></i> ${msg}`;
+            toast.innerHTML = `<i class="fa-solid fa-check"></i> ${msg}`;
             toastArea.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // NAVEGAÇÃO ENTRE ABAS
         function mudarAba(index) {
             const track = document.getElementById('sliderTrack');
             track.style.transform = `translateX(-${index * 100}vw)`;
@@ -1116,7 +1032,6 @@
             });
         }
 
-        // SALVAR E CARREGAR LOCALSTORAGE
         function carregarDadosSalvos() {
             const salvos = localStorage.getItem('coracao_junino_data');
             if(salvos) {
@@ -1137,7 +1052,6 @@
             localStorage.setItem('coracao_junino_data', JSON.stringify(appData));
         }
 
-        // RENDERIZAR NOTÍCIAS (ABA INÍCIO)
         function renderizarNoticias() {
             const grid = document.getElementById('gridNoticiasInicio');
             grid.innerHTML = '';
@@ -1145,29 +1059,28 @@
                 const card = document.createElement('div');
                 card.className = 'news-card';
                 card.innerHTML = `
-                    ${n.img ? `<img src="${n.img}" class="news-img">` : '<div class="news-img" style="display:flex;align-items:center;justify-content:center;color:#ccc;"><i class="fa-solid fa-newspaper fa-3x"></i></div>'}
+                    ${n.img ? `<img src="${n.img}" class="news-img">` : '<div class="news-img" style="display:flex;align-items:center;justify-content:center;color:#ccc;"><i class="fa-solid fa-newspaper fa-2x"></i></div>'}
                     <div class="news-body">
                         <div class="news-title">${n.titulo}</div>
                         <div class="news-excerpt">${n.resumo}</div>
-                        <div class="news-date"><i class="fa-regular fa-calendar-days"></i> ${n.data}</div>
+                        <div class="news-date">${n.data}</div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // RENDERIZAR DIRETORES (8 QUADRADOS)
         function renderizarDiretores() {
             const grid = document.getElementById('gridDiretores');
             grid.innerHTML = '';
             appData.diretores.forEach((d, idx) => {
                 const box = document.createElement('div');
-                box.className = `diretor-box ${d.cor || 'bg-azul'}`;
+                box.className = 'diretor-box';
                 box.onclick = () => abrirModalDiretor(idx);
                 box.innerHTML = `
-                    <img src="${d.foto || 'https://via.placeholder.com/100'}" alt="${d.nome}">
-                    <h3 style="font-size:1rem; margin-bottom:4px;">${d.nome}</h3>
-                    <span style="font-size:0.75rem; opacity:0.9;">${d.cargo}</span>
+                    <img src="${d.foto || 'https://via.placeholder.com/110'}" alt="${d.nome}">
+                    <h3>${d.nome}</h3>
+                    <span>${d.cargo}</span>
                 `;
                 grid.appendChild(box);
             });
@@ -1175,32 +1088,31 @@
 
         function abrirModalDiretor(idx) {
             const d = appData.diretores[idx];
-            document.getElementById('modalDiretorImg').src = d.foto || 'https://via.placeholder.com/100';
+            document.getElementById('modalDiretorImg').src = d.foto || 'https://via.placeholder.com/110';
             document.getElementById('modalDiretorNome').innerText = d.nome;
             document.getElementById('modalDiretorCargo').innerText = d.cargo;
             document.getElementById('modalDiretorDesc').innerText = d.desc || 'Sem descrição cadastrada.';
             document.getElementById('modalDiretor').style.display = 'flex';
         }
 
-        // RENDERIZAR PADRINHOS
         let padrinhoIndex = 0;
         function renderizarPadrinhos() {
             const container = document.getElementById('padrinhosList');
             let html = `
                 <div class="padrinho-card active">
-                    <div class="padrinho-misterioso-box"><i class="fa-solid fa-user-secret"></i></div>
-                    <h3 style="color:var(--bordo-escuro); font-size: 1.4rem;">Padrinho Misterioso</h3>
-                    <p style="color:var(--dourado); font-weight:700; margin-bottom: 10px;">???</p>
-                    <p style="color:var(--texto-suave);">Aguarde a grande revelação oficial para este ciclo junino!</p>
+                    <div class="padrinho-misterioso-box"><i class="fa-solid fa-mask"></i></div>
+                    <h3 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); font-size: 1.3rem;">Padrinho Misterioso</h3>
+                    <p style="color:var(--dourado-suave); font-weight:700; margin-bottom: 12px; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Revelação em Breve</p>
+                    <p style="color:var(--texto-mutado); font-size:0.9rem;">Aguarde a revelação do nome do nosso padrinho para esta temporada.</p>
                 </div>
             `;
             appData.padrinhos.forEach(p => {
                 html += `
                     <div class="padrinho-card">
                         <img src="${p.foto}" class="padrinho-img">
-                        <h3 style="color:var(--bordo-escuro); font-size: 1.4rem;">${p.nome}</h3>
-                        <p style="color:var(--dourado); font-weight:700; margin-bottom: 10px;">${p.titulo}</p>
-                        <p style="color:var(--texto-suave);">${p.desc}</p>
+                        <h3 style="font-family:'Cinzel', serif; color:var(--bordo-profundo); font-size: 1.3rem;">${p.nome}</h3>
+                        <p style="color:var(--dourado-suave); font-weight:700; margin-bottom: 12px; text-transform:uppercase; font-size:0.8rem;">${p.titulo}</p>
+                        <p style="color:var(--texto-mutado); font-size:0.9rem;">${p.desc}</p>
                     </div>
                 `;
             });
@@ -1214,7 +1126,6 @@
             cards[padrinhoIndex].classList.add('active');
         }
 
-        // RENDERIZAR PATROCINADORES E APOIADORES
         function renderizarPatrocinios() {
             const pGrid = document.getElementById('gridPatrocinadores');
             const aGrid = document.getElementById('gridApoiadores');
@@ -1229,12 +1140,11 @@
             });
         }
 
-        // RENDERIZAR TOKTOK
         function renderizarTokTok() {
             const feed = document.getElementById('toktokFeed');
             feed.innerHTML = '';
             if(appData.toktok.length === 0) {
-                feed.innerHTML = '<div style="color:#fff; text-align:center; padding-top:250px;">Nenhum vídeo publicado ainda.</div>';
+                feed.innerHTML = '<div style="color:#fff; text-align:center; padding-top:280px; font-size:0.9rem;">Nenhum vídeo publicado ainda.</div>';
                 return;
             }
             appData.toktok.forEach((v, idx) => {
@@ -1264,26 +1174,24 @@
             salvarStorage();
         }
 
-        // RENDERIZAR REPERTÓRIO
         function renderizarRepertorio() {
             const lista = document.getElementById('listaMusicas');
             lista.innerHTML = '';
             if(appData.musicas.length === 0) {
-                lista.innerHTML = '<p style="color:var(--texto-suave);">Nenhuma música cadastrada no repertório.</p>';
+                lista.innerHTML = '<p style="color:var(--texto-mutado);">Nenhuma música cadastrada na playlist.</p>';
                 return;
             }
             appData.musicas.forEach(m => {
                 const item = document.createElement('div');
                 item.className = 'repertorio-item';
                 item.innerHTML = `
-                    <span style="font-weight:700; color:var(--bordo-escuro);"><i class="fa-solid fa-music"></i> ${m.titulo}</span>
+                    <span style="font-weight:600; color:var(--bordo-profundo);"><i class="fa-solid fa-music"></i> ${m.titulo}</span>
                     <audio controls src="${m.audio}"></audio>
                 `;
                 lista.appendChild(item);
             });
         }
 
-        // RENDERIZAR GALERIA
         function renderizarGaleria() {
             const grid = document.getElementById('gridGaleria');
             grid.innerHTML = '';
@@ -1310,7 +1218,6 @@
             document.getElementById('zoomModal').style.display = 'flex';
         }
 
-        // PAINEL DA DIRETORIA - ALTERNAR CAMPOS
         function alternarCamposPainel() {
             const val = document.getElementById('selAbaEdit').value;
             const container = document.getElementById('painelCampos');
@@ -1319,7 +1226,7 @@
             if(val === 'logo') {
                 container.innerHTML = `
                     <div class="form-control">
-                        <label>Escolha o Arquivo da Logo (Substitui o Fogo):</label>
+                        <label>Upload da Nova Logo do Site:</label>
                         <input type="file" id="fileLogo" accept="image/*">
                     </div>
                 `;
@@ -1335,7 +1242,7 @@
                 `;
             } else if(val === 'inscricoes') {
                 container.innerHTML = `
-                    <div class="form-control"><label>Link do Google Forms para Inscrições:</label><input type="url" id="linkFormsVal" value="${appData.linkForms}"></div>
+                    <div class="form-control"><label>Link do Google Forms:</label><input type="url" id="linkFormsVal" value="${appData.linkForms}"></div>
                 `;
             } else if(val === 'diretores') {
                 let options = appData.diretores.map((d, i) => `<option value="${i}">${d.nome} (${d.cargo})</option>`).join('');
@@ -1350,27 +1257,27 @@
             } else if(val === 'padrinhos') {
                 container.innerHTML = `
                     <div class="form-control"><label>Nome do Padrinho/Madrinha:</label><input type="text" id="padNome"></div>
-                    <div class="form-control"><label>Título (ex: Madrinha da Diversidade):</label><input type="text" id="padTitulo"></div>
+                    <div class="form-control"><label>Título:</label><input type="text" id="padTitulo"></div>
                     <div class="form-control"><label>Foto:</label><input type="file" id="padFoto" accept="image/*"></div>
                 `;
             } else if(val === 'patrocinadores' || val === 'apoiadores') {
                 container.innerHTML = `
-                    <div class="form-control"><label>Nome da Empresa/Parceiro:</label><input type="text" id="patNome"></div>
+                    <div class="form-control"><label>Nome do Parceiro:</label><input type="text" id="patNome"></div>
                     <div class="form-control"><label>Logo/Imagem:</label><input type="file" id="patLogo" accept="image/*"></div>
                 `;
             } else if(val === 'toktok') {
                 container.innerHTML = `
                     <div class="form-control"><label>Legenda do Vídeo:</label><input type="text" id="tokLegenda"></div>
-                    <div class="form-control"><label>Arquivo de Vídeo (Upload Local):</label><input type="file" id="tokVideo" accept="video/*"></div>
+                    <div class="form-control"><label>Vídeo (Upload Local):</label><input type="file" id="tokVideo" accept="video/*"></div>
                 `;
             } else if(val === 'repertorio') {
                 container.innerHTML = `
-                    <div class="form-control"><label>Nome da Música/Faixa:</label><input type="text" id="musTitulo"></div>
-                    <div class="form-control"><label>Arquivo de Áudio (.mp3 / .wav):</label><input type="file" id="musAudio" accept="audio/*"></div>
+                    <div class="form-control"><label>Nome da Música:</label><input type="text" id="musTitulo"></div>
+                    <div class="form-control"><label>Áudio Local (.mp3 / .wav):</label><input type="file" id="musAudio" accept="audio/*"></div>
                 `;
             } else if(val === 'galeria') {
                 container.innerHTML = `
-                    <div class="form-control"><label>Arquivo de Foto ou Vídeo:</label><input type="file" id="galMidia" accept="image/*,video/*"></div>
+                    <div class="form-control"><label>Foto ou Vídeo:</label><input type="file" id="galMidia" accept="image/*,video/*"></div>
                 `;
             }
         }
@@ -1385,7 +1292,6 @@
             }
         }
 
-        // SALVAR ALTERAÇÕES DO PAINEL
         function salvarAlteracaoPainel() {
             const val = document.getElementById('selAbaEdit').value;
 
@@ -1397,7 +1303,7 @@
                         appData.logo = e.target.result;
                         document.getElementById('siteLogoBox').innerHTML = `<img src="${appData.logo}">`;
                         salvarStorage();
-                        mostrarToast('Logo atualizada com sucesso!');
+                        mostrarToast('Logo atualizada!');
                     };
                     r.readAsDataURL(file);
                 }
@@ -1468,7 +1374,7 @@
                         appData.toktok.unshift({ legenda: leg, video: e.target.result, likes: 0 });
                         salvarStorage();
                         renderizarTokTok();
-                        mostrarToast('Vídeo adicionado ao Coração Tok!');
+                        mostrarToast('Vídeo publicado no Coração Tok!');
                         fecharModais();
                     };
                     r.readAsDataURL(file);
@@ -1496,7 +1402,7 @@
                         appData.galeria.unshift({ tipo: tipo, src: e.target.result });
                         salvarStorage();
                         renderizarGaleria();
-                        mostrarToast('Mídia adicionada à Galeria!');
+                        mostrarToast('Mídia adicionada!');
                         fecharModais();
                     };
                     r.readAsDataURL(file);
@@ -1512,7 +1418,7 @@
                         else appData.apoiadores.push(item);
                         salvarStorage();
                         renderizarPatrocinios();
-                        mostrarToast('Adicionado com sucesso!');
+                        mostrarToast('Salvo com sucesso!');
                         fecharModais();
                     };
                     r.readAsDataURL(file);
@@ -1520,7 +1426,6 @@
             }
         }
 
-        // CONTROLADORES DE MODAL
         function abrirModalPainel() {
             document.getElementById('modalPainel').style.display = 'flex';
         }
