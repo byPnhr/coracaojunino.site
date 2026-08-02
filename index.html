@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrilha Coração Junino</title>
 
-    <title>Quadrilha Coração Junino ❤️</title>
-
-    <!-- Ícone de Coração na Aba do Navegador -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
-    
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,19 +13,18 @@
 
     <style>
         :root {
-            --bordo-escuro: #4a0000;
-            --bordo-medio: #7a0c0c;
+            --bordo-escuro: #3b0000;
+            --bordo-medio: #6e0a0a;
+            --bordo-vivo: #8b0000;
             --dourado: #d4af37;
+            --dourado-brilhante: #ffd700;
             --dourado-claro: #f3e5ab;
-            --fundo-palha: #fcf8f2;
-            --card-palha: #fffaf0;
-            --texto-escuro: #361f12;
-            --texto-suave: #634b3c;
-            --azul-presidente: #1d3557;
-            --amarelo-junino: #e0a96d;
-            --vermelho-junino: #9e2a2b;
-            --borda-card: rgba(212, 175, 55, 0.4);
-            --sombra-bento: 0 12px 30px rgba(74, 0, 0, 0.12);
+            --fundo-palha: #f8f1e5;
+            --card-palha: #fffdf9;
+            --texto-escuro: #2b1810;
+            --texto-suave: #5c4333;
+            --borda-dourada: rgba(212, 175, 55, 0.5);
+            --sombra-card: 0 10px 25px rgba(59, 0, 0, 0.15);
         }
 
         * {
@@ -41,8 +36,12 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--fundo-palha);
-            background-image: radial-gradient(circle, rgba(212,175,55,0.08) 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
+            /* Padronagem Rústica Junina */
+            background-image: 
+                radial-gradient(rgba(110, 10, 10, 0.05) 2px, transparent 2px),
+                radial-gradient(rgba(212, 175, 55, 0.08) 2px, transparent 2px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
             color: var(--texto-escuro);
             min-height: 100vh;
             overflow-x: hidden;
@@ -50,30 +49,76 @@
             flex-direction: column;
         }
 
-        /* BANDEIROLAS DECORATIVAS NO TOPO */
-        .festive-garland {
-            background: linear-gradient(90deg, #9e2a2b, #d4af37, #1d3557, #7a0c0c, #e0a96d);
-            height: 8px;
+        /* BANDEIROLAS DECORATIVAS VETORIAIS (SEM EMOJI) */
+        .garland-container {
             width: 100%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            height: 38px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
             position: relative;
-            z-index: 101;
+            overflow: hidden;
+            z-index: 102;
         }
 
-        /* BARRA SUPERIOR */
+        .garland-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* BARRA SUPERIOR E NAVEGAÇÃO */
         .top-hero-bar {
-            background: linear-gradient(135deg, rgba(50,0,0,0.98), rgba(95,0,0,0.95));
+            background: linear-gradient(135deg, var(--bordo-escuro), #520000);
             border-bottom: 3px solid var(--dourado);
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.4);
             flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            gap: 10px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .brand-logo i { color: var(--dourado-brilhante); font-size: 1.4rem; }
+
+        .hero-nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-nav button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-nav button:hover, .hero-nav button.active {
+            color: var(--bordo-escuro);
+            background: var(--dourado);
+            border-color: var(--dourado-brilhante);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+            font-weight: 700;
         }
 
         .user-nav-status {
@@ -83,69 +128,38 @@
         }
 
         .btn-adm-trigger {
-            background: linear-gradient(135deg, var(--dourado), #b38f27);
+            background: linear-gradient(135deg, #d4af37, #aa820a);
             color: var(--bordo-escuro);
-            border: none;
-            padding: 8px 16px;
+            border: 1px solid var(--dourado-brilhante);
+            padding: 7px 16px;
             border-radius: 20px;
             font-size: 0.8rem;
             cursor: pointer;
             font-weight: 700;
             transition: 0.3s;
-            box-shadow: 0 3px 10px rgba(212,175,55,0.4);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-adm-trigger:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
             background: #fff;
             color: var(--bordo-escuro);
         }
 
         .btn-logout {
             background: rgba(255, 255, 255, 0.15);
-            color: #ff9999;
-            border: 1px solid #ff9999;
+            color: #ffaaaa;
+            border: 1px solid #ffaaaa;
             padding: 4px 10px;
             border-radius: 12px;
             font-size: 0.7rem;
             cursor: pointer;
-            margin-left: 5px;
             transition: 0.2s;
         }
-        .btn-logout:hover { background: #ff9999; color: #fff; }
-
-        .hero-nav {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-height: 100px;
-            overflow-y: auto;
-        }
-
-        .hero-nav::-webkit-scrollbar { height: 4px; }
-        .hero-nav::-webkit-scrollbar-thumb { background: var(--dourado); border-radius: 4px; }
-
-        .hero-nav button {
-            background: transparent;
-            border: 1px solid transparent;
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            padding: 6px 12px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        .hero-nav button:hover, .hero-nav button.active {
-            color: var(--dourado-claro);
-            background: rgba(212, 175, 55, 0.2);
-            border-color: var(--dourado);
-            box-shadow: 0 0 10px rgba(212,175,55,0.3);
-        }
+        .btn-logout:hover { background: #ffaaaa; color: var(--bordo-escuro); }
 
         /* ESTRUTURA DAS ABAS */
         .viewport {
@@ -156,13 +170,12 @@
 
         .slider-track {
             display: flex;
-            width: 100vw; /* Será ajustado dinamicamente via JS */
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .tab-screen {
             width: 100vw;
-            min-height: calc(100vh - 130px);
+            min-height: calc(100vh - 120px);
             padding: 30px 15px;
             display: flex;
             justify-content: center;
@@ -170,21 +183,25 @@
             flex-shrink: 0;
         }
 
+        /* CARTÃO ESTILO MOLDURA JUNINA RÚSTICA */
         .bento-card {
             background-color: var(--card-palha);
-            border-radius: 22px;
-            border: 2px solid var(--borda-card);
-            box-shadow: var(--sombra-bento);
-            padding: 35px;
+            border-radius: 20px;
+            border: 3px solid var(--dourado);
+            box-shadow: var(--sombra-card);
+            padding: 40px 30px;
             width: 100%;
-            max-width: 1050px;
+            max-width: 1000px;
             position: relative;
-            animation: fadeIn 0.4s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px dashed var(--dourado);
+            border-radius: 16px;
+            pointer-events: none;
         }
 
         .title-bento {
@@ -192,26 +209,24 @@
             font-size: 2.2rem;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             color: var(--bordo-medio);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
             position: relative;
-            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .title-bento::after {
-            content: '❤️ 🌽 ❤️';
-            display: block;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            letter-spacing: 8px;
+        .title-bento i {
             color: var(--dourado);
+            font-size: 1.5rem;
         }
 
-        /* ABA PADRINHOS */
+        /* PADRINHOS SLIDER */
         .padrinhos-container {
             position: relative;
-            max-width: 750px;
+            max-width: 700px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -219,44 +234,45 @@
 
         .padrinho-card {
             background: #fff;
-            border-radius: 18px;
+            border-radius: 16px;
             border: 2px solid var(--dourado);
             padding: 30px;
             text-align: center;
             width: 100%;
             display: none;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
         .padrinho-card.active { display: block; }
 
-        .padrinho-img {
-            width: 220px;
-            height: 220px;
+        .padrinho-img-frame {
+            width: 200px;
+            height: 200px;
             margin: 0 auto 15px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--dourado);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-
-        .padrinho-misterioso-box {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2b2b2b, #4a4a4a);
+            border: 5px solid var(--dourado);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            background: var(--fundo-palha);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--dourado);
-            border: 4px solid var(--dourado);
+        }
+
+        .padrinho-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .padrinho-misterioso-icon {
+            font-size: 4.5rem;
+            color: var(--bordo-medio);
         }
 
         .nav-btn-padrinho {
             background: var(--bordo-medio);
-            color: var(--dourado);
+            color: var(--dourado-brilhante);
             border: 2px solid var(--dourado);
             width: 45px;
             height: 45px;
@@ -266,13 +282,12 @@
             position: absolute;
             font-size: 1.1rem;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .nav-btn-padrinho:hover { background: var(--bordo-escuro); transform: scale(1.1); }
         .btn-prev { left: -20px; }
         .btn-next { right: -20px; }
 
-        /* ABA DIRETORES */
+        /* DIRETORES GRID */
         .diretores-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -287,76 +302,37 @@
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
             color: #fff;
+            position: relative;
         }
 
-        .diretor-box:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+        .diretor-box:hover { transform: translateY(-5px); }
 
         .diretor-box img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #fff;
+            border: 3px solid var(--dourado-brilhante);
             margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .bg-azul { background: linear-gradient(135deg, var(--azul-presidente), #2a4d69); border: 2px solid var(--dourado); }
-        .bg-amarelo { background: linear-gradient(135deg, #c9933b, #d4af37); color: var(--texto-escuro); border: 2px solid var(--bordo-medio); }
-        .bg-vermelho { background: linear-gradient(135deg, var(--vermelho-junino), #7a0c0c); border: 2px solid var(--dourado); }
-
-        /* PATROCINADORES E APOIADORES */
-        .patrocinio-box {
-            text-align: center;
-            padding: 45px 25px;
-            background: #fff;
-            border-radius: 18px;
-            border: 2px dashed var(--dourado);
-            margin-top: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .patrocinio-box i {
-            font-size: 3.8rem;
-            color: var(--bordo-medio);
-            margin-bottom: 15px;
-        }
-
-        .btn-wsp {
-            background: #25d366;
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
-            transition: 0.3s;
-        }
-
-        .btn-wsp:hover {
-            background: #1ebd56;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-        }
+        .bg-azul { background: linear-gradient(135deg, #102a43, #243b53); border: 2px solid var(--dourado); }
+        .bg-amarelo { background: linear-gradient(135deg, #b7791f, #d69e2e); border: 2px solid var(--bordo-escuro); }
+        .bg-vermelho { background: linear-gradient(135deg, var(--bordo-vivo), #520000); border: 2px solid var(--dourado); }
 
         /* CORAÇÃO TOKTOK */
         .toktok-feed {
             width: 100%;
             max-width: 380px;
-            height: 600px;
+            height: 580px;
             margin: 0 auto;
             background: #000;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             border: 4px solid var(--dourado);
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
         }
 
         .toktok-feed::-webkit-scrollbar { display: none; }
@@ -398,7 +374,7 @@
 
         .toktok-btn {
             background: rgba(0, 0, 0, 0.6);
-            border: none;
+            border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
             width: 46px;
             height: 46px;
@@ -407,12 +383,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .toktok-btn.active { color: #ff3366; transform: scale(1.1); }
+        .toktok-btn.active { color: #ff3366; background: rgba(255,255,255,0.9); }
 
         .action-count {
             color: #fff;
@@ -424,9 +399,7 @@
 
         .toktok-caption {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             padding: 18px;
             background: linear-gradient(transparent, rgba(0,0,0,0.9));
             color: #fff;
@@ -436,27 +409,27 @@
         /* REPERTÓRIO & GALERIA */
         .repertorio-card {
             background: #fff;
-            border-radius: 14px;
+            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             border-left: 6px solid var(--bordo-medio);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-right: 1px solid var(--borda-dourada);
         }
 
         .repertorio-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 15px;
+            padding: 12px;
             background: var(--fundo-palha);
-            border-radius: 10px;
+            border-radius: 8px;
             margin-top: 10px;
             flex-wrap: wrap;
             gap: 10px;
-            border: 1px solid rgba(0,0,0,0.04);
         }
 
-        .repertorio-item audio { height: 36px; outline: none; }
+        .repertorio-item audio { height: 38px; outline: none; flex: 1; min-width: 200px; }
 
         .grid-midia {
             display: grid;
@@ -470,167 +443,135 @@
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0,0,0,0.12);
             background: #000;
-            border: 2px solid var(--borda-card);
+            border: 2px solid var(--dourado);
         }
 
         .midia-box img, .midia-box video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .midia-box:hover img { transform: scale(1.04); }
-
-        /* COMENTÁRIOS COM ANINHAMENTO */
-        .comentario-item {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 0.88rem;
-            align-items: flex-start;
         }
 
-        .comentario-avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: var(--bordo-medio);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.78rem;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-
-        .comentario-conteudo {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .comentario-autor {
-            font-weight: 700;
-            color: var(--bordo-escuro);
-            margin-right: 6px;
-        }
-
-        .comentario-acoes {
-            font-size: 0.78rem;
-            margin-top: 5px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-responder-comentario {
-            background: none;
-            border: none;
-            color: var(--bordo-medio);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            font-size: 0.75rem;
-            transition: 0.2s;
-        }
-        .btn-responder-comentario:hover { text-decoration: underline; }
-
-        .respostas-container {
-            margin-left: 20px;
-            margin-top: 8px;
-            border-left: 2px solid var(--borda-card);
-            padding-left: 10px;
-        }
-
-        .reply-banner {
-            background: rgba(122, 12, 12, 0.1);
-            border-left: 3px solid var(--bordo-medio);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.78rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            color: var(--bordo-escuro);
-        }
-
-        .reply-banner button {
-            background: none;
-            border: none;
-            color: #ff3333;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* MODAIS */
+        /* PAINEL ADMINISTRATIVO NOVO DA DIRETORIA (DASHBOARD PRO) */
         .modal-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 15px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
 
-        .modal-box {
+        .dash-container {
             background: var(--card-palha);
-            border: 2px solid var(--dourado);
+            border: 3px solid var(--dourado);
             border-radius: 20px;
-            padding: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 1050px;
+            height: 85vh;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
-        .close-btn {
-            position: absolute;
-            top: 14px;
-            right: 18px;
-            font-size: 1.4rem;
+        /* SIDEBAR DO PAINEL */
+        .dash-sidebar {
+            width: 250px;
+            background: var(--bordo-escuro);
+            border-right: 2px solid var(--dourado);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+
+        .dash-sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            color: #fff;
+        }
+
+        .dash-sidebar-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--dourado-brilhante);
+            font-size: 1.1rem;
+        }
+
+        .dash-menu {
+            list-style: none;
+            margin-top: 15px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .dash-menu li button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #e0d0c0;
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 0.88rem;
+            font-weight: 600;
             cursor: pointer;
-            color: var(--bordo-escuro);
+            display: flex;
+            align-items: center;
+            gap: 12px;
             transition: 0.2s;
         }
-        .close-btn:hover { color: var(--vermelho-junino); transform: scale(1.1); }
 
-        .auth-tabs {
-            display: flex;
-            border-bottom: 2px solid var(--borda-card);
-            margin-bottom: 20px;
+        .dash-menu li button i { font-size: 1.1rem; width: 20px; text-align: center; color: var(--dourado); }
+
+        .dash-menu li button:hover, .dash-menu li button.active {
+            background: var(--bordo-medio);
+            color: #fff;
+            border-left: 4px solid var(--dourado-brilhante);
         }
 
-        .auth-tab-btn {
+        /* CONTEÚDO PRINCIPAL DO PAINEL */
+        .dash-content {
             flex: 1;
-            padding: 10px;
-            background: none;
-            border: none;
-            font-weight: 700;
-            color: var(--texto-suave);
-            cursor: pointer;
-            transition: 0.3s;
+            padding: 30px;
+            overflow-y: auto;
+            background: #fff;
         }
 
-        .auth-tab-btn.active {
-            color: var(--bordo-medio);
-            border-bottom: 3px solid var(--bordo-medio);
+        .dash-section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--bordo-escuro);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--fundo-palha);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dash-card-form {
+            background: var(--fundo-palha);
+            border: 1px solid var(--borda-dourada);
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
 
         .form-control {
             margin-bottom: 14px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
 
         .form-control label {
@@ -640,37 +581,87 @@
         }
 
         .form-control input, .form-control select, .form-control textarea {
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid var(--borda-card);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
             font-family: inherit;
+            font-size: 0.9rem;
             background: #fff;
         }
 
+        .form-control input[type="file"] {
+            padding: 6px;
+            border: 1px dashed var(--bordo-medio);
+            background: #fff8f0;
+        }
+
         .btn-junino {
-            background: linear-gradient(135deg, var(--bordo-medio), var(--bordo-escuro));
+            background: linear-gradient(135deg, var(--bordo-vivo), var(--bordo-escuro));
             color: #fff;
-            padding: 12px 20px;
+            padding: 12px 24px;
             border: 1px solid var(--dourado);
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(122,12,12,0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .btn-junino:hover { background: var(--bordo-escuro); transform: translateY(-2px); }
+        .btn-junino:hover { background: var(--bordo-escuro); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 
-        /* BOTÃO DE DELETAR ABA NO PAINEL */
-        .btn-del-aba {
-            background: #ff4444;
-            color: white;
-            border: none;
-            padding: 4px 8px;
+        .dash-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.88rem;
+        }
+
+        .dash-table th, .dash-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dash-table th {
+            background: var(--fundo-palha);
+            color: var(--bordo-escuro);
+            font-weight: 700;
+        }
+
+        .btn-action-sm {
+            padding: 5px 10px;
             border-radius: 6px;
+            border: none;
             cursor: pointer;
             font-size: 0.75rem;
+            font-weight: bold;
+            margin-right: 4px;
         }
-        .btn-del-aba:hover { background: #cc0000; }
+        .btn-edit { background: #e2a01d; color: #fff; }
+        .btn-delete { background: #d32f2f; color: #fff; }
+
+        .close-dash-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--bordo-escuro);
+            z-index: 10;
+        }
+
+        /* MODAIS MENORES */
+        .modal-box-sm {
+            background: #fff;
+            border-radius: 16px;
+            border: 2px solid var(--dourado);
+            padding: 25px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
 
         /* TOAST NOTIFICAÇÕES */
         #toastArea { position: fixed; bottom: 25px; right: 25px; z-index: 9999; }
@@ -687,7 +678,10 @@
         }
 
         @media (max-width: 768px) {
-            .title-bento { font-size: 1.7rem; }
+            .dash-container { flex-direction: column; height: 95vh; }
+            .dash-sidebar { width: 100%; height: auto; padding: 10px 0; }
+            .dash-menu { display: flex; overflow-x: auto; margin-top: 5px; }
+            .dash-menu li button { padding: 8px 12px; white-space: nowrap; font-size: 0.8rem; }
             .btn-prev { left: -5px; }
             .btn-next { right: -5px; }
         }
@@ -695,235 +689,306 @@
 </head>
 <body>
 
-    <!-- BANDEIROLA DECORATIVA -->
-    <div class="festive-garland"></div>
+    <!-- DECORAÇÃO DE BANDEIROLAS VETORIAIS NO TOPO (SEM EMOJI) -->
+    <div class="garland-container">
+        <svg class="garland-svg" viewBox="0 0 1200 40" preserveAspectRatio="none">
+            <!-- Linha da corda -->
+            <path d="M0,5 Q 300,25 600,5 Q 900,25 1200,5" fill="none" stroke="#d4af37" stroke-width="2"/>
+            <!-- Bandeirolas Coloridas -->
+            <polygon points="30,8 60,8 45,35" fill="#8b0000"/>
+            <polygon points="90,11 120,11 105,38" fill="#d4af37"/>
+            <polygon points="150,13 180,13 165,39" fill="#102a43"/>
+            <polygon points="210,15 240,15 225,38" fill="#b7791f"/>
+            <polygon points="270,16 300,16 285,36" fill="#8b0000"/>
+            <polygon points="330,16 360,16 345,36" fill="#d4af37"/>
+            <polygon points="390,15 420,15 405,38" fill="#102a43"/>
+            <polygon points="450,13 480,13 465,39" fill="#b7791f"/>
+            <polygon points="510,11 540,11 525,38" fill="#8b0000"/>
+            <polygon points="570,8 600,8 585,35" fill="#d4af37"/>
+            
+            <polygon points="630,8 660,8 645,35" fill="#102a43"/>
+            <polygon points="690,11 720,11 705,38" fill="#b7791f"/>
+            <polygon points="750,13 780,13 765,39" fill="#8b0000"/>
+            <polygon points="810,15 840,15 825,38" fill="#d4af37"/>
+            <polygon points="870,16 900,16 885,36" fill="#102a43"/>
+            <polygon points="930,16 960,16 945,36" fill="#b7791f"/>
+            <polygon points="990,15 1020,15 1005,38" fill="#8b0000"/>
+            <polygon points="1050,13 1080,13 1065,39" fill="#d4af37"/>
+            <polygon points="1110,11 1140,11 1125,38" fill="#102a43"/>
+            <polygon points="1170,8 1200,8 1185,35" fill="#b7791f"/>
+        </svg>
+    </div>
 
-    <!-- BARRA DE NAVEGAÇÃO -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <header class="top-hero-bar">
+        <div class="brand-logo">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span>CORAÇÃO JUNINO</span>
+        </div>
+
+        <nav class="hero-nav" id="heroNav"></nav>
+
         <div class="user-nav-status">
-            <button class="btn-adm-trigger" id="btnLogin" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR</button>
+            <button class="btn-adm-trigger" id="btnLogin" onclick="abrirModalAuth()">
+                <i class="fa-solid fa-user-lock"></i> ENTRAR / REGISTRAR
+            </button>
             <span id="userTag" style="color:var(--dourado-claro); font-size:0.75rem; font-weight:bold;"></span>
         </div>
-        <!-- O menu de abas será gerado dinamicamente -->
-        <nav class="hero-nav" id="heroNav"></nav>
     </header>
 
-    <!-- TRILHO DAS ABAS PRINCIPAIS -->
+    <!-- TRILHO SLIDER DAS ABAS -->
     <div class="viewport">
-        <div class="slider-track" id="sliderTrack">
-            <!-- As abas e conteúdos são injetados dinamicamente via JavaScript -->
+        <div class="slider-track" id="sliderTrack"></div>
+    </div>
+
+    <!-- PAINEL ADMINISTRATIVO PRO DA DIRETORIA -->
+    <div class="modal-bg" id="modalPainelPro">
+        <div class="dash-container">
+            <span class="close-dash-btn" onclick="fecharModal('modalPainelPro')">&times;</span>
+            
+            <!-- SIDEBAR DA DIRETORIA -->
+            <aside class="dash-sidebar">
+                <div class="dash-sidebar-header">
+                    <i class="fa-solid fa-crown" style="font-size: 2rem; color: var(--dourado-brilhante); margin-bottom: 8px;"></i>
+                    <h3>PAINEL DIREÇÃO</h3>
+                    <p style="font-size:0.7rem; color:var(--dourado-claro);">Gestão da Quadrilha</p>
+                </div>
+                <ul class="dash-menu">
+                    <li><button class="active" onclick="trocarAbaDash('dashAbas', this)"><i class="fa-solid fa-folder-tree"></i> Gerenciar Abas</button></li>
+                    <li><button onclick="trocarAbaDash('dashPadrinhos', this)"><i class="fa-solid fa-hands-holding-circle"></i> Padrinhos</button></li>
+                    <li><button onclick="trocarAbaDash('dashDiretores', this)"><i class="fa-solid fa-users-gear"></i> Diretores</button></li>
+                    <li><button onclick="trocarAbaDash('dashToktok', this)"><i class="fa-solid fa-mobile-screen-button"></i> Coração TokTok</button></li>
+                    <li><button onclick="trocarAbaDash('dashRepertorio', this)"><i class="fa-solid fa-music"></i> Repertório</button></li>
+                    <li><button onclick="trocarAbaDash('dashGaleria', this)"><i class="fa-solid fa-images"></i> Galeria/Fotos</button></li>
+                </ul>
+            </aside>
+
+            <!-- CONTEÚDO DINÂMICO DAS SEÇÕES DO PAINEL -->
+            <main class="dash-content">
+                
+                <!-- SEÇÃO 1: EDITAR / GERENCIAR ABAS -->
+                <div id="dashAbas" class="dash-section">
+                    <div class="dash-section-title">
+                        <span><i class="fa-solid fa-pen-to-square"></i> Gerenciar Abas do Site</span>
+                    </div>
+
+                    <div class="dash-card-form">
+                        <h4 style="color:var(--bordo-escuro); margin-bottom:12px;" id="abaFormTitulo">Adicionar / Editar Aba</h4>
+                        <input type="hidden" id="editAbaId" value="">
+                        
+                        <div class="form-control">
+                            <label>Título da Aba (Nome do Menu):</label>
+                            <input type="text" id="abaInputTitulo" placeholder="Ex: CAMPEONATOS 2027">
+                        </div>
+
+                        <div class="form-control">
+                            <label>Conteúdo da Aba (Texto ou Informações):</label>
+                            <textarea id="abaInputConteudo" rows="5" placeholder="Escreva aqui as informações que serão exibidas nesta aba..."></textarea>
+                        </div>
+
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn-junino" onclick="salvarAba()"><i class="fa-solid fa-floppy-disk"></i> SALVAR ABA</button>
+                            <button class="btn-junino" style="background:#777; border-color:#999;" onclick="limparFormAba()">LIMPAR</button>
+                        </div>
+                    </div>
+
+                    <h4 style="color:var(--bordo-escuro); margin-bottom:10px;">Abas Existentes no Site:</h4>
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Ordem</th>
+                                <th>Título</th>
+                                <th>Tipo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaAbasCorpo"></tbody>
+                    </table>
+                </div>
+
+                <!-- SEÇÃO 2: PADRINHOS -->
+                <div id="dashPadrinhos" class="dash-section" style="display:none;">
+                    <div class="dash-section-title"><span><i class="fa-solid fa-hands-holding-circle"></i> Cadastrar Padrinho</span></div>
+                    <div class="dash-card-form">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <label>Nome do Padrinho / Casal:</label>
+                                <input type="text" id="padNome" placeholder="Ex: Zé & Maria">
+                            </div>
+                            <div class="form-control">
+                                <label>Título de Homenagem:</label>
+                                <input type="text" id="padTitulo" placeholder="Ex: Padrinhos de Honra">
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <label>É Padrinho Misterioso?</label>
+                            <select id="padMisterioso">
+                                <option value="nao">Não (Mostrar Foto e Nome)</option>
+                                <option value="sim">Sim (Manter em Segredo)</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label>Foto do Padrinho (Arquivo de Imagem):</label>
+                            <input type="file" id="filePadrinho" accept="image/*">
+                        </div>
+                        <div class="form-control">
+                            <label>Mensagem de Agradecimento:</label>
+                            <textarea id="padBio" rows="3" placeholder="Escreva uma mensagem especial..."></textarea>
+                        </div>
+                        <button class="btn-junino" onclick="salvarPadrinho()"><i class="fa-solid fa-plus"></i> ADICIONAR PADRINHO</button>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 3: DIRETORES -->
+                <div id="dashDiretores" class="dash-section" style="display:none;">
+                    <div class="dash-section-title"><span><i class="fa-solid fa-users-gear"></i> Cadastrar Diretor</span></div>
+                    <div class="dash-card-form">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <label>Nome Completo:</label>
+                                <input type="text" id="dirNome" placeholder="Ex: João da Silva">
+                            </div>
+                            <div class="form-control">
+                                <label>Cargo na Quadrilha:</label>
+                                <input type="text" id="dirCargo" placeholder="Ex: Diretor de Figurinhas">
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <label>Estilo Visual do Card:</label>
+                            <select id="dirCor">
+                                <option value="bg-azul">Azul (Presidência)</option>
+                                <option value="bg-amarelo">Amarelo Dourado</option>
+                                <option value="bg-vermelho">Vermelho Junino</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label>Foto do Diretor (Arquivo):</label>
+                            <input type="file" id="fileDiretor" accept="image/*">
+                        </div>
+                        <div class="form-control">
+                            <label>Pequena Biografia / Trajetória:</label>
+                            <textarea id="dirBio" rows="3" placeholder="Sua história na quadrilha..."></textarea>
+                        </div>
+                        <button class="btn-junino" onclick="salvarDiretor()"><i class="fa-solid fa-plus"></i> ADICIONAR DIRETOR</button>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 4: CORAÇÃO TOKTOK -->
+                <div id="dashToktok" class="dash-section" style="display:none;">
+                    <div class="dash-section-title"><span><i class="fa-solid fa-mobile-screen-button"></i> Novo Post no TokTok</span></div>
+                    <div class="dash-card-form">
+                        <div class="form-control">
+                            <label>Selecione o Vídeo ou Foto (Arquivo Local):</label>
+                            <input type="file" id="fileToktok" accept="video/*,image/*">
+                        </div>
+                        <div class="form-control">
+                            <label>Legenda / Descrição do Post:</label>
+                            <input type="text" id="descToktok" placeholder="Ex: Ensaio geral de ontem à noite!">
+                        </div>
+                        <button class="btn-junino" onclick="salvarToktok()"><i class="fa-solid fa-upload"></i> PUBLICAR NO FEED</button>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 5: REPERTÓRIO -->
+                <div id="dashRepertorio" class="dash-section" style="display:none;">
+                    <div class="dash-section-title"><span><i class="fa-solid fa-music"></i> Adicionar Música ao Repertório</span></div>
+                    <div class="dash-card-form">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <label>Ano / Tema:</label>
+                                <input type="text" id="repAno" placeholder="Ex: TEMPORADA 2027">
+                            </div>
+                            <div class="form-control">
+                                <label>Nome da Faixa Musical:</label>
+                                <input type="text" id="repNome" placeholder="Ex: Entrada do Noivo">
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <label>Arquivo de Áudio (MP3 ou WAV):</label>
+                            <input type="file" id="fileRepertorio" accept="audio/*">
+                        </div>
+                        <button class="btn-junino" onclick="salvarRepertorio()"><i class="fa-solid fa-cloud-arrow-up"></i> SALVAR MÚSICA</button>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 6: GALERIA -->
+                <div id="dashGaleria" class="dash-section" style="display:none;">
+                    <div class="dash-section-title"><span><i class="fa-solid fa-images"></i> Mídia para Galeria</span></div>
+                    <div class="dash-card-form">
+                        <div class="form-control">
+                            <label>Selecione Imagem ou Vídeo:</label>
+                            <input type="file" id="fileGaleria" accept="image/*,video/*">
+                        </div>
+                        <button class="btn-junino" onclick="salvarGaleria()"><i class="fa-solid fa-plus"></i> ENVIAR PARA GALERIA</button>
+                    </div>
+                </div>
+
+            </main>
         </div>
     </div>
 
-    <!-- MODAL DE AUTENTICAÇÃO -->
+    <!-- MODAL DE LOGIN / REGISTRO -->
     <div class="modal-bg" id="modalAuth">
-        <div class="modal-box">
-            <span class="close-btn" onclick="fecharModal('modalAuth')">&times;</span>
+        <div class="modal-box-sm">
+            <span class="close-dash-btn" onclick="fecharModal('modalAuth')">&times;</span>
+            <h3 style="color:var(--bordo-escuro); text-align:center; margin-bottom:15px; font-family:'Cinzel', serif;">ACESSO / CONTA</h3>
             
-            <div class="auth-tabs">
-                <button class="auth-tab-btn active" id="tabEntrarBtn" onclick="trocarAbaAuth('entrar')">ENTRAR</button>
-                <button class="auth-tab-btn" id="tabRegistrarBtn" onclick="trocarAbaAuth('registrar')">CADASTRAR-SE</button>
+            <div style="display:flex; border-bottom:2px solid var(--fundo-palha); margin-bottom:15px;">
+                <button id="tabEntrarBtn" style="flex:1; padding:8px; background:none; border:none; font-weight:bold; cursor:pointer;" onclick="trocarTabAuth('entrar')">ENTRAR</button>
+                <button id="tabRegBtn" style="flex:1; padding:8px; background:none; border:none; font-weight:bold; cursor:pointer; color:#888;" onclick="trocarTabAuth('reg')">CADASTRAR</button>
             </div>
 
-            <!-- FORMULÁRIO LOGIN -->
+            <!-- LOGIN -->
             <div id="formEntrar">
                 <div class="form-control">
                     <label>Usuário:</label>
-                    <input type="text" id="loginUser" placeholder="Seu usuário">
+                    <input type="text" id="loginUser">
                 </div>
                 <div class="form-control">
                     <label>Senha:</label>
-                    <input type="password" id="loginPass" placeholder="••••••••">
+                    <input type="password" id="loginPass">
                 </div>
                 <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="fazerLogin()">ENTRAR</button>
             </div>
 
-            <!-- FORMULÁRIO REGISTRO -->
-            <div id="formRegistrar" style="display:none;">
+            <!-- REGISTRO -->
+            <div id="formReg" style="display:none;">
                 <div class="form-control">
                     <label>Tipo de Conta:</label>
-                    <select id="regTipo" onchange="alternarCampoChave()">
-                        <option value="visitante">Visitante (Curtir e Comentar)</option>
+                    <select id="regTipo" onchange="alternarChaveDiretoria()">
+                        <option value="visitante">Visitante</option>
                         <option value="diretor">Diretor (Gerenciar o Site)</option>
                     </select>
                 </div>
-                <div class="form-control" id="campoChaveDiretor" style="display:none;">
-                    <label style="color:var(--bordo-medio); font-weight:bold;">Chave de Acesso da Diretoria:</label>
-                    <input type="password" id="regChave" placeholder="Insira a chave secreta">
+                <div class="form-control" id="boxChaveDiretor" style="display:none;">
+                    <label style="color:var(--bordo-vivo);">Chave Secreta da Diretoria:</label>
+                    <input type="password" id="regChave">
                 </div>
                 <div class="form-control">
-                    <label>Seu Nome Completo:</label>
-                    <input type="text" id="regNome" placeholder="Ex: Maria Silva">
+                    <label>Nome Completo:</label>
+                    <input type="text" id="regNome">
                 </div>
                 <div class="form-control">
                     <label>Usuário:</label>
-                    <input type="text" id="regUser" placeholder="Ex: maria123">
+                    <input type="text" id="regUser">
                 </div>
                 <div class="form-control">
                     <label>Senha:</label>
-                    <input type="password" id="regPass" placeholder="••••••••">
+                    <input type="password" id="regPass">
                 </div>
                 <button class="btn-junino" style="width:100%; margin-top:10px;" onclick="fazerRegistro()">CRIAR CONTA</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DETALHES DO DIRETOR -->
+    <!-- MODAL DETALHES DIRETOR -->
     <div class="modal-bg" id="modalDiretor">
-        <div class="modal-box" style="text-align:center;">
-            <span class="close-btn" onclick="fecharModal('modalDiretor')">&times;</span>
-            <img id="dirFoto" src="" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--dourado); margin-bottom:10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-            <h3 id="dirNome" style="color:var(--bordo-medio);"></h3>
+        <div class="modal-box-sm" style="text-align:center;">
+            <span class="close-dash-btn" onclick="fecharModal('modalDiretor')">&times;</span>
+            <img id="dirFoto" src="" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--dourado); margin-bottom:10px;">
+            <h3 id="dirNome" style="color:var(--bordo-escuro);"></h3>
             <p id="dirCargo" style="color:var(--dourado); font-weight:bold; margin-bottom:10px;"></p>
             <p id="dirBio" style="font-size:0.9rem; color:var(--texto-suave); line-height:1.5;"></p>
-        </div>
-    </div>
-
-    <!-- MODAL COMENTÁRIOS TOKTOK -->
-    <div class="modal-bg" id="modalComentarios">
-        <div class="modal-box">
-            <span class="close-btn" onclick="fecharModal('modalComentarios')">&times;</span>
-            <h4 style="color:var(--bordo-medio); margin-bottom:15px; border-bottom:1px solid var(--borda-card); padding-bottom:8px;" id="modalComentariosTitulo">Comentários</h4>
-            
-            <div id="listaComentarios" style="max-height:300px; overflow-y:auto; margin-bottom:15px; padding-right:5px;"></div>
-
-            <div id="replyBanner" class="reply-banner" style="display:none;">
-                <span>Respondendo a <strong id="replyTargetName"></strong></span>
-                <button onclick="cancelarResposta()">&times; Cancelar</button>
-            </div>
-
-            <div class="form-control">
-                <input type="text" id="inputComentario" placeholder="Escreva um comentário...">
-                <button class="btn-junino" style="margin-top:6px;" onclick="salvarComentarioToktok()">Publicar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAINEL ADMINISTRATIVO DA DIRETORIA -->
-    <div class="modal-bg" id="modalPainel">
-        <div class="modal-box" style="max-width:580px;">
-            <span class="close-btn" onclick="fecharModal('modalPainel')">&times;</span>
-            <h3 style="text-align:center; color:var(--bordo-medio); margin-bottom:15px;">Painel de Edição da Diretoria</h3>
-
-            <div class="form-control">
-                <label>O que deseja gerenciar ou adicionar?</label>
-                <select id="painelOpcao" onchange="alternarCamposPainel()">
-                    <option value="diretor">Novo Diretor</option>
-                    <option value="padrinho">Novo Padrinho</option>
-                    <option value="toktok">Vídeo/Foto no Coração TokTok</option>
-                    <option value="repertorio">Música no Repertório</option>
-                    <option value="galeria">Mídia na Galeria</option>
-                    <option value="aba">Adicionar / Gerenciar Abas do Site</option>
-                </select>
-            </div>
-
-            <!-- OPÇÃO 1: ADICIONAR DIRETORES -->
-            <div id="painelDiretor">
-                <div class="form-control">
-                    <label>Nome Completo do Diretor:</label>
-                    <input type="text" id="dirNomeInput" placeholder="Ex: João da Silva">
-                </div>
-                <div class="form-control">
-                    <label>Cargo:</label>
-                    <input type="text" id="dirCargoInput" placeholder="Ex: Diretor de Logística">
-                </div>
-                <div class="form-control">
-                    <label>Estilo Visual do Card:</label>
-                    <select id="dirCorInput">
-                        <option value="bg-azul">Azul (Presidência)</option>
-                        <option value="bg-amarelo">Amarelo Dourado</option>
-                        <option value="bg-vermelho">Vermelho Junino</option>
-                    </select>
-                </div>
-                <div class="form-control">
-                    <label>Foto do Diretor:</label>
-                    <input type="file" id="fileDiretor" accept="image/*">
-                </div>
-                <div class="form-control">
-                    <label>Biografia / Pequeno Texto:</label>
-                    <textarea id="dirBioInput" rows="3" placeholder="Sua trajetória e função na quadrilha..."></textarea>
-                </div>
-            </div>
-
-            <!-- OPÇÃO 2: ADICIONAR PADRINHOS -->
-            <div id="painelPadrinho" style="display:none;">
-                <div class="form-control">
-                    <label>Nome do Padrinho ou Casal:</label>
-                    <input type="text" id="padNomeInput" placeholder="Ex: Seu Zé & Dona Maria">
-                </div>
-                <div class="form-control">
-                    <label>Título do Padrinho:</label>
-                    <input type="text" id="padTituloInput" placeholder="Ex: Padrinho de Honra">
-                </div>
-                <div class="form-control">
-                    <label>É um Padrinho Misterioso?</label>
-                    <select id="padMisteriosoInput">
-                        <option value="nao">Não (Mostrar Foto e Nome)</option>
-                        <option value="sim">Sim (Manter em Segredo)</option>
-                    </select>
-                </div>
-                <div class="form-control">
-                    <label>Foto do Padrinho (caso não seja misterioso):</label>
-                    <input type="file" id="filePadrinho" accept="image/*">
-                </div>
-                <div class="form-control">
-                    <label>Mensagem / Homenagem:</label>
-                    <textarea id="padBioInput" rows="3" placeholder="Mensagem de agradecimento ao padrinho..."></textarea>
-                </div>
-            </div>
-
-            <!-- OPÇÃO 3: TOKTOK -->
-            <div id="painelToktok" style="display:none;">
-                <div class="form-control">
-                    <label>Arquivo (Vídeo ou Foto):</label>
-                    <input type="file" id="fileToktok" accept="video/*,image/*">
-                </div>
-                <div class="form-control">
-                    <label>Legenda / Descrição:</label>
-                    <input type="text" id="descToktok" placeholder="Descrição do vídeo">
-                </div>
-            </div>
-
-            <!-- OPÇÃO 4: REPERTÓRIO -->
-            <div id="painelRepertorio" style="display:none;">
-                <div class="form-control">
-                    <label>Ano / Tema:</label>
-                    <input type="text" id="repAno" placeholder="Ex: 2027 - O Amor no Sertão">
-                </div>
-                <div class="form-control">
-                    <label>Nome da Música:</label>
-                    <input type="text" id="repNome" placeholder="Ex: Faixa Ensaio Geral">
-                </div>
-                <div class="form-control">
-                    <label>Arquivo de Áudio (MP3/WAV):</label>
-                    <input type="file" id="fileRepertorio" accept="audio/*">
-                </div>
-            </div>
-
-            <!-- OPÇÃO 5: GALERIA -->
-            <div id="painelGaleria" style="display:none;">
-                <div class="form-control">
-                    <label>Arquivo (Imagem ou Vídeo):</label>
-                    <input type="file" id="fileGaleria" accept="image/*,video/*">
-                </div>
-            </div>
-
-            <!-- OPÇÃO 6: GERENCIAR ABAS -->
-            <div id="painelAba" style="display:none;">
-                <div class="form-control">
-                    <label>Título da Nova Aba:</label>
-                    <input type="text" id="novaAbaTitulo" placeholder="Ex: AGENDA, CAMPEONATOS, BASTIDORES...">
-                </div>
-                <div class="form-control">
-                    <label>Conteúdo Principal (Texto ou HTML simples):</label>
-                    <textarea id="novaAbaConteudo" rows="4" placeholder="Escreva o texto que aparecerá nesta aba..."></textarea>
-                </div>
-                <hr style="margin: 15px 0; border-color:var(--borda-card);">
-                <label style="font-weight:700; color:var(--bordo-escuro); margin-bottom:8px; display:block;">Abas Personalizadas Atuais:</label>
-                <div id="listaAbasPersonalizadas" style="max-height: 120px; overflow-y: auto; display:flex; flex-direction:column; gap:6px;"></div>
-            </div>
-
-            <button class="btn-junino" style="width:100%; margin-top:15px;" onclick="salvarPainel()">SALVAR E PUBLICAR</button>
         </div>
     </div>
 
@@ -934,46 +999,32 @@
         const CHAVE_DIRETORIA = "DirecaoCJ2027";
         let usuarioAtual = null;
         let padrinhoIndex = 0;
-        let idToktokComentando = null;
-        let idComentarioRespondendo = null;
         let abaAtivaIndex = 0;
 
-        // BANCO DE DADOS LOCAL COM SUPORTE A ABAS DINÂMICAS
-        let db = JSON.parse(localStorage.getItem('coracao_junino_v6')) || {
+        // BANCO LOCAL DE DADOS
+        let db = JSON.parse(localStorage.getItem('coracao_junino_v7')) || {
             usuarios: [
                 { user: 'Lay', pass: '270209', nome: 'Diretor Geral', eDiretor: true }
             ],
             abas: [
-                { id: 'inicio', titulo: 'INÍCIO', tipo: 'fixo' },
-                { id: 'historia', titulo: 'HISTÓRIA', tipo: 'fixo' },
-                { id: 'inscricoes', titulo: 'INSCRIÇÕES', tipo: 'fixo' },
-                { id: 'padrinhos', titulo: 'PADRINHOS', tipo: 'fixo' },
-                { id: 'diretores', titulo: 'DIRETORES', tipo: 'fixo' },
-                { id: 'patrocinadores', titulo: 'PATROCINADORES', tipo: 'fixo' },
-                { id: 'apoiadores', titulo: 'APOIADORES', tipo: 'fixo' },
-                { id: 'toktok', titulo: 'CORAÇÃO TOKTOK', tipo: 'fixo' },
-                { id: 'repertorio', titulo: 'REPERTÓRIOS', tipo: 'fixo' },
-                { id: 'novidades', titulo: 'NOVIDADES', tipo: 'fixo' },
-                { id: 'galeria', titulo: 'GALERIA', tipo: 'fixo' }
+                { id: 'inicio', titulo: 'INÍCIO', tipo: 'padrao', conteudo: 'Seja bem-vindo ao portal da Quadrilha Coração Junino! Acompanhe nossos ensaios, novidades, fotos e repertórios musicais.' },
+                { id: 'historia', titulo: 'HISTÓRIA', tipo: 'padrao', conteudo: 'Fundada com o intuito de valorizar as tradições do São João, nossa quadrilha leva emoção, cultura e o verdadeiro brilho nordestino para os palcos a cada temporada.' },
+                { id: 'inscricoes', titulo: 'INSCRIÇÕES', tipo: 'padrao', conteudo: 'Inscrições Abertas! Entre em contato com a nossa diretoria para garantir seu lugar no espetáculo do próximo ano.' },
+                { id: 'padrinhos', titulo: 'PADRINHOS', tipo: 'padrao', conteudo: '' },
+                { id: 'diretores', titulo: 'DIRETORES', tipo: 'padrao', conteudo: '' },
+                { id: 'toktok', titulo: 'CORAÇÃO TOKTOK', tipo: 'padrao', conteudo: '' },
+                { id: 'repertorio', titulo: 'REPERTÓRIO', tipo: 'padrao', conteudo: '' },
+                { id: 'galeria', titulo: 'GALERIA', tipo: 'padrao', conteudo: '' }
             ],
-            conteudosCustomizados: {}, // Guarda o conteúdo HTML das abas customizadas criadas pelos diretores
-            padrinhos: [
-                { id: 1, nome: "Seu Zé & Dona Maria", titulo: "Padrinhos de Honra (Casal)", foto: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400", bio: "Sempre presentes desde a fundação da quadrilha, nos apoiando em todos os momentos com carinho e dedicação.", misterioso: false },
-                { id: 2, nome: "Antônio Carlos", titulo: "Padrinho do Figurino", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", bio: "Um defensor apaixonado da nossa cultura, responsável por apoiar a confecção de nossas roupas e brilhos.", misterioso: false },
-                { id: 3, nome: "Padrinho Misterioso 🤫", titulo: "Em Breve...", foto: "", bio: "Um grande nome ainda não revelado! Fiquem atentos para a revelação oficial.", misterioso: true }
-            ],
-            diretores: [
-                { id: 1, nome: "Carlos Eduardo", cargo: "Presidente", cor: "bg-azul", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300", bio: "Fundador e responsável geral pelas decisões da quadrilha." },
-                { id: 2, nome: "Ana Paula", cargo: "Vice-Presidente", cor: "bg-amarelo", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300", bio: "Auxilia na coordenação de todos os setores e eventos." },
-                { id: 3, nome: "Marcio Silva", cargo: "Marcador Principal", cor: "bg-vermelho", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300", bio: "Comanda os passos e a vibração durante as apresentações." }
-            ],
+            padrinhos: [],
+            diretores: [],
             toktok: [],
             repertorios: [],
             galeria: []
         };
 
         function salvarBD() {
-            localStorage.setItem('coracao_junino_v6', JSON.stringify(db));
+            localStorage.setItem('coracao_junino_v7', JSON.stringify(db));
         }
 
         function toast(msg) {
@@ -985,6 +1036,7 @@
             setTimeout(() => el.remove(), 3500);
         }
 
+        /* CONVERSOR DE ARQUIVO LOCAL EM BASE64 (ZERO URLS EXTERNAS) */
         function lerArquivoBase64(input) {
             return new Promise((resolve) => {
                 if (!input || !input.files || !input.files[0]) return resolve(null);
@@ -995,25 +1047,23 @@
             });
         }
 
-        /* RENDERIZAÇÃO DINÂMICA DO SITE E ABAS */
+        /* RENDERIZAÇÃO DO SITE E SLIDER DE ABAS */
         function renderizarSite() {
             const nav = document.getElementById('heroNav');
             const track = document.getElementById('sliderTrack');
 
-            // Ajusta a largura do trilho slider com base no número de abas
             track.style.width = `${db.abas.length * 100}vw`;
 
-            // Renderiza o menu superior
+            // Menu do Topo
             nav.innerHTML = db.abas.map((aba, i) => `
                 <button class="${i === abaAtivaIndex ? 'active' : ''}" onclick="mudarAba(${i})">${aba.titulo}</button>
             `).join('');
 
-            // Renderiza as telas de cada aba no viewport
-            track.innerHTML = db.abas.map((aba) => {
-                return `<section class="tab-screen">${gerarConteudoAba(aba)}</section>`;
-            }).join('');
+            // Telas das Abas
+            track.innerHTML = db.abas.map((aba) => `
+                <section class="tab-screen">${gerarConteudoAba(aba)}</section>
+            `).join('');
 
-            // Executa renderizações específicas internas
             renderizarPadrinhos();
             renderizarDiretores();
             renderizarToktok();
@@ -1022,102 +1072,56 @@
         }
 
         function gerarConteudoAba(aba) {
-            switch(aba.id) {
-                case 'inicio':
-                    return `
-                    <div class="bento-card" style="text-align:center;">
-                        <h1 style="font-family:'Great Vibes', cursive; font-size: 3.8rem; color:var(--bordo-medio); margin-bottom:10px;">Quadrilha Coração Junino</h1>
-                        <p style="font-size: 1.15rem; color:var(--texto-suave); max-width:700px; margin:0 auto; line-height:1.7;">Seja bem-vindo ao nosso cantinho oficial! Acompanhe fotos, vídeos, repertórios e novidades da nossa família junina com toda energia e paixão pelo São João.</p>
-                    </div>`;
-                case 'historia':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">NOSSA HISTÓRIA</h2>
-                        <p style="line-height:1.9; text-align:justify; font-size:1.05rem; color:var(--texto-suave);">Nossa trajetória começou com o sonho de valorizar as tradições e trazer para o arraial a verdadeira energia do São João. Com amor, dedicação e união de cada dançarino, diretor e colaborador, levamos aos palcos um espetáculo inesquecível a cada temporada, fazendo corações baterem mais forte no ritmo da sanfona.</p>
-                    </div>`;
-                case 'inscricoes':
-                    return `
-                    <div class="bento-card" style="text-align:center;">
-                        <h2 class="title-bento">FAÇA PARTE DA FAMÍLIA</h2>
-                        <p style="margin-bottom:25px; font-size:1.1rem; color:var(--texto-suave);">As inscrições para a nova temporada já estão com vagas abertas! Venha brilhar conosco no tablado.</p>
-                        <a href="https://forms.gle" target="_blank" class="btn-junino" style="text-decoration:none; display:inline-block; font-size:1.05rem; padding:14px 28px;">PREENCHER FORMULÁRIO DE INSCRIÇÃO</a>
-                    </div>`;
-                case 'padrinhos':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">PADRINHOS D'ALMA</h2>
-                        <div class="padrinhos-container">
-                            <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                            <div id="padrinhosListTrack" style="width:100%;"></div>
-                            <button class="nav-btn-padrinho btn-next" onclick="mudarPadrinho(1)"><i class="fa-solid fa-chevron-right"></i></button>
-                        </div>
-                    </div>`;
-                case 'diretores':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">DIRETORIA EXECUTIVA</h2>
-                        <div class="diretores-grid" id="gridDiretores"></div>
-                    </div>`;
-                case 'patrocinadores':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">NOSSOS PATROCINADORES</h2>
-                        <div class="patrocinio-box">
-                            <i class="fa-solid fa-handshake"></i>
-                            <h3 style="color:var(--bordo-medio); margin-bottom:10px;">Faça parte do nosso espetáculo!</h3>
-                            <p style="color:var(--texto-suave); max-width:600px; margin:0 auto; line-height:1.6;">Queremos convidar sua marca a brilhar junto com a gente! Entre em contato diretamente com a nossa equipe para conhecer os planos de patrocínio.</p>
-                            <a href="https://wa.me/5582999999999?text=Olá!%20Gostaria%20de%20conversar%20sobre%20patrocínio%20para%20a%20Quadrilha%20Coração%20Junino." target="_blank" class="btn-wsp">
-                                <i class="fa-brands fa-whatsapp"></i> SEJA UM PATROCINADOR
-                            </a>
-                        </div>
-                    </div>`;
-                case 'apoiadores':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">NOSSOS APOIADORES</h2>
-                        <div class="patrocinio-box">
-                            <i class="fa-solid fa-heart-circle-check"></i>
-                            <h3 style="color:var(--bordo-medio); margin-bottom:10px;">Apoie a cultura junina!</h3>
-                            <p style="color:var(--texto-suave); max-width:600px; margin:0 auto; line-height:1.6;">Toda ajuda é fundamental para manter nossa tradição viva. Clique abaixo para falar no WhatsApp com a nossa diretoria e saber como colaborar.</p>
-                            <a href="https://wa.me/5582999999999?text=Olá!%20Gostaria%20de%20conversar%20sobre%20como%20ser%20um%20apoiador%20da%20Quadrilha%20Coração%20Junino." target="_blank" class="btn-wsp">
-                                <i class="fa-brands fa-whatsapp"></i> SEJA UM APOIADOR
-                            </a>
-                        </div>
-                    </div>`;
-                case 'toktok':
-                    return `
-                    <div class="bento-card" style="display:flex; flex-direction:column; align-items:center;">
-                        <h2 class="title-bento" style="margin-bottom:15px;">CORAÇÃO TOKTOK 📱</h2>
-                        <div class="toktok-feed" id="toktokFeed"></div>
-                    </div>`;
-                case 'repertorio':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">REPERTÓRIOS MUSICAIS</h2>
-                        <div id="repertorioLista"></div>
-                    </div>`;
-                case 'novidades':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">NOVIDADES</h2>
-                        <div id="gridNovidades" class="grid-midia"></div>
-                    </div>`;
-                case 'galeria':
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">GALERIA DE FOTOS E VÍDEOS</h2>
-                        <div id="gridGaleria" class="grid-midia"></div>
-                    </div>`;
-                default:
-                    // Aba customizada criada pela diretoria
-                    return `
-                    <div class="bento-card">
-                        <h2 class="title-bento">${aba.titulo}</h2>
-                        <div style="line-height:1.8; color:var(--texto-suave); font-size:1.05rem;">
-                            ${db.conteudosCustomizados[aba.id] || 'Nenhum conteúdo cadastrado para esta aba ainda.'}
-                        </div>
-                    </div>`;
+            if (aba.id === 'padrinhos') {
+                return `
+                <div class="bento-card">
+                    <h2 class="title-bento"><i class="fa-solid fa-hands-holding-circle"></i> ${aba.titulo}</h2>
+                    <div class="padrinhos-container">
+                        <button class="nav-btn-padrinho btn-prev" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div id="padrinhosListTrack" style="width:100%;"></div>
+                        <button class="nav-btn-padrinho btn-next" onclick="mudarPadrinho(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>`;
             }
+
+            if (aba.id === 'diretores') {
+                return `
+                <div class="bento-card">
+                    <h2 class="title-bento"><i class="fa-solid fa-users-gear"></i> ${aba.titulo}</h2>
+                    <div class="diretores-grid" id="gridDiretores"></div>
+                </div>`;
+            }
+
+            if (aba.id === 'toktok') {
+                return `
+                <div class="bento-card" style="display:flex; flex-direction:column; align-items:center;">
+                    <h2 class="title-bento"><i class="fa-solid fa-mobile-screen-button"></i> ${aba.titulo}</h2>
+                    <div class="toktok-feed" id="toktokFeed"></div>
+                </div>`;
+            }
+
+            if (aba.id === 'repertorio') {
+                return `
+                <div class="bento-card">
+                    <h2 class="title-bento"><i class="fa-solid fa-music"></i> ${aba.titulo}</h2>
+                    <div id="repertorioLista"></div>
+                </div>`;
+            }
+
+            if (aba.id === 'galeria') {
+                return `
+                <div class="bento-card">
+                    <h2 class="title-bento"><i class="fa-solid fa-images"></i> ${aba.titulo}</h2>
+                    <div id="gridGaleria" class="grid-midia"></div>
+                </div>`;
+            }
+
+            // Aba padrão de Texto ou Customizada
+            return `
+            <div class="bento-card">
+                <h2 class="title-bento"><i class="fa-solid fa-star"></i> ${aba.titulo}</h2>
+                <div style="line-height:1.8; color:var(--texto-suave); font-size:1.05rem; white-space: pre-wrap;">${aba.conteudo || 'Conteúdo em breve.'}</div>
+            </div>`;
         }
 
         function mudarAba(i) {
@@ -1127,472 +1131,283 @@
             btns.forEach((b, idx) => b.classList.toggle('active', idx === i));
         }
 
-        /* PADRINHOS DINÂMICOS */
+        /* PAINEL ADMINISTRATIVO PRO DA DIRETORIA */
+        function trocarAbaDash(idSecao, btn) {
+            document.querySelectorAll('.dash-section').forEach(s => s.style.display = 'none');
+            document.getElementById(idSecao).style.display = 'block';
+            document.querySelectorAll('.dash-menu button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (idSecao === 'dashAbas') renderizarTabelaAbas();
+        }
+
+        function renderizarTabelaAbas() {
+            const tbody = document.getElementById('tabelaAbasCorpo');
+            tbody.innerHTML = db.abas.map((a, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td><strong>${a.titulo}</strong></td>
+                    <td><span style="font-size:0.75rem; background:#eee; padding:3px 8px; border-radius:10px;">${a.tipo === 'padrao' ? 'Padrão' : 'Criada'}</span></td>
+                    <td>
+                        <button class="btn-action-sm btn-edit" onclick="prepararEdicaoAba('${a.id}')"><i class="fa-solid fa-pen"></i> Editar</button>
+                        ${a.tipo !== 'padrao' ? `<button class="btn-action-sm btn-delete" onclick="deletarAba('${a.id}')"><i class="fa-solid fa-trash"></i> Excluir</button>` : ''}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function prepararEdicaoAba(id) {
+            const aba = db.abas.find(a => a.id === id);
+            if (!aba) return;
+            document.getElementById('editAbaId').value = aba.id;
+            document.getElementById('abaInputTitulo').value = aba.titulo;
+            document.getElementById('abaInputConteudo').value = aba.conteudo || '';
+            document.getElementById('abaFormTitulo').innerText = `Editando Aba: ${aba.titulo}`;
+        }
+
+        function limparFormAba() {
+            document.getElementById('editAbaId').value = '';
+            document.getElementById('abaInputTitulo').value = '';
+            document.getElementById('abaInputConteudo').value = '';
+            document.getElementById('abaFormTitulo').innerText = 'Adicionar / Editar Aba';
+        }
+
+        function salvarAba() {
+            const id = document.getElementById('editAbaId').value;
+            const titulo = document.getElementById('abaInputTitulo').value.trim();
+            const conteudo = document.getElementById('abaInputConteudo').value.trim();
+
+            if (!titulo) { toast("O título é obrigatório!"); return; }
+
+            if (id) {
+                // Editar Aba Existente
+                const aba = db.abas.find(a => a.id === id);
+                if (aba) {
+                    aba.titulo = titulo.toUpperCase();
+                    aba.conteudo = conteudo;
+                    toast("Aba atualizada com sucesso!");
+                }
+            } else {
+                // Criar Nova Aba
+                const novoId = 'custom_' + Date.now();
+                db.abas.push({
+                    id: novoId,
+                    titulo: titulo.toUpperCase(),
+                    tipo: 'custom',
+                    conteudo: conteudo
+                });
+                toast("Nova aba criada!");
+            }
+
+            salvarBD();
+            limparFormAba();
+            renderizarTabelaAbas();
+            renderizarSite();
+        }
+
+        function deletarAba(id) {
+            if (confirm("Deseja realmente excluir esta aba?")) {
+                db.abas = db.abas.filter(a => a.id !== id);
+                salvarBD();
+                renderizarTabelaAbas();
+                renderizarSite();
+                toast("Aba removida!");
+            }
+        }
+
+        /* SALVANDO DADOS DE ARQUIVOS */
+        async function salvarPadrinho() {
+            const nome = document.getElementById('padNome').value.trim();
+            const titulo = document.getElementById('padTitulo').value.trim();
+            const misterioso = document.getElementById('padMisterioso').value === 'sim';
+            const bio = document.getElementById('padBio').value.trim();
+            const file = await lerArquivoBase64(document.getElementById('filePadrinho'));
+
+            if (!nome || !titulo) { toast("Preencha o nome e o título!"); return; }
+
+            db.padrinhos.push({
+                id: Date.now(),
+                nome, titulo, bio, misterioso,
+                foto: file ? file.data : null
+            });
+
+            salvarBD();
+            renderizarPadrinhos();
+            toast("Padrinho adicionado!");
+        }
+
+        async function salvarDiretor() {
+            const nome = document.getElementById('dirNome').value.trim();
+            const cargo = document.getElementById('dirCargo').value.trim();
+            const cor = document.getElementById('dirCor').value;
+            const bio = document.getElementById('dirBio').value.trim();
+            const file = await lerArquivoBase64(document.getElementById('fileDiretor'));
+
+            if (!nome || !cargo) { toast("Preencha nome e cargo!"); return; }
+
+            db.diretores.push({
+                id: Date.now(),
+                nome, cargo, cor, bio,
+                foto: file ? file.data : null
+            });
+
+            salvarBD();
+            renderizarDiretores();
+            toast("Diretor cadastrado!");
+        }
+
+        async function salvarToktok() {
+            const file = await lerArquivoBase64(document.getElementById('fileToktok'));
+            const desc = document.getElementById('descToktok').value.trim();
+
+            if (!file) { toast("Selecione um arquivo de foto ou vídeo!"); return; }
+
+            db.toktok.unshift({
+                id: Date.now(),
+                src: file.data,
+                eVideo: file.eVideo,
+                desc, curtiu: false, likes: 0
+            });
+
+            salvarBD();
+            renderizarToktok();
+            toast("Publicado no Coração TokTok!");
+        }
+
+        async function salvarRepertorio() {
+            const ano = document.getElementById('repAno').value.trim();
+            const nome = document.getElementById('repNome').value.trim();
+            const file = await lerArquivoBase64(document.getElementById('fileRepertorio'));
+
+            if (!ano || !nome || !file) { toast("Preencha os campos e selecione o áudio!"); return; }
+
+            let grupo = db.repertorios.find(r => r.ano === ano);
+            if (!grupo) {
+                grupo = { ano, musicas: [] };
+                db.repertorios.push(grupo);
+            }
+            grupo.musicas.push({ nome, src: file.data });
+
+            salvarBD();
+            renderizarRepertorio();
+            toast("Música cadastrada!");
+        }
+
+        async function salvarGaleria() {
+            const file = await lerArquivoBase64(document.getElementById('fileGaleria'));
+            if (!file) { toast("Selecione uma foto ou vídeo!"); return; }
+
+            db.galeria.unshift({ id: Date.now(), src: file.data, eVideo: file.eVideo });
+            salvarBD();
+            renderizarGaleria();
+            toast("Mídia adicionada à Galeria!");
+        }
+
+        /* RENDERIZADORES DAS ABAS */
         function renderizarPadrinhos() {
             const track = document.getElementById('padrinhosListTrack');
             if (!track) return;
-            if (!db.padrinhos || db.padrinhos.length === 0) {
-                track.innerHTML = `<p style="text-align:center;">Nenhum padrinho cadastrado.</p>`;
+            if (db.padrinhos.length === 0) {
+                track.innerHTML = `<p style="text-align:center; color:var(--texto-suave);">Nenhum padrinho cadastrado ainda.</p>`;
                 return;
             }
-
             if (padrinhoIndex >= db.padrinhos.length) padrinhoIndex = 0;
 
             track.innerHTML = db.padrinhos.map((p, idx) => `
                 <div class="padrinho-card ${idx === padrinhoIndex ? 'active' : ''}">
-                    ${p.misterioso ? `
-                        <div class="padrinho-misterioso-box"><i class="fa-solid fa-user-secret"></i></div>
-                    ` : `
-                        <img src="${p.foto || 'https://via.placeholder.com/220'}" class="padrinho-img">
-                    `}
-                    <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif; font-size:1.5rem; margin-bottom:5px;">${p.nome}</h3>
-                    <p style="color:var(--dourado); font-weight:bold; margin-bottom:10px; font-size:1.05rem;">${p.titulo}</p>
-                    <p style="font-size:0.95rem; color:var(--texto-suave); line-height:1.6;">${p.bio}</p>
+                    <div class="padrinho-img-frame">
+                        ${p.misterioso ? `<i class="fa-solid fa-user-secret padrinho-misterioso-icon"></i>` 
+                        : (p.foto ? `<img src="${p.foto}">` : `<i class="fa-solid fa-user padrinho-misterioso-icon"></i>`)}
+                    </div>
+                    <h3 style="color:var(--bordo-escuro); font-family:'Cinzel', serif; font-size:1.4rem;">${p.nome}</h3>
+                    <p style="color:var(--dourado); font-weight:bold; margin-bottom:10px;">${p.titulo}</p>
+                    <p style="font-size:0.95rem; color:var(--texto-suave);">${p.bio || ''}</p>
                 </div>
             `).join('');
         }
 
         function mudarPadrinho(d) {
-            if (!db.padrinhos || db.padrinhos.length === 0) return;
+            if (db.padrinhos.length === 0) return;
             padrinhoIndex = (padrinhoIndex + d + db.padrinhos.length) % db.padrinhos.length;
             renderizarPadrinhos();
         }
 
-        /* DIRETORES DINÂMICOS */
         function renderizarDiretores() {
             const grid = document.getElementById('gridDiretores');
             if (!grid) return;
-            if (!db.diretores || db.diretores.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1;">Nenhum diretor cadastrado.</p>`;
+            if (db.diretores.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; grid-column:1/-1;">Nenhum diretor cadastrado.</p>`;
                 return;
             }
 
             grid.innerHTML = db.diretores.map(d => `
-                <div class="diretor-box ${d.cor}" onclick="abrirDetalheDiretor(${d.id})">
-                    <img src="${d.foto || 'https://via.placeholder.com/150'}" alt="${d.nome}">
-                    <h4 style="font-size:1.1rem; margin-bottom:4px;">${d.nome}</h4>
-                    <p style="font-size:0.82rem; opacity:0.95; font-weight:500;">${d.cargo}</p>
+                <div class="diretor-box ${d.cor}" onclick="abrirModalDiretor(${d.id})">
+                    <img src="${d.foto || 'https://via.placeholder.com/100'}" alt="${d.nome}">
+                    <h4>${d.nome}</h4>
+                    <p style="font-size:0.8rem; opacity:0.9;">${d.cargo}</p>
                 </div>
             `).join('');
         }
 
-        function abrirDetalheDiretor(id) {
+        function abrirModalDiretor(id) {
             const d = db.diretores.find(x => x.id === id);
             if (!d) return;
-            document.getElementById('dirFoto').src = d.foto || 'https://via.placeholder.com/150';
+            document.getElementById('dirFoto').src = d.foto || 'https://via.placeholder.com/100';
             document.getElementById('dirNome').innerText = d.nome;
             document.getElementById('dirCargo').innerText = d.cargo;
-            document.getElementById('dirBio').innerText = d.bio || "Membro ativo da diretoria da Quadrilha Coração Junino.";
+            document.getElementById('dirBio').innerText = d.bio || "Membro da Diretoria da Quadrilha Coração Junino.";
             document.getElementById('modalDiretor').style.display = 'flex';
-        }
-
-        /* AUTENTICAÇÃO E PERFIS */
-        function abrirModalAuth() {
-            if (usuarioAtual && usuarioAtual.eDiretor) {
-                atualizarListaAbasPainel();
-                document.getElementById('modalPainel').style.display = 'flex';
-            } else if (!usuarioAtual) {
-                document.getElementById('modalAuth').style.display = 'flex';
-            }
-        }
-
-        function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        function trocarAbaAuth(tipo) {
-            document.getElementById('tabEntrarBtn').classList.toggle('active', tipo === 'entrar');
-            document.getElementById('tabRegistrarBtn').classList.toggle('active', tipo === 'registrar');
-            document.getElementById('formEntrar').style.display = (tipo === 'entrar') ? 'block' : 'none';
-            document.getElementById('formRegistrar').style.display = (tipo === 'registrar') ? 'block' : 'none';
-        }
-
-        function alternarCampoChave() {
-            const tipo = document.getElementById('regTipo').value;
-            document.getElementById('campoChaveDiretor').style.display = (tipo === 'diretor') ? 'block' : 'none';
-        }
-
-        function fazerLogin() {
-            const user = document.getElementById('loginUser').value.trim();
-            const pass = document.getElementById('loginPass').value.trim();
-
-            if (!user || !pass) { toast("Preencha usuário e senha!"); return; }
-
-            let encontrado = db.usuarios.find(u => u.user === user && u.pass === pass);
-
-            if (encontrado) {
-                usuarioAtual = encontrado;
-                fecharModal('modalAuth');
-                atualizarUserUI();
-                toast(`Bem-vindo, ${usuarioAtual.nome}!`);
-            } else {
-                toast("Usuário ou senha incorretos!");
-            }
-        }
-
-        function fazerRegistro() {
-            const tipo = document.getElementById('regTipo').value;
-            const chave = document.getElementById('regChave').value.trim();
-            const nome = document.getElementById('regNome').value.trim();
-            const user = document.getElementById('regUser').value.trim();
-            const pass = document.getElementById('regPass').value.trim();
-
-            if (!nome || !user || !pass) { toast("Preencha todos os campos!"); return; }
-
-            if (db.usuarios.some(u => u.user === user)) {
-                toast("Este usuário já existe! Escolha outro.");
-                return;
-            }
-
-            let eDiretor = false;
-            if (tipo === 'diretor') {
-                if (chave !== CHAVE_DIRETORIA) {
-                    toast("Chave da diretoria incorreta!");
-                    return;
-                }
-                eDiretor = true;
-            }
-
-            usuarioAtual = { user, pass, nome, eDiretor };
-            db.usuarios.push(usuarioAtual);
-            salvarBD();
-
-            fecharModal('modalAuth');
-            atualizarUserUI();
-            toast("Conta criada com sucesso!");
-        }
-
-        function fazerLogout() {
-            usuarioAtual = null;
-            atualizarUserUI();
-            toast("Você saiu da conta.");
-        }
-
-        function atualizarUserUI() {
-            const btn = document.getElementById('btnLogin');
-            const tag = document.getElementById('userTag');
-
-            if (usuarioAtual) {
-                if (usuarioAtual.eDiretor) {
-                    btn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> PAINEL DA DIRETORIA`;
-                    tag.innerHTML = `Diretor(a): ${usuarioAtual.nome} <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
-                } else {
-                    btn.style.display = 'none';
-                    tag.innerHTML = `Olá, ${usuarioAtual.nome} <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
-                }
-            } else {
-                btn.style.display = 'inline-block';
-                btn.innerHTML = `<i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR`;
-                tag.innerHTML = '';
-            }
-            renderizarToktok();
-        }
-
-        /* PAINEL ADMINISTRATIVO COM GERENCIAMENTO DE ABAS */
-        function alternarCamposPainel() {
-            const op = document.getElementById('painelOpcao').value;
-            document.getElementById('painelDiretor').style.display = (op === 'diretor') ? 'block' : 'none';
-            document.getElementById('painelPadrinho').style.display = (op === 'padrinho') ? 'block' : 'none';
-            document.getElementById('painelToktok').style.display = (op === 'toktok') ? 'block' : 'none';
-            document.getElementById('painelRepertorio').style.display = (op === 'repertorio') ? 'block' : 'none';
-            document.getElementById('painelGaleria').style.display = (op === 'galeria') ? 'block' : 'none';
-            document.getElementById('painelAba').style.display = (op === 'aba') ? 'block' : 'none';
-            if (op === 'aba') atualizarListaAbasPainel();
-        }
-
-        function atualizarListaAbasPainel() {
-            const lista = document.getElementById('listaAbasPersonalizadas');
-            const customizadas = db.abas.filter(a => a.tipo === 'custom');
-            if (customizadas.length === 0) {
-                lista.innerHTML = `<p style="font-size:0.8rem; color:var(--texto-suave);">Nenhuma aba personalizada criada ainda.</p>`;
-                return;
-            }
-            lista.innerHTML = customizadas.map(a => `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--borda-card);">
-                    <span style="font-size:0.85rem; font-weight:600;">${a.titulo}</span>
-                    <button class="btn-del-aba" onclick="deletarAba('${a.id}')">Excluir</button>
-                </div>
-            `).join('');
-        }
-
-        function deletarAba(id) {
-            if (confirm("Tem certeza que deseja excluir esta aba?")) {
-                db.abas = db.abas.filter(a => a.id !== id);
-                delete db.conteudosCustomizados[id];
-                salvarBD();
-                renderizarSite();
-                atualizarListaAbasPainel();
-                toast("Aba removida com sucesso!");
-            }
-        }
-
-        async function salvarPainel() {
-            const op = document.getElementById('painelOpcao').value;
-
-            if (op === 'diretor') {
-                const nome = document.getElementById('dirNomeInput').value.trim();
-                const cargo = document.getElementById('dirCargoInput').value.trim();
-                const cor = document.getElementById('dirCorInput').value;
-                const bio = document.getElementById('dirBioInput').value.trim();
-                const f = await lerArquivoBase64(document.getElementById('fileDiretor'));
-
-                if (!nome || !cargo) { toast("Preencha o nome e o cargo!"); return; }
-
-                db.diretores.push({
-                    id: Date.now(),
-                    nome,
-                    cargo,
-                    cor,
-                    bio,
-                    foto: f ? f.data : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300"
-                });
-                salvarBD();
-                renderizarDiretores();
-                toast("Novo diretor adicionado com sucesso!");
-
-            } else if (op === 'padrinho') {
-                const nome = document.getElementById('padNomeInput').value.trim();
-                const titulo = document.getElementById('padTituloInput').value.trim();
-                const misterioso = document.getElementById('padMisteriosoInput').value === 'sim';
-                const bio = document.getElementById('padBioInput').value.trim();
-                const f = await lerArquivoBase64(document.getElementById('filePadrinho'));
-
-                if (!nome || !titulo) { toast("Preencha o nome e o título!"); return; }
-
-                db.padrinhos.push({
-                    id: Date.now(),
-                    nome,
-                    titulo,
-                    bio,
-                    misterioso,
-                    foto: f ? f.data : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400"
-                });
-                salvarBD();
-                renderizarPadrinhos();
-                toast("Novo padrinho adicionado!");
-
-            } else if (op === 'toktok') {
-                const f = await lerArquivoBase64(document.getElementById('fileToktok'));
-                const desc = document.getElementById('descToktok').value.trim();
-                if (!f) { toast("Selecione um vídeo/foto!"); return; }
-                
-                db.toktok.unshift({ id: Date.now(), src: f.data, eVideo: f.eVideo, desc, curtiu: false, likesCount: 0, comentarios: [] });
-                salvarBD();
-                renderizarToktok();
-                toast("Publicado no TokTok!");
-
-            } else if (op === 'repertorio') {
-                const ano = document.getElementById('repAno').value.trim();
-                const nome = document.getElementById('repNome').value.trim();
-                const f = await lerArquivoBase64(document.getElementById('fileRepertorio'));
-                if (!ano || !nome || !f) { toast("Preencha os campos de áudio!"); return; }
-
-                let grupo = db.repertorios.find(r => r.ano === ano);
-                if (!grupo) {
-                    grupo = { ano, musicas: [] };
-                    db.repertorios.push(grupo);
-                }
-                grupo.musicas.push({ nome, src: f.data });
-                salvarBD();
-                renderizarRepertorio();
-                toast("Música adicionada!");
-
-            } else if (op === 'galeria') {
-                const f = await lerArquivoBase64(document.getElementById('fileGaleria'));
-                if (!f) { toast("Selecione um arquivo!"); return; }
-
-                db.galeria.unshift({ id: Date.now(), src: f.data, eVideo: f.eVideo });
-                salvarBD();
-                renderizarGaleria();
-                toast("Mídia adicionada!");
-
-            } else if (op === 'aba') {
-                const titulo = document.getElementById('novaAbaTitulo').value.trim();
-                const conteudo = document.getElementById('novaAbaConteudo').value.trim();
-                if (!titulo) { toast("Digite o título da aba!"); return; }
-
-                const idAba = 'aba_' + Date.now();
-                db.abas.push({ id: idAba, titulo: titulo.toUpperCase(), tipo: 'custom' });
-                db.conteudosCustomizados[idAba] = conteudo || 'Conteúdo em breve.';
-                salvarBD();
-                renderizarSite();
-                atualizarListaAbasPainel();
-                document.getElementById('novaAbaTitulo').value = '';
-                document.getElementById('novaAbaConteudo').value = '';
-                toast("Nova aba criada e publicada com sucesso!");
-            }
-
-            fecharModal('modalPainel');
-        }
-
-        /* TOKTOK LIKES E COMENTÁRIOS */
-        function contarTotalComentarios(comentarios) {
-            if (!comentarios) return 0;
-            let total = comentarios.length;
-            comentarios.forEach(c => {
-                if (c.respostas) total += c.respostas.length;
-            });
-            return total;
         }
 
         function renderizarToktok() {
             const feed = document.getElementById('toktokFeed');
             if (!feed) return;
-            if (!db.toktok || db.toktok.length === 0) {
-                feed.innerHTML = `<p style="color:#fff; text-align:center; padding-top:200px;">Nenhum vídeo publicado ainda.</p>`;
+            if (db.toktok.length === 0) {
+                feed.innerHTML = `<p style="color:#fff; text-align:center; padding-top:200px;">Nenhum post no feed ainda.</p>`;
                 return;
             }
 
-            feed.innerHTML = db.toktok.map(item => {
-                const totalComentarios = contarTotalComentarios(item.comentarios);
-                const totalLikes = item.likesCount || (item.curtiu ? 1 : 0);
-
-                return `
+            feed.innerHTML = db.toktok.map(item => `
                 <div class="toktok-post">
                     ${item.eVideo 
                         ? `<video class="toktok-media" src="${item.src}" controls loop></video>` 
                         : `<img class="toktok-media" src="${item.src}">`}
-                    
                     <div class="toktok-side-actions">
                         <div class="action-item">
                             <button class="toktok-btn ${item.curtiu ? 'active' : ''}" onclick="curtirToktok(${item.id})">
                                 <i class="fa-solid fa-heart"></i>
                             </button>
-                            <span class="action-count">${totalLikes}</span>
-                        </div>
-
-                        <div class="action-item">
-                            <button class="toktok-btn" onclick="abrirComentarios(${item.id})">
-                                <i class="fa-solid fa-comment"></i>
-                            </button>
-                            <span class="action-count">${totalComentarios}</span>
+                            <span class="action-count">${item.likes || 0}</span>
                         </div>
                     </div>
-
                     <div class="toktok-caption">
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `}).join('');
-        }
-
-        function curtirToktok(id) {
-            if (!usuarioAtual) { toast("Você precisa se logar para curtir!"); return; }
-            let item = db.toktok.find(x => x.id === id);
-            if (item) {
-                if (!item.likesCount) item.likesCount = item.curtiu ? 1 : 0;
-                item.curtiu = !item.curtiu;
-                item.likesCount += item.curtiu ? 1 : -1;
-                salvarBD();
-                renderizarToktok();
-            }
-        }
-
-        function abrirComentarios(id) {
-            idToktokComentando = id;
-            cancelarResposta();
-            let item = db.toktok.find(x => x.id === id);
-            renderizarComentariosModal(item);
-            document.getElementById('modalComentarios').style.display = 'flex';
-        }
-
-        function renderizarComentariosModal(item) {
-            const lista = document.getElementById('listaComentarios');
-            const total = contarTotalComentarios(item.comentarios);
-            
-            document.getElementById('modalComentariosTitulo').innerText = `Comentários (${total})`;
-
-            if (!item.comentarios || item.comentarios.length === 0) {
-                lista.innerHTML = `<p style="color:var(--texto-suave); text-align:center; padding:15px;">Nenhum comentário ainda. Seja o primeiro!</p>`;
-                return;
-            }
-
-            lista.innerHTML = item.comentarios.map(c => `
-                <div class="comentario-item">
-                    <div class="comentario-avatar">${c.autor ? c.autor.charAt(0) : 'U'}</div>
-                    <div class="comentario-conteudo">
-                        <div><span class="comentario-autor">${c.autor}:</span>${c.texto}</div>
-                        <div class="comentario-acoes">
-                            <button class="btn-responder-comentario" onclick="prepararResposta(${c.id}, '${c.autor}')">Responder</button>
-                        </div>
-
-                        ${c.respostas && c.respostas.length > 0 ? `
-                            <div class="respostas-container">
-                                ${c.respostas.map(r => `
-                                    <div class="comentario-item">
-                                        <div class="comentario-avatar" style="width:24px; height:24px; font-size:0.65rem; background:var(--dourado); color:var(--texto-escuro);">${r.autor ? r.autor.charAt(0) : 'U'}</div>
-                                        <div class="comentario-conteudo">
-                                            <div><span class="comentario-autor">${r.autor}:</span>${r.texto}</div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        ` : ''}
+                        <p>${item.desc || ''}</p>
                     </div>
                 </div>
             `).join('');
         }
 
-        function prepararResposta(comentarioId, autorNome) {
-            if (!usuarioAtual) { toast("Você precisa entrar para responder!"); return; }
-            idComentarioRespondendo = comentarioId;
-            document.getElementById('replyTargetName').innerText = autorNome;
-            document.getElementById('replyBanner').style.display = 'flex';
-            document.getElementById('inputComentario').focus();
-        }
-
-        function cancelarResposta() {
-            idComentarioRespondendo = null;
-            const banner = document.getElementById('replyBanner');
-            if (banner) banner.style.display = 'none';
-        }
-
-        function salvarComentarioToktok() {
-            if (!usuarioAtual) { toast("Você precisa entrar para comentar!"); return; }
-            const txt = document.getElementById('inputComentario').value.trim();
-            if (!txt) return;
-
-            let item = db.toktok.find(x => x.id === idToktokComentando);
-            if (!item) return;
-
-            if (!item.comentarios) item.comentarios = [];
-
-            if (idComentarioRespondendo) {
-                let cPai = item.comentarios.find(c => c.id === idComentarioRespondendo);
-                if (cPai) {
-                    if (!cPai.respostas) cPai.respostas = [];
-                    cPai.respostas.push({
-                        id: Date.now(),
-                        autor: usuarioAtual.nome,
-                        texto: txt
-                    });
-                }
-            } else {
-                item.comentarios.push({
-                    id: Date.now(),
-                    autor: usuarioAtual.nome,
-                    texto: txt,
-                    respostas: []
-                });
+        function curtirToktok(id) {
+            if (!usuarioAtual) { toast("Entre para curtir!"); return; }
+            let item = db.toktok.find(x => x.id === id);
+            if (item) {
+                item.curtiu = !item.curtiu;
+                item.likes = (item.likes || 0) + (item.curtiu ? 1 : -1);
+                salvarBD();
+                renderizarToktok();
             }
-
-            salvarBD();
-            document.getElementById('inputComentario').value = '';
-            cancelarResposta();
-            renderizarComentariosModal(item);
-            renderizarToktok();
         }
 
-        /* REPERTÓRIO E GALERIA */
         function renderizarRepertorio() {
             const el = document.getElementById('repertorioLista');
             if (!el) return;
-            if (!db.repertorios || db.repertorios.length === 0) {
-                el.innerHTML = `<p style="color:var(--texto-suave);">Nenhum repertório cadastrado.</p>`;
+            if (db.repertorios.length === 0) {
+                el.innerHTML = `<p style="color:var(--texto-suave);">Nenhum áudio disponível.</p>`;
                 return;
             }
 
             el.innerHTML = db.repertorios.map(r => `
                 <div class="repertorio-card">
-                    <h3 style="color:var(--bordo-medio); margin-bottom:10px;">${r.ano}</h3>
+                    <h3 style="color:var(--bordo-escuro); margin-bottom:8px;">${r.ano}</h3>
                     ${r.musicas.map(m => `
                         <div class="repertorio-item">
                             <span><strong>${m.nome}</strong></span>
@@ -1606,8 +1421,8 @@
         function renderizarGaleria() {
             const el = document.getElementById('gridGaleria');
             if (!el) return;
-            if (!db.galeria || db.galeria.length === 0) {
-                el.innerHTML = `<p style="color:var(--texto-suave);">Nenhuma mídia cadastrada na galeria.</p>`;
+            if (db.galeria.length === 0) {
+                el.innerHTML = `<p style="color:var(--texto-suave);">Galeria vazia.</p>`;
                 return;
             }
 
@@ -1618,8 +1433,95 @@
             `).join('');
         }
 
-        // INICIALIZAÇÃO DO SITE
+        /* SISTEMA DE AUTENTICAÇÃO */
+        function abrirModalAuth() {
+            if (usuarioAtual && usuarioAtual.eDiretor) {
+                renderizarTabelaAbas();
+                document.getElementById('modalPainelPro').style.display = 'flex';
+            } else if (!usuarioAtual) {
+                document.getElementById('modalAuth').style.display = 'flex';
+            }
+        }
+
+        function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function trocarTabAuth(tipo) {
+            document.getElementById('formEntrar').style.display = (tipo === 'entrar') ? 'block' : 'none';
+            document.getElementById('formReg').style.display = (tipo === 'reg') ? 'block' : 'none';
+        }
+
+        function alternarChaveDiretoria() {
+            const t = document.getElementById('regTipo').value;
+            document.getElementById('boxChaveDiretor').style.display = (t === 'diretor') ? 'block' : 'none';
+        }
+
+        function fazerLogin() {
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value.trim();
+            const achou = db.usuarios.find(x => x.user === u && x.pass === p);
+
+            if (achou) {
+                usuarioAtual = achou;
+                fecharModal('modalAuth');
+                atualizarUserUI();
+                toast(`Bem-vindo, ${usuarioAtual.nome}!`);
+            } else {
+                toast("Usuário ou senha inválidos!");
+            }
+        }
+
+        function fazerRegistro() {
+            const tipo = document.getElementById('regTipo').value;
+            const chave = document.getElementById('regChave').value.trim();
+            const nome = document.getElementById('regNome').value.trim();
+            const user = document.getElementById('regUser').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+
+            if (!nome || !user || !pass) { toast("Preencha todos os campos!"); return; }
+
+            let eDiretor = false;
+            if (tipo === 'diretor') {
+                if (chave !== CHAVE_DIRETORIA) { toast("Chave secreta incorreta!"); return; }
+                eDiretor = true;
+            }
+
+            usuarioAtual = { user, pass, nome, eDiretor };
+            db.usuarios.push(usuarioAtual);
+            salvarBD();
+
+            fecharModal('modalAuth');
+            atualizarUserUI();
+            toast("Conta cadastrada com sucesso!");
+        }
+
+        function fazerLogout() {
+            usuarioAtual = null;
+            atualizarUserUI();
+            toast("Você saiu!");
+        }
+
+        function atualizarUserUI() {
+            const btn = document.getElementById('btnLogin');
+            const tag = document.getElementById('userTag');
+
+            if (usuarioAtual) {
+                if (usuarioAtual.eDiretor) {
+                    btn.innerHTML = `<i class="fa-solid fa-crown"></i> PAINEL DA DIRETORIA`;
+                    tag.innerHTML = `${usuarioAtual.nome} <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
+                } else {
+                    btn.style.display = 'none';
+                    tag.innerHTML = `Olá, ${usuarioAtual.nome} <button class="btn-logout" onclick="fazerLogout()">Sair</button>`;
+                }
+            } else {
+                btn.style.display = 'inline-flex';
+                btn.innerHTML = `<i class="fa-solid fa-user-lock"></i> ENTRAR / REGISTRAR`;
+                tag.innerHTML = '';
+            }
+        }
+
+        // INICIALIZAÇÃO
         renderizarSite();
     </script>
 </body>
+</html>
 </html>
