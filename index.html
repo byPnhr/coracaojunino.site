@@ -60,12 +60,14 @@
             z-index: 100;
             height: auto;
             min-height: 60px;
+            gap: 15px;
         }
 
         .user-nav-status {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
 
         .btn-adm-trigger {
@@ -78,6 +80,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         .btn-adm-trigger:hover {
@@ -85,11 +88,22 @@
             color: var(--bordo-escuro);
         }
 
+        /* BARRA COM TODAS AS ABAS LADO A LADO */
+        .hero-nav-wrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE e Edge */
+        }
+        
+        .hero-nav-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Opera */
+        }
+
         .hero-nav {
-            display: flex;
+            display: inline-flex;
             gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
         }
 
         .hero-nav button {
@@ -101,9 +115,10 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         .hero-nav button:hover, .hero-nav button.active {
@@ -120,7 +135,7 @@
 
         .slider-track {
             display: flex;
-            width: 1100vw;
+            width: 1000vw;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -130,7 +145,7 @@
             padding: 30px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .bento-card {
@@ -168,6 +183,7 @@
             border: 2px solid var(--dourado);
             border-radius: 16px;
             overflow: hidden;
+            margin-bottom: 30px;
         }
 
         .hero-main-area {
@@ -177,7 +193,7 @@
             padding: 60px 40px;
             text-align: center;
             color: #fff;
-            min-height: 400px;
+            min-height: 380px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -340,7 +356,6 @@
 
         .diretor-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
 
-        /* Cores da Quadrilha */
         .dir-azul { background: linear-gradient(135deg, #1d3557, #457b9d); border: 2px solid var(--dourado); }
         .dir-amarelo { background: linear-gradient(135deg, #b5838d, #d4af37); color: #361f12; border: 2px solid var(--bordo-medio); }
         .dir-vermelho { background: linear-gradient(135deg, #7a0c0c, #9e2a2b); border: 2px solid var(--dourado); }
@@ -368,7 +383,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Oculta scrollbar */
         .toktok-container::-webkit-scrollbar { display: none; }
         .toktok-container { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -426,7 +440,7 @@
 
         .toktok-btn.active { color: #ff2a5f; }
 
-        /* ABA REPERTÓRIOS */
+        /* REPERTÓRIOS */
         .repertorio-group {
             margin-bottom: 25px;
             background: #fff;
@@ -452,8 +466,39 @@
         /* GALERIA & NOVIDADES */
         .news-grid, .gallery-grid, .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card-item {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--borda-card);
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card-item img, .news-card-item video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .news-card-body {
+            padding: 15px;
+        }
+
+        .news-card-body h4 {
+            color: var(--bordo-medio);
+            margin-bottom: 8px;
+        }
+
+        .news-card-body p {
+            color: var(--texto-suave);
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .gallery-item {
@@ -475,7 +520,7 @@
         .sponsor-box img { max-width: 100%; height: 80px; object-fit: contain; margin-bottom: 10px; }
 
         /* MODAIS E LIGHTBOX */
-        .lightbox-overlay, .modal-overlay {
+        .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             background: rgba(0,0,0,0.85);
@@ -507,11 +552,67 @@
             color: var(--bordo-escuro);
         }
 
+        .auth-tab-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--borda-card);
+            padding-bottom: 10px;
+        }
+
+        .auth-tab-btn {
+            flex: 1;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            font-weight: bold;
+            color: var(--texto-suave);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .auth-tab-btn.active {
+            background: var(--bordo-medio);
+            color: #fff;
+        }
+
+        .adm-tab-selector {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+        }
+
+        .adm-tab-btn {
+            padding: 6px 12px;
+            background: #fff;
+            border: 1px solid var(--borda-card);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .adm-tab-btn.active {
+            background: var(--dourado);
+            color: var(--bordo-escuro);
+            border-color: var(--dourado);
+        }
+
         .form-group {
             margin-bottom: 15px;
             display: flex;
             flex-direction: column;
             gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--texto-escuro);
         }
 
         .form-group input, .form-group textarea, .form-group select {
@@ -547,8 +648,10 @@
             .padrinhos-carousel { width: 90%; }
             .arrow-left { left: -10px; }
             .arrow-right { right: -10px; }
-            .hero-main-area h2 { font-size: 3rem; }
+            .hero-main-area h2 { font-size: 3.5rem; }
             .hero-main-area h1 { font-size: 1.8rem; }
+            .history-layout { flex-direction: column; }
+            .history-photos { width: 100%; align-items: center; }
         }
     </style>
 </head>
@@ -558,36 +661,48 @@
     <header class="top-hero-bar">
         <div class="user-nav-status">
             <button class="btn-adm-trigger" id="btnAuthTrigger" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR</button>
+            <button class="btn-adm-trigger" id="btnPainelAdm" style="display:none; background:var(--dourado); color:var(--bordo-escuro);" onclick="abrirPainelAdm()"><i class="fa-solid fa-gear"></i> PAINEL DIRETORIA</button>
             <span id="labelUserLogado" style="color:var(--dourado-claro); font-size:0.8rem; font-weight:bold;"></span>
         </div>
-        <nav class="hero-nav">
-            <button class="active" onclick="goToTab(0)">INÍCIO</button>
-            <button onclick="goToTab(1)">HISTÓRIA</button>
-            <button onclick="goToTab(2)">INSCRIÇÕES</button>
-            <button onclick="goToTab(3)">PADRINHOS</button>
-            <button onclick="goToTab(4)">DIRETORES</button>
-            <button onclick="goToTab(5)">CORAÇÃO TOKTOK</button>
-            <button onclick="goToTab(6)">REPERTÓRIOS</button>
-            <button onclick="goToTab(7)">NOVIDADES</button>
-            <button onclick="goToTab(8)">PATROCINADORES</button>
-            <button onclick="goToTab(9)">APOIADORES</button>
-            <button onclick="goToTab(10)">GALERIA</button>
-        </nav>
+
+        <!-- MENU LATERAL ROLÁVEL COM TODAS AS ABAS ALINHADAS -->
+        <div class="hero-nav-wrapper">
+            <nav class="hero-nav">
+                <button class="active" onclick="goToTab(0)">INÍCIO</button>
+                <button onclick="goToTab(1)">HISTÓRIA</button>
+                <button onclick="goToTab(2)">INSCRIÇÕES</button>
+                <button onclick="goToTab(3)">PADRINHOS</button>
+                <button onclick="goToTab(4)">DIRETORES</button>
+                <button onclick="goToTab(5)">CORAÇÃO TOKTOK</button>
+                <button onclick="goToTab(6)">REPERTÓRIOS</button>
+                <button onclick="goToTab(7)">PATROCINADORES</button>
+                <button onclick="goToTab(8)">APOIADORES</button>
+                <button onclick="goToTab(9)">GALERIA</button>
+            </nav>
+        </div>
     </header>
 
     <!-- TRILHO DO CARROSSEL DE ABAS -->
     <div class="viewport">
         <div class="slider-track" id="sliderTrack">
 
-            <!-- ABA 0: INÍCIO -->
+            <!-- ABA 0: INÍCIO (AGORA CONTÉM AS NOVIDADES TAMBÉM) -->
             <section class="tab-screen">
-                <div class="bento-card hero-banner-card">
-                    <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao">
-                    <div class="hero-main-area">
-                        <h2>Sejam Bem-vindos</h2>
-                        <h1>AO NOSSO SITE!</h1>
-                        <div class="hero-divider">♡</div>
-                        <p class="hero-subtext">Aqui começa a nossa história, se fortalece nossa cultura e pulsa o coração junino.</p>
+                <div style="width:100%; max-width:1100px;">
+                    <div class="bento-card hero-banner-card">
+                        <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao">
+                        <div class="hero-main-area">
+                            <h2>Sejam Bem-vindos</h2>
+                            <h1>AO NOSSO SITE!</h1>
+                            <div class="hero-divider">♡</div>
+                            <p class="hero-subtext">Aqui começa a nossa história, se fortalece nossa cultura e pulsa o coração junino.</p>
+                        </div>
+                    </div>
+
+                    <!-- NOVIDADES INTEGRADAS À TELA INICIAL -->
+                    <div class="bento-card">
+                        <h3 class="title-bento">ÚLTIMAS NOVIDADES</h3>
+                        <div id="container-novidades" class="news-grid"></div>
                     </div>
                 </div>
             </section>
@@ -595,10 +710,7 @@
             <!-- ABA 1: HISTÓRIA -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-                        <h3 class="title-bento" style="margin-bottom:0;">HISTÓRIA</h3>
-                        <button id="btnEditarHistoria" class="btn-adm-trigger" style="display:none;" onclick="abrirEdicaoHistoria()"><i class="fa-solid fa-pen"></i> EDITAR HISTÓRIA</button>
-                    </div>
+                    <h3 class="title-bento">HISTÓRIA</h3>
                     <div class="history-layout">
                         <div style="flex:1;">
                             <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina.</p>
@@ -625,14 +737,13 @@
                 </div>
             </section>
 
-            <!-- ABA 3: PADRINHOS (CARROSSEL COM 3 CARDS) -->
+            <!-- ABA 3: PADRINHOS -->
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento">NOSSOS PADRINHOS</h3>
                     <div class="padrinhos-carousel">
                         <button class="arrow-btn arrow-left" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
 
-                        <!-- Padrinho 1: Casal -->
                         <div class="padrinho-card active" id="padrinho-0">
                             <div class="padrinho-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" alt="Casal de Padrinhos">
@@ -642,7 +753,6 @@
                             <p style="color:var(--texto-suave);">Apoiam nossa quadrilha desde a fundação, sempre presentes nos momentos mais importantes de nossa trajetória junina.</p>
                         </div>
 
-                        <!-- Padrinho 2: Individual -->
                         <div class="padrinho-card" id="padrinho-1">
                             <div class="padrinho-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Padrinho Individual">
@@ -652,7 +762,6 @@
                             <p style="color:var(--texto-suave);">Entusiasta da cultura popular, padrinho dedicado a manter o brilho e a elegância das nossas vestimentas.</p>
                         </div>
 
-                        <!-- Padrinho 3: Misterioso -->
                         <div class="padrinho-card" id="padrinho-2">
                             <div class="padrinho-img-wrapper padrinho-misterioso">
                                 <i class="fa-solid fa-question"></i>
@@ -667,7 +776,7 @@
                 </div>
             </section>
 
-            <!-- ABA 4: DIRETORES (8 QUADRADOS MÉDIOS) -->
+            <!-- ABA 4: DIRETORES -->
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento" style="color:var(--azul-card);">NOSSA DIRETORIA</h3>
@@ -691,15 +800,7 @@
                 </div>
             </section>
 
-            <!-- ABA 7: NOVIDADES -->
-            <section class="tab-screen">
-                <div class="bento-card">
-                    <h3 class="title-bento">NOVIDADES</h3>
-                    <div id="container-novidades" class="news-grid"></div>
-                </div>
-            </section>
-
-            <!-- ABA 8: PATROCINADORES -->
+            <!-- ABA 7: PATROCINADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento">PATROCINADORES</h3>
@@ -707,7 +808,7 @@
                 </div>
             </section>
 
-            <!-- ABA 9: APOIADORES -->
+            <!-- ABA 8: APOIADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento" style="color:var(--azul-card);">APOIADORES</h3>
@@ -715,7 +816,7 @@
                 </div>
             </section>
 
-            <!-- ABA 10: GALERIA -->
+            <!-- ABA 9: GALERIA -->
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento" style="color:var(--dourado);">GALERIA DE MÍDIAS</h3>
@@ -726,39 +827,49 @@
         </div>
     </div>
 
-    <!-- MODAL DE LOGIN / REGISTRO -->
+    <!-- MODAL DE AUTENTICAÇÃO (SEPARANDO ENTRAR E CADASTRAR) -->
     <div class="modal-overlay" id="modalAuth">
         <div class="modal-content">
             <i class="fa-solid fa-xmark close-modal" onclick="fecharModalAuth()"></i>
-            <h3 style="text-align:center; color:var(--bordo-medio); font-family:'Cinzel', serif; margin-bottom:15px;">Acesso ao Site</h3>
             
-            <div class="form-group">
-                <label>Tipo de Conta:</label>
-                <select id="authTipoConta" onchange="alternarTipoCadastro()">
-                    <option value="visitante">Visitante (Comentar e Curtir)</option>
-                    <option value="diretor">Direção (Acesso Completo de Edição)</option>
-                </select>
+            <div class="auth-tab-selector">
+                <button class="auth-tab-btn active" id="btnTabLogin" onclick="mudarAbaAuth('login')">ENTRAR</button>
+                <button class="auth-tab-btn" id="btnTabCadastro" onclick="mudarAbaAuth('cadastro')">CADASTRAR</button>
             </div>
 
-            <!-- LOGIN OU REGISTRO -->
-            <div id="authFormArea">
-                <div class="form-group" id="campoCodigoAuth" style="display:none;">
-                    <label style="color:var(--bordo-medio); font-weight:bold;">Código de Autorização da Diretoria:</label>
-                    <input type="password" id="authCodigoSecret" placeholder="Informe o código interno">
-                </div>
-                <div class="form-group">
-                    <label>Seu Nome:</label>
-                    <input type="text" id="authNome" placeholder="Ex: Maria Santos">
-                </div>
+            <!-- FORMULÁRIO ENTRAR -->
+            <div id="formEntrarArea">
                 <div class="form-group">
                     <label>Usuário:</label>
-                    <input type="text" id="authUser" placeholder="Ex: maria2026">
+                    <input type="text" id="loginUser" placeholder="Seu nome de usuário">
                 </div>
                 <div class="form-group">
                     <label>Senha:</label>
-                    <input type="password" id="authPass" placeholder="••••••••">
+                    <input type="password" id="loginPass" placeholder="••••••••">
                 </div>
-                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="executarAuth()">ENTRAR / CADASTRAR</button>
+                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="efetuarLogin()">ACESSAR CONTA</button>
+            </div>
+
+            <!-- FORMULÁRIO CADASTRAR -->
+            <div id="formCadastrarArea" style="display:none;">
+                <div class="form-group">
+                    <label>Nome Completo:</label>
+                    <input type="text" id="cadNome" placeholder="Ex: Maria Santos">
+                </div>
+                <div class="form-group">
+                    <label>Usuário:</label>
+                    <input type="text" id="cadUser" placeholder="Ex: maria2026">
+                </div>
+                <div class="form-group">
+                    <label>Senha:</label>
+                    <input type="password" id="cadPass" placeholder="••••••••">
+                </div>
+                <div class="form-group" style="background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 8px; border: 1px dashed var(--dourado);">
+                    <label style="color:var(--bordo-medio);">Código de Autorização (Somente Diretores):</label>
+                    <input type="password" id="cadCodigoDirecao" placeholder="Deixe em branco se for visitante">
+                    <small style="color:var(--texto-suave); font-size:0.75rem;">Se preenchido corretamente, você terá acesso às ferramentas da diretoria.</small>
+                </div>
+                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="efetuarCadastro()">CRIAR CONTA</button>
             </div>
         </div>
     </div>
@@ -779,7 +890,7 @@
         <div class="modal-content">
             <i class="fa-solid fa-xmark close-modal" onclick="document.getElementById('modalComentarios').style.display='none'"></i>
             <h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif; margin-bottom:15px;">Comentários</h4>
-            <div id="listaComentariosToktok" style="max-height:250px; overflow-y:auto; margin-bottom:15px;"></div>
+            <div id="listaComentariosToktok" style="max-height:250px; overflow-y:auto; margin-bottom:15px; font-size:0.9rem;"></div>
             <div class="form-group">
                 <input type="text" id="txtNovoComentario" placeholder="Escreva seu comentário...">
                 <button class="btn-bordo" style="margin-top:8px;" onclick="postarComentarioToktok()">Comentar</button>
@@ -787,426 +898,638 @@
         </div>
     </div>
 
-    <!-- PAINEL ADM (SOMENTE PARA DIRETORES) -->
+    <!-- PAINEL ADM MODERNO PARA DIRETORES (EXCETO HISTÓRIA) -->
     <div class="modal-overlay" id="modalPainelAdm">
         <div class="modal-content" style="max-width: 600px;">
             <i class="fa-solid fa-xmark close-modal" onclick="document.getElementById('modalPainelAdm').style.display='none'"></i>
-            <h3 style="text-align:center; color:var(--bordo-medio); font-family:'Cinzel', serif;">PAINEL DE EDIÇÃO (DIRETORIA)</h3>
-            
-            <div class="form-group" style="margin-top:15px;">
-                <label>O que deseja adicionar/editar?</label>
-                <select id="admTipoOpcao" onchange="alternarCamposPainelAdm()">
-                    <option value="toktok">Novo Vídeo/Foto no Coraçãotoktok</option>
-                    <option value="repertorio">Novo Áudio no Repertório</option>
-                    <option value="galeria">Nova Mídia na Galeria</option>
-                    <option value="novidade">Nova Novidade</option>
-                    <option value="patrocinador">Novo Patrocinador/Apoiador</option>
-                </select>
+            <h3 style="text-align:center; color:var(--bordo-medio); font-family:'Cinzel', serif; margin-bottom:15px;">PAINEL DA DIRETORIA</h3>
+
+            <div class="adm-tab-selector">
+                <button class="adm-tab-btn active" onclick="alternarFormAdm('toktok')">TokTok</button>
+                <button class="adm-tab-btn" onclick="alternarFormAdm('novidade')">Novidade</button>
+                <button class="adm-tab-btn" onclick="alternarFormAdm('repertorio')">Repertório</button>
+                <button class="adm-tab-btn" onclick="alternarFormAdm('galeria')">Galeria</button>
+                <button class="adm-tab-btn" onclick="alternarFormAdm('parceiro')">Parceiros</button>
             </div>
 
-            <!-- CAMPOS TOKTOK -->
-            <div id="admCamposToktok">
+            <!-- FORMULÁRIO TOKTOK -->
+            <div id="admFormTokTok" class="adm-subform">
+                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Vídeo Coração TokTok</h4>
                 <div class="form-group">
-                    <label>Selecione o Arquivo (Vídeo ou Foto):</label>
-                    <input type="file" id="fileToktok" accept="video/*,image/*">
+                    <label>Título / Descrição:</label>
+                    <input type="text" id="toktokTitulo" placeholder="Ex: Ensaio de São João 🔥">
                 </div>
                 <div class="form-group">
-                    <label>Descrição/Legenda:</label>
-                    <input type="text" id="descToktok" placeholder="Ex: Bastidores do ensaio!">
+                    <label>Arquivo de Mídia (Vídeo ou Imagem):</label>
+                    <input type="file" id="toktokFile" accept="video/*,image/*">
                 </div>
+                <button class="btn-bordo" style="width:100%;" onclick="salvarTokTok()">Publicar Mídia</button>
             </div>
 
-            <!-- CAMPOS REPERTÓRIO -->
-            <div id="admCamposRepertorio" style="display:none;">
+            <!-- FORMULÁRIO NOVIDADE -->
+            <div id="admFormNovidade" class="adm-subform" style="display:none;">
+                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Novidade no Feed Inicial</h4>
                 <div class="form-group">
-                    <label>Ano / Tema:</label>
-                    <input type="text" id="repAnoTema" placeholder="Ex: 2026 - A Força do Sertão">
+                    <label>Título do Anúncio:</label>
+                    <input type="text" id="novidadeTitulo" placeholder="Ex: Lançamento do Tema 2026">
+                </div>
+                <div class="form-group">
+                    <label>Texto da Novidade:</label>
+                    <textarea id="novidadeTexto" rows="3" placeholder="Escreva o texto do anúncio aqui..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imagem/Anexo (Opcional):</label>
+                    <input type="file" id="novidadeFile" accept="image/*,video/*">
+                </div>
+                <button class="btn-bordo" style="width:100%;" onclick="salvarNovidade()">Publicar Novidade</button>
+            </div>
+
+            <!-- FORMULÁRIO REPERTÓRIO -->
+            <div id="admFormRepertorio" class="adm-subform" style="display:none;">
+                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Música / Áudio</h4>
+                <div class="form-group">
+                    <label>Categoria:</label>
+                    <input type="text" id="repCategoria" placeholder="Ex: Músicas Oficiais 2026">
                 </div>
                 <div class="form-group">
                     <label>Nome da Música:</label>
-                    <input type="text" id="repNomeMusica" placeholder="Ex: Mosaico do Amor">
+                    <input type="text" id="repNome" placeholder="Ex: Entrada Triunfal">
                 </div>
                 <div class="form-group">
-                    <label>Arquivo de Áudio (MP3/WAV):</label>
-                    <input type="file" id="fileRepertorio" accept="audio/*">
+                    <label>Arquivo de Áudio:</label>
+                    <input type="file" id="repFile" accept="audio/*">
                 </div>
+                <button class="btn-bordo" style="width:100%;" onclick="salvarRepertorio()">Adicionar Áudio</button>
             </div>
 
-            <!-- CAMPOS GALERIA -->
-            <div id="admCamposGaleria" style="display:none;">
+            <!-- FORMULÁRIO GALERIA -->
+            <div id="admFormGaleria" class="adm-subform" style="display:none;">
+                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Mídia à Galeria</h4>
                 <div class="form-group">
-                    <label>Arquivo (Imagem ou Vídeo):</label>
-                    <input type="file" id="fileGaleria" accept="image/*,video/*">
+                    <label>Selecione a Imagem ou Vídeo:</label>
+                    <input type="file" id="galeriaFile" accept="image/*,video/*">
                 </div>
-                <div class="form-group">
-                    <label>Legenda:</label>
-                    <input type="text" id="legendaGaleria" placeholder="Ex: Apresentação Principal">
-                </div>
+                <button class="btn-bordo" style="width:100%;" onclick="salvarGaleria()">Enviar para Galeria</button>
             </div>
 
-            <!-- CAMPOS NOVIDADES -->
-            <div id="admCamposNovidades" style="display:none;">
-                <div class="form-group"><label>Título:</label><input type="text" id="novTitulo"></div>
-                <div class="form-group"><label>Foto:</label><input type="file" id="fileNovidade" accept="image/*"></div>
-                <div class="form-group"><label>Descrição:</label><textarea id="novDesc"></textarea></div>
-            </div>
-
-            <!-- CAMPOS PARCEIROS -->
-            <div id="admCamposSponsors" style="display:none;">
+            <!-- FORMULÁRIO PATROCINADORES / APOIADORES -->
+            <div id="admFormParceiro" class="adm-subform" style="display:none;">
+                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Patrocinador ou Apoiador</h4>
                 <div class="form-group">
                     <label>Tipo:</label>
-                    <select id="sponsorTipoSub"><option value="patrocinador">Patrocinador</option><option value="apoiador">Apoiador</option></select>
+                    <select id="parceiroTipo">
+                        <option value="patrocinador">Patrocinador</option>
+                        <option value="apoiador">Apoiador</option>
+                    </select>
                 </div>
-                <div class="form-group"><label>Nome:</label><input type="text" id="sponsorNome"></div>
-                <div class="form-group"><label>Logo (Imagem):</label><input type="file" id="fileSponsor" accept="image/*"></div>
+                <div class="form-group">
+                    <label>Nome do Parceiro:</label>
+                    <input type="text" id="parceiroNome" placeholder="Ex: Padaria do João">
+                </div>
+                <div class="form-group">
+                    <label>Logo / Imagem:</label>
+                    <input type="file" id="parceiroFile" accept="image/*">
+                </div>
+                <button class="btn-bordo" style="width:100%;" onclick="salvarParceiro()">Cadastrar Parceiro</button>
             </div>
 
-            <button class="btn-bordo" style="width:100%; margin-top:15px;" onclick="salvarConteudoPainelAdm()">PUBLICAR NO SITE</button>
         </div>
     </div>
 
-    <!-- CONTAINER DE TOASTS -->
+    <!-- TOAST DE NOTIFICAÇÃO -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- RODAPÉ FIXO -->
-    <footer class="footer-bar">
-        <div>
-            <strong style="color:var(--dourado);">Quadrilha Coração Junino</strong>
-            <p style="font-size:0.75rem; color:#ccc;">Preservando a cultura e a paixão pelo São João.</p>
-        </div>
-        <div style="display:flex; gap:15px;">
-            <a href="https://instagram.com" target="_blank" style="color:#fff; text-decoration:none;"><i class="fa-brands fa-instagram" style="color:var(--dourado);"></i> @coracaojunino</a>
-        </div>
-    </footer>
-
-    <!-- SCRIPT DA APLICAÇÃO -->
     <script>
-        const CODIGO_AUTORIZACAO_SECRET = "JUNINO2026"; 
-        let usuarioLogado = null;
-        let padrinhoAtualIndex = 0;
-        let videoToktokAtivoId = null;
+        // CONFIGURAÇÕES E ESTADO DO SISTEMA
+        const CODIGO_DIRECAO_SECRET = "CORACAO2026"; // Código padrão para diretores
+        let usuarioLogado = JSON.parse(localStorage.getItem('@coracao_user')) || null;
+        let pIndex = 0;
+        let toktokAtivoId = null;
 
-        // ESTRUTURA INICIAL DO BANCO DE DADOS
-        let dadosSite = JSON.parse(localStorage.getItem('coracao_junino_db_v2')) || {
-            usuarios: [
-                { user: 'admin', pass: 'admin123', nome: 'Diretoria Principal', eDiretor: true }
-            ],
-            diretores: [
-                { id: 1, nome: "Carlos Eduardo", cargo: "Presidente", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300", bio: "Presidente e fundador da Quadrilha Coração Junino." },
-                { id: 2, nome: "Ana Paula", cargo: "Vice-Presidente", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300", bio: "Responsável pela coordenação geral e planejamento." },
-                { id: 3, nome: "Marcio Silva", cargo: "Marcador Principal", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300", bio: "Comanda o ritmo e os passos no arraiá." },
-                { id: 4, nome: "Juliana Costa", cargo: "Diretora de Figurino", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300", bio: "Cuida das roupas, cores e brilho dos dançarinos." },
-                { id: 5, nome: "Roberto Alves", cargo: "Diretor Financeiro", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300", bio: "Gestão dos recursos e parcerias da quadrilha." },
-                { id: 6, nome: "Fernanda Lima", cargo: "Coreógrafa", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300", bio: "Criação de passos, formações e evolução da dança." },
-                { id: 7, nome: "Lucas Mendes", cargo: "Diretor de Eventos", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300", bio: "Organização dos ensaios, feijoadas e festivais." },
-                { id: 8, nome: "Beatriz Ramos", cargo: "Comunicação e Mídia", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300", bio: "Redes sociais, fotos, vídeos e imprensa." }
-            ],
-            historia: {
-                texto: "Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina.",
-                img1: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400",
-                img2: "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400"
-            },
-            toktok: [],
-            repertorios: [],
-            novidades: [],
-            patrocinadores: [],
-            apoiadores: [],
-            galeria: []
+        // DADOS LOCAIS INICIAIS
+        let novidades = JSON.parse(localStorage.getItem('@coracao_novidades')) || [
+            { titulo: "Preparativos a todo vapor!", texto: "Nossa diretoria já iniciou os ensaios do ano. Fiquem atentos às próximas datas!", mídia: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" }
+        ];
+
+        let diretoresList = [
+            { nome: "Carlos Eduardo", cargo: "Presidente", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300", bio: "Na liderança da quadrilha com dedicação e amor à nossa tradição." },
+            { nome: "Ana Paula", cargo: "Vice-Presidente", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300", bio: "Responsável pela coordenação geral e bem-estar dos dançarinos." },
+            { nome: "Roberto Silva", cargo: "Diretor Financeiro", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300", bio: "Cuidando de cada detalhe orçamentário da Quadrilha Coração Junino." },
+            { nome: "Mariana Costa", cargo: "Diretora de Figurino", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300", bio: "Dando vida às cores e ao brilho das nossas vestimentas juninas." },
+            { nome: "Fernando Lima", cargo: "Diretor de Coreografia", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300", bio: "Montando os passos que encantam a todos nos arraiais." },
+            { nome: "Juliana Rocha", cargo: "Diretora de Marketing", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300", bio: "Divulgando nosso amor e nossa cultura para o mundo inteiro." },
+            { nome: "Lucas Mendes", cargo: "Diretor de Logística", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300", bio: "Garantindo que todos os materiais e a equipe cheguem com segurança." },
+            { nome: "Patrícia Souza", cargo: "Diretora Social", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300", bio: "Promovendo a união e eventos comunitários para nossa comunidade." }
+        ];
+
+        let toktokVideos = JSON.parse(localStorage.getItem('@coracao_toktok')) || [
+            { id: 1, titulo: "Ensaio Geral 2026! 🔥", midia: "https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-dancing-happily-43407-large.mp4", tipo: "video", curtidas: 12, comentarios: ["Lindo demais!", "Ansioso para a estreia!"] }
+        ];
+
+        let repertorios = JSON.parse(localStorage.getItem('@coracao_repertorio')) || [
+            { categoria: "Músicas de Trabalho", faixas: [{ nome: "Tema de Abertura", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }] }
+        ];
+
+        let galeriaMidias = JSON.parse(localStorage.getItem('@coracao_galeria')) || [
+            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+            "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=600"
+        ];
+
+        let patrocinadores = JSON.parse(localStorage.getItem('@coracao_patrocinadores')) || [];
+        let apoiadores = JSON.parse(localStorage.getItem('@coracao_apoiadores')) || [];
+
+        // INICIALIZAÇÃO
+        window.onload = function() {
+            atualizarStatusUsuario();
+            carregarNovidades();
+            renderizarDiretores();
+            carregarTokTok();
+            carregarRepertorio();
+            carregarGaleria();
+            carregarParceiros();
         };
 
-        function salvarDB() {
-            localStorage.setItem('coracao_junino_db_v2', JSON.stringify(dadosSite));
-        }
-
-        function mostrarToast(msg, tipo = 'info') {
+        function showToast(msg, tipo = "success") {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `custom-toast ${tipo}`;
-            toast.innerHTML = `<i class="fa-solid fa-info-circle"></i> <span>${msg}</span>`;
+            toast.innerHTML = `<i class="fa-solid fa-${tipo === 'success' ? 'circle-check' : 'circle-exclamation'}"></i> ${msg}`;
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 3500);
         }
 
-        function lerArquivo(inputElement) {
-            return new Promise((resolve) => {
-                const file = inputElement.files[0];
-                if (!file) return resolve(null);
-                const reader = new FileReader();
-                reader.onload = (e) => resolve({ data: e.target.result, isVideo: file.type.startsWith('video/') });
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // CARROSSEL DE ABAS
+        // NAVEGAÇÃO DE ABAS
         function goToTab(index) {
-            document.getElementById('sliderTrack').style.transform = `translateX(-${index * 100}vw)`;
+            const track = document.getElementById('sliderTrack');
+            track.style.transform = `translateX(-${index * 100}vw)`;
+            
             const buttons = document.querySelectorAll('.hero-nav button');
-            buttons.forEach((btn, i) => btn.classList.toggle('active', i === index));
+            buttons.forEach((btn, i) => {
+                if (i === index) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Auto-scroll do menu superior
+            if (buttons[index]) {
+                buttons[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
         }
 
         // CARROSSEL PADRINHOS
         function mudarPadrinho(dir) {
-            document.getElementById(`padrinho-${padrinhoAtualIndex}`).classList.remove('active');
-            padrinhoAtualIndex = (padrinhoAtualIndex + dir + 3) % 3;
-            document.getElementById(`padrinho-${padrinhoAtualIndex}`).classList.add('active');
+            const total = 3;
+            document.getElementById(`padrinho-${pIndex}`).classList.remove('active');
+            pIndex = (pIndex + dir + total) % total;
+            document.getElementById(`padrinho-${pIndex}`).classList.add('active');
         }
 
-        // AUTENTICAÇÃO E PERFIS
+        // SISTEMA DE AUTENTICAÇÃO
         function abrirModalAuth() {
-            if(usuarioLogado && usuarioLogado.eDiretor) {
-                document.getElementById('modalPainelAdm').style.display = 'flex';
+            document.getElementById('modalAuth').style.display = 'flex';
+        }
+
+        function fecharModalAuth() {
+            document.getElementById('modalAuth').style.display = 'none';
+        }
+
+        function mudarAbaAuth(aba) {
+            if (aba === 'login') {
+                document.getElementById('btnTabLogin').classList.add('active');
+                document.getElementById('btnTabCadastro').classList.remove('active');
+                document.getElementById('formEntrarArea').style.display = 'block';
+                document.getElementById('formCadastrarArea').style.display = 'none';
             } else {
-                document.getElementById('modalAuth').style.display = 'flex';
+                document.getElementById('btnTabCadastro').classList.add('active');
+                document.getElementById('btnTabLogin').classList.remove('active');
+                document.getElementById('formCadastrarArea').style.display = 'block';
+                document.getElementById('formEntrarArea').style.display = 'none';
             }
         }
 
-        function fecharModalAuth() { document.getElementById('modalAuth').style.display = 'none'; }
+        function efetuarCadastro() {
+            const nome = document.getElementById('cadNome').value.trim();
+            const user = document.getElementById('cadUser').value.trim();
+            const pass = document.getElementById('cadPass').value.trim();
+            const codigo = document.getElementById('cadCodigoDirecao').value.trim();
 
-        function alternarTipoCadastro() {
-            const tipo = document.getElementById('authTipoConta').value;
-            document.getElementById('campoCodigoAuth').style.display = (tipo === 'diretor') ? 'block' : 'none';
-        }
+            if (!nome || !user || !pass) {
+                showToast("Preencha todos os campos obrigatórios!", "error");
+                return;
+            }
 
-        function executarAuth() {
-            const tipo = document.getElementById('authTipoConta').value;
-            const codSecret = document.getElementById('authCodigoSecret').value.trim();
-            const nome = document.getElementById('authNome').value.trim();
-            const user = document.getElementById('authUser').value.trim();
-            const pass = document.getElementById('authPass').value.trim();
+            let contas = JSON.parse(localStorage.getItem('@coracao_contas')) || [];
+            if (contas.find(c => c.user === user)) {
+                showToast("Este usuário já existe!", "error");
+                return;
+            }
 
-            if(!user || !pass) { mostrarToast('Preencha usuário e senha.', 'error'); return; }
+            const ehDiretor = (codigo === CODIGO_DIRECAO_SECRET);
+            const novaConta = { nome, user, pass, tipo: ehDiretor ? 'diretor' : 'visitante' };
+            
+            contas.push(novaConta);
+            localStorage.setItem('@coracao_contas', JSON.stringify(contas));
 
-            // Verifica se o usuário já existe
-            let usuario = dadosSite.usuarios.find(x => x.user === user);
+            usuarioLogado = novaConta;
+            localStorage.setItem('@coracao_user', JSON.stringify(usuarioLogado));
 
-            if(usuario) {
-                // Tenta Logar
-                if(usuario.pass === pass) {
-                    usuarioLogado = usuario;
-                    fecharModalAuth();
-                    atualizarInterfaceStatus();
-                    mostrarToast(`Bem-vindo(a), ${usuario.nome}!`, 'success');
-                } else {
-                    mostrarToast('Senha incorreta.', 'error');
-                }
+            atualizarStatusUsuario();
+            fecharModalAuth();
+
+            if (ehDiretor) {
+                showToast("Conta de Diretor cadastrada com sucesso!");
             } else {
-                // Novo Cadastro
-                if(tipo === 'diretor' && codSecret !== CODIGO_AUTORIZACAO_SECRET) {
-                    mostrarToast('Código da diretoria incorreto!', 'error');
-                    return;
-                }
-                if(!nome) { mostrarToast('Informe seu nome para cadastro.', 'error'); return; }
-
-                usuario = { user, pass, nome, eDiretor: (tipo === 'diretor') };
-                dadosSite.usuarios.push(usuario);
-                salvarDB();
-                usuarioLogado = usuario;
-                fecharModalAuth();
-                atualizarInterfaceStatus();
-                mostrarToast('Conta criada com sucesso!', 'success');
+                showToast("Cadastrado como Visitante com sucesso!");
             }
         }
 
-        function atualizarInterfaceStatus() {
-            const btnAuth = document.getElementById('btnAuthTrigger');
-            const labelUser = document.getElementById('labelUserLogado');
+        function efetuarLogin() {
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
 
-            if(usuarioLogado) {
-                labelUser.innerText = `${usuarioLogado.nome} (${usuarioLogado.eDiretor ? 'Diretor' : 'Visitante'})`;
-                btnAuth.innerHTML = usuarioLogado.eDiretor ? `<i class="fa-solid fa-gear"></i> PAINEL ADM` : `<i class="fa-solid fa-sign-out"></i> SAIR`;
-                btnAuth.onclick = usuarioLogado.eDiretor ? () => document.getElementById('modalPainelAdm').style.display='flex' : logout;
-            } else {
-                labelUser.innerText = '';
-                btnAuth.innerHTML = `<i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR`;
-                btnAuth.onclick = abrirModalAuth;
+            let contas = JSON.parse(localStorage.getItem('@coracao_contas')) || [];
+            const contaEncontrada = contas.find(c => c.user === user && c.pass === pass);
+
+            if (!contaEncontrada) {
+                showToast("Usuário ou senha incorretos!", "error");
+                return;
             }
-            renderizarTudo();
+
+            usuarioLogado = contaEncontrada;
+            localStorage.setItem('@coracao_user', JSON.stringify(usuarioLogado));
+
+            atualizarStatusUsuario();
+            fecharModalAuth();
+            showToast(`Bem-vindo(a), ${usuarioLogado.nome}!`);
         }
 
         function logout() {
             usuarioLogado = null;
-            atualizarInterfaceStatus();
-            mostrarToast('Sessão encerrada.', 'info');
+            localStorage.removeItem('@coracao_user');
+            atualizarStatusUsuario();
+            showToast("Você saiu da conta.");
         }
 
-        // RENDERIZAÇÃO
+        function atualizarStatusUsuario() {
+            const btnAuth = document.getElementById('btnAuthTrigger');
+            const btnPainel = document.getElementById('btnPainelAdm');
+            const labelUser = document.getElementById('labelUserLogado');
+
+            if (usuarioLogado) {
+                btnAuth.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> SAIR`;
+                btnAuth.onclick = logout;
+                labelUser.innerText = `${usuarioLogado.nome} (${usuarioLogado.tipo === 'diretor' ? 'Diretoria' : 'Visitante'})`;
+
+                if (usuarioLogado.tipo === 'diretor') {
+                    btnPainel.style.display = 'inline-block';
+                } else {
+                    btnPainel.style.display = 'none';
+                }
+            } else {
+                btnAuth.innerHTML = `<i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR`;
+                btnAuth.onclick = abrirModalAuth;
+                btnPainel.style.display = 'none';
+                labelUser.innerText = '';
+            }
+        }
+
+        // CARREGAR DIRETORES
         function renderizarDiretores() {
             const grid = document.getElementById('gridDiretores');
-            grid.innerHTML = dadosSite.diretores.map(d => `
-                <div class="diretor-box ${d.cor}" onclick="abrirModalDiretor(${d.id})">
+            grid.innerHTML = '';
+            diretoresList.forEach(d => {
+                const box = document.createElement('div');
+                box.className = `diretor-box ${d.cor}`;
+                box.innerHTML = `
                     <img src="${d.foto}" alt="${d.nome}">
-                    <h4>${d.nome}</h4>
-                    <small style="font-weight:bold;">${d.cargo}</small>
-                </div>
-            `).join('');
+                    <h4 style="font-family:'Cinzel', serif;">${d.nome}</h4>
+                    <p style="font-size:0.8rem; opacity:0.9;">${d.cargo}</p>
+                `;
+                box.onclick = () => {
+                    document.getElementById('modalDirFoto').src = d.foto;
+                    document.getElementById('modalDirNome').innerText = d.nome;
+                    document.getElementById('modalDirCargo').innerText = d.cargo;
+                    document.getElementById('modalDirBio').innerText = d.bio;
+                    document.getElementById('modalDiretor').style.display = 'flex';
+                };
+                grid.appendChild(box);
+            });
         }
 
-        function abrirModalDiretor(id) {
-            const d = dadosSite.diretores.find(x => x.id === id);
-            if(!d) return;
-            document.getElementById('modalDirFoto').src = d.foto;
-            document.getElementById('modalDirNome').innerText = d.nome;
-            document.getElementById('modalDirCargo').innerText = d.cargo;
-            document.getElementById('modalDirBio').innerText = d.bio;
-            document.getElementById('modalDiretor').style.display = 'flex';
-        }
-
-        function renderizarToktok() {
-            const container = document.getElementById('toktokContainer');
-            if(dadosSite.toktok.length === 0) {
-                container.innerHTML = `<div style="color:#fff; text-align:center; padding:50px;">Nenhum vídeo no Coraçãotoktok ainda.</div>`;
+        // NOVIDADES NA ABA INÍCIO
+        function carregarNovidades() {
+            const container = document.getElementById('container-novidades');
+            container.innerHTML = '';
+            if(novidades.length === 0) {
+                container.innerHTML = '<p style="color:var(--texto-suave);">Nenhuma novidade recente.</p>';
                 return;
             }
+            novidades.forEach(n => {
+                const item = document.createElement('div');
+                item.className = 'news-card-item';
+                
+                let midiaHTML = '';
+                if(n.midia) {
+                    if(n.midia.includes('data:video') || n.midia.endsWith('.mp4')) {
+                        midiaHTML = `<video src="${n.midia}" controls></video>`;
+                    } else {
+                        midiaHTML = `<img src="${n.midia}" alt="${n.titulo}">`;
+                    }
+                }
 
-            container.innerHTML = dadosSite.toktok.map(item => `
-                <div class="toktok-card">
-                    ${item.isVideo ? 
-                        `<video class="toktok-media" src="${item.media}" controls loop></video>` : 
-                        `<img class="toktok-media" src="${item.media}">`}
-                    <div class="toktok-overlay">
-                        <p style="font-size:0.9rem;">${item.desc}</p>
+                item.innerHTML = `
+                    ${midiaHTML}
+                    <div class="news-card-body">
+                        <h4>${n.titulo}</h4>
+                        <p>${n.texto}</p>
                     </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // CORAÇÃO TOKTOK
+        function carregarTokTok() {
+            const container = document.getElementById('toktokContainer');
+            container.innerHTML = '';
+            toktokVideos.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'toktok-card';
+                
+                let mediaTag = (v.tipo === 'video' || (v.midia && v.midia.includes('data:video')))
+                    ? `<video src="${v.midia}" class="toktok-media" loop onclick="this.paused?this.play():this.pause()"></video>`
+                    : `<img src="${v.midia}" class="toktok-media">`;
+
+                card.innerHTML = `
+                    ${mediaTag}
                     <div class="toktok-actions">
-                        <button class="toktok-btn ${item.curtidas.includes(usuarioLogado?.user) ? 'active' : ''}" onclick="curtirToktok(${item.id})">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                        <span style="color:#fff; font-size:0.75rem;">${item.curtidas.length}</span>
-
-                        <button class="toktok-btn" onclick="abrirComentariosToktok(${item.id})">
-                            <i class="fa-solid fa-comment"></i>
-                        </button>
-                        <span style="color:#fff; font-size:0.75rem;">${item.comentarios.length}</span>
+                        <button class="toktok-btn" onclick="curtirTokTok(${v.id})"><i class="fa-solid fa-heart"></i></button>
+                        <span style="color:#fff; font-size:0.8rem;">${v.curtidas}</span>
+                        <button class="toktok-btn" onclick="abrirComentariosTokTok(${v.id})"><i class="fa-solid fa-comment"></i></button>
+                        <span style="color:#fff; font-size:0.8rem;">${v.comentarios.length}</span>
                     </div>
-                </div>
-            `).join('');
+                    <div class="toktok-overlay">
+                        <p style="font-weight:bold; font-size:0.92rem;">${v.titulo}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
         }
 
-        function curtirToktok(id) {
-            if(!usuarioLogado) { mostrarToast('Faça login para curtir!', 'error'); return; }
-            const item = dadosSite.toktok.find(x => x.id === id);
-            if(!item) return;
-
-            const index = item.curtidas.indexOf(usuarioLogado.user);
-            if(index > -1) item.curtidas.splice(index, 1);
-            else item.curtidas.push(usuarioLogado.user);
-
-            salvarDB();
-            renderizarToktok();
+        function curtirTokTok(id) {
+            if (!usuarioLogado) {
+                showToast("Faça login para curtir os vídeos!", "error");
+                return;
+            }
+            const video = toktokVideos.find(v => v.id === id);
+            if (video) {
+                video.curtidas++;
+                localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
+                carregarTokTok();
+                showToast("Você curtiu esta publicação!");
+            }
         }
 
-        function abrirComentariosToktok(id) {
-            videoToktokAtivoId = id;
-            const item = dadosSite.toktok.find(x => x.id === id);
+        function abrirComentariosTokTok(id) {
+            toktokAtivoId = id;
+            const video = toktokVideos.find(v => v.id === id);
             const lista = document.getElementById('listaComentariosToktok');
-            
-            lista.innerHTML = item.comentarios.map(c => `
-                <div style="background:#fff; padding:8px; border-radius:6px; margin-bottom:6px; font-size:0.85rem;">
-                    <strong>${c.autor}:</strong> ${c.texto}
-                </div>
-            `).join('') || '<p style="color:#777; font-size:0.8rem;">Seja o primeiro a comentar!</p>';
-
+            lista.innerHTML = '';
+            video.comentarios.forEach(c => {
+                lista.innerHTML += `<div style="background:#fff; padding:8px 12px; border-radius:8px; margin-bottom:6px; border:1px solid var(--borda-card);">${c}</div>`;
+            });
             document.getElementById('modalComentarios').style.display = 'flex';
         }
 
         function postarComentarioToktok() {
-            if(!usuarioLogado) { mostrarToast('Faça login para comentar!', 'error'); return; }
+            if (!usuarioLogado) {
+                showToast("Faça login para comentar!", "error");
+                return;
+            }
             const txt = document.getElementById('txtNovoComentario').value.trim();
-            if(!txt) return;
+            if (!txt) return;
 
-            const item = dadosSite.toktok.find(x => x.id === videoToktokAtivoId);
-            item.comentarios.push({ autor: usuarioLogado.nome, texto: txt });
-            
-            salvarDB();
-            document.getElementById('txtNovoComentario').value = '';
-            abrirComentariosToktok(videoToktokAtivoId);
-            renderizarToktok();
+            const video = toktokVideos.find(v => v.id === toktokAtivoId);
+            if (video) {
+                video.comentarios.push(`<b>${usuarioLogado.nome}:</b> ${txt}`);
+                localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
+                document.getElementById('txtNovoComentario').value = '';
+                abrirComentariosTokTok(toktokAtivoId);
+                carregarTokTok();
+                showToast("Comentário adicionado!");
+            }
         }
 
-        function renderizarRepertorio() {
+        // REPERTÓRIO
+        function carregarRepertorio() {
             const container = document.getElementById('containerRepertorio');
-            if(dadosSite.repertorios.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:#777;">Nenhum repertório cadastrado.</p>`;
+            container.innerHTML = '';
+            repertorios.forEach(group => {
+                const grpDiv = document.createElement('div');
+                grpDiv.className = 'repertorio-group';
+                grpDiv.innerHTML = `<h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">${group.categoria}</h4>`;
+                
+                group.faixas.forEach(f => {
+                    grpDiv.innerHTML += `
+                        <div class="audio-item">
+                            <span style="font-weight:600; font-size:0.9rem; color:var(--texto-escuro);">${f.nome}</span>
+                            <audio src="${f.url}" controls></audio>
+                        </div>
+                    `;
+                });
+                container.appendChild(grpDiv);
+            });
+        }
+
+        // GALERIA DE MÍDIAS
+        function carregarGaleria() {
+            const container = document.getElementById('container-galeria');
+            container.innerHTML = '';
+            galeriaMidias.forEach(url => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                if(url.includes('data:video') || url.endsWith('.mp4')) {
+                    div.innerHTML = `<video src="${url}" controls></video>`;
+                } else {
+                    div.innerHTML = `<img src="${url}">`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        // PATROCINADORES E APOIADORES
+        function carregarParceiros() {
+            const containerPat = document.getElementById('container-patrocinadores');
+            const containerApo = document.getElementById('container-apoiadores');
+            
+            containerPat.innerHTML = '';
+            containerApo.innerHTML = '';
+
+            patrocinadores.forEach(p => {
+                containerPat.innerHTML += `
+                    <div class="sponsor-box">
+                        <img src="${p.img}" alt="${p.nome}">
+                        <p style="font-weight:bold; color:var(--bordo-medio);">${p.nome}</p>
+                    </div>
+                `;
+            });
+
+            apoiadores.forEach(a => {
+                containerApo.innerHTML += `
+                    <div class="sponsor-box">
+                        <img src="${a.img}" alt="${a.nome}">
+                        <p style="font-weight:bold; color:var(--azul-card);">${a.nome}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // PAINEL DA DIRETORIA
+        function abrirPainelAdm() {
+            if (!usuarioLogado || usuarioLogado.tipo !== 'diretor') {
+                showToast("Acesso restrito para a Diretoria!", "error");
+                return;
+            }
+            document.getElementById('modalPainelAdm').style.display = 'flex';
+        }
+
+        function alternarFormAdm(tipo) {
+            const btns = document.querySelectorAll('.adm-tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.adm-subform').forEach(f => f.style.display = 'none');
+
+            if(tipo === 'toktok') document.getElementById('admFormTokTok').style.display = 'block';
+            if(tipo === 'novidade') document.getElementById('admFormNovidade').style.display = 'block';
+            if(tipo === 'repertorio') document.getElementById('admFormRepertorio').style.display = 'block';
+            if(tipo === 'galeria') document.getElementById('admFormGaleria').style.display = 'block';
+            if(tipo === 'parceiro') document.getElementById('admFormParceiro').style.display = 'block';
+        }
+
+        // CONVERSOR DE ARQUIVOS PARA BASE64
+        function lerArquivoComoBase64(inputElement) {
+            return new Promise((resolve, reject) => {
+                const file = inputElement.files[0];
+                if (!file) return resolve(null);
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function salvarTokTok() {
+            const titulo = document.getElementById('toktokTitulo').value.trim();
+            const fileInput = document.getElementById('toktokFile');
+
+            const midiaBase64 = await lerArquivoComoBase64(fileInput);
+
+            if (!titulo || !midiaBase64) {
+                showToast("Preencha a descrição e escolha um arquivo de mídia!", "error");
                 return;
             }
 
-            // Agrupa por Ano/Tema
-            const grupos = {};
-            dadosSite.repertorios.forEach(r => {
-                if(!grupos[r.anoTema]) grupos[r.anoTema] = [];
-                grupos[r.anoTema].push(r);
-            });
+            const tipo = fileInput.files[0].type.startsWith('video') ? 'video' : 'imagem';
+            const novoItem = {
+                id: Date.now(),
+                titulo,
+                midia: midiaBase64,
+                tipo,
+                curtidas: 0,
+                comentarios: []
+            };
 
-            container.innerHTML = Object.keys(grupos).map(anoTema => `
-                <div class="repertorio-group">
-                    <h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif;"><i class="fa-solid fa-music"></i> ${anoTema}</h4>
-                    ${grupos[anoTema].map(musica => `
-                        <div class="audio-item">
-                            <strong style="color:var(--texto-escuro);">${musica.nome}</strong>
-                            <audio src="${musica.audio}" controls></audio>
-                        </div>
-                    `).join('')}
-                </div>
-            `).join('');
-        }
-
-        // PAINEL ADM - ADICIONAR CONTEÚDOS
-        function alternarCamposPainelAdm() {
-            const op = document.getElementById('admTipoOpcao').value;
-            document.getElementById('admCamposToktok').style.display = (op === 'toktok') ? 'block' : 'none';
-            document.getElementById('admCamposRepertorio').style.display = (op === 'repertorio') ? 'block' : 'none';
-            document.getElementById('admCamposGaleria').style.display = (op === 'galeria') ? 'block' : 'none';
-            document.getElementById('admCamposNovidades').style.display = (op === 'novidade') ? 'block' : 'none';
-            document.getElementById('admCamposSponsors').style.display = (op === 'patrocinador') ? 'block' : 'none';
-        }
-
-        async function salvarConteudoPainelAdm() {
-            const op = document.getElementById('admTipoOpcao').value;
-
-            if(op === 'toktok') {
-                const res = await lerArquivo(document.getElementById('fileToktok'));
-                const desc = document.getElementById('descToktok').value.trim();
-                if(!res) { mostrarToast('Selecione uma imagem ou vídeo.', 'error'); return; }
-                
-                dadosSite.toktok.unshift({ id: Date.now(), media: res.data, isVideo: res.isVideo, desc, curtidas: [], comentarios: [] });
-            }
-            else if(op === 'repertorio') {
-                const anoTema = document.getElementById('repAnoTema').value.trim();
-                const nome = document.getElementById('repNomeMusica').value.trim();
-                const res = await lerArquivo(document.getElementById('fileRepertorio'));
-                if(!res || !anoTema || !nome) { mostrarToast('Preencha os campos e o arquivo de áudio.', 'error'); return; }
-
-                dadosSite.repertorios.push({ id: Date.now(), anoTema, nome, audio: res.data });
-            }
-            else if(op === 'galeria') {
-                const res = await lerArquivo(document.getElementById('fileGaleria'));
-                const legenda = document.getElementById('legendaGaleria').value.trim();
-                if(!res) { mostrarToast('Selecione o arquivo.', 'error'); return; }
-
-                dadosSite.galeria.unshift({ id: Date.now(), media: res.data, isVideo: res.isVideo, legenda });
-            }
-
-            salvarDB();
-            renderizarTudo();
+            toktokVideos.unshift(novoItem);
+            localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
+            carregarTokTok();
+            showToast("Mídia adicionada ao Coração TokTok!");
             document.getElementById('modalPainelAdm').style.display = 'none';
-            mostrarToast('Conteúdo publicado com sucesso!', 'success');
         }
 
-        function renderizarTudo() {
-            renderizarDiretores();
-            renderizarToktok();
-            renderizarRepertorio();
+        async function salvarNovidade() {
+            const titulo = document.getElementById('novidadeTitulo').value.trim();
+            const texto = document.getElementById('novidadeTexto').value.trim();
+            const fileInput = document.getElementById('novidadeFile');
 
-            // Galeria
-            const containerGal = document.getElementById('container-galeria');
-            containerGal.innerHTML = dadosSite.galeria.map(item => `
-                <div class="gallery-item">
-                    ${item.isVideo ? `<video src="${item.media}" controls></video>` : `<img src="${item.media}">`}
-                </div>
-            `).join('');
+            if (!titulo || !texto) {
+                showToast("Preencha o título e o texto!", "error");
+                return;
+            }
+
+            const midiaBase64 = await lerArquivoComoBase64(fileInput);
+
+            novidades.unshift({ titulo, texto, midia: midiaBase64 });
+            localStorage.setItem('@coracao_novidades', JSON.stringify(novidades));
+            carregarNovidades();
+            showToast("Novidade publicada na página inicial!");
+            document.getElementById('modalPainelAdm').style.display = 'none';
         }
 
-        // INICIALIZAÇÃO
-        renderizarTudo();
+        async function salvarRepertorio() {
+            const categoria = document.getElementById('repCategoria').value.trim();
+            const nome = document.getElementById('repNome').value.trim();
+            const fileInput = document.getElementById('repFile');
+
+            const audioBase64 = await lerArquivoComoBase64(fileInput);
+
+            if (!categoria || !nome || !audioBase64) {
+                showToast("Preencha todos os campos e selecione o áudio!", "error");
+                return;
+            }
+
+            let catObj = repertorios.find(r => r.categoria.toLowerCase() === categoria.toLowerCase());
+            if (catObj) {
+                catObj.faixas.push({ nome, url: audioBase64 });
+            } else {
+                repertorios.push({ categoria, faixas: [{ nome, url: audioBase64 }] });
+            }
+
+            localStorage.setItem('@coracao_repertorio', JSON.stringify(repertorios));
+            carregarRepertorio();
+            showToast("Áudio adicionado com sucesso!");
+            document.getElementById('modalPainelAdm').style.display = 'none';
+        }
+
+        async function salvarGaleria() {
+            const fileInput = document.getElementById('galeriaFile');
+            const midiaBase64 = await lerArquivoComoBase64(fileInput);
+
+            if (!midiaBase64) {
+                showToast("Selecione uma foto ou vídeo!", "error");
+                return;
+            }
+
+            galeriaMidias.unshift(midiaBase64);
+            localStorage.setItem('@coracao_galeria', JSON.stringify(galeriaMidias));
+            carregarGaleria();
+            showToast("Mídia adicionada à Galeria!");
+            document.getElementById('modalPainelAdm').style.display = 'none';
+        }
+
+        async function salvarParceiro() {
+            const tipo = document.getElementById('parceiroTipo').value;
+            const nome = document.getElementById('parceiroNome').value.trim();
+            const fileInput = document.getElementById('parceiroFile');
+
+            const imgBase64 = await lerArquivoComoBase64(fileInput);
+
+            if (!nome || !imgBase64) {
+                showToast("Preencha o nome e selecione a imagem da logo!", "error");
+                return;
+            }
+
+            if (tipo === 'patrocinador') {
+                patrocinadores.push({ nome, img: imgBase64 });
+                localStorage.setItem('@coracao_patrocinadores', JSON.stringify(patrocinadores));
+            } else {
+                apoiadores.push({ nome, img: imgBase64 });
+                localStorage.setItem('@coracao_apoiadores', JSON.stringify(apoiadores));
+            }
+
+            carregarParceiros();
+            showToast("Parceiro adicionado com sucesso!");
+            document.getElementById('modalPainelAdm').style.display = 'none';
+        }
     </script>
 </body>
 </html>
