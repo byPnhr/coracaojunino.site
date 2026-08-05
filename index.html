@@ -92,12 +92,12 @@
         .hero-nav-wrapper {
             overflow-x: auto;
             white-space: nowrap;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE e Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
         
         .hero-nav-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome, Safari e Opera */
+            display: none;
         }
 
         .hero-nav {
@@ -135,14 +135,14 @@
 
         .slider-track {
             display: flex;
-            width: 1000vw;
+            width: 1100vw;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .tab-screen {
             width: 100vw;
             min-height: calc(100vh - 120px);
-            padding: 30px 20px;
+            padding: 30px 20px 80px 20px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -268,7 +268,7 @@
         .card-inscricoes { background: linear-gradient(135deg, #e3ecf5 0%, #cbdbe8 100%); text-align: center; }
         .btn-azul { background: var(--azul-card); color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin: 20px 0; }
 
-        /* ABA PADRINHOS (CARROSSEL COM SETAS) */
+        /* ABA PADRINHOS */
         .padrinhos-carousel {
             position: relative;
             max-width: 800px;
@@ -307,15 +307,6 @@
             object-fit: cover;
         }
 
-        .padrinho-misterioso {
-            background: linear-gradient(135deg, #222, #444);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4rem;
-        }
-
         .arrow-btn {
             background: var(--bordo-medio);
             color: var(--dourado);
@@ -337,7 +328,7 @@
         .arrow-left { left: -20px; }
         .arrow-right { right: -20px; }
 
-        /* ABA DIRETORES (8 QUADRADOS MÉDIOS) */
+        /* ABA DIRETORES */
         .diretores-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -349,16 +340,12 @@
             padding: 15px;
             text-align: center;
             color: #fff;
-            cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
         .diretor-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
-
         .dir-azul { background: linear-gradient(135deg, #1d3557, #457b9d); border: 2px solid var(--dourado); }
-        .dir-amarelo { background: linear-gradient(135deg, #b5838d, #d4af37); color: #361f12; border: 2px solid var(--bordo-medio); }
-        .dir-vermelho { background: linear-gradient(135deg, #7a0c0c, #9e2a2b); border: 2px solid var(--dourado); }
 
         .diretor-box img {
             width: 100px;
@@ -405,65 +392,13 @@
 
         .toktok-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             padding: 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: #fff;
         }
 
-        .toktok-actions {
-            position: absolute;
-            right: 15px;
-            bottom: 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .toktok-btn {
-            background: rgba(0,0,0,0.4);
-            color: #fff;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .toktok-btn.active { color: #ff2a5f; }
-
-        /* REPERTÓRIOS */
-        .repertorio-group {
-            margin-bottom: 25px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid var(--bordo-medio);
-        }
-
-        .audio-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--fundo-palha);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .audio-item audio { height: 35px; outline: none; }
-
-        /* GALERIA & NOVIDADES */
+        /* GALERIA & NOVIDADES & PATROCINADORES */
         .news-grid, .gallery-grid, .sponsors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -486,20 +421,9 @@
             object-fit: cover;
         }
 
-        .news-card-body {
-            padding: 15px;
-        }
-
-        .news-card-body h4 {
-            color: var(--bordo-medio);
-            margin-bottom: 8px;
-        }
-
-        .news-card-body p {
-            color: var(--texto-suave);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
+        .news-card-body { padding: 15px; }
+        .news-card-body h4 { color: var(--bordo-medio); margin-bottom: 8px; }
+        .news-card-body p { color: var(--texto-suave); font-size: 0.9rem; line-height: 1.4; }
 
         .gallery-item {
             position: relative;
@@ -518,6 +442,49 @@
 
         .sponsor-box { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--borda-card); text-align: center;}
         .sponsor-box img { max-width: 100%; height: 80px; object-fit: contain; margin-bottom: 10px; }
+
+        /* ESTILO DO CARD DE RODAPÉ NA ABA DE NAVEGAÇÃO */
+        .footer-card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .footer-btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+        }
+
+        .footer-btn-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
 
         /* MODAIS E LIGHTBOX */
         .modal-overlay {
@@ -538,7 +505,7 @@
             border-radius: 15px;
             border: 2px solid var(--dourado);
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
@@ -552,17 +519,17 @@
             color: var(--bordo-escuro);
         }
 
-        .auth-tab-selector {
+        .adm-tab-selector {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            overflow-x: auto;
             margin-bottom: 20px;
             border-bottom: 2px solid var(--borda-card);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
-        .auth-tab-btn {
-            flex: 1;
-            padding: 8px;
+        .adm-tab-btn {
+            padding: 8px 14px;
             background: transparent;
             border: none;
             font-weight: bold;
@@ -570,36 +537,12 @@
             cursor: pointer;
             border-radius: 8px;
             transition: 0.3s;
-        }
-
-        .auth-tab-btn.active {
-            background: var(--bordo-medio);
-            color: #fff;
-        }
-
-        .adm-tab-selector {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-        }
-
-        .adm-tab-btn {
-            padding: 6px 12px;
-            background: #fff;
-            border: 1px solid var(--borda-card);
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
             white-space: nowrap;
         }
 
         .adm-tab-btn.active {
-            background: var(--dourado);
-            color: var(--bordo-escuro);
-            border-color: var(--dourado);
+            background: var(--bordo-medio);
+            color: #fff;
         }
 
         .form-group {
@@ -623,17 +566,43 @@
             background: #fff;
         }
 
+        /* LISTA GERENCIÁVEL PAINEL ADM */
+        .adm-item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .adm-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--borda-card);
+        }
+
+        .btn-action-delete {
+            background: #c62828;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         /* TOAST NOTIFICAÇÃO */
-        .toast-container { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+        .toast-container { position: fixed; bottom: 80px; right: 25px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
         .custom-toast { min-width: 280px; background: #fff; border-left: 6px solid var(--dourado); padding: 14px 20px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
         .custom-toast.success { border-left-color: #2e7d32; }
-        .custom-toast.error { border-left-color: #c62828; }
 
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        /* FOOTER */
+        /* FOOTER PRINCIPAL FIXO NA COR DA BARRA DE NAVEGAÇÃO */
         .footer-bar {
-            background: linear-gradient(135deg, var(--bordo-escuro) 0%, var(--bordo-medio) 100%);
+            background: linear-gradient(135deg, rgba(40,0,0,0.98), rgba(80,0,0,0.95));
             color: #fff;
             padding: 15px 30px;
             display: flex;
@@ -642,6 +611,37 @@
             border-top: 2px solid var(--dourado);
             flex-wrap: wrap;
             gap: 15px;
+            margin-top: auto;
+            position: relative;
+            z-index: 100;
+        }
+
+        .footer-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-info a {
+            color: var(--dourado-claro);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .footer-info a:hover {
+            color: var(--dourado);
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #ddd;
         }
 
         @media (max-width: 850px) {
@@ -652,6 +652,7 @@
             .hero-main-area h1 { font-size: 1.8rem; }
             .history-layout { flex-direction: column; }
             .history-photos { width: 100%; align-items: center; }
+            .footer-bar { flex-direction: column; text-align: center; justify-content: center; }
         }
     </style>
 </head>
@@ -660,14 +661,12 @@
     <!-- NAV BAR SUPERIOR -->
     <header class="top-hero-bar">
         <div class="user-nav-status">
-            <button class="btn-adm-trigger" id="btnAuthTrigger" onclick="abrirModalAuth()"><i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR</button>
-            <button class="btn-adm-trigger" id="btnPainelAdm" style="display:none; background:var(--dourado); color:var(--bordo-escuro);" onclick="abrirPainelAdm()"><i class="fa-solid fa-gear"></i> PAINEL DIRETORIA</button>
-            <span id="labelUserLogado" style="color:var(--dourado-claro); font-size:0.8rem; font-weight:bold;"></span>
+            <button class="btn-adm-trigger" id="btnPainelAdm" onclick="abrirPainelAdm()"><i class="fa-solid fa-gear"></i> PAINEL DIRETORIA</button>
         </div>
 
         <!-- MENU LATERAL ROLÁVEL COM TODAS AS ABAS ALINHADAS -->
         <div class="hero-nav-wrapper">
-            <nav class="hero-nav">
+            <nav class="hero-nav" id="mainNavButtons">
                 <button class="active" onclick="goToTab(0)">INÍCIO</button>
                 <button onclick="goToTab(1)">HISTÓRIA</button>
                 <button onclick="goToTab(2)">INSCRIÇÕES</button>
@@ -678,6 +677,7 @@
                 <button onclick="goToTab(7)">PATROCINADORES</button>
                 <button onclick="goToTab(8)">APOIADORES</button>
                 <button onclick="goToTab(9)">GALERIA</button>
+                <button onclick="goToTab(10)">RODAPÉ</button>
             </nav>
         </div>
     </header>
@@ -686,11 +686,11 @@
     <div class="viewport">
         <div class="slider-track" id="sliderTrack">
 
-            <!-- ABA 0: INÍCIO (AGORA CONTÉM AS NOVIDADES TAMBÉM) -->
+            <!-- ABA 0: INÍCIO -->
             <section class="tab-screen">
                 <div style="width:100%; max-width:1100px;">
                     <div class="bento-card hero-banner-card">
-                        <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao">
+                        <img src="imagens/original.png" alt="Logo Coração Junino" class="hero-logo-coracao" onerror="this.style.display='none'">
                         <div class="hero-main-area">
                             <h2>Sejam Bem-vindos</h2>
                             <h1>AO NOSSO SITE!</h1>
@@ -713,15 +713,15 @@
                     <h3 class="title-bento">HISTÓRIA</h3>
                     <div class="history-layout">
                         <div style="flex:1;">
-                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">Nossa história é feita de amor, tradição, luta e conquistas. Desde o primeiro passo, carregamos em nosso coração a missão de manter viva a cultura junina.</p>
+                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">A Quadrilha Coração Junino nasceu do amor absoluto pela cultura nordestina. Com muita garra, ritmo e emoção, levamos a beleza do São João aos palcos e arenas de todo o país!</p>
                             <button class="btn-bordo" style="margin-top:20px;" onclick="goToTab(2)">Junte-se a nós</button>
                         </div>
                         <div class="history-photos">
                             <div class="photo-polaroid">
-                                <img id="historiaImg1" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400">
+                                <img id="historiaImg1" src="https://picsum.photos/400/300?random=1">
                             </div>
                             <div class="photo-polaroid">
-                                <img id="historiaImg2" src="https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=400">
+                                <img id="historiaImg2" src="https://picsum.photos/400/300?random=2">
                             </div>
                         </div>
                     </div>
@@ -741,36 +741,9 @@
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento">NOSSOS PADRINHOS</h3>
-                    <div class="padrinhos-carousel">
+                    <div class="padrinhos-carousel" id="containerPadrinhos">
                         <button class="arrow-btn arrow-left" onclick="mudarPadrinho(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-
-                        <div class="padrinho-card active" id="padrinho-0">
-                            <div class="padrinho-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" alt="Casal de Padrinhos">
-                            </div>
-                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">João & Maria</h3>
-                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:10px;">Padrinhos de Honra (Casal)</p>
-                            <p style="color:var(--texto-suave);">Apoiam nossa quadrilha desde a fundação, sempre presentes nos momentos mais importantes de nossa trajetória junina.</p>
-                        </div>
-
-                        <div class="padrinho-card" id="padrinho-1">
-                            <div class="padrinho-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Padrinho Individual">
-                            </div>
-                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Sr. Antônio Severino</h3>
-                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:10px;">Padrinho do Figurino</p>
-                            <p style="color:var(--texto-suave);">Entusiasta da cultura popular, padrinho dedicado a manter o brilho e a elegância das nossas vestimentas.</p>
-                        </div>
-
-                        <div class="padrinho-card" id="padrinho-2">
-                            <div class="padrinho-img-wrapper padrinho-misterioso">
-                                <i class="fa-solid fa-question"></i>
-                            </div>
-                            <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">Padrinho Misterioso 🤫</h3>
-                            <p style="color:var(--dourado); font-weight:bold; margin-bottom:10px;">Em Breve...</p>
-                            <p style="color:var(--texto-suave);">Um novo padrinho especial foi escolhido e será revelado em breve! Aguarde o anúncio oficial.</p>
-                        </div>
-
+                        <div id="padrinhosCardsList" style="width: 100%;"></div>
                         <button class="arrow-btn arrow-right" onclick="mudarPadrinho(1)"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
                 </div>
@@ -824,711 +797,365 @@
                 </div>
             </section>
 
+            <!-- ABA 10: RODAPÉ (TELA DEDICADA DE CONTATO) -->
+            <section class="tab-screen">
+                <div class="bento-card">
+                    <h3 class="title-bento">CONTATO & REDES SOCIAIS</h3>
+                    <div class="footer-card-container">
+                        <p style="font-size: 1.1rem; color: var(--texto-suave);">Fique por dentro de todas as novidades ou entre em contato com a diretoria!</p>
+                        
+                        <div class="footer-social-links">
+                            <a id="btnInstaCard" href="https://instagram.com/coracaojuninoal" target="_blank" class="footer-btn-link btn-instagram">
+                                <i class="fa-brands fa-instagram fa-xl"></i> Instagram: @<span class="txtInstaHandle">coracaojuninoal</span>
+                            </a>
+                            <a id="btnWhatsCard" href="https://wa.me/5582993751078" target="_blank" class="footer-btn-link btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp: <span class="txtWhatsNum">82 9 9375-1078</span>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 30px; font-size: 0.9rem; color: var(--texto-suave); border-top: 1px solid var(--borda-card); padding-top: 20px; width: 100%;">
+                            <p>© <span class="year-copy">2026</span> Quadrilha Coração Junino - Todos os direitos reservados.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 
-    <!-- MODAL DE AUTENTICAÇÃO (SEPARANDO ENTRAR E CADASTRAR) -->
-    <div class="modal-overlay" id="modalAuth">
-        <div class="modal-content">
-            <i class="fa-solid fa-xmark close-modal" onclick="fecharModalAuth()"></i>
-            
-            <div class="auth-tab-selector">
-                <button class="auth-tab-btn active" id="btnTabLogin" onclick="mudarAbaAuth('login')">ENTRAR</button>
-                <button class="auth-tab-btn" id="btnTabCadastro" onclick="mudarAbaAuth('cadastro')">CADASTRAR</button>
-            </div>
-
-            <!-- FORMULÁRIO ENTRAR -->
-            <div id="formEntrarArea">
-                <div class="form-group">
-                    <label>Usuário:</label>
-                    <input type="text" id="loginUser" placeholder="Seu nome de usuário">
-                </div>
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" id="loginPass" placeholder="••••••••">
-                </div>
-                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="efetuarLogin()">ACESSAR CONTA</button>
-            </div>
-
-            <!-- FORMULÁRIO CADASTRAR -->
-            <div id="formCadastrarArea" style="display:none;">
-                <div class="form-group">
-                    <label>Nome Completo:</label>
-                    <input type="text" id="cadNome" placeholder="Ex: Maria Santos">
-                </div>
-                <div class="form-group">
-                    <label>Usuário:</label>
-                    <input type="text" id="cadUser" placeholder="Ex: maria2026">
-                </div>
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" id="cadPass" placeholder="••••••••">
-                </div>
-                <div class="form-group" style="background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 8px; border: 1px dashed var(--dourado);">
-                    <label style="color:var(--bordo-medio);">Código de Autorização (Somente Diretores):</label>
-                    <input type="password" id="cadCodigoDirecao" placeholder="Deixe em branco se for visitante">
-                    <small style="color:var(--texto-suave); font-size:0.75rem;">Se preenchido corretamente, você terá acesso às ferramentas da diretoria.</small>
-                </div>
-                <button class="btn-bordo" style="width:100%; margin-top:10px;" onclick="efetuarCadastro()">CRIAR CONTA</button>
-            </div>
+    <!-- RODAPÉ PRINCIPAL EMBAIXO NA COR DA ABA DE NAVEGAÇÃO -->
+    <footer class="footer-bar">
+        <div class="footer-info">
+            <a id="footerInstaLink" href="https://instagram.com/coracaojuninoal" target="_blank">
+                <i class="fa-brands fa-instagram fa-lg"></i> @<span class="txtInstaHandle">coracaojuninoal</span>
+            </a>
+            <a id="footerWhatsLink" href="https://wa.me/5582993751078" target="_blank">
+                <i class="fa-brands fa-whatsapp fa-lg"></i> <span class="txtWhatsNum">82 9 9375-1078</span>
+            </a>
         </div>
-    </div>
-
-    <!-- MODAL DE DETALHES DO DIRETOR -->
-    <div class="modal-overlay" id="modalDiretor">
-        <div class="modal-content" style="text-align:center;">
-            <i class="fa-solid fa-xmark close-modal" onclick="document.getElementById('modalDiretor').style.display='none'"></i>
-            <img id="modalDirFoto" src="" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:3px solid var(--dourado);">
-            <h3 id="modalDirNome" style="color:var(--bordo-medio); font-family:'Cinzel', serif;"></h3>
-            <p id="modalDirCargo" style="color:var(--dourado); font-weight:bold; margin-bottom:10px;"></p>
-            <p id="modalDirBio" style="color:var(--texto-suave); font-size:0.9rem; line-height:1.5;"></p>
+        <div class="footer-copy">
+            <p>© <span class="year-copy">2026</span> Quadrilha Coração Junino. Todos os direitos reservados.</p>
         </div>
-    </div>
+    </footer>
 
-    <!-- MODAL DE COMENTÁRIOS DO TOKTOK -->
-    <div class="modal-overlay" id="modalComentarios">
-        <div class="modal-content">
-            <i class="fa-solid fa-xmark close-modal" onclick="document.getElementById('modalComentarios').style.display='none'"></i>
-            <h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif; margin-bottom:15px;">Comentários</h4>
-            <div id="listaComentariosToktok" style="max-height:250px; overflow-y:auto; margin-bottom:15px; font-size:0.9rem;"></div>
-            <div class="form-group">
-                <input type="text" id="txtNovoComentario" placeholder="Escreva seu comentário...">
-                <button class="btn-bordo" style="margin-top:8px;" onclick="postarComentarioToktok()">Comentar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAINEL ADM MODERNO PARA DIRETORES (EXCETO HISTÓRIA) -->
+    <!-- MODAL PAINEL ADMINISTRATIVO DA DIRETORIA -->
     <div class="modal-overlay" id="modalPainelAdm">
-        <div class="modal-content" style="max-width: 600px;">
-            <i class="fa-solid fa-xmark close-modal" onclick="document.getElementById('modalPainelAdm').style.display='none'"></i>
-            <h3 style="text-align:center; color:var(--bordo-medio); font-family:'Cinzel', serif; margin-bottom:15px;">PAINEL DA DIRETORIA</h3>
-
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal('modalPainelAdm')"><i class="fa-solid fa-xmark"></i></span>
+            <h3 style="color:var(--bordo-medio); margin-bottom:15px; font-family:'Cinzel', serif;"><i class="fa-solid fa-sliders"></i> PAINEL DA DIRETORIA</h3>
+            
+            <!-- ABAS DO PAINEL DE CONTROLE -->
             <div class="adm-tab-selector">
-                <button class="adm-tab-btn active" onclick="alternarFormAdm('toktok')">TokTok</button>
-                <button class="adm-tab-btn" onclick="alternarFormAdm('novidade')">Novidade</button>
-                <button class="adm-tab-btn" onclick="alternarFormAdm('repertorio')">Repertório</button>
-                <button class="adm-tab-btn" onclick="alternarFormAdm('galeria')">Galeria</button>
-                <button class="adm-tab-btn" onclick="alternarFormAdm('parceiro')">Parceiros</button>
+                <button class="adm-tab-btn active" onclick="switchAdmTab('novidades')">Novidades</button>
+                <button class="adm-tab-btn" onclick="switchAdmTab('diretores')">Diretores</button>
+                <button class="adm-tab-btn" onclick="switchAdmTab('rodape')">Rodapé / Contato</button>
             </div>
 
-            <!-- FORMULÁRIO TOKTOK -->
-            <div id="admFormTokTok" class="adm-subform">
-                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Vídeo Coração TokTok</h4>
-                <div class="form-group">
-                    <label>Título / Descrição:</label>
-                    <input type="text" id="toktokTitulo" placeholder="Ex: Ensaio de São João 🔥">
-                </div>
-                <div class="form-group">
-                    <label>Arquivo de Mídia (Vídeo ou Imagem):</label>
-                    <input type="file" id="toktokFile" accept="video/*,image/*">
-                </div>
-                <button class="btn-bordo" style="width:100%;" onclick="salvarTokTok()">Publicar Mídia</button>
+            <!-- TAB NOVIDADES -->
+            <div id="admTabNovidades" class="adm-tab-content">
+                <form onsubmit="salvarNovidade(event)">
+                    <div class="form-group">
+                        <label>Título da Novidade</label>
+                        <input type="text" id="novidadeTitulo" required placeholder="Ex: Ensaio Geral">
+                    </div>
+                    <div class="form-group">
+                        <label>URL da Imagem/Vídeo</label>
+                        <input type="url" id="novidadeMedia" required placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <textarea id="novidadeDesc" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-bordo" style="width:100%;">Adicionar Novidade</button>
+                </form>
+                <div class="adm-item-list" id="listAdmNovidades"></div>
             </div>
 
-            <!-- FORMULÁRIO NOVIDADE -->
-            <div id="admFormNovidade" class="adm-subform" style="display:none;">
-                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Novidade no Feed Inicial</h4>
-                <div class="form-group">
-                    <label>Título do Anúncio:</label>
-                    <input type="text" id="novidadeTitulo" placeholder="Ex: Lançamento do Tema 2026">
-                </div>
-                <div class="form-group">
-                    <label>Texto da Novidade:</label>
-                    <textarea id="novidadeTexto" rows="3" placeholder="Escreva o texto do anúncio aqui..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Imagem/Anexo (Opcional):</label>
-                    <input type="file" id="novidadeFile" accept="image/*,video/*">
-                </div>
-                <button class="btn-bordo" style="width:100%;" onclick="salvarNovidade()">Publicar Novidade</button>
+            <!-- TAB DIRETORES -->
+            <div id="admTabDiretores" class="adm-tab-content" style="display:none;">
+                <form onsubmit="salvarDiretor(event)">
+                    <div class="form-group">
+                        <label>Nome do Diretor</label>
+                        <input type="text" id="dirNome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cargo / Função</label>
+                        <input type="text" id="dirCargo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL da Foto</label>
+                        <input type="url" id="dirFoto" required>
+                    </div>
+                    <button type="submit" class="btn-bordo" style="width:100%;">Adicionar Diretor</button>
+                </form>
+                <div class="adm-item-list" id="listAdmDiretores"></div>
             </div>
 
-            <!-- FORMULÁRIO REPERTÓRIO -->
-            <div id="admFormRepertorio" class="adm-subform" style="display:none;">
-                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Música / Áudio</h4>
-                <div class="form-group">
-                    <label>Categoria:</label>
-                    <input type="text" id="repCategoria" placeholder="Ex: Músicas Oficiais 2026">
-                </div>
-                <div class="form-group">
-                    <label>Nome da Música:</label>
-                    <input type="text" id="repNome" placeholder="Ex: Entrada Triunfal">
-                </div>
-                <div class="form-group">
-                    <label>Arquivo de Áudio:</label>
-                    <input type="file" id="repFile" accept="audio/*">
-                </div>
-                <button class="btn-bordo" style="width:100%;" onclick="salvarRepertorio()">Adicionar Áudio</button>
-            </div>
-
-            <!-- FORMULÁRIO GALERIA -->
-            <div id="admFormGaleria" class="adm-subform" style="display:none;">
-                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Mídia à Galeria</h4>
-                <div class="form-group">
-                    <label>Selecione a Imagem ou Vídeo:</label>
-                    <input type="file" id="galeriaFile" accept="image/*,video/*">
-                </div>
-                <button class="btn-bordo" style="width:100%;" onclick="salvarGaleria()">Enviar para Galeria</button>
-            </div>
-
-            <!-- FORMULÁRIO PATROCINADORES / APOIADORES -->
-            <div id="admFormParceiro" class="adm-subform" style="display:none;">
-                <h4 style="color:var(--bordo-medio); margin-bottom:10px;">Adicionar Patrocinador ou Apoiador</h4>
-                <div class="form-group">
-                    <label>Tipo:</label>
-                    <select id="parceiroTipo">
-                        <option value="patrocinador">Patrocinador</option>
-                        <option value="apoiador">Apoiador</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Nome do Parceiro:</label>
-                    <input type="text" id="parceiroNome" placeholder="Ex: Padaria do João">
-                </div>
-                <div class="form-group">
-                    <label>Logo / Imagem:</label>
-                    <input type="file" id="parceiroFile" accept="image/*">
-                </div>
-                <button class="btn-bordo" style="width:100%;" onclick="salvarParceiro()">Cadastrar Parceiro</button>
+            <!-- TAB RODAPÉ / CONTATO -->
+            <div id="admTabRodape" class="adm-tab-content" style="display:none;">
+                <form onsubmit="salvarConfigRodape(event)">
+                    <div class="form-group">
+                        <label>Instagram (Sem o @)</label>
+                        <input type="text" id="admInstaHandle" required value="coracaojuninoal">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp (Somente números com DDD)</label>
+                        <input type="text" id="admWhatsNum" required value="5582993751078">
+                    </div>
+                    <button type="submit" class="btn-bordo" style="width:100%;">Salvar Alterações do Rodapé</button>
+                </form>
             </div>
 
         </div>
     </div>
 
-    <!-- TOAST DE NOTIFICAÇÃO -->
+    <!-- TOAST CONTALINER -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // CONFIGURAÇÕES E ESTADO DO SISTEMA
-        const CODIGO_DIRECAO_SECRET = "CORACAO2026"; // Código padrão para diretores
-        let usuarioLogado = JSON.parse(localStorage.getItem('@coracao_user')) || null;
-        let pIndex = 0;
-        let toktokAtivoId = null;
-
-        // DADOS LOCAIS INICIAIS
-        let novidades = JSON.parse(localStorage.getItem('@coracao_novidades')) || [
-            { titulo: "Preparativos a todo vapor!", texto: "Nossa diretoria já iniciou os ensaios do ano. Fiquem atentos às próximas datas!", mídia: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" }
-        ];
-
-        let diretoresList = [
-            { nome: "Carlos Eduardo", cargo: "Presidente", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300", bio: "Na liderança da quadrilha com dedicação e amor à nossa tradição." },
-            { nome: "Ana Paula", cargo: "Vice-Presidente", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300", bio: "Responsável pela coordenação geral e bem-estar dos dançarinos." },
-            { nome: "Roberto Silva", cargo: "Diretor Financeiro", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300", bio: "Cuidando de cada detalhe orçamentário da Quadrilha Coração Junino." },
-            { nome: "Mariana Costa", cargo: "Diretora de Figurino", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300", bio: "Dando vida às cores e ao brilho das nossas vestimentas juninas." },
-            { nome: "Fernando Lima", cargo: "Diretor de Coreografia", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300", bio: "Montando os passos que encantam a todos nos arraiais." },
-            { nome: "Juliana Rocha", cargo: "Diretora de Marketing", cor: "dir-amarelo", foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300", bio: "Divulgando nosso amor e nossa cultura para o mundo inteiro." },
-            { nome: "Lucas Mendes", cargo: "Diretor de Logística", cor: "dir-vermelho", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300", bio: "Garantindo que todos os materiais e a equipe cheguem com segurança." },
-            { nome: "Patrícia Souza", cargo: "Diretora Social", cor: "dir-azul", foto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300", bio: "Promovendo a união e eventos comunitários para nossa comunidade." }
-        ];
-
-        let toktokVideos = JSON.parse(localStorage.getItem('@coracao_toktok')) || [
-            { id: 1, titulo: "Ensaio Geral 2026! 🔥", midia: "https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-dancing-happily-43407-large.mp4", tipo: "video", curtidas: 12, comentarios: ["Lindo demais!", "Ansioso para a estreia!"] }
-        ];
-
-        let repertorios = JSON.parse(localStorage.getItem('@coracao_repertorio')) || [
-            { categoria: "Músicas de Trabalho", faixas: [{ nome: "Tema de Abertura", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }] }
-        ];
-
-        let galeriaMidias = JSON.parse(localStorage.getItem('@coracao_galeria')) || [
-            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
-            "https://images.unsplash.com/photo-1533174072545-7a4b2a786c06?w=600"
-        ];
-
-        let patrocinadores = JSON.parse(localStorage.getItem('@coracao_patrocinadores')) || [];
-        let apoiadores = JSON.parse(localStorage.getItem('@coracao_apoiadores')) || [];
-
-        // INICIALIZAÇÃO
-        window.onload = function() {
-            atualizarStatusUsuario();
-            carregarNovidades();
-            renderizarDiretores();
-            carregarTokTok();
-            carregarRepertorio();
-            carregarGaleria();
-            carregarParceiros();
+        // DADOS INICIAIS / BANCO LOCAL
+        let siteData = {
+            rodape: {
+                instagram: "coracaojuninoal",
+                whatsapp: "5582993751078",
+                whatsappFormatado: "82 9 9375-1078"
+            },
+            novidades: [
+                { id: 1, titulo: "Grandes Preparativos!", media: "https://picsum.photos/400/300?random=10", desc: "Nossos ensaios já começaram a todo vapor!" }
+            ],
+            diretores: [
+                { id: 1, nome: "Diretor 1", cargo: "Presidente", foto: "https://picsum.photos/200/200?random=20" },
+                { id: 2, nome: "Diretor 2", cargo: "Vice-Presidente", foto: "https://picsum.photos/200/200?random=21" }
+            ],
+            padrinhos: [
+                { id: 1, nome: "Padrinho de Honra", foto: "https://picsum.photos/300/300?random=30", historia: "Sempre apoiando nossa trajetória junina." }
+            ]
         };
 
-        function showToast(msg, tipo = "success") {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `custom-toast ${tipo}`;
-            toast.innerHTML = `<i class="fa-solid fa-${tipo === 'success' ? 'circle-check' : 'circle-exclamation'}"></i> ${msg}`;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3500);
+        let currentTab = 0;
+        let padrinhoIndex = 0;
+
+        // CARREGAR DADOS AO INICIAR
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('coracao_junino_data');
+            if(saved) siteData = JSON.parse(saved);
+
+            // Atualizar ano atual no copyright
+            document.querySelectorAll('.year-copy').forEach(el => el.textContent = new Date().getFullYear());
+
+            renderizarTudo();
+        });
+
+        function salvarNoLocalStorage() {
+            localStorage.setItem('coracao_junino_data', JSON.stringify(siteData));
+            renderizarTudo();
         }
 
-        // NAVEGAÇÃO DE ABAS
+        // CONTROLADOR DE ABAS
         function goToTab(index) {
-            const track = document.getElementById('sliderTrack');
-            track.style.transform = `translateX(-${index * 100}vw)`;
-            
-            const buttons = document.querySelectorAll('.hero-nav button');
-            buttons.forEach((btn, i) => {
-                if (i === index) btn.classList.add('active');
-                else btn.classList.remove('active');
+            currentTab = index;
+            document.getElementById('sliderTrack').style.transform = `translateX(-${index * 100}vw)`;
+            const navButtons = document.querySelectorAll('#mainNavButtons button');
+            navButtons.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === index);
             });
-
-            // Auto-scroll do menu superior
-            if (buttons[index]) {
-                buttons[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
         }
 
-        // CARROSSEL PADRINHOS
-        function mudarPadrinho(dir) {
-            const total = 3;
-            document.getElementById(`padrinho-${pIndex}`).classList.remove('active');
-            pIndex = (pIndex + dir + total) % total;
-            document.getElementById(`padrinho-${pIndex}`).classList.add('active');
+        // RENDERIZAÇÃO GERAL DOS COMPONENTES
+        function renderizarTudo() {
+            renderizarRodape();
+            renderizarNovidades();
+            renderizarDiretores();
+            renderizarPadrinhos();
         }
 
-        // SISTEMA DE AUTENTICAÇÃO
-        function abrirModalAuth() {
-            document.getElementById('modalAuth').style.display = 'flex';
-        }
+        // RENDERIZAR RODAPÉ E CONTATOS
+        function renderizarRodape() {
+            const insta = siteData.rodape.instagram;
+            const whatsRaw = siteData.rodape.whatsapp;
+            const whatsFormatted = siteData.rodape.whatsappFormatado || whatsRaw;
 
-        function fecharModalAuth() {
-            document.getElementById('modalAuth').style.display = 'none';
-        }
+            // Elementos de texto
+            document.querySelectorAll('.txtInstaHandle').forEach(el => el.textContent = insta);
+            document.querySelectorAll('.txtWhatsNum').forEach(el => el.textContent = whatsFormatted);
 
-        function mudarAbaAuth(aba) {
-            if (aba === 'login') {
-                document.getElementById('btnTabLogin').classList.add('active');
-                document.getElementById('btnTabCadastro').classList.remove('active');
-                document.getElementById('formEntrarArea').style.display = 'block';
-                document.getElementById('formCadastrarArea').style.display = 'none';
-            } else {
-                document.getElementById('btnTabCadastro').classList.add('active');
-                document.getElementById('btnTabLogin').classList.remove('active');
-                document.getElementById('formCadastrarArea').style.display = 'block';
-                document.getElementById('formEntrarArea').style.display = 'none';
-            }
-        }
-
-        function efetuarCadastro() {
-            const nome = document.getElementById('cadNome').value.trim();
-            const user = document.getElementById('cadUser').value.trim();
-            const pass = document.getElementById('cadPass').value.trim();
-            const codigo = document.getElementById('cadCodigoDirecao').value.trim();
-
-            if (!nome || !user || !pass) {
-                showToast("Preencha todos os campos obrigatórios!", "error");
-                return;
-            }
-
-            let contas = JSON.parse(localStorage.getItem('@coracao_contas')) || [];
-            if (contas.find(c => c.user === user)) {
-                showToast("Este usuário já existe!", "error");
-                return;
-            }
-
-            const ehDiretor = (codigo === CODIGO_DIRECAO_SECRET);
-            const novaConta = { nome, user, pass, tipo: ehDiretor ? 'diretor' : 'visitante' };
+            // Links
+            document.getElementById('footerInstaLink').href = `https://instagram.com/${insta}`;
+            document.getElementById('footerWhatsLink').href = `https://wa.me/${whatsRaw.replace(/\D/g, '')}`;
             
-            contas.push(novaConta);
-            localStorage.setItem('@coracao_contas', JSON.stringify(contas));
+            const btnInsta = document.getElementById('btnInstaCard');
+            const btnWhats = document.getElementById('btnWhatsCard');
+            if(btnInsta) btnInsta.href = `https://instagram.com/${insta}`;
+            if(btnWhats) btnWhats.href = `https://wa.me/${whatsRaw.replace(/\D/g, '')}`;
 
-            usuarioLogado = novaConta;
-            localStorage.setItem('@coracao_user', JSON.stringify(usuarioLogado));
-
-            atualizarStatusUsuario();
-            fecharModalAuth();
-
-            if (ehDiretor) {
-                showToast("Conta de Diretor cadastrada com sucesso!");
-            } else {
-                showToast("Cadastrado como Visitante com sucesso!");
-            }
+            // Campos do input do Painel Adm
+            document.getElementById('admInstaHandle').value = insta;
+            document.getElementById('admWhatsNum').value = whatsRaw;
         }
 
-        function efetuarLogin() {
-            const user = document.getElementById('loginUser').value.trim();
-            const pass = document.getElementById('loginPass').value.trim();
+        // NOVIDADES
+        function renderizarNovidades() {
+            const container = document.getElementById('container-novidades');
+            const listAdm = document.getElementById('listAdmNovidades');
+            container.innerHTML = '';
+            listAdm.innerHTML = '';
 
-            let contas = JSON.parse(localStorage.getItem('@coracao_contas')) || [];
-            const contaEncontrada = contas.find(c => c.user === user && c.pass === pass);
+            siteData.novidades.forEach(item => {
+                container.innerHTML += `
+                    <div class="news-card-item">
+                        <img src="${item.media}" alt="${item.titulo}">
+                        <div class="news-card-body">
+                            <h4>${item.titulo}</h4>
+                            <p>${item.desc}</p>
+                        </div>
+                    </div>
+                `;
 
-            if (!contaEncontrada) {
-                showToast("Usuário ou senha incorretos!", "error");
-                return;
-            }
-
-            usuarioLogado = contaEncontrada;
-            localStorage.setItem('@coracao_user', JSON.stringify(usuarioLogado));
-
-            atualizarStatusUsuario();
-            fecharModalAuth();
-            showToast(`Bem-vindo(a), ${usuarioLogado.nome}!`);
+                listAdm.innerHTML += `
+                    <div class="adm-item-row">
+                        <span><strong>${item.titulo}</strong></span>
+                        <button class="btn-action-delete" onclick="deletarItem('novidades', ${item.id})"><i class="fa-solid fa-trash"></i> Apagar</button>
+                    </div>
+                `;
+            });
         }
 
-        function logout() {
-            usuarioLogado = null;
-            localStorage.removeItem('@coracao_user');
-            atualizarStatusUsuario();
-            showToast("Você saiu da conta.");
-        }
-
-        function atualizarStatusUsuario() {
-            const btnAuth = document.getElementById('btnAuthTrigger');
-            const btnPainel = document.getElementById('btnPainelAdm');
-            const labelUser = document.getElementById('labelUserLogado');
-
-            if (usuarioLogado) {
-                btnAuth.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> SAIR`;
-                btnAuth.onclick = logout;
-                labelUser.innerText = `${usuarioLogado.nome} (${usuarioLogado.tipo === 'diretor' ? 'Diretoria' : 'Visitante'})`;
-
-                if (usuarioLogado.tipo === 'diretor') {
-                    btnPainel.style.display = 'inline-block';
-                } else {
-                    btnPainel.style.display = 'none';
-                }
-            } else {
-                btnAuth.innerHTML = `<i class="fa-solid fa-user"></i> ENTRAR / REGISTRAR`;
-                btnAuth.onclick = abrirModalAuth;
-                btnPainel.style.display = 'none';
-                labelUser.innerText = '';
-            }
-        }
-
-        // CARREGAR DIRETORES
+        // DIRETORES
         function renderizarDiretores() {
             const grid = document.getElementById('gridDiretores');
+            const listAdm = document.getElementById('listAdmDiretores');
             grid.innerHTML = '';
-            diretoresList.forEach(d => {
-                const box = document.createElement('div');
-                box.className = `diretor-box ${d.cor}`;
-                box.innerHTML = `
-                    <img src="${d.foto}" alt="${d.nome}">
-                    <h4 style="font-family:'Cinzel', serif;">${d.nome}</h4>
-                    <p style="font-size:0.8rem; opacity:0.9;">${d.cargo}</p>
-                `;
-                box.onclick = () => {
-                    document.getElementById('modalDirFoto').src = d.foto;
-                    document.getElementById('modalDirNome').innerText = d.nome;
-                    document.getElementById('modalDirCargo').innerText = d.cargo;
-                    document.getElementById('modalDirBio').innerText = d.bio;
-                    document.getElementById('modalDiretor').style.display = 'flex';
-                };
-                grid.appendChild(box);
-            });
-        }
+            listAdm.innerHTML = '';
 
-        // NOVIDADES NA ABA INÍCIO
-        function carregarNovidades() {
-            const container = document.getElementById('container-novidades');
-            container.innerHTML = '';
-            if(novidades.length === 0) {
-                container.innerHTML = '<p style="color:var(--texto-suave);">Nenhuma novidade recente.</p>';
-                return;
-            }
-            novidades.forEach(n => {
-                const item = document.createElement('div');
-                item.className = 'news-card-item';
-                
-                let midiaHTML = '';
-                if(n.midia) {
-                    if(n.midia.includes('data:video') || n.midia.endsWith('.mp4')) {
-                        midiaHTML = `<video src="${n.midia}" controls></video>`;
-                    } else {
-                        midiaHTML = `<img src="${n.midia}" alt="${n.titulo}">`;
-                    }
-                }
-
-                item.innerHTML = `
-                    ${midiaHTML}
-                    <div class="news-card-body">
-                        <h4>${n.titulo}</h4>
-                        <p>${n.texto}</p>
+            siteData.diretores.forEach(dir => {
+                grid.innerHTML += `
+                    <div class="diretor-box dir-azul">
+                        <img src="${dir.foto}" alt="${dir.nome}">
+                        <h4>${dir.nome}</h4>
+                        <p style="font-size:0.85rem; color:var(--dourado-claro);">${dir.cargo}</p>
                     </div>
                 `;
-                container.appendChild(item);
-            });
-        }
 
-        // CORAÇÃO TOKTOK
-        function carregarTokTok() {
-            const container = document.getElementById('toktokContainer');
-            container.innerHTML = '';
-            toktokVideos.forEach(v => {
-                const card = document.createElement('div');
-                card.className = 'toktok-card';
-                
-                let mediaTag = (v.tipo === 'video' || (v.midia && v.midia.includes('data:video')))
-                    ? `<video src="${v.midia}" class="toktok-media" loop onclick="this.paused?this.play():this.pause()"></video>`
-                    : `<img src="${v.midia}" class="toktok-media">`;
-
-                card.innerHTML = `
-                    ${mediaTag}
-                    <div class="toktok-actions">
-                        <button class="toktok-btn" onclick="curtirTokTok(${v.id})"><i class="fa-solid fa-heart"></i></button>
-                        <span style="color:#fff; font-size:0.8rem;">${v.curtidas}</span>
-                        <button class="toktok-btn" onclick="abrirComentariosTokTok(${v.id})"><i class="fa-solid fa-comment"></i></button>
-                        <span style="color:#fff; font-size:0.8rem;">${v.comentarios.length}</span>
-                    </div>
-                    <div class="toktok-overlay">
-                        <p style="font-weight:bold; font-size:0.92rem;">${v.titulo}</p>
+                listAdm.innerHTML += `
+                    <div class="adm-item-row">
+                        <span>${dir.nome} (${dir.cargo})</span>
+                        <button class="btn-action-delete" onclick="deletarItem('diretores', ${dir.id})"><i class="fa-solid fa-trash"></i> Apagar</button>
                     </div>
                 `;
-                container.appendChild(card);
             });
         }
 
-        function curtirTokTok(id) {
-            if (!usuarioLogado) {
-                showToast("Faça login para curtir os vídeos!", "error");
-                return;
-            }
-            const video = toktokVideos.find(v => v.id === id);
-            if (video) {
-                video.curtidas++;
-                localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
-                carregarTokTok();
-                showToast("Você curtiu esta publicação!");
-            }
-        }
-
-        function abrirComentariosTokTok(id) {
-            toktokAtivoId = id;
-            const video = toktokVideos.find(v => v.id === id);
-            const lista = document.getElementById('listaComentariosToktok');
-            lista.innerHTML = '';
-            video.comentarios.forEach(c => {
-                lista.innerHTML += `<div style="background:#fff; padding:8px 12px; border-radius:8px; margin-bottom:6px; border:1px solid var(--borda-card);">${c}</div>`;
-            });
-            document.getElementById('modalComentarios').style.display = 'flex';
-        }
-
-        function postarComentarioToktok() {
-            if (!usuarioLogado) {
-                showToast("Faça login para comentar!", "error");
-                return;
-            }
-            const txt = document.getElementById('txtNovoComentario').value.trim();
-            if (!txt) return;
-
-            const video = toktokVideos.find(v => v.id === toktokAtivoId);
-            if (video) {
-                video.comentarios.push(`<b>${usuarioLogado.nome}:</b> ${txt}`);
-                localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
-                document.getElementById('txtNovoComentario').value = '';
-                abrirComentariosTokTok(toktokAtivoId);
-                carregarTokTok();
-                showToast("Comentário adicionado!");
-            }
-        }
-
-        // REPERTÓRIO
-        function carregarRepertorio() {
-            const container = document.getElementById('containerRepertorio');
+        // PADRINHOS
+        function renderizarPadrinhos() {
+            const container = document.getElementById('padrinhosCardsList');
             container.innerHTML = '';
-            repertorios.forEach(group => {
-                const grpDiv = document.createElement('div');
-                grpDiv.className = 'repertorio-group';
-                grpDiv.innerHTML = `<h4 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">${group.categoria}</h4>`;
-                
-                group.faixas.forEach(f => {
-                    grpDiv.innerHTML += `
-                        <div class="audio-item">
-                            <span style="font-weight:600; font-size:0.9rem; color:var(--texto-escuro);">${f.nome}</span>
-                            <audio src="${f.url}" controls></audio>
+
+            if(siteData.padrinhos.length === 0) {
+                container.innerHTML = `<p style="text-align:center;">Nenhum padrinho cadastrado.</p>`;
+                return;
+            }
+
+            siteData.padrinhos.forEach((p, idx) => {
+                container.innerHTML += `
+                    <div class="padrinho-card ${idx === padrinhoIndex ? 'active' : ''}">
+                        <div class="padrinho-img-wrapper">
+                            <img src="${p.foto}" alt="${p.nome}">
                         </div>
-                    `;
-                });
-                container.appendChild(grpDiv);
-            });
-        }
-
-        // GALERIA DE MÍDIAS
-        function carregarGaleria() {
-            const container = document.getElementById('container-galeria');
-            container.innerHTML = '';
-            galeriaMidias.forEach(url => {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                if(url.includes('data:video') || url.endsWith('.mp4')) {
-                    div.innerHTML = `<video src="${url}" controls></video>`;
-                } else {
-                    div.innerHTML = `<img src="${url}">`;
-                }
-                container.appendChild(div);
-            });
-        }
-
-        // PATROCINADORES E APOIADORES
-        function carregarParceiros() {
-            const containerPat = document.getElementById('container-patrocinadores');
-            const containerApo = document.getElementById('container-apoiadores');
-            
-            containerPat.innerHTML = '';
-            containerApo.innerHTML = '';
-
-            patrocinadores.forEach(p => {
-                containerPat.innerHTML += `
-                    <div class="sponsor-box">
-                        <img src="${p.img}" alt="${p.nome}">
-                        <p style="font-weight:bold; color:var(--bordo-medio);">${p.nome}</p>
-                    </div>
-                `;
-            });
-
-            apoiadores.forEach(a => {
-                containerApo.innerHTML += `
-                    <div class="sponsor-box">
-                        <img src="${a.img}" alt="${a.nome}">
-                        <p style="font-weight:bold; color:var(--azul-card);">${a.nome}</p>
+                        <h4 style="color:var(--bordo-medio); font-size:1.3rem;">${p.nome}</h4>
+                        <p style="color:var(--texto-suave); margin-top:10px;">${p.historia}</p>
                     </div>
                 `;
             });
         }
 
-        // PAINEL DA DIRETORIA
+        function mudarPadrinho(dir) {
+            padrinhoIndex += dir;
+            if (padrinhoIndex < 0) padrinhoIndex = siteData.padrinhos.length - 1;
+            if (padrinhoIndex >= siteData.padrinhos.length) padrinhoIndex = 0;
+            renderizarPadrinhos();
+        }
+
+        // OPERAÇÕES DO PAINEL DA DIRETORIA
+        function salvarNovidade(e) {
+            e.preventDefault();
+            const titulo = document.getElementById('novidadeTitulo').value;
+            const media = document.getElementById('novidadeMedia').value;
+            const desc = document.getElementById('novidadeDesc').value;
+
+            siteData.novidades.push({ id: Date.now(), titulo, media, desc });
+            salvarNoLocalStorage();
+            e.target.reset();
+            mostrarToast("Novidade adicionada com sucesso!");
+        }
+
+        function salvarDiretor(e) {
+            e.preventDefault();
+            const nome = document.getElementById('dirNome').value;
+            const cargo = document.getElementById('dirCargo').value;
+            const foto = document.getElementById('dirFoto').value;
+
+            siteData.diretores.push({ id: Date.now(), nome, cargo, foto });
+            salvarNoLocalStorage();
+            e.target.reset();
+            mostrarToast("Diretor adicionado com sucesso!");
+        }
+
+        function salvarConfigRodape(e) {
+            e.preventDefault();
+            const insta = document.getElementById('admInstaHandle').value.replace('@','').trim();
+            const whats = document.getElementById('admWhatsNum').value.trim();
+
+            siteData.rodape.instagram = insta;
+            siteData.rodape.whatsapp = whats;
+            siteData.rodape.whatsappFormatado = whats;
+
+            salvarNoLocalStorage();
+            fecharModal('modalPainelAdm');
+            mostrarToast("Informações do rodapé atualizadas!");
+        }
+
+        function deletarItem(categoria, id) {
+            siteData[categoria] = siteData[categoria].filter(item => item.id !== id);
+            salvarNoLocalStorage();
+            mostrarToast("Item apagado!");
+        }
+
+        // MODAIS & NAVEGAÇÃO INTERNA DO PAINEL
         function abrirPainelAdm() {
-            if (!usuarioLogado || usuarioLogado.tipo !== 'diretor') {
-                showToast("Acesso restrito para a Diretoria!", "error");
-                return;
-            }
             document.getElementById('modalPainelAdm').style.display = 'flex';
         }
 
-        function alternarFormAdm(tipo) {
-            const btns = document.querySelectorAll('.adm-tab-btn');
-            btns.forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.adm-subform').forEach(f => f.style.display = 'none');
-
-            if(tipo === 'toktok') document.getElementById('admFormTokTok').style.display = 'block';
-            if(tipo === 'novidade') document.getElementById('admFormNovidade').style.display = 'block';
-            if(tipo === 'repertorio') document.getElementById('admFormRepertorio').style.display = 'block';
-            if(tipo === 'galeria') document.getElementById('admFormGaleria').style.display = 'block';
-            if(tipo === 'parceiro') document.getElementById('admFormParceiro').style.display = 'block';
+        function fecharModal(id) {
+            document.getElementById(id).style.display = 'none';
         }
 
-        // CONVERSOR DE ARQUIVOS PARA BASE64
-        function lerArquivoComoBase64(inputElement) {
-            return new Promise((resolve, reject) => {
-                const file = inputElement.files[0];
-                if (!file) return resolve(null);
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-                reader.readAsDataURL(file);
-            });
+        function switchAdmTab(tabName) {
+            document.querySelectorAll('.adm-tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.adm-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            if(tabName === 'novidades') {
+                document.getElementById('admTabNovidades').style.display = 'block';
+                event.target.classList.add('active');
+            } else if(tabName === 'diretores') {
+                document.getElementById('admTabDiretores').style.display = 'block';
+                event.target.classList.add('active');
+            } else if(tabName === 'rodape') {
+                document.getElementById('admTabRodape').style.display = 'block';
+                event.target.classList.add('active');
+            }
         }
 
-        async function salvarTokTok() {
-            const titulo = document.getElementById('toktokTitulo').value.trim();
-            const fileInput = document.getElementById('toktokFile');
+        // SISTEMA DE NOTIFICAÇÕES (TOAST)
+        function mostrarToast(mensagem) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast success';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#2e7d32;"></i> ${mensagem}`;
+            container.appendChild(toast);
 
-            const midiaBase64 = await lerArquivoComoBase64(fileInput);
-
-            if (!titulo || !midiaBase64) {
-                showToast("Preencha a descrição e escolha um arquivo de mídia!", "error");
-                return;
-            }
-
-            const tipo = fileInput.files[0].type.startsWith('video') ? 'video' : 'imagem';
-            const novoItem = {
-                id: Date.now(),
-                titulo,
-                midia: midiaBase64,
-                tipo,
-                curtidas: 0,
-                comentarios: []
-            };
-
-            toktokVideos.unshift(novoItem);
-            localStorage.setItem('@coracao_toktok', JSON.stringify(toktokVideos));
-            carregarTokTok();
-            showToast("Mídia adicionada ao Coração TokTok!");
-            document.getElementById('modalPainelAdm').style.display = 'none';
-        }
-
-        async function salvarNovidade() {
-            const titulo = document.getElementById('novidadeTitulo').value.trim();
-            const texto = document.getElementById('novidadeTexto').value.trim();
-            const fileInput = document.getElementById('novidadeFile');
-
-            if (!titulo || !texto) {
-                showToast("Preencha o título e o texto!", "error");
-                return;
-            }
-
-            const midiaBase64 = await lerArquivoComoBase64(fileInput);
-
-            novidades.unshift({ titulo, texto, midia: midiaBase64 });
-            localStorage.setItem('@coracao_novidades', JSON.stringify(novidades));
-            carregarNovidades();
-            showToast("Novidade publicada na página inicial!");
-            document.getElementById('modalPainelAdm').style.display = 'none';
-        }
-
-        async function salvarRepertorio() {
-            const categoria = document.getElementById('repCategoria').value.trim();
-            const nome = document.getElementById('repNome').value.trim();
-            const fileInput = document.getElementById('repFile');
-
-            const audioBase64 = await lerArquivoComoBase64(fileInput);
-
-            if (!categoria || !nome || !audioBase64) {
-                showToast("Preencha todos os campos e selecione o áudio!", "error");
-                return;
-            }
-
-            let catObj = repertorios.find(r => r.categoria.toLowerCase() === categoria.toLowerCase());
-            if (catObj) {
-                catObj.faixas.push({ nome, url: audioBase64 });
-            } else {
-                repertorios.push({ categoria, faixas: [{ nome, url: audioBase64 }] });
-            }
-
-            localStorage.setItem('@coracao_repertorio', JSON.stringify(repertorios));
-            carregarRepertorio();
-            showToast("Áudio adicionado com sucesso!");
-            document.getElementById('modalPainelAdm').style.display = 'none';
-        }
-
-        async function salvarGaleria() {
-            const fileInput = document.getElementById('galeriaFile');
-            const midiaBase64 = await lerArquivoComoBase64(fileInput);
-
-            if (!midiaBase64) {
-                showToast("Selecione uma foto ou vídeo!", "error");
-                return;
-            }
-
-            galeriaMidias.unshift(midiaBase64);
-            localStorage.setItem('@coracao_galeria', JSON.stringify(galeriaMidias));
-            carregarGaleria();
-            showToast("Mídia adicionada à Galeria!");
-            document.getElementById('modalPainelAdm').style.display = 'none';
-        }
-
-        async function salvarParceiro() {
-            const tipo = document.getElementById('parceiroTipo').value;
-            const nome = document.getElementById('parceiroNome').value.trim();
-            const fileInput = document.getElementById('parceiroFile');
-
-            const imgBase64 = await lerArquivoComoBase64(fileInput);
-
-            if (!nome || !imgBase64) {
-                showToast("Preencha o nome e selecione a imagem da logo!", "error");
-                return;
-            }
-
-            if (tipo === 'patrocinador') {
-                patrocinadores.push({ nome, img: imgBase64 });
-                localStorage.setItem('@coracao_patrocinadores', JSON.stringify(patrocinadores));
-            } else {
-                apoiadores.push({ nome, img: imgBase64 });
-                localStorage.setItem('@coracao_apoiadores', JSON.stringify(apoiadores));
-            }
-
-            carregarParceiros();
-            showToast("Parceiro adicionado com sucesso!");
-            document.getElementById('modalPainelAdm').style.display = 'none';
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
         }
     </script>
 </body>
