@@ -352,6 +352,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             border: 2px solid var(--dourado);
             position: relative;
+            background: var(--bordo-medio);
         }
 
         .diretor-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
@@ -479,161 +480,6 @@
         .toktok-btn.liked { color: #ff2b56; }
         .toktok-btn span { font-size: 0.75rem; margin-top: 2px; }
 
-        /* GAVETA DE COMENTÁRIOS ESTILO REDE SOCIAL */
-        .comments-drawer {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 70%;
-            background: rgba(20, 20, 20, 0.98);
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            padding: 15px;
-            display: none;
-            flex-direction: column;
-            z-index: 30;
-            color: #fff;
-            border-top: 2px solid var(--dourado);
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-        }
-
-        .comments-drawer.active { display: flex; }
-        
-        .comments-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .comments-header h4 {
-            font-size: 0.95rem;
-            color: var(--dourado-claro);
-        }
-
-        .comments-header .close-comments {
-            cursor: pointer;
-            font-size: 1.1rem;
-            color: #aaa;
-        }
-
-        .comments-list {
-            flex: 1;
-            overflow-y: auto;
-            margin: 10px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-right: 5px;
-        }
-
-        .comment-item {
-            background: rgba(255,255,255,0.05);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-        }
-
-        .comment-item strong {
-            color: var(--dourado);
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .comment-text {
-            margin: 4px 0;
-            color: #f0f0f0;
-            word-break: break-word;
-        }
-
-        .comment-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 0.7rem;
-            color: #888;
-            margin-top: 4px;
-        }
-
-        .btn-reply {
-            color: var(--dourado-claro);
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-reply:hover { text-decoration: underline; }
-
-        /* RESPOSTAS ANINHADAS */
-        .replies-list {
-            margin-top: 8px;
-            margin-left: 15px;
-            padding-left: 10px;
-            border-left: 2px solid rgba(212, 175, 55, 0.3);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .reply-item {
-            background: rgba(255,255,255,0.03);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-        }
-
-        .reply-item strong { color: #5bc0be; font-size: 0.75rem; }
-
-        /* FORMULÁRIO DE ENVIO DE COMENTÁRIO */
-        .reply-banner {
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--dourado-claro);
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            border-radius: 5px;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .reply-banner span { cursor: pointer; color: #ff5555; }
-
-        .comment-input-box {
-            display: flex;
-            gap: 8px;
-            background: rgba(255,255,255,0.1);
-            padding: 8px;
-            border-radius: 20px;
-            align-items: center;
-        }
-
-        .comment-input-box input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #fff;
-            outline: none;
-            font-size: 0.85rem;
-            padding-left: 8px;
-        }
-
-        .comment-input-box input::placeholder { color: #888; }
-
-        .comment-input-box button {
-            background: var(--dourado);
-            color: var(--bordo-escuro);
-            border: none;
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .comment-input-box button:hover { background: #fff; }
-
         /* GALERIA & NOVIDADES & PATROCINADORES */
         .news-grid, .gallery-grid, .sponsors-grid {
             display: grid;
@@ -679,6 +525,84 @@
         .sponsor-box { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--borda-card); text-align: center;}
         .sponsor-box img { max-width: 100%; height: 80px; object-fit: contain; margin-bottom: 10px; }
 
+        /* PAINEL ADMINISTRATIVO / EDITAR DIREÇÃO */
+        .admin-form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            color: var(--bordo-escuro);
+        }
+
+        .admin-form-group input[type="text"],
+        .admin-form-group input[type="file"],
+        .admin-form-group textarea,
+        .admin-form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--dourado);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .admin-tab-btn {
+            background: #eee;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .admin-tab-btn.active {
+            background: var(--bordo-medio);
+            color: #fff;
+        }
+
+        .item-manager-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .item-manager-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .btn-danger {
+            background: #c62828;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
         /* ESTILO DO CARD DE RODAPÉ NA ABA DE NAVEGAÇÃO */
         .footer-card-container {
             display: flex;
@@ -709,13 +633,8 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .btn-whatsapp {
-            background-color: #25d366;
-        }
+        .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .btn-whatsapp { background-color: #25d366; }
 
         .footer-btn-link:hover {
             transform: translateY(-3px);
@@ -755,14 +674,10 @@
             color: var(--bordo-escuro);
         }
 
-        .modal-diretor-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .modal-diretor-header { text-align: center; margin-bottom: 20px; }
 
         .modal-diretor-img {
-            width: 130px;
-            height: 130px;
+            width: 130px; height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--dourado);
@@ -818,12 +733,7 @@
             z-index: 100;
         }
 
-        .footer-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+        .footer-info { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
         .footer-info a {
             color: var(--dourado-claro);
@@ -841,10 +751,7 @@
             text-decoration: underline;
         }
 
-        .footer-copy {
-            font-size: 0.85rem;
-            color: #ddd;
-        }
+        .footer-copy { font-size: 0.85rem; color: #ddd; }
 
         @media (max-width: 850px) {
             .padrinhos-carousel { width: 90%; }
@@ -922,10 +829,10 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
                         </div>
                         <div class="history-photos">
                             <div class="photo-polaroid">
-                                <img id="historiaImg1" src="HISTORIA (1).jpeg" alt="História 1">
+                                <img id="historiaImg1" src="HISTORIA (1).jpeg" alt="História 1" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+1'">
                             </div>
                             <div class="photo-polaroid">
-                                <img id="historiaImg2" src="HISTORIA (2).jpeg" alt="História 2">
+                                <img id="historiaImg2" src="HISTORIA (2).jpeg" alt="História 2" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+2'">
                             </div>
                         </div>
                     </div>
@@ -973,23 +880,23 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento">REPERTÓRIOS & MÚSICAS</h3>
-                    <div id="containerRepertorio"></div>
+                    <div id="containerRepertorios" style="display:flex; flex-direction:column; gap:20px;"></div>
                 </div>
             </section>
 
             <!-- ABA 7: PATROCINADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h3 class="title-bento">PATROCINADORES</h3>
-                    <div id="container-patrocinadores" class="sponsors-grid"></div>
+                    <h3 class="title-bento">NOSSOS PATROCINADORES</h3>
+                    <div id="containerPatrocinadores" class="sponsors-grid"></div>
                 </div>
             </section>
 
             <!-- ABA 8: APOIADORES -->
             <section class="tab-screen">
                 <div class="bento-card">
-                    <h3 class="title-bento" style="color:var(--azul-card);">APOIADORES</h3>
-                    <div id="container-apoiadores" class="sponsors-grid"></div>
+                    <h3 class="title-bento">NOSSOS APOIADORES</h3>
+                    <div id="containerApoiadores" class="sponsors-grid"></div>
                 </div>
             </section>
 
@@ -997,26 +904,18 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             <section class="tab-screen">
                 <div class="bento-card">
                     <h3 class="title-bento">GALERIA DE FOTOS E VÍDEOS</h3>
-                    <div id="container-galeria" class="gallery-grid"></div>
+                    <div id="containerGaleria" class="gallery-grid"></div>
                 </div>
             </section>
 
-            <!-- ABA 10: RODAPÉ -->
+            <!-- ABA 10: RODAPÉ NAVEGÁVEL -->
             <section class="tab-screen">
-                <div class="bento-card">
-                    <h3 class="title-bento">CONECTE-SE CONOSCO</h3>
-                    <div class="footer-card-container">
-                        <p style="font-size:1.1rem; color:var(--texto-suave); max-width:600px;">
-                            Siga nossas redes sociais para não perder nenhum ensaio, apresentação e novidades da Quadrilha Coração Junino!
-                        </p>
-                        <div class="footer-social-links">
-                            <a href="https://instagram.com/coracaojunino" target="_blank" class="footer-btn-link btn-instagram">
-                                <i class="fa-brands fa-instagram fa-lg"></i> Instagram Oficial
-                            </a>
-                            <a href="https://wa.me/5582999999999" target="_blank" class="footer-btn-link btn-whatsapp">
-                                <i class="fa-brands fa-whatsapp fa-lg"></i> WhatsApp Contato
-                            </a>
-                        </div>
+                <div class="bento-card footer-card-container">
+                    <h3 class="title-bento">ENTRE EM CONTATO</h3>
+                    <p style="font-size:1.1rem; max-width:600px;">Acompanhe nossas redes oficiais ou mande uma mensagem direta no nosso WhatsApp oficial!</p>
+                    <div class="footer-social-links">
+                        <a href="https://www.instagram.com/coracaojuninoofc" target="_blank" class="footer-btn-link btn-instagram"><i class="fa-brands fa-instagram"></i> Instagram Oficial</a>
+                        <a href="https://wa.me/5582988888888" target="_blank" class="footer-btn-link btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Fale Conosco</a>
                     </div>
                 </div>
             </section>
@@ -1024,78 +923,246 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
         </div>
     </div>
 
+    <!-- MODAL AUTH (LOGIN / CADASTRO) -->
+    <div class="modal-overlay" id="modalAuth">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalAuth')"></i>
+            <h3 class="title-bento" id="authTitle">ENTRAR</h3>
+            
+            <form id="formAuth" onsubmit="handleAuth(event)">
+                <div class="admin-form-group">
+                    <label>Usuário</label>
+                    <input type="text" id="authUsuario" required>
+                </div>
+                <div class="admin-form-group">
+                    <label>Senha</label>
+                    <input type="password" id="authSenha" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;" required>
+                </div>
+                
+                <div class="admin-form-group" id="groupCargo" style="display:none;">
+                    <label>Tipo de Conta</label>
+                    <select id="authRole">
+                        <option value="user">Membro / Espectador</option>
+                        <option value="admin">Direção (Administrador)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-bordo" style="width:100%; margin-top:10px;" id="authSubmitBtn">Entrar</button>
+            </form>
+
+            <p style="text-align:center; margin-top:15px; font-size:0.85rem; cursor:pointer; color:var(--bordo-medio);" onclick="toggleAuthMode()" id="toggleAuthText">
+                Não tem conta? Cadastre-se aqui.
+            </p>
+        </div>
+    </div>
+
     <!-- MODAL DE DETALHES DO DIRETOR -->
     <div class="modal-overlay" id="modalDiretor">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalDiretor()">&times;</span>
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalDiretor')"></i>
             <div class="modal-diretor-header">
-                <img id="modalDiretorImg" src="" class="modal-diretor-img" alt="Foto Diretor">
-                <h3 id="modalDiretorNome" style="color:var(--bordo-escuro); font-family:'Cinzel', serif;"></h3>
-                <p id="modalDiretorCargo" style="color:var(--dourado); font-weight:600; font-size:0.9rem;"></p>
+                <img id="mDiretorImg" src="" class="modal-diretor-img" alt="Diretor">
+                <h3 id="mDiretorNome" style="font-family:'Cinzel', serif; color:var(--bordo-escuro);"></h3>
+                <p id="mDiretorCargo" style="color:var(--dourado); font-weight:600; font-size:0.9rem;"></p>
             </div>
-            
             <div class="modal-diretor-desc-box">
-                <h5><i class="fa-solid fa-heart"></i> O que é a quadrilha para mim:</h5>
-                <p id="modalDiretorSignificado"></p>
-            </div>
-
-            <div class="modal-diretor-desc-box">
-                <h5><i class="fa-solid fa-star"></i> O que espero para 2026:</h5>
-                <p id="modalDiretorExpectativa"></p>
+                <h5><i class="fa-solid fa-user-gear"></i> Função e Biografia</h5>
+                <p id="mDiretorDesc"></p>
             </div>
         </div>
     </div>
 
+    <!-- PAINEL ADMINISTRATIVO / EDITAR DIREÇÃO (MODAL COMPLETO RESTAURADO) -->
+    <div class="modal-overlay" id="modalAdmin">
+        <div class="modal-content" style="max-width:800px;">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalAdmin')"></i>
+            <h3 class="title-bento"><i class="fa-solid fa-sliders"></i> PAINEL DA DIREÇÃO</h3>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" onclick="switchAdminTab('tab-adm-geral')">Geral / História</button>
+                <button class="admin-tab-btn" onclick="switchAdminTab('tab-adm-diretores')">Diretoria</button>
+                <button class="admin-tab-btn" onclick="switchAdminTab('tab-adm-padrinhos')">Padrinhos</button>
+                <button class="admin-tab-btn" onclick="switchAdminTab('tab-adm-toktok')">TokTok</button>
+                <button class="admin-tab-btn" onclick="switchAdminTab('tab-adm-repertorio')">Músicas</button>
+                <button class="admin-tab-btn" onclick="switchAdminTab('tab-adm-midias')">Novidades / Galeria</button>
+            </div>
+
+            <!-- ADM: GERAL -->
+            <div id="tab-adm-geral" class="admin-tab-content">
+                <div class="admin-form-group">
+                    <label>Texto da História</label>
+                    <textarea id="admHistTexto" rows="5"></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Foto Polaroid 1 (Arquivo Local)</label>
+                    <input type="file" id="admHistImg1" accept="image/*">
+                </div>
+                <div class="admin-form-group">
+                    <label>Foto Polaroid 2 (Arquivo Local)</label>
+                    <input type="file" id="admHistImg2" accept="image/*">
+                </div>
+                <button class="btn-bordo" onclick="salvarGeral()">Salvar Alterações</button>
+            </div>
+
+            <!-- ADM: DIRETORES -->
+            <div id="tab-adm-diretores" class="admin-tab-content" style="display:none;">
+                <h4>Adicionar / Editar Diretor</h4>
+                <div class="admin-form-group">
+                    <label>Nome do Diretor</label>
+                    <input type="text" id="admDirNome">
+                </div>
+                <div class="admin-form-group">
+                    <label>Cargo / Função</label>
+                    <input type="text" id="admDirCargo">
+                </div>
+                <div class="admin-form-group">
+                    <label>Biografia / Descrição detalhada</label>
+                    <textarea id="admDirDesc" rows="3"></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Foto do Diretor (Arquivo Local)</label>
+                    <input type="file" id="admDirFoto" accept="image/*">
+                </div>
+                <button class="btn-bordo" onclick="adicionarDiretor()">Adicionar Diretor</button>
+
+                <h4 style="margin-top:20px;">Diretores Atuais</h4>
+                <div id="admListDiretores" class="item-manager-list"></div>
+            </div>
+
+            <!-- ADM: PADRINHOS -->
+            <div id="tab-adm-padrinhos" class="admin-tab-content" style="display:none;">
+                <h4>Adicionar Padrinho</h4>
+                <div class="admin-form-group">
+                    <label>Nome do Padrinho</label>
+                    <input type="text" id="admPadNome">
+                </div>
+                <div class="admin-form-group">
+                    <label>Título / Mensagem</label>
+                    <input type="text" id="admPadTitulo">
+                </div>
+                <div class="admin-form-group">
+                    <label>Foto (Arquivo Local)</label>
+                    <input type="file" id="admPadFoto" accept="image/*">
+                </div>
+                <button class="btn-bordo" onclick="adicionarPadrinho()">Adicionar Padrinho</button>
+
+                <h4 style="margin-top:20px;">Padrinhos Cadastrados</h4>
+                <div id="admListPadrinhos" class="item-manager-list"></div>
+            </div>
+
+            <!-- ADM: TOKTOK -->
+            <div id="tab-adm-toktok" class="admin-tab-content" style="display:none;">
+                <h4>Adicionar Vídeo / Mídia TokTok</h4>
+                <div class="admin-form-group">
+                    <label>Título / Descrição</label>
+                    <input type="text" id="admTokDesc">
+                </div>
+                <div class="admin-form-group">
+                    <label>Arquivo de Vídeo ou Foto (Local)</label>
+                    <input type="file" id="admTokFile" accept="video/*,image/*">
+                </div>
+                <button class="btn-bordo" onclick="adicionarToktok()">Publicar no TokTok</button>
+
+                <h4 style="margin-top:20px;">Publicações do TokTok</h4>
+                <div id="admListToktok" class="item-manager-list"></div>
+            </div>
+
+            <!-- ADM: MÚSICAS & REPERTÓRIO -->
+            <div id="tab-adm-repertorio" class="admin-tab-content" style="display:none;">
+                <h4>Adicionar Música / Faixa</h4>
+                <div class="admin-form-group">
+                    <label>Título da Música</label>
+                    <input type="text" id="admMusicaTitulo">
+                </div>
+                <div class="admin-form-group">
+                    <label>Ano / Categoria</label>
+                    <input type="text" id="admMusicaCat" placeholder="Ex: Repertório 2026">
+                </div>
+                <div class="admin-form-group">
+                    <label>Arquivo de Áudio (MP3 / WAV Local)</label>
+                    <input type="file" id="admMusicaFile" accept="audio/*">
+                </div>
+                <button class="btn-bordo" onclick="adicionarMusica()">Adicionar Música</button>
+
+                <h4 style="margin-top:20px;">Músicas Cadastradas</h4>
+                <div id="admListMusicas" class="item-manager-list"></div>
+            </div>
+
+            <!-- ADM: MÍDIAS (NOVIDADES, GALERIA, PATROCINADORES) -->
+            <div id="tab-adm-midias" class="admin-tab-content" style="display:none;">
+                <h4>Adicionar Conteúdo</h4>
+                <div class="admin-form-group">
+                    <label>Sessão de Destino</label>
+                    <select id="admMidiaDestino">
+                        <option value="novidades">Últimas Novidades</option>
+                        <option value="galeria">Galeria Geral</option>
+                        <option value="patrocinadores">Patrocinadores</option>
+                        <option value="apoiadores">Apoiadores</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Título / Nome</label>
+                    <input type="text" id="admMidiaTitulo">
+                </div>
+                <div class="admin-form-group">
+                    <label>Descrição (Opcional)</label>
+                    <input type="text" id="admMidiaDesc">
+                </div>
+                <div class="admin-form-group">
+                    <label>Arquivo de Mídia (Foto ou Vídeo Local)</label>
+                    <input type="file" id="admMidiaFile" accept="image/*,video/*">
+                </div>
+                <button class="btn-bordo" onclick="adicionarMidia()">Publicar Conteúdo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTÊINER DE TOAST NOTIFICAÇÕES -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- FOOTER PRINCIPAL FIXO -->
     <footer class="footer-bar">
         <div class="footer-info">
-            <a href="https://instagram.com/coracaojunino" target="_blank"><i class="fa-brands fa-instagram"></i> @coracaojunino</a>
-            <a href="https://wa.me/5582999999999" target="_blank"><i class="fa-brands fa-whatsapp"></i> (82) 99999-9999</a>
+            <a href="https://www.instagram.com/coracaojuninoofc" target="_blank"><i class="fa-brands fa-instagram"></i> @coracaojuninoofc</a>
+            <a href="https://wa.me/5582988888888" target="_blank"><i class="fa-brands fa-whatsapp"></i> Fale com a Direção</a>
         </div>
         <div class="footer-copy">
             &copy; 2026 Quadrilha Coração Junino - Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- TOAST CONTAINER -->
-    <div class="toast-container" id="toastContainer"></div>
-
     <script>
-        // SISTEMA DE DADOS DA APLICAÇÃO (LOCALSTORAGE)
-        let toktokVideos = JSON.parse(localStorage.getItem('toktokVideos')) || [
-            {
-                id: 1,
-                video: "https://assets.mixkit.co/videos/preview/mixkit-dance-show-in-a-stage-41484-large.mp4",
-                autor: "@coracaojunino",
-                descricao: "Ensaio do nosso grande espetáculo de 2026! 🔥💃",
-                likes: 124,
-                comments: [
-                    {
-                        id: 101,
-                        usuario: "Ana Clara",
-                        texto: "Que espetáculo de ensaio! Ansiosa pra ver a apresentação completa! 😍",
-                        data: "Há 2 horas",
-                        replies: [
-                            { id: 1011, usuario: "Quadrilha Coração Junino", texto: "Obrigado Ana! Prometemos emocionar! ❤️", data: "Há 1 hora" }
-                        ]
-                    }
-                ]
-            }
-        ];
+        // ESTADO GLOBAL DO SISTEMA (PERSISTIDO EM LOCALSTORAGE)
+        let currentUser = JSON.parse(localStorage.getItem('cj_user')) || null;
+        let isAuthRegisterMode = false;
+        let activePadrinhoIndex = 0;
 
-        let diretores = [
-            { id: 1, nome: "Gutto", cargo: "Presidente", foto: "imagens/gutto.jpeg", significado: "Amor, tradição e cultura viva pulsando no peito.", expectativa: "Fazer a maior e mais emocionante apresentação da nossa história em 2026!" },
-            { id: 2, nome: "Manu", cargo: "Vice-Presidente", foto: "imagens/manu.jpeg", significado: "Uma segunda família onde transformamos suor em arte.", expectativa: "Ver o sorriso e a vibração do público ao assistir nosso espetáculo." }
-        ];
+        let appData = JSON.parse(localStorage.getItem('cj_app_data')) || {
+            historiaTexto: `No dia 07 de setembro de 2016 foi colocado em prática o projeto Coração Junino...`,
+            historiaImg1: 'HISTORIA (1).jpeg',
+            historiaImg2: 'HISTORIA (2).jpeg',
+            diretores: [
+                { id: 1, nome: "Gutto", cargo: "Presidente & Fundador", desc: "Coordenador geral da Quadrilha Coração Junino desde a fundação.", foto: "HISTORIA (1).jpeg" },
+                { id: 2, nome: "Manu", cargo: "Vice-Presidente", desc: "Responsável pela parte artística e figurinos.", foto: "HISTORIA (2).jpeg" }
+            ],
+            padrinhos: [
+                { id: 1, nome: "Padrinho de Honra 2026", titulo: "Apoiador da Cultura Junina", foto: "imagens/original.png" }
+            ],
+            toktok: [],
+            musicas: [],
+            novidades: [],
+            galeria: [],
+            patrocinadores: [],
+            apoiadores: []
+        };
 
-        let padrinhos = [
-            { id: 1, nome: "Padrinho Exemplo", cargo: "Apaiixonado pela Cultura", foto: "imagens/original.png", texto: "Orgulho em apoiar a cultura e o brilho da Quadrilha Coração Junino!" }
-        ];
+        // SALVAR DADOS
+        function saveData() {
+            localStorage.setItem('cj_app_data', JSON.stringify(appData));
+            renderAll();
+        }
 
-        let currentPadrinhoIndex = 0;
-        let replyingToCommentId = null;
-
-        // SISTEMA DE NAVEGAÇÃO DE ABAS
+        // CONTROLADOR DE ABAS DA TELA PRINCIPAL
         function goToTab(index) {
             const track = document.getElementById('sliderTrack');
             track.style.transform = `translateX(-${index * 100}vw)`;
@@ -1106,279 +1173,380 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             });
         }
 
-        // CARROSSEL DE PADRINHOS
-        function renderPadrinhos() {
-            const container = document.getElementById('padrinhosCardsList');
-            if(!container) return;
-            
-            container.innerHTML = padrinhos.map((p, idx) => `
-                <div class="padrinho-card ${idx === currentPadrinhoIndex ? 'active' : ''}">
-                    <div class="padrinho-img-wrapper">
-                        <img src="${p.foto}" alt="${p.nome}" onerror="this.src='imagens/original.png'">
-                    </div>
-                    <h4 style="font-family:'Cinzel', serif; font-size:1.4rem; color:var(--bordo-escuro);">${p.nome}</h4>
-                    <p style="color:var(--dourado); font-weight:600; font-size:0.9rem; margin-bottom:10px;">${p.cargo}</p>
-                    <p style="color:var(--texto-suave); font-style:italic;">"${p.texto}"</p>
-                </div>
-            `).join('');
-        }
-
+        // CARROSSEL PADRINHOS
         function mudarPadrinho(dir) {
-            currentPadrinhoIndex = (currentPadrinhoIndex + dir + padrinhos.length) % padrinhos.length;
+            if (appData.padrinhos.length === 0) return;
+            activePadrinhoIndex = (activePadrinhoIndex + dir + appData.padrinhos.length) % appData.padrinhos.length;
             renderPadrinhos();
         }
 
-        // MODAL E DIRETORIA
-        function renderDiretores() {
-            const grid = document.getElementById('gridDiretores');
-            if(!grid) return;
+        // RENDERIZAÇÃO GERAL
+        function renderAll() {
+            // História
+            document.getElementById('historiaTexto').innerText = appData.historiaTexto;
+            if(appData.historiaImg1) document.getElementById('historiaImg1').src = appData.historiaImg1;
+            if(appData.historiaImg2) document.getElementById('historiaImg2').src = appData.historiaImg2;
 
-            grid.innerHTML = diretores.map(d => `
-                <div class="diretor-box" style="background: linear-gradient(135deg, var(--bordo-escuro), var(--bordo-medio));">
-                    <div class="diretor-img-container" onclick="abrirModalDiretor(${d.id})">
-                        <img src="${d.foto}" alt="${d.nome}" onerror="this.src='imagens/original.png'">
+            // Diretores
+            const gridDir = document.getElementById('gridDiretores');
+            gridDir.innerHTML = appData.diretores.map(d => `
+                <div class="diretor-box">
+                    <div class="diretor-img-container" onclick="verDetalhesDiretor(${d.id})">
+                        <img src="${d.foto}" alt="${d.nome}">
                     </div>
                     <div class="diretor-nome">${d.nome}</div>
                     <div class="diretor-cargo">${d.cargo}</div>
                 </div>
             `).join('');
-        }
 
-        function abrirModalDiretor(id) {
-            const d = diretores.find(item => item.id === id);
-            if(!d) return;
+            // Padrinhos
+            renderPadrinhos();
 
-            document.getElementById('modalDiretorImg').src = d.foto;
-            document.getElementById('modalDiretorNome').innerText = d.nome;
-            document.getElementById('modalDiretorCargo').innerText = d.cargo;
-            document.getElementById('modalDiretorSignificado').innerText = d.significado || "Uma grande paixão pela cultura junina!";
-            document.getElementById('modalDiretorExpectativa').innerText = d.expectativa || "Superar todas as expectativas este ano!";
-
-            document.getElementById('modalDiretor').style.display = 'flex';
-        }
-
-        function fecharModalDiretor() {
-            document.getElementById('modalDiretor').style.display = 'none';
-        }
-
-        // CORAÇÃO TOKTOK COM SITEMA COMPLETO DE COMENTÁRIOS E RESPOSTAS
-        function renderToktok() {
-            const container = document.getElementById('toktokContainer');
-            if(!container) return;
-
-            container.innerHTML = toktokVideos.map(item => {
-                const totalCommentsCount = item.comments.reduce((acc, c) => acc + 1 + (c.replies ? c.replies.length : 0), 0);
-
-                return `
-                <div class="toktok-card">
-                    <video class="toktok-media" src="${item.video}" loop onclick="togglePlayVideo(this)"></video>
-                    
-                    <div class="toktok-actions">
-                        <button class="toktok-btn" onclick="toggleLikeToktok(${item.id}, this)">
-                            <i class="fa-solid fa-heart"></i>
-                            <span>${item.likes}</span>
-                        </button>
-                        <button class="toktok-btn" onclick="openCommentsDrawer(${item.id})">
-                            <i class="fa-solid fa-comment-dots"></i>
-                            <span id="comment-count-${item.id}">${totalCommentsCount}</span>
-                        </button>
-                    </div>
-
-                    <div class="toktok-overlay">
-                        <strong>${item.autor}</strong>
-                        <p style="font-size:0.85rem; margin-top:4px;">${item.descricao}</p>
-                    </div>
-
-                    <!-- GAVETA DE COMENTÁRIOS DA REDE SOCIAL -->
-                    <div class="comments-drawer" id="drawer-${item.id}">
-                        <div class="comments-header">
-                            <h4>Comentários (${totalCommentsCount})</h4>
-                            <span class="close-comments" onclick="closeCommentsDrawer(${item.id})"><i class="fa-solid fa-xmark"></i></span>
-                        </div>
-
-                        <div class="comments-list" id="comments-list-${item.id}">
-                            ${renderCommentsList(item)}
-                        </div>
-
-                        <div class="reply-banner" id="reply-banner-${item.id}">
-                            <span id="reply-banner-text-${item.id}">Respondendo...</span>
-                            <span onclick="cancelReply(${item.id})"><i class="fa-solid fa-xmark"></i></span>
-                        </div>
-
-                        <div class="comment-input-box">
-                            <input type="text" id="input-comment-${item.id}" placeholder="Adicione um comentário..." onkeypress="handleCommentKeyPress(event, ${item.id})">
-                            <button onclick="postComment(${item.id})">Publicar</button>
+            // TokTok
+            const tokContainer = document.getElementById('toktokContainer');
+            if (appData.toktok.length === 0) {
+                tokContainer.innerHTML = `<p style="color:#fff; text-align:center; padding-top:50px;">Nenhum vídeo publicado ainda.</p>`;
+            } else {
+                tokContainer.innerHTML = appData.toktok.map(t => `
+                    <div class="toktok-card">
+                        ${t.type && t.type.startsWith('video') ? `<video src="${t.src}" class="toktok-media" controls loop></video>` : `<img src="${t.src}" class="toktok-media">`}
+                        <div class="toktok-overlay">
+                            <h4>${t.desc}</h4>
                         </div>
                     </div>
-                </div>
-            `}).join('');
-        }
-
-        function renderCommentsList(item) {
-            if (!item.comments || item.comments.length === 0) {
-                return `<p style="text-align:center; color:#777; font-size:0.8rem; margin-top:20px;">Seja o primeiro a comentar!</p>`;
+                `).join('');
             }
 
-            return item.comments.map(c => `
-                <div class="comment-item">
-                    <strong><i class="fa-solid fa-circle-user"></i> ${c.usuario}</strong>
-                    <div class="comment-text">${c.texto}</div>
-                    <div class="comment-meta">
-                        <span>${c.data || 'Recente'}</span>
-                        <span class="btn-reply" onclick="prepareReply(${item.id}, ${c.id}, '${c.usuario}')">Responder</span>
+            // Músicas
+            const musContainer = document.getElementById('containerRepertorios');
+            musContainer.innerHTML = appData.musicas.length === 0 ? '<p>Nenhuma música cadastrada.</p>' : appData.musicas.map(m => `
+                <div style="background:#fff; padding:15px; border-radius:10px; border:1px solid #ddd; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <strong>${m.titulo}</strong> <br>
+                        <small style="color:#666;">${m.categoria}</small>
                     </div>
+                    <audio controls src="${m.src}"></audio>
+                </div>
+            `).join('');
 
-                    <!-- RESPOSTAS/THREDS -->
-                    ${c.replies && c.replies.length > 0 ? `
-                        <div class="replies-list">
-                            ${c.replies.map(r => `
-                                <div class="reply-item">
-                                    <strong><i class="fa-solid fa-reply"></i> ${r.usuario}</strong>
-                                    <div class="comment-text">${r.texto}</div>
-                                    <div class="comment-meta">
-                                        <span>${r.data || 'Recente'}</span>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
+            // Novidades, Galeria, Patrocinadores
+            document.getElementById('container-novidades').innerHTML = appData.novidades.map(n => `
+                <div class="news-card-item">
+                    <img src="${n.src}" alt="${n.titulo}">
+                    <div class="news-card-body">
+                        <h4>${n.titulo}</h4>
+                        <p>${n.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('containerGaleria').innerHTML = appData.galeria.map(g => `
+                <div class="gallery-item">
+                    <img src="${g.src}" alt="${g.titulo}">
+                </div>
+            `).join('');
+
+            document.getElementById('containerPatrocinadores').innerHTML = appData.patrocinadores.map(p => `
+                <div class="sponsor-box">
+                    <img src="${p.src}">
+                    <h4>${p.titulo}</h4>
+                </div>
+            `).join('');
+
+            document.getElementById('containerApoiadores').innerHTML = appData.apoiadores.map(a => `
+                <div class="sponsor-box">
+                    <img src="${a.src}">
+                    <h4>${a.titulo}</h4>
+                </div>
+            `).join('');
+
+            // Atualizar status do usuário no topo
+            updateUserNav();
+        }
+
+        function renderPadrinhos() {
+            const list = document.getElementById('padrinhosCardsList');
+            if (appData.padrinhos.length === 0) {
+                list.innerHTML = `<div class="padrinho-card active"><p>Nenhum padrinho cadastrado.</p></div>`;
+                return;
+            }
+            list.innerHTML = appData.padrinhos.map((p, idx) => `
+                <div class="padrinho-card ${idx === activePadrinhoIndex ? 'active' : ''}">
+                    <div class="padrinho-img-wrapper">
+                        <img src="${p.foto}" alt="${p.nome}">
+                    </div>
+                    <h3 style="color:var(--bordo-escuro); font-family:'Cinzel';">${p.nome}</h3>
+                    <p style="color:var(--dourado); font-weight:600;">${p.titulo}</p>
                 </div>
             `).join('');
         }
 
-        function togglePlayVideo(video) {
-            if(video.paused) {
-                video.play();
+        // DETALHES DIRETOR
+        function verDetalhesDiretor(id) {
+            const d = appData.diretores.find(x => x.id === id);
+            if (!d) return;
+            document.getElementById('mDiretorImg').src = d.foto;
+            document.getElementById('mDiretorNome').innerText = d.nome;
+            document.getElementById('mDiretorCargo').innerText = d.cargo;
+            document.getElementById('mDiretorDesc').innerText = d.desc;
+            document.getElementById('modalDiretor').style.display = 'flex';
+        }
+
+        // SISTEMA DE USUÁRIO E AUTH
+        function updateUserNav() {
+            const container = document.getElementById('userNavStatus');
+            if (currentUser) {
+                let admBtn = currentUser.role === 'admin' ? `<button class="btn-adm-trigger" onclick="abrirModalAdmin()"><i class="fa-solid fa-sliders"></i> PAINEL DA DIREÇÃO</button>` : '';
+                container.innerHTML = `
+                    ${admBtn}
+                    <div class="user-badge"><i class="fa-solid fa-user-check"></i> ${currentUser.usuario}</div>
+                    <button class="btn-auth-trigger" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+                `;
             } else {
-                video.pause();
+                container.innerHTML = `<button class="btn-auth-trigger" onclick="abrirModalAuth('login')"><i class="fa-solid fa-user"></i> ENTRAR / CADASTRAR</button>`;
             }
         }
 
-        function toggleLikeToktok(id, btn) {
-            const v = toktokVideos.find(item => item.id === id);
-            if(!v) return;
+        function abrirModalAuth(mode) {
+            isAuthRegisterMode = (mode === 'register');
+            document.getElementById('authTitle').innerText = isAuthRegisterMode ? 'CADASTRAR' : 'ENTRAR';
+            document.getElementById('authSubmitBtn').innerText = isAuthRegisterMode ? 'Cadastrar' : 'Entrar';
+            document.getElementById('groupCargo').style.display = isAuthRegisterMode ? 'block' : 'none';
+            document.getElementById('toggleAuthText').innerText = isAuthRegisterMode ? 'Já tem conta? Faça login.' : 'Não tem conta? Cadastre-se aqui.';
+            document.getElementById('modalAuth').style.display = 'flex';
+        }
 
-            if(btn.classList.contains('liked')) {
-                btn.classList.remove('liked');
-                v.likes--;
+        function toggleAuthMode() {
+            abrirModalAuth(isAuthRegisterMode ? 'login' : 'register');
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const u = document.getElementById('authUsuario').value.trim();
+            const p = document.getElementById('authSenha').value.trim();
+            const r = document.getElementById('authRole').value;
+
+            if (isAuthRegisterMode) {
+                let users = JSON.parse(localStorage.getItem('cj_users_list')) || [];
+                users.push({ usuario: u, senha: p, role: r });
+                localStorage.setItem('cj_users_list', JSON.stringify(users));
+                currentUser = { usuario: u, role: r };
+                showToast("Conta criada com sucesso!", "success");
             } else {
-                btn.classList.add('liked');
-                v.likes++;
-            }
-            btn.querySelector('span').innerText = v.likes;
-            localStorage.setItem('toktokVideos', JSON.stringify(toktokVideos));
-        }
-
-        function openCommentsDrawer(id) {
-            const drawer = document.getElementById(`drawer-${id}`);
-            if(drawer) drawer.classList.add('active');
-        }
-
-        function closeCommentsDrawer(id) {
-            const drawer = document.getElementById(`drawer-${id}`);
-            if(drawer) drawer.classList.remove('active');
-            cancelReply(id);
-        }
-
-        function prepareReply(videoId, commentId, username) {
-            replyingToCommentId = commentId;
-            const banner = document.getElementById(`reply-banner-${videoId}`);
-            const bannerText = document.getElementById(`reply-banner-text-${videoId}`);
-            const input = document.getElementById(`input-comment-${videoId}`);
-
-            if(banner && bannerText && input) {
-                bannerText.innerText = `Respondendo a @${username}`;
-                banner.style.display = 'flex';
-                input.focus();
-            }
-        }
-
-        function cancelReply(videoId) {
-            replyingToCommentId = null;
-            const banner = document.getElementById(`reply-banner-${videoId}`);
-            if(banner) banner.style.display = 'none';
-        }
-
-        function postComment(videoId) {
-            const input = document.getElementById(`input-comment-${videoId}`);
-            if(!input || !input.value.trim()) return;
-
-            const video = toktokVideos.find(v => v.id === videoId);
-            if(!video) return;
-
-            const novoTexto = input.value.trim();
-
-            if(replyingToCommentId) {
-                // Adicionando resposta
-                const parentComment = video.comments.find(c => c.id === replyingToCommentId);
-                if(parentComment) {
-                    if(!parentComment.replies) parentComment.replies = [];
-                    parentComment.replies.push({
-                        id: Date.now(),
-                        usuario: "Você (Visitante)",
-                        texto: novoTexto,
-                        data: "Agora mesmo"
-                    });
+                let users = JSON.parse(localStorage.getItem('cj_users_list')) || [];
+                // Admin padrão automático para testes
+                if (u === 'admin' && p === '123456') {
+                    currentUser = { usuario: 'Direção Geral', role: 'admin' };
+                } else {
+                    let found = users.find(x => x.usuario === u && x.senha === p);
+                    if (found) {
+                        currentUser = found;
+                    } else {
+                        alert("Usuário ou senha inválidos!");
+                        return;
+                    }
                 }
-            } else {
-                // Adicionando comentário novo
-                video.comments.push({
-                    id: Date.now(),
-                    usuario: "Você (Visitante)",
-                    texto: novoTexto,
-                    data: "Agora mesmo",
-                    replies: []
-                });
+                showToast("Login realizado!", "success");
             }
 
-            // Salvar e Atualizar Interface
-            localStorage.setItem('toktokVideos', JSON.stringify(toktokVideos));
-            input.value = '';
-            cancelReply(videoId);
-
-            // Recarregar os comentários da gaveta
-            const listContainer = document.getElementById(`comments-list-${videoId}`);
-            if(listContainer) {
-                listContainer.innerHTML = renderCommentsList(video);
-            }
-
-            // Atualizar contadores
-            const totalCommentsCount = video.comments.reduce((acc, c) => acc + 1 + (c.replies ? c.replies.length : 0), 0);
-            const countSpan = document.getElementById(`comment-count-${videoId}`);
-            if(countSpan) countSpan.innerText = totalCommentsCount;
-
-            const headerTitle = document.querySelector(`#drawer-${videoId} .comments-header h4`);
-            if(headerTitle) headerTitle.innerText = `Comentários (${totalCommentsCount})`;
+            localStorage.setItem('cj_user', JSON.stringify(currentUser));
+            fecharModal('modalAuth');
+            renderAll();
         }
 
-        function handleCommentKeyPress(event, videoId) {
-            if(event.key === 'Enter') {
-                postComment(videoId);
-            }
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('cj_user');
+            renderAll();
+            showToast("Você saiu do sistema.");
         }
 
-        // SISTEMA DE NOTIFICAÇÕES TOAST
-        function showToast(message, type = 'success') {
+        // GERENCIAMENTO DO PAINEL DA DIREÇÃO (ADMIN)
+        function abrirModalAdmin() {
+            renderAdminLists();
+            document.getElementById('modalAdmin').style.display = 'flex';
+        }
+
+        function switchAdminTab(tabId) {
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.admin-tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        // CONVERSOR DE ARQUIVO LOCAL PARA DATA URL (BASE64)
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                if(!file) resolve(null);
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function salvarGeral() {
+            const txt = document.getElementById('admHistTexto').value;
+            if (txt) appData.historiaTexto = txt;
+
+            const f1 = document.getElementById('admHistImg1').files[0];
+            const f2 = document.getElementById('admHistImg2').files[0];
+
+            if(f1) appData.historiaImg1 = await readFileAsDataURL(f1);
+            if(f2) appData.historiaImg2 = await readFileAsDataURL(f2);
+
+            saveData();
+            showToast("Dados da História Atualizados!", "success");
+        }
+
+        async function adicionarDiretor() {
+            const nome = document.getElementById('admDirNome').value;
+            const cargo = document.getElementById('admDirCargo').value;
+            const desc = document.getElementById('admDirDesc').value;
+            const file = document.getElementById('admDirFoto').files[0];
+
+            if (!nome || !cargo) return alert("Preencha Nome e Cargo!");
+
+            let foto = file ? await readFileAsDataURL(file) : 'https://via.placeholder.com/150';
+
+            appData.diretores.push({ id: Date.now(), nome, cargo, desc, foto });
+            saveData();
+            renderAdminLists();
+            showToast("Diretor Adicionado!", "success");
+        }
+
+        function removerDiretor(id) {
+            appData.diretores = appData.diretores.filter(x => x.id !== id);
+            saveData();
+            renderAdminLists();
+        }
+
+        async function adicionarPadrinho() {
+            const nome = document.getElementById('admPadNome').value;
+            const titulo = document.getElementById('admPadTitulo').value;
+            const file = document.getElementById('admPadFoto').files[0];
+
+            if(!nome) return alert("Preencha o Nome!");
+            let foto = file ? await readFileAsDataURL(file) : 'https://via.placeholder.com/150';
+
+            appData.padrinhos.push({ id: Date.now(), nome, titulo, foto });
+            saveData();
+            renderAdminLists();
+            showToast("Padrinho Adicionado!", "success");
+        }
+
+        function removerPadrinho(id) {
+            appData.padrinhos = appData.padrinhos.filter(x => x.id !== id);
+            saveData();
+            renderAdminLists();
+        }
+
+        async function adicionarToktok() {
+            const desc = document.getElementById('admTokDesc').value;
+            const file = document.getElementById('admTokFile').files[0];
+
+            if(!file) return alert("Selecione um arquivo de mídia local!");
+            let src = await readFileAsDataURL(file);
+
+            appData.toktok.push({ id: Date.now(), desc, src, type: file.type });
+            saveData();
+            renderAdminLists();
+            showToast("Vídeo publicado no TokTok!", "success");
+        }
+
+        function removerToktok(id) {
+            appData.toktok = appData.toktok.filter(x => x.id !== id);
+            saveData();
+            renderAdminLists();
+        }
+
+        async function adicionarMusica() {
+            const titulo = document.getElementById('admMusicaTitulo').value;
+            const categoria = document.getElementById('admMusicaCat').value;
+            const file = document.getElementById('admMusicaFile').files[0];
+
+            if(!titulo || !file) return alert("Informe o Título e selecione o Áudio!");
+            let src = await readFileAsDataURL(file);
+
+            appData.musicas.push({ id: Date.now(), titulo, categoria, src });
+            saveData();
+            renderAdminLists();
+            showToast("Música Adicionada!", "success");
+        }
+
+        function removerMusica(id) {
+            appData.musicas = appData.musicas.filter(x => x.id !== id);
+            saveData();
+            renderAdminLists();
+        }
+
+        async function adicionarMidia() {
+            const dest = document.getElementById('admMidiaDestino').value;
+            const titulo = document.getElementById('admMidiaTitulo').value;
+            const desc = document.getElementById('admMidiaDesc').value;
+            const file = document.getElementById('admMidiaFile').files[0];
+
+            if(!file) return alert("Selecione uma imagem ou vídeo local!");
+            let src = await readFileAsDataURL(file);
+
+            appData[dest].push({ id: Date.now(), titulo, desc, src });
+            saveData();
+            showToast("Conteúdo Adicionado!", "success");
+        }
+
+        function renderAdminLists() {
+            // Lista Diretores
+            document.getElementById('admListDiretores').innerHTML = appData.diretores.map(d => `
+                <div class="item-manager-row">
+                    <span><strong>${d.nome}</strong> - ${d.cargo}</span>
+                    <button class="btn-danger" onclick="removerDiretor(${d.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            // Lista Padrinhos
+            document.getElementById('admListPadrinhos').innerHTML = appData.padrinhos.map(p => `
+                <div class="item-manager-row">
+                    <span><strong>${p.nome}</strong></span>
+                    <button class="btn-danger" onclick="removerPadrinho(${p.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            // Lista TokTok
+            document.getElementById('admListToktok').innerHTML = appData.toktok.map(t => `
+                <div class="item-manager-row">
+                    <span>${t.desc || 'Vídeo sem título'}</span>
+                    <button class="btn-danger" onclick="removerToktok(${t.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            // Lista Músicas
+            document.getElementById('admListMusicas').innerHTML = appData.musicas.map(m => `
+                <div class="item-manager-row">
+                    <span>${m.titulo} (${m.categoria})</span>
+                    <button class="btn-danger" onclick="removerMusica(${m.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // AUXILIARES
+        function fecharModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showToast(msg, type="info") {
             const container = document.getElementById('toastContainer');
-            if(!container) return;
-
             const toast = document.createElement('div');
             toast.className = `custom-toast ${type}`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#2e7d32;"></i> <span>${message}</span>`;
-            
+            toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${msg}`;
             container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 3500);
+            setTimeout(() => toast.remove(), 3500);
         }
 
-        // INICIALIZAÇÃO DA PÁGINA
-        window.addEventListener('DOMContentLoaded', () => {
-            renderPadrinhos();
-            renderDiretores();
-            renderToktok();
-        });
+        // INICIALIZAÇÃO
+        window.onload = () => {
+            document.getElementById('admHistTexto').value = appData.historiaTexto;
+            renderAll();
+        };
     </script>
 </body>
 </html>
