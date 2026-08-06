@@ -339,29 +339,113 @@
         /* ABA DIRETORES */
         .diretores-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
         .diretor-box {
             border-radius: 12px;
-            padding: 15px;
+            padding: 20px 15px;
             text-align: center;
             color: #fff;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 2px solid var(--dourado);
+            position: relative;
         }
 
         .diretor-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
-        .dir-azul { background: linear-gradient(135deg, #1d3557, #457b9d); border: 2px solid var(--dourado); }
+
+        .diretor-img-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 12px auto;
+            cursor: pointer;
+        }
 
         .diretor-box img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
-            border: 2px solid #fff;
+            border: 3px solid #fff;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .diretor-img-container:hover img {
+            transform: scale(1.05);
+            border-color: var(--dourado-claro);
+        }
+
+        .diretor-img-container::after {
+            content: '🔍 clique para ver';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .diretor-nome {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .diretor-cargo {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* MODAL DETALHES DO DIRETOR */
+        .modal-diretor-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-diretor-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--dourado);
+            margin: 0 auto 15px auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-diretor-desc-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--bordo-medio);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .modal-diretor-desc-box h5 {
+            color: var(--bordo-escuro);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal-diretor-desc-box p {
+            font-size: 0.9rem;
+            color: var(--texto-escuro);
+            line-height: 1.5;
         }
 
         /* ABA CORAÇÃO TOKTOK */
@@ -623,6 +707,12 @@
             background: #fff;
         }
 
+        .form-group input[type="color"] {
+            height: 40px;
+            padding: 2px;
+            cursor: pointer;
+        }
+
         .auth-switch {
             text-align: center;
             margin-top: 15px;
@@ -654,6 +744,21 @@
             border: 1px solid var(--borda-card);
         }
 
+        .adm-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-action-edit {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
         .btn-action-delete {
             background: #c62828;
             color: #fff;
@@ -661,6 +766,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 0.8rem;
         }
 
         /* TOAST NOTIFICAÇÃO */
@@ -783,17 +889,17 @@
                     <h3 class="title-bento">HISTÓRIA</h3>
                     <div class="history-layout">
                         <div style="flex:1;">
-                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">No dia 07 de setembro de 2016 foi colocado em prática o projeto Coração Junino, um Projeto cultural criado no ano de 2011 por 5 adolescentes, conhecidos como: Manu, Gutto, Geisianne, Alanna, Laura. Ao decorrer do ano de 2016, o projeto teve de ser descontinuado por motivos de falta de apoio, dando retorno  no dia  20 de junho de 2026.
+                            <p id="historiaTexto" style="line-height: 1.8; font-size: 1.05rem; white-space: pre-line;">No dia 07 de setembro de 2016 foi colocado em prática o projeto Coração Junino, um Projeto cultural criado no ano de 2011 por 5 adolescentes, conhecidos como: Manu, Gutto, Geisianne, Alanna, Laura. Ao decorrer do ano de 2016, o projeto teve de ser descontinuado por motivos de falta de apoio, dando retorno no dia 20 de junho de 2026.
 Acreditamos e confiamos que esses anos foram anos de experiência e de resistência nos dando a sabedoria que precisávamos para retomar e levar o projeto à frente.
 Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas como também para todo o Brasil!</p>
                             <button class="btn-bordo" style="margin-top:20px;" onclick="goToTab(2)">Junte-se a nós</button>
                         </div>
                         <div class="history-photos">
                             <div class="photo-polaroid">
-                                <img id="historiaImg1" src="HISTORIA (1).jpeg">
+                                <img id="historiaImg1" src="HISTORIA (1).jpeg" alt="História 1">
                             </div>
                             <div class="photo-polaroid">
-                                <img id="historiaImg2" src="HISTORIA (2).jpeg">
+                                <img id="historiaImg2" src="HISTORIA (2).jpeg" alt="História 2">
                             </div>
                         </div>
                     </div>
@@ -906,710 +1012,586 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             </a>
         </div>
         <div class="footer-copy">
-            <p>© <span class="year-copy">2026</span> Quadrilha Coração Junino. Todos os direitos reservados.</p>
+            © <span class="year-copy">2026</span> Quadrilha Coração Junino
         </div>
     </footer>
 
-    <!-- MODAL DE AUTENTICAÇÃO (ENTRAR E CADASTRAR SEPARADOS) -->
+    <!-- CONTAINER DE TOASTS -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- MODAL DE LOGIN / CADASTRO -->
     <div class="modal-overlay" id="modalAuth">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModal('modalAuth')"><i class="fa-solid fa-xmark"></i></span>
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalAuth')"></i>
+            <h3 class="title-bento" id="authTitle" style="font-size:1.6rem; margin-bottom:15px;">LOGIN</h3>
             
-            <!-- FORMULÁRIO DE LOGIN -->
-            <div id="formLoginContainer">
-                <h3 style="color:var(--bordo-medio); margin-bottom:15px; font-family:'Cinzel', serif;"><i class="fa-solid fa-right-to-bracket"></i> ENTRAR</h3>
-                <form onsubmit="executarLogin(event)">
-                    <div class="form-group">
-                        <label>Usuário:</label>
-                        <input type="text" id="loginUser" required placeholder="Seu usuário">
-                    </div>
-                    <div class="form-group">
-                        <label>Senha:</label>
-                        <input type="password" id="loginPass" required placeholder="Sua senha">
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width:100%;">ENTRAR</button>
-                </form>
-                <div class="auth-switch">
-                    Não tem uma conta? <a onclick="alternarAuthForms('register')">Cadastre-se aqui</a>
+            <form id="formAuth" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group" id="groupNomeAuth" style="display:none;">
+                    <label>Nome Completo</label>
+                    <input type="text" id="authNome" placeholder="Seu nome">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label>E-mail ou Usuário</label>
+                    <input type="text" id="authUsuario" required placeholder="Digite seu e-mail ou usuário">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="authSenha" required placeholder="Digite sua senha">
+                </div>
+                <button type="submit" class="btn-bordo" style="width:100%; margin-top:10px;" id="authSubmitBtn">Entrar</button>
+            </form>
 
-            <!-- FORMULÁRIO DE CADASTRO -->
-            <div id="formRegisterContainer" style="display:none;">
-                <h3 style="color:var(--bordo-medio); margin-bottom:15px; font-family:'Cinzel', serif;"><i class="fa-solid fa-user-plus"></i> CADASTRAR</h3>
-                <form onsubmit="executarCadastro(event)">
-                    <div class="form-group">
-                        <label>Nome Completo:</label>
-                        <input type="text" id="regNome" required placeholder="Seu nome completo">
-                    </div>
-                    <div class="form-group">
-                        <label>Usuário:</label>
-                        <input type="text" id="regUser" required placeholder="Escolha um usuário">
-                    </div>
-                    <div class="form-group">
-                        <label>Senha:</label>
-                        <input type="password" id="regPass" required placeholder="Escolha uma senha">
-                    </div>
-                    <div class="form-group" style="background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 8px; border: 1px dashed var(--dourado);">
-                        <label style="color: var(--bordo-escuro);"><i class="fa-solid fa-key"></i> Código da Diretoria (Apenas para Diretores):</label>
-                        <input type="password" id="regCode" placeholder="Deixe em branco se for visitante">
-                        <small style="color: var(--texto-suave); font-size: 0.75rem;">Se não preencher o código correto, sua conta será registrada como <strong>Visitante</strong>.</small>
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width:100%;">CADASTRAR-SE</button>
-                </form>
-                <div class="auth-switch">
-                    Já possui conta? <a onclick="alternarAuthForms('login')">Faça login</a>
-                </div>
+            <div class="auth-switch" id="authSwitch">
+                Não tem uma conta? <a onclick="alternarModoAuth('cadastrar')">Cadastre-se</a>
             </div>
         </div>
     </div>
 
-    <!-- MODAL PAINEL ADMINISTRATIVO DA DIRETORIA -->
-    <div class="modal-overlay" id="modalPainelAdm">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModal('modalPainelAdm')"><i class="fa-solid fa-xmark"></i></span>
-            <h3 style="color:var(--bordo-medio); margin-bottom:15px; font-family:'Cinzel', serif;"><i class="fa-solid fa-sliders"></i> PAINEL DA DIRETORIA</h3>
-            
-            <!-- ABAS DO PAINEL DE CONTROLE (SEM HISTÓRIA E SEM DESIGN/RODAPÉ) -->
+    <!-- MODAL DE GERENCIAMENTO (PAINEL ADM) -->
+    <div class="modal-overlay" id="modalADM">
+        <div class="modal-content" style="max-width:750px;">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalADM')"></i>
+            <h3 class="title-bento" style="font-size:1.6rem; margin-bottom:15px;">PAINEL DE ADMINISTRAÇÃO</h3>
+
             <div class="adm-tab-selector">
-                <button class="adm-tab-btn active" onclick="switchAdmTab('novidades')">Início</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('padrinhos')">Padrinhos</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('diretores')">Diretores</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('toktok')">TokTok</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('repertorio')">Repertório</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('patrocinadores')">Patrocinadores</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('apoiadores')">Apoiadores</button>
-                <button class="adm-tab-btn" onclick="switchAdmTab('galeria')">Galeria</button>
+                <button class="adm-tab-btn active" onclick="trocarAbaADM('novidades', this)">Novidades</button>
+                <button class="adm-tab-btn" onclick="trocarAbaADM('diretores', this)">Diretores</button>
+                <button class="adm-tab-btn" onclick="trocarAbaADM('padrinhos', this)">Padrinhos</button>
+                <button class="adm-tab-btn" onclick="trocarAbaADM('toktok', this)">TokTok</button>
             </div>
 
-            <!-- TAB NOVIDADES (TELA INICIAL) -->
-            <div id="admTabNovidades" class="adm-tab-content">
-                <form onsubmit="salvarItem('novidades', event)">
+            <!-- SEÇÃO ADM: NOVIDADES -->
+            <div id="adm-sec-novidades" class="adm-sec">
+                <form onsubmit="salvarNovidade(event)">
                     <div class="form-group">
-                        <label>Título da Novidade:</label>
+                        <label>Título da Novidade</label>
                         <input type="text" id="novidadeTitulo" required>
                     </div>
                     <div class="form-group">
-                        <label>Descrição:</label>
-                        <textarea id="novidadeDesc" rows="3" required></textarea>
+                        <label>URL da Imagem / Vídeo</label>
+                        <input type="text" id="novidadeMedia" required placeholder="ex: imagens/foto.jpg">
                     </div>
                     <div class="form-group">
-                        <label>Imagem ou Vídeo (Arquivo do Computador/Celular):</label>
-                        <input type="file" id="novidadeFile" accept="image/*,video/*" required>
+                        <label>Conteúdo / Descrição</label>
+                        <textarea id="novidadeTexto" rows="3" required></textarea>
                     </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Novidade</button>
+                    <button type="submit" class="btn-bordo">Adicionar Novidade</button>
                 </form>
-                <div class="adm-item-list" id="admListNovidades"></div>
+                <div class="adm-item-list" id="admListaNovidades"></div>
             </div>
 
-            <!-- TAB PADRINHOS -->
-            <div id="admTabPadrinhos" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('padrinhos', event)">
+            <!-- SEÇÃO ADM: DIRETORES (ATUALIZADA COM EDIÇÃO, COR E DESCRIÇÕES) -->
+            <div id="adm-sec-diretores" class="adm-sec" style="display:none;">
+                <form onsubmit="salvarDiretor(event)" id="formDiretorADM">
+                    <input type="hidden" id="diretorIdEdit">
                     <div class="form-group">
-                        <label>Nome do Padrinho/Madrinha:</label>
-                        <input type="text" id="padrinhoNome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Título / Cargo:</label>
-                        <input type="text" id="padrinhoCargo" placeholder="Ex: Madrinha da Diversidade" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Foto (Arquivo):</label>
-                        <input type="file" id="padrinhoFile" accept="image/*" required>
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Padrinho</button>
-                </form>
-                <div class="adm-item-list" id="admListPadrinhos"></div>
-            </div>
-
-            <!-- TAB DIRETORES -->
-            <div id="admTabDiretores" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('diretores', event)">
-                    <div class="form-group">
-                        <label>Nome:</label>
+                        <label>Nome do Diretor</label>
                         <input type="text" id="diretorNome" required>
                     </div>
                     <div class="form-group">
-                        <label>Cargo na Diretoria:</label>
-                        <input type="text" id="diretorCargo" placeholder="Ex: Diretor Financeiro" required>
+                        <label>Cargo / Função</label>
+                        <input type="text" id="diretorCargo" required>
                     </div>
                     <div class="form-group">
-                        <label>Foto (Arquivo):</label>
-                        <input type="file" id="diretorFile" accept="image/*" required>
+                        <label>URL da Foto</label>
+                        <input type="text" id="diretorFoto" required placeholder="ex: imagens/diretor.jpg">
                     </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Diretor</button>
+                    <div class="form-group">
+                        <label>Cor de Fundo do Card</label>
+                        <input type="color" id="diretorCor" value="#1d3557">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição das Funções do Cargo</label>
+                        <textarea id="diretorDescCargo" rows="2" placeholder="O que este cargo faz na quadrilha?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sobre o Diretor / Biografia</label>
+                        <textarea id="diretorSobre" rows="2" placeholder="Uma breve descrição sobre a pessoa..."></textarea>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button type="submit" class="btn-bordo" id="btnSalvarDiretor">Adicionar Diretor</button>
+                        <button type="button" class="btn-bordo" id="btnCancelarEditDiretor" style="background:#666; display:none;" onclick="cancelarEdicaoDiretor()">Cancelar Edição</button>
+                    </div>
                 </form>
-                <div class="adm-item-list" id="admListDiretores"></div>
+                <div class="adm-item-list" id="admListaDiretores"></div>
             </div>
 
-            <!-- TAB CORAÇÃO TOKTOK -->
-            <div id="admTabToktok" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('toktok', event)">
+            <!-- SEÇÃO ADM: PADRINHOS -->
+            <div id="adm-sec-padrinhos" class="adm-sec" style="display:none;">
+                <form onsubmit="salvarPadrinho(event)">
                     <div class="form-group">
-                        <label>Descrição / Legenda:</label>
-                        <input type="text" id="toktokDesc" required placeholder="Legenda do vídeo ou foto">
+                        <label>Nome do Padrinho / Madrinha</label>
+                        <input type="text" id="padrinhoNome" required>
                     </div>
                     <div class="form-group">
-                        <label>Mídia Vídeo/Imagem (Arquivo):</label>
-                        <input type="file" id="toktokFile" accept="video/*,image/*" required>
+                        <label>Título / Padrinho de quê?</label>
+                        <input type="text" id="padrinhoTitulo" required placeholder="ex: Padrinho da Diversidade">
                     </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Vídeo TokTok</button>
+                    <div class="form-group">
+                        <label>URL da Foto</label>
+                        <input type="text" id="padrinhoFoto" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem / Texto</label>
+                        <textarea id="padrinhoTexto" rows="2" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-bordo">Adicionar Padrinho</button>
                 </form>
-                <div class="adm-item-list" id="admListToktok"></div>
+                <div class="adm-item-list" id="admListaPadrinhos"></div>
             </div>
 
-            <!-- TAB REPERTÓRIO -->
-            <div id="admTabRepertorio" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('repertorio', event)">
+            <!-- SEÇÃO ADM: TOKTOK -->
+            <div id="adm-sec-toktok" class="adm-sec" style="display:none;">
+                <form onsubmit="salvarToktok(event)">
                     <div class="form-group">
-                        <label>Título da Mídia / Múnica:</label>
-                        <input type="text" id="repTitulo" required>
+                        <label>URL do Vídeo</label>
+                        <input type="text" id="toktokVideo" required placeholder="URL do mp4">
                     </div>
                     <div class="form-group">
-                        <label>Arquivo de Áudio ou Vídeo:</label>
-                        <input type="file" id="repFile" accept="audio/*,video/*" required>
+                        <label>Legenda</label>
+                        <input type="text" id="toktokLegenda" required>
                     </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Repertório</button>
+                    <button type="submit" class="btn-bordo">Adicionar ao TokTok</button>
                 </form>
-                <div class="adm-item-list" id="admListRepertorio"></div>
-            </div>
-
-            <!-- TAB PATROCINADORES -->
-            <div id="admTabPatrocinadores" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('patrocinadores', event)">
-                    <div class="form-group">
-                        <label>Nome do Patrocinador:</label>
-                        <input type="text" id="patrocNome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Logo / Imagem (Arquivo):</label>
-                        <input type="file" id="patrocFile" accept="image/*" required>
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Patrocinador</button>
-                </form>
-                <div class="adm-item-list" id="admListPatrocinadores"></div>
-            </div>
-
-            <!-- TAB APOIADORES -->
-            <div id="admTabApoiadores" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('apoiadores', event)">
-                    <div class="form-group">
-                        <label>Nome do Apoiador:</label>
-                        <input type="text" id="apoiadorNome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Logo / Imagem (Arquivo):</label>
-                        <input type="file" id="apoiadorFile" accept="image/*" required>
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar Apoiador</button>
-                </form>
-                <div class="adm-item-list" id="admListApoiadores"></div>
-            </div>
-
-            <!-- TAB GALERIA -->
-            <div id="admTabGaleria" class="adm-tab-content" style="display:none;">
-                <form onsubmit="salvarItem('galeria', event)">
-                    <div class="form-group">
-                        <label>Legenda:</label>
-                        <input type="text" id="galeriaDesc">
-                    </div>
-                    <div class="form-group">
-                        <label>Foto ou Vídeo (Arquivo):</label>
-                        <input type="file" id="galeriaFile" accept="image/*,video/*" required>
-                    </div>
-                    <button type="submit" class="btn-bordo" style="width: 100%;">Adicionar à Galeria</button>
-                </form>
-                <div class="adm-item-list" id="admListGaleria"></div>
+                <div class="adm-item-list" id="admListaToktok"></div>
             </div>
 
         </div>
     </div>
 
-    <!-- CONTAINER DE TOASTS DE NOTIFICAÇÃO -->
-    <div class="toast-container" id="toastContainer"></div>
+    <!-- MODAL DE DETALHES DO DIRETOR -->
+    <div class="modal-overlay" id="modalDetalheDiretor">
+        <div class="modal-content" style="max-width:500px;">
+            <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalDetalheDiretor')"></i>
+            <div class="modal-diretor-header">
+                <img id="detalheDirFoto" class="modal-diretor-img" src="" alt="Diretor">
+                <h3 id="detalheDirNome" class="title-bento" style="margin-bottom:2px; font-size:1.8rem;">---</h3>
+                <p id="detalheDirCargo" style="color:var(--bordo-medio); font-weight:600; font-size:1rem;">---</p>
+            </div>
+            
+            <div class="modal-diretor-desc-box">
+                <h5><i class="fa-solid fa-briefcase"></i> Sobre o Cargo</h5>
+                <p id="detalheDirDescCargo">Nenhuma descrição informada para este cargo.</p>
+            </div>
 
+            <div class="modal-diretor-desc-box" style="border-left-color: var(--dourado);">
+                <h5><i class="fa-solid fa-user-tag"></i> Sobre o Diretor(a)</h5>
+                <p id="detalheDirSobre">Nenhuma biografia cadastrada.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTEGRADO -->
     <script>
-        // CÓDIGO SECRETO PARA CADASTRAR DIRETORES
-        const CODIGO_DIRETORIA_SECRET = "CORACAO2026";
+        // ESTADO GLOBAL DA APLICAÇÃO
+        let currentTabIndex = 0;
+        let padrinhoAtualIndex = 0;
+        let usuarioLogado = null;
+        let modoAuth = 'login';
 
-        // BANCO DE DADOS EM LOCALSTORAGE
-        let appData = JSON.parse(localStorage.getItem('coracaoJuninoData')) || {
-            users: [],
-            currentUser: null,
-            novidades: [],
-            padrinhos: [],
-            diretores: [],
-            toktok: [],
-            repertorio: [],
-            patrocinadores: [],
-            apoiadores: [],
-            galeria: []
-        };
+        // DADOS LOCAIS (INICIALIZAÇÃO COM LOCALSTORAGE)
+        let novidades = JSON.parse(localStorage.getItem('cj_novidades')) || [
+            { id: 1, titulo: "Ensaios 2026 Iniciados!", media: "imagens/colorida.jpeg", texto: "Nossa quadrilha já deu início aos preparativos para o grande espetáculo deste ano." }
+        ];
 
-        let currentPadrinhoIndex = 0;
+        let diretores = JSON.parse(localStorage.getItem('cj_diretores')) || [
+            { id: 1, nome: "Manuelly Santos", cargo: "Presidente Executivo", foto: "imagens/original.png", cor: "#1d3557", descCargo: "Responsável pelo direcionamento geral, planejamento estratégico e representação oficial da quadrilha.", sobre: "Integrante fundadora e apaixonada pela cultura junina desde a infância." },
+            { id: 2, nome: "Gutto Ferreira", cargo: "Vice-Presidente", foto: "imagens/original.png", cor: "#7a0c0c", descCargo: "Auxilia na gestão administrativa, financeira e substitui a presidência quando necessário.", sobre: "Atua há anos na coordenação cultural e artística." }
+        ];
 
-        // INICIALIZAÇÃO DA APLICAÇÃO
-        window.addEventListener('DOMContentLoaded', () => {
-            atualizarUserStatusNav();
-            renderAllData();
+        let padrinhos = JSON.parse(localStorage.getItem('cj_padrinhos')) || [
+            { id: 1, nome: "Maria da Silva", titulo: "Padrinho de Honra", foto: "imagens/original.png", texto: "Sempre apoiando nossa tradição e mantendo aceso o brilho do São João." }
+        ];
+
+        let toktokPosts = JSON.parse(localStorage.getItem('cj_toktok')) || [
+            { id: 1, video: "https://www.w3schools.com/html/mov_bbb.mp4", legenda: "Trecho do nosso ensaio! 🔥 #CoraçãoJunino", curtidas: 12, comentários: [{ usuario: "Ana", texto: "Lindo demais!" }] }
+        ];
+
+        // INICIALIZAÇÃO
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarNovidades();
+            renderizarDiretores();
+            renderizarPadrinhos();
+            renderizarToktok();
+            verificarSessao();
         });
 
-        function salvarDados() {
-            localStorage.setItem('coracaoJuninoData', JSON.stringify(appData));
-        }
-
-        function showToast(msg, isSuccess = true) {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `custom-toast ${isSuccess ? 'success' : ''}`;
-            toast.innerHTML = `<i class="fa-solid ${isSuccess ? 'fa-check-circle' : 'fa-exclamation-circle'}" style="color:${isSuccess?'#2e7d32':'#c62828'}"></i> ${msg}`;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3500);
-        }
-
-        // NAVEGAÇÃO DE ABAS DO SITE
+        // NAVEGAÇÃO DE ABAS
         function goToTab(index) {
-            const track = document.getElementById('sliderTrack');
+            currentTabIndex = index;
+            const track = document.getElementById("sliderTrack");
             track.style.transform = `translateX(-${index * 100}vw)`;
-            
-            const buttons = document.querySelectorAll('#mainNavButtons button');
-            buttons.forEach((btn, idx) => {
-                btn.classList.toggle('active', idx === index);
+
+            const buttons = document.querySelectorAll("#mainNavButtons button");
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle("active", i === index);
             });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // SISTEMA DE AUTENTICAÇÃO
-        function abrirModalAuth(mode = 'login') {
-            alternarAuthForms(mode);
-            document.getElementById('modalAuth').style.display = 'flex';
-        }
-
-        function alternarAuthForms(mode) {
-            document.getElementById('formLoginContainer').style.display = mode === 'login' ? 'block' : 'none';
-            document.getElementById('formRegisterContainer').style.display = mode === 'register' ? 'block' : 'none';
+        // GERENCIAMENTO DE MODAIS
+        function abrirModalAuth(modo) {
+            modoAuth = modo;
+            alternarModoAuth(modo);
+            document.getElementById("modalAuth").style.display = "flex";
         }
 
         function fecharModal(id) {
-            document.getElementById(id).style.display = 'none';
+            document.getElementById(id).style.display = "none";
         }
 
-        function executarCadastro(e) {
-            e.preventDefault();
-            const nome = document.getElementById('regNome').value.trim();
-            const user = document.getElementById('regUser').value.trim().toLowerCase();
-            const pass = document.getElementById('regPass').value;
-            const code = document.getElementById('regCode').value.trim();
+        function alternarModoAuth(modo) {
+            modoAuth = modo;
+            const title = document.getElementById("authTitle");
+            const btn = document.getElementById("authSubmitBtn");
+            const switchDiv = document.getElementById("authSwitch");
+            const groupNome = document.getElementById("groupNomeAuth");
 
-            if (appData.users.find(u => u.user === user)) {
-                showToast("Este nome de usuário já está cadastrado!", false);
-                return;
+            if (modo === 'cadastrar') {
+                title.innerText = "CADASTRAR CONTA";
+                btn.innerText = "Cadastrar";
+                groupNome.style.display = "flex";
+                switchDiv.innerHTML = 'Já tem uma conta? <a onclick="alternarModoAuth(\'login\')">Faça Login</a>';
+            } else {
+                title.innerText = "LOGIN";
+                btn.innerText = "Entrar";
+                groupNome.style.display = "none";
+                switchDiv.innerHTML = 'Não tem uma conta? <a onclick="alternarModoAuth(\'cadastrar\')">Cadastre-se</a>';
             }
+        }
 
-            const isDiretor = (code === CODIGO_DIRETORIA_SECRET);
-            const newUser = {
-                nome,
-                user,
-                pass,
-                role: isDiretor ? 'diretor' : 'visitante'
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            const usuario = document.getElementById("authUsuario").value;
+            
+            // Simulação de login / cadastro simples
+            usuarioLogado = {
+                nome: usuario,
+                isADM: usuario.toLowerCase().includes("adm") || usuario.toLowerCase() === "admin"
             };
 
-            appData.users.push(newUser);
-            appData.currentUser = newUser;
-            salvarDados();
+            localStorage.setItem("cj_user", JSON.stringify(usuarioLogado));
+            atualizarBarraUsuario();
+            fecharModal("modalAuth");
+            mostrarToast("Sucesso!", `Bem-vindo(a), ${usuarioLogado.nome}!`, "success");
+        }
 
-            fecharModal('modalAuth');
-            atualizarUserStatusNav();
+        function verificarSessao() {
+            const salvos = localStorage.getItem("cj_user");
+            if (salvos) {
+                usuarioLogado = JSON.parse(salvos);
+                atualizarBarraUsuario();
+            }
+        }
 
-            if(isDiretor) {
-                showToast("Cadastro realizado com SUCESSO como DIRETOR!", true);
+        function atualizarBarraUsuario() {
+            const container = document.getElementById("userNavStatus");
+            if (usuarioLogado) {
+                container.innerHTML = `
+                    <div class="user-badge"><i class="fa-solid fa-circle-user"></i> ${usuarioLogado.nome}</div>
+                    ${usuarioLogado.isADM ? `<button class="btn-adm-trigger" onclick="abrirPainelADM()"><i class="fa-solid fa-gear"></i> PAINEL ADM</button>` : ''}
+                    <button class="btn-auth-trigger" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+                `;
             } else {
-                showToast("Cadastro realizado! Você entrou como VISITANTE.", true);
+                container.innerHTML = `
+                    <button class="btn-auth-trigger" onclick="abrirModalAuth('login')"><i class="fa-solid fa-user"></i> ENTRAR / CADASTRAR</button>
+                `;
             }
         }
 
-        function executarLogin(e) {
-            e.preventDefault();
-            const user = document.getElementById('loginUser').value.trim().toLowerCase();
-            const pass = document.getElementById('loginPass').value;
+        function logout() {
+            usuarioLogado = null;
+            localStorage.removeItem("cj_user");
+            atualizarBarraUsuario();
+            mostrarToast("Logout", "Você saiu da sua conta.");
+        }
 
-            const found = appData.users.find(u => u.user === user && u.pass === pass);
+        // RENDERIZADORES DE CONTEÚDO
+        function renderizarNovidades() {
+            const container = document.getElementById("container-novidades");
+            container.innerHTML = novidades.map(item => `
+                <div class="news-card-item">
+                    <img src="${item.media}" alt="${item.titulo}" onerror="this.src='imagens/original.png'">
+                    <div class="news-card-body">
+                        <h4>${item.titulo}</h4>
+                        <p>${item.texto}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-            if (!found) {
-                showToast("Usuário ou senha incorretos!", false);
+        function renderizarDiretores() {
+            const grid = document.getElementById("gridDiretores");
+            grid.innerHTML = diretores.map(dir => `
+                <div class="diretor-box" style="background: ${dir.cor || 'linear-gradient(135deg, #1d3557, #457b9d)'}">
+                    <div class="diretor-img-container" onclick="abrirDetalhesDiretor(${dir.id})">
+                        <img src="${dir.foto}" alt="${dir.nome}" onerror="this.src='imagens/original.png'">
+                    </div>
+                    <div class="diretor-nome">${dir.nome}</div>
+                    <div class="diretor-cargo">${dir.cargo}</div>
+                </div>
+            `).join('');
+        }
+
+        function abrirDetalhesDiretor(id) {
+            const dir = diretores.find(d => d.id === id);
+            if (!dir) return;
+
+            document.getElementById("detalheDirFoto").src = dir.foto;
+            document.getElementById("detalheDirNome").innerText = dir.nome;
+            document.getElementById("detalheDirCargo").innerText = dir.cargo;
+            document.getElementById("detalheDirDescCargo").innerText = dir.descCargo || "Nenhuma descrição detalhada informada para este cargo.";
+            document.getElementById("detalheDirSobre").innerText = dir.sobre || "Nenhuma biografia cadastrada.";
+
+            document.getElementById("modalDetalheDiretor").style.display = "flex";
+        }
+
+        function renderizarPadrinhos() {
+            const container = document.getElementById("padrinhosCardsList");
+            if (padrinhos.length === 0) {
+                container.innerHTML = "<p style='text-align:center;'>Nenhum padrinho cadastrado.</p>";
                 return;
             }
 
-            appData.currentUser = found;
-            salvarDados();
-
-            fecharModal('modalAuth');
-            atualizarUserStatusNav();
-            showToast(`Bem-vindo(a) de volta, ${found.nome}!`);
-        }
-
-        function deslogar() {
-            appData.currentUser = null;
-            salvarDados();
-            atualizarUserStatusNav();
-            showToast("Você saiu da sua conta.");
-        }
-
-        function atualizarUserStatusNav() {
-            const container = document.getElementById('userNavStatus');
-            const user = appData.currentUser;
-
-            if (!user) {
-                container.innerHTML = `<button class="btn-auth-trigger" onclick="abrirModalAuth('login')"><i class="fa-solid fa-user"></i> ENTRAR / CADASTRAR</button>`;
-            } else {
-                let badge = user.role === 'diretor' 
-                    ? `<span class="user-badge"><i class="fa-solid fa-user-shield" style="color:var(--dourado);"></i> <strong>${user.nome}</strong> (Diretoria)</span>
-                       <button class="btn-adm-trigger" onclick="abrirPainelAdm()"><i class="fa-solid fa-gear"></i> PAINEL DIRETORIA</button>`
-                    : `<span class="user-badge"><i class="fa-solid fa-heart" style="color:#ff2b56;"></i> <strong>${user.nome}</strong> (Visitante)</span>`;
-
-                container.innerHTML = `${badge} <button class="btn-auth-trigger" onclick="deslogar()" style="padding:4px 10px;"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>`;
-            }
-        }
-
-        // PAINEL ADMINISTRATIVO
-        function abrirPainelAdm() {
-            if (!appData.currentUser || appData.currentUser.role !== 'diretor') {
-                showToast("Acesso restrito apenas para a Diretoria!", false);
-                return;
-            }
-            document.getElementById('modalPainelAdm').style.display = 'flex';
-            renderAdmLists();
-        }
-
-        function switchAdmTab(tabKey) {
-            const btns = document.querySelectorAll('.adm-tab-btn');
-            btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const tabs = document.querySelectorAll('.adm-tab-content');
-            tabs.forEach(t => t.style.display = 'none');
-
-            const targetTab = document.getElementById(`admTab${tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}`);
-            if (targetTab) targetTab.style.display = 'block';
-        }
-
-        // CONVERTER ARQUIVOS LOCAIS (FOTOS/VÍDEOS) EM BASE64
-        function readFileAsBase64(fileInput) {
-            return new Promise((resolve, reject) => {
-                const file = fileInput.files[0];
-                if (!file) {
-                    resolve(null);
-                    return;
-                }
-                const reader = new FileReader();
-                reader.onload = () => resolve({ data: reader.result, type: file.type });
-                reader.onerror = error => reject(error);
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // SALVAR ITENS VIA UPLOAD DE ARQUIVOS REAL
-        async function salvarItem(categoria, event) {
-            event.preventDefault();
-            
-            let newItem = { id: Date.now() };
-
-            if (categoria === 'novidades') {
-                const fileObj = await readFileAsBase64(document.getElementById('novidadeFile'));
-                newItem.titulo = document.getElementById('novidadeTitulo').value;
-                newItem.desc = document.getElementById('novidadeDesc').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'padrinhos') {
-                const fileObj = await readFileAsBase64(document.getElementById('padrinhoFile'));
-                newItem.nome = document.getElementById('padrinhoNome').value;
-                newItem.cargo = document.getElementById('padrinhoCargo').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'diretores') {
-                const fileObj = await readFileAsBase64(document.getElementById('diretorFile'));
-                newItem.nome = document.getElementById('diretorNome').value;
-                newItem.cargo = document.getElementById('diretorCargo').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'toktok') {
-                const fileObj = await readFileAsBase64(document.getElementById('toktokFile'));
-                newItem.desc = document.getElementById('toktokDesc').value;
-                newItem.media = fileObj;
-                newItem.likes = 0;
-                newItem.likedBy = [];
-                newItem.comments = [];
-            } else if (categoria === 'repertorio') {
-                const fileObj = await readFileAsBase64(document.getElementById('repFile'));
-                newItem.titulo = document.getElementById('repTitulo').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'patrocinadores') {
-                const fileObj = await readFileAsBase64(document.getElementById('patrocFile'));
-                newItem.nome = document.getElementById('patrocNome').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'apoiadores') {
-                const fileObj = await readFileAsBase64(document.getElementById('apoiadorFile'));
-                newItem.nome = document.getElementById('apoiadorNome').value;
-                newItem.media = fileObj;
-            } else if (categoria === 'galeria') {
-                const fileObj = await readFileAsBase64(document.getElementById('galeriaFile'));
-                newItem.desc = document.getElementById('galeriaDesc').value;
-                newItem.media = fileObj;
-            }
-
-            appData[categoria].push(newItem);
-            salvarDados();
-            renderAllData();
-            renderAdmLists();
-            showToast("Item adicionado com sucesso!");
-            event.target.reset();
-        }
-
-        function deletarItem(categoria, id) {
-            appData[categoria] = appData[categoria].filter(item => item.id !== id);
-            salvarDados();
-            renderAllData();
-            renderAdmLists();
-            showToast("Item removido.");
-        }
-
-        // RENDERIZAÇÃO NO PAINEL ADM
-        function renderAdmLists() {
-            const categories = ['novidades', 'padrinhos', 'diretores', 'toktok', 'repertorio', 'patrocinadores', 'apoiadores', 'galeria'];
-            categories.forEach(cat => {
-                const container = document.getElementById(`admList${cat.charAt(0).toUpperCase() + cat.slice(1)}`);
-                if(!container) return;
-                container.innerHTML = '';
-                appData[cat].forEach(item => {
-                    const row = document.createElement('div');
-                    row.className = 'adm-item-row';
-                    row.innerHTML = `
-                        <span>${item.titulo || item.nome || item.desc || 'Item sem título'}</span>
-                        <button class="btn-action-delete" onclick="deletarItem('${cat}', ${item.id})"><i class="fa-solid fa-trash"></i> Excluir</button>
-                    `;
-                    container.appendChild(row);
-                });
-            });
-        }
-
-        // RENDERIZAÇÃO COMPLETA DAS ABAS NO SITE
-        function renderAllData() {
-            renderNovidades();
-            renderPadrinhos();
-            renderDiretores();
-            renderToktok();
-            renderRepertorio();
-            renderPatrocinadores();
-            renderApoiadores();
-            renderGaleria();
-        }
-
-        function renderNovidades() {
-            const container = document.getElementById('container-novidades');
-            container.innerHTML = '';
-            appData.novidades.forEach(item => {
-                const isVideo = item.media && item.media.type.startsWith('video');
-                const mediaTag = isVideo 
-                    ? `<video src="${item.media.data}" controls></video>` 
-                    : `<img src="${item.media ? item.media.data : 'https://picsum.photos/400/300'}">`;
-
-                container.innerHTML += `
-                    <div class="news-card-item">
-                        ${mediaTag}
-                        <div class="news-card-body">
-                            <h4>${item.titulo}</h4>
-                            <p>${item.desc}</p>
-                        </div>
+            container.innerHTML = padrinhos.map((pad, idx) => `
+                <div class="padrinho-card ${idx === padrinhoAtualIndex ? 'active' : ''}">
+                    <div class="padrinho-img-wrapper">
+                        <img src="${pad.foto}" alt="${pad.nome}" onerror="this.src='imagens/original.png'">
                     </div>
-                `;
-            });
+                    <h3 style="color:var(--bordo-medio); font-family:'Cinzel', serif;">${pad.nome}</h3>
+                    <h4 style="color:var(--dourado); margin-bottom:10px;">${pad.titulo}</h4>
+                    <p style="color:var(--texto-suave); font-style:italic;">"${pad.texto}"</p>
+                </div>
+            `).join('');
         }
 
-        function renderPadrinhos() {
-            const container = document.getElementById('padrinhosCardsList');
-            container.innerHTML = '';
-            if (appData.padrinhos.length === 0) {
-                container.innerHTML = `<p style="text-align:center;">Nenhum padrinho cadastrado.</p>`;
-                return;
-            }
-            appData.padrinhos.forEach((item, idx) => {
-                container.innerHTML += `
-                    <div class="padrinho-card ${idx === currentPadrinhoIndex ? 'active' : ''}">
-                        <div class="padrinho-img-wrapper">
-                            <img src="${item.media ? item.media.data : 'https://picsum.photos/220'}">
-                        </div>
-                        <h4 style="font-size:1.3rem; color:var(--bordo-medio);">${item.nome}</h4>
-                        <p style="color:var(--dourado); font-weight:600;">${item.cargo}</p>
-                    </div>
-                `;
-            });
+        function mudarPadrinho(direcao) {
+            if (padrinhos.length === 0) return;
+            padrinhoAtualIndex = (padrinhoAtualIndex + direcao + padrinhos.length) % padrinhos.length;
+            renderizarPadrinhos();
         }
 
-        function mudarPadrinho(dir) {
-            if (appData.padrinhos.length === 0) return;
-            currentPadrinhoIndex = (currentPadrinhoIndex + dir + appData.padrinhos.length) % appData.padrinhos.length;
-            renderPadrinhos();
-        }
-
-        function renderDiretores() {
-            const container = document.getElementById('gridDiretores');
-            container.innerHTML = '';
-            appData.diretores.forEach(item => {
-                container.innerHTML += `
-                    <div class="diretor-box dir-azul">
-                        <img src="${item.media ? item.media.data : 'https://picsum.photos/100'}">
-                        <h4 style="font-size:1.1rem; font-weight:bold;">${item.nome}</h4>
-                        <p style="font-size:0.85rem; color:var(--dourado-claro);">${item.cargo}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function renderToktok() {
-            const container = document.getElementById('toktokContainer');
-            container.innerHTML = '';
-            appData.toktok.forEach(item => {
-                const isVideo = item.media && item.media.type.startsWith('video');
-                const isLiked = appData.currentUser && item.likedBy && item.likedBy.includes(appData.currentUser.user);
-
-                const card = document.createElement('div');
-                card.className = 'toktok-card';
-                card.innerHTML = `
-                    ${isVideo ? `<video class="toktok-media" src="${item.media.data}" loop autoplay muted onclick="this.paused?this.play():this.pause()"></video>` : `<img class="toktok-media" src="${item.media.data}">`}
-                    <div class="toktok-actions">
-                        <button class="toktok-btn ${isLiked ? 'liked' : ''}" onclick="curtirToktok(${item.id})">
-                            <i class="fa-solid fa-heart"></i>
-                            <span>${item.likes || 0}</span>
-                        </button>
-                        <button class="toktok-btn" onclick="toggleComments(${item.id})">
-                            <i class="fa-solid fa-comment"></i>
-                            <span>${item.comments ? item.comments.length : 0}</span>
-                        </button>
-                    </div>
+        function renderizarToktok() {
+            const container = document.getElementById("toktokContainer");
+            container.innerHTML = toktokPosts.map(post => `
+                <div class="toktok-card">
+                    <video class="toktok-media" src="${post.video}" loop onclick="this.paused ? this.play() : this.pause()"></video>
                     <div class="toktok-overlay">
-                        <p style="font-weight:600;">@coracaojuninoal</p>
-                        <p style="font-size:0.85rem;">${item.desc}</p>
+                        <p>${post.legenda}</p>
                     </div>
-
-                    <!-- GAVETA DE COMENTÁRIOS PARA VISITANTES E DIRETORES -->
-                    <div class="comments-drawer" id="drawer-${item.id}">
-                        <div style="display:flex; justify-space-between; align-items:center;">
-                            <strong>Comentários</strong>
-                            <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleComments(${item.id})"></i>
-                        </div>
-                        <div class="comments-list">
-                            ${(item.comments || []).map(c => `<div class="comment-item"><strong>${c.autor}</strong>${c.texto}</div>`).join('')}
-                        </div>
-                        <form onsubmit="adicionarComentario(event, ${item.id})" style="display:flex; gap:5px;">
-                            <input type="text" placeholder="Escreva um comentário..." required style="flex:1; padding:6px; border-radius:5px; border:none;">
-                            <button type="submit" class="btn-bordo" style="padding:6px 12px;"><i class="fa-solid fa-paper-plane"></i></button>
-                        </form>
+                    <div class="toktok-actions">
+                        <button class="toktok-btn" onclick="curtirToktok(this)"><i class="fa-solid fa-heart"></i><span>${post.curtidas}</span></button>
                     </div>
-                `;
-                container.appendChild(card);
-            });
+                </div>
+            `).join('');
         }
 
-        function curtirToktok(id) {
-            if (!appData.currentUser) {
-                showToast("Faça login para curtir os conteúdos!", false);
-                return;
-            }
-            const item = appData.toktok.find(t => t.id === id);
-            if (!item) return;
+        function curtirToktok(btn) {
+            btn.classList.toggle("liked");
+            let countSpan = btn.querySelector("span");
+            let current = parseInt(countSpan.innerText);
+            countSpan.innerText = btn.classList.contains("liked") ? current + 1 : current - 1;
+        }
 
-            if (!item.likedBy) item.likedBy = [];
-            const userIdx = item.likedBy.indexOf(appData.currentUser.user);
+        // PAINEL DE ADMINISTRAÇÃO (CRUD)
+        function abrirPainelADM() {
+            document.getElementById("modalADM").style.display = "flex";
+            renderizarListasADM();
+        }
 
-            if (userIdx > -1) {
-                item.likedBy.splice(userIdx, 1);
-                item.likes = Math.max(0, (item.likes || 1) - 1);
+        function trocarAbaADM(sec, btn) {
+            document.querySelectorAll(".adm-sec").forEach(s => s.style.display = "none");
+            document.querySelectorAll(".adm-tab-btn").forEach(b => b.classList.remove("active"));
+            
+            document.getElementById(`adm-sec-${sec}`).style.display = "block";
+            btn.classList.add("active");
+        }
+
+        function renderizarListasADM() {
+            // LISTA NOVIDADES
+            document.getElementById("admListaNovidades").innerHTML = novidades.map(n => `
+                <div class="adm-item-row">
+                    <span>${n.titulo}</span>
+                    <button class="btn-action-delete" onclick="deletarItem('novidades', ${n.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            // LISTA DIRETORES (COM BOTÃO DE EDITAR E EXCLUIR)
+            document.getElementById("admListaDiretores").innerHTML = diretores.map(d => `
+                <div class="adm-item-row">
+                    <div>
+                        <strong>${d.nome}</strong> (${d.cargo})
+                        <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:${d.cor}; margin-left:5px;"></span>
+                    </div>
+                    <div class="adm-item-actions">
+                        <button class="btn-action-edit" onclick="prepararEdicaoDiretor(${d.id})"><i class="fa-solid fa-pen"></i> Editar</button>
+                        <button class="btn-action-delete" onclick="deletarItem('diretores', ${d.id})"><i class="fa-solid fa-trash"></i> Apagar</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // LISTA PADRINHOS
+            document.getElementById("admListaPadrinhos").innerHTML = padrinhos.map(p => `
+                <div class="adm-item-row">
+                    <span>${p.nome} - ${p.titulo}</span>
+                    <button class="btn-action-delete" onclick="deletarItem('padrinhos', ${p.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            // LISTA TOKTOK
+            document.getElementById("admListaToktok").innerHTML = toktokPosts.map(t => `
+                <div class="adm-item-row">
+                    <span>${t.legenda}</span>
+                    <button class="btn-action-delete" onclick="deletarItem('toktok', ${t.id})"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // GERENCIAMENTO ESPECÍFICO DE DIRETORES (CRIAR / EDITAR / DELETAR)
+        function salvarDiretor(e) {
+            e.preventDefault();
+            const idEdit = document.getElementById("diretorIdEdit").value;
+            const nome = document.getElementById("diretorNome").value;
+            const cargo = document.getElementById("diretorCargo").value;
+            const foto = document.getElementById("diretorFoto").value;
+            const cor = document.getElementById("diretorCor").value;
+            const descCargo = document.getElementById("diretorDescCargo").value;
+            const sobre = document.getElementById("diretorSobre").value;
+
+            if (idEdit) {
+                // EDIÇÃO
+                const index = diretores.findIndex(d => d.id == idEdit);
+                if (index !== -1) {
+                    diretores[index] = { id: Number(idEdit), nome, cargo, foto, cor, descCargo, sobre };
+                    mostrarToast("Diretor Atualizado", "Dados salvos com sucesso!", "success");
+                }
             } else {
-                item.likedBy.push(appData.currentUser.user);
-                item.likes = (item.likes || 0) + 1;
+                // CRIAÇÃO
+                const novo = {
+                    id: Date.now(),
+                    nome, cargo, foto, cor, descCargo, sobre
+                };
+                diretores.push(novo);
+                mostrarToast("Diretor Adicionado", "Novo diretor cadastrado!", "success");
             }
 
-            salvarDados();
-            renderToktok();
+            localStorage.setItem("cj_diretores", JSON.stringify(diretores));
+            cancelarEdicaoDiretor();
+            renderizarDiretores();
+            renderizarListasADM();
         }
 
-        function toggleComments(id) {
-            const drawer = document.getElementById(`drawer-${id}`);
-            if (drawer) drawer.classList.toggle('active');
+        function prepararEdicaoDiretor(id) {
+            const dir = diretores.find(d => d.id === id);
+            if (!dir) return;
+
+            document.getElementById("diretorIdEdit").value = dir.id;
+            document.getElementById("diretorNome").value = dir.nome;
+            document.getElementById("diretorCargo").value = dir.cargo;
+            document.getElementById("diretorFoto").value = dir.foto;
+            document.getElementById("diretorCor").value = dir.cor || "#1d3557";
+            document.getElementById("diretorDescCargo").value = dir.descCargo || "";
+            document.getElementById("diretorSobre").value = dir.sobre || "";
+
+            document.getElementById("btnSalvarDiretor").innerText = "Atualizar Diretor";
+            document.getElementById("btnCancelarEditDiretor").style.display = "inline-block";
         }
 
-        function adicionarComentario(event, id) {
-            event.preventDefault();
-            if (!appData.currentUser) {
-                showToast("Você precisa estar logado para comentar!", false);
-                return;
+        function cancelarEdicaoDiretor() {
+            document.getElementById("formDiretorADM").reset();
+            document.getElementById("diretorIdEdit").value = "";
+            document.getElementById("diretorCor").value = "#1d3557";
+            document.getElementById("btnSalvarDiretor").innerText = "Adicionar Diretor";
+            document.getElementById("btnCancelarEditDiretor").style.display = "none";
+        }
+
+        // SALVAR DEMAIS ENTIDADES
+        function salvarNovidade(e) {
+            e.preventDefault();
+            novidades.push({
+                id: Date.now(),
+                titulo: document.getElementById("novidadeTitulo").value,
+                media: document.getElementById("novidadeMedia").value,
+                texto: document.getElementById("novidadeTexto").value
+            });
+            localStorage.setItem("cj_novidades", JSON.stringify(novidades));
+            renderizarNovidades();
+            renderizarListasADM();
+            e.target.reset();
+            mostrarToast("Sucesso", "Novidade publicada!", "success");
+        }
+
+        function salvarPadrinho(e) {
+            e.preventDefault();
+            padrinhos.push({
+                id: Date.now(),
+                nome: document.getElementById("padrinhoNome").value,
+                titulo: document.getElementById("padrinhoTitulo").value,
+                foto: document.getElementById("padrinhoFoto").value,
+                texto: document.getElementById("padrinhoTexto").value
+            });
+            localStorage.setItem("cj_padrinhos", JSON.stringify(padrinhos));
+            renderizarPadrinhos();
+            renderizarListasADM();
+            e.target.reset();
+            mostrarToast("Sucesso", "Padrinho cadastrado!", "success");
+        }
+
+        function salvarToktok(e) {
+            e.preventDefault();
+            toktokPosts.push({
+                id: Date.now(),
+                video: document.getElementById("toktokVideo").value,
+                legenda: document.getElementById("toktokLegenda").value,
+                curtidas: 0,
+                comentários: []
+            });
+            localStorage.setItem("cj_toktok", JSON.stringify(toktokPosts));
+            renderizarToktok();
+            renderizarListasADM();
+            e.target.reset();
+            mostrarToast("Sucesso", "Vídeo adicionado!", "success");
+        }
+
+        function deletarItem(tipo, id) {
+            if (!confirm("Tem certeza que deseja apagar este item?")) return;
+
+            if (tipo === 'novidades') {
+                novidades = novidades.filter(x => x.id !== id);
+                localStorage.setItem("cj_novidades", JSON.stringify(novidades));
+                renderizarNovidades();
+            } else if (tipo === 'diretores') {
+                diretores = diretores.filter(x => x.id !== id);
+                localStorage.setItem("cj_diretores", JSON.stringify(diretores));
+                renderizarDiretores();
+            } else if (tipo === 'padrinhos') {
+                padrinhos = padrinhos.filter(x => x.id !== id);
+                localStorage.setItem("cj_padrinhos", JSON.stringify(padrinhos));
+                renderizarPadrinhos();
+            } else if (tipo === 'toktok') {
+                toktokPosts = toktokPosts.filter(x => x.id !== id);
+                localStorage.setItem("cj_toktok", JSON.stringify(toktokPosts));
+                renderizarToktok();
             }
-            const input = event.target.querySelector('input');
-            const texto = input.value.trim();
-            if (!texto) return;
 
-            const item = appData.toktok.find(t => t.id === id);
-            if (!item) return;
-
-            if (!item.comments) item.comments = [];
-            item.comments.push({
-                autor: appData.currentUser.nome,
-                texto: texto
-            });
-
-            salvarDados();
-            renderToktok();
-            toggleComments(id);
-            showToast("Comentário publicado!");
+            renderizarListasADM();
+            mostrarToast("Item Apagado", "O registro foi removido com sucesso.");
         }
 
-        function renderRepertorio() {
-            const container = document.getElementById('containerRepertorio');
-            container.innerHTML = '';
-            appData.repertorio.forEach(item => {
-                const isVideo = item.media && item.media.type.startsWith('video');
-                container.innerHTML += `
-                    <div style="background:#fff; padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid var(--borda-card);">
-                        <h4 style="color:var(--bordo-medio); margin-bottom:10px;">${item.titulo}</h4>
-                        ${isVideo ? `<video src="${item.media.data}" controls style="width:100%; max-height:250px;"></video>` : `<audio src="${item.media.data}" controls style="width:100%;"></audio>`}
-                    </div>
-                `;
-            });
-        }
-
-        function renderPatrocinadores() {
-            const container = document.getElementById('container-patrocinadores');
-            container.innerHTML = '';
-            appData.patrocinadores.forEach(item => {
-                container.innerHTML += `
-                    <div class="sponsor-box">
-                        <img src="${item.media ? item.media.data : ''}">
-                        <h4>${item.nome}</h4>
-                    </div>
-                `;
-            });
-        }
-
-        function renderApoiadores() {
-            const container = document.getElementById('container-apoiadores');
-            container.innerHTML = '';
-            appData.apoiadores.forEach(item => {
-                container.innerHTML += `
-                    <div class="sponsor-box">
-                        <img src="${item.media ? item.media.data : ''}">
-                        <h4>${item.nome}</h4>
-                    </div>
-                `;
-            });
-        }
-
-        function renderGaleria() {
-            const container = document.getElementById('container-galeria');
-            container.innerHTML = '';
-            appData.galeria.forEach(item => {
-                const isVideo = item.media && item.media.type.startsWith('video');
-                container.innerHTML += `
-                    <div class="gallery-item">
-                        ${isVideo ? `<video src="${item.media.data}" controls></video>` : `<img src="${item.media ? item.media.data : ''}">`}
-                    </div>
-                `;
-            });
+        // SISTEMA DE TOAST
+        function mostrarToast(titulo, mensagem, tipo = '') {
+            const container = document.getElementById("toastContainer");
+            const toast = document.createElement("div");
+            toast.className = `custom-toast ${tipo}`;
+            toast.innerHTML = `
+                <div>
+                    <strong>${titulo}</strong>
+                    <p style="margin:0; font-size:0.8rem; color:#555;">${mensagem}</p>
+                </div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3500);
         }
     </script>
 </body>
