@@ -539,6 +539,7 @@
         }
 
         .admin-form-group input[type="text"],
+        .admin-form-group input[type="password"],
         .admin-form-group input[type="file"],
         .admin-form-group textarea,
         .admin-form-group select {
@@ -936,15 +937,20 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
                 </div>
                 <div class="admin-form-group">
                     <label>Senha</label>
-                    <input type="password" id="authSenha" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;" required>
+                    <input type="password" id="authSenha" required>
                 </div>
                 
                 <div class="admin-form-group" id="groupCargo" style="display:none;">
                     <label>Tipo de Conta</label>
-                    <select id="authRole">
+                    <select id="authRole" onchange="toggleKeyField()">
                         <option value="user">Membro / Espectador</option>
                         <option value="admin">Direção (Administrador)</option>
                     </select>
+                </div>
+
+                <div class="admin-form-group" id="groupAdminKey" style="display:none;">
+                    <label style="color:#c62828;">Chave Mestra da Direção</label>
+                    <input type="password" id="authAdminKey" placeholder="Digite a chave da Direção">
                 </div>
 
                 <button type="submit" class="btn-bordo" style="width:100%; margin-top:10px;" id="authSubmitBtn">Entrar</button>
@@ -972,7 +978,7 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
         </div>
     </div>
 
-    <!-- PAINEL ADMINISTRATIVO / EDITAR DIREÇÃO (MODAL COMPLETO RESTAURADO) -->
+    <!-- PAINEL ADMINISTRATIVO / EDITAR DIREÇÃO -->
     <div class="modal-overlay" id="modalAdmin">
         <div class="modal-content" style="max-width:800px;">
             <i class="fa-solid fa-xmark close-modal" onclick="fecharModal('modalAdmin')"></i>
@@ -1132,6 +1138,9 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
     </footer>
 
     <script>
+        // SENHA MESTRA OBRIGATÓRIA DA DIREÇÃO
+        const ADMIN_SECRET_KEY = "CORACAO2K26";
+
         // ESTADO GLOBAL DO SISTEMA (PERSISTIDO EM LOCALSTORAGE)
         let currentUser = JSON.parse(localStorage.getItem('cj_user')) || null;
         let isAuthRegisterMode = false;
@@ -1307,12 +1316,18 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             }
         }
 
+        function toggleKeyField() {
+            const r = document.getElementById('authRole').value;
+            document.getElementById('groupAdminKey').style.display = (isAuthRegisterMode && r === 'admin') ? 'block' : 'none';
+        }
+
         function abrirModalAuth(mode) {
             isAuthRegisterMode = (mode === 'register');
             document.getElementById('authTitle').innerText = isAuthRegisterMode ? 'CADASTRAR' : 'ENTRAR';
             document.getElementById('authSubmitBtn').innerText = isAuthRegisterMode ? 'Cadastrar' : 'Entrar';
             document.getElementById('groupCargo').style.display = isAuthRegisterMode ? 'block' : 'none';
             document.getElementById('toggleAuthText').innerText = isAuthRegisterMode ? 'Já tem conta? Faça login.' : 'Não tem conta? Cadastre-se aqui.';
+            toggleKeyField();
             document.getElementById('modalAuth').style.display = 'flex';
         }
 
@@ -1325,17 +1340,29 @@ Onde iremos levar a cultura junina de nossa cidade não só no estado de Alagoas
             const u = document.getElementById('authUsuario').value.trim();
             const p = document.getElementById('authSenha').value.trim();
             const r = document.getElementById('authRole').value;
+            const key = document.getElementById('authAdminKey').value.trim();
 
             if (isAuthRegisterMode) {
+                if (r === 'admin') {
+                    if (key !== ADMIN_SECRET_KEY) {
+                        alert("Senha de Autorização da Direção incorreta! Você não tem autorização para criar conta de Administrador.");
+                        return;
+                    }
+                }
                 let users = JSON.parse(localStorage.getItem('cj_users_list')) || [];
+                if (users.some(x => x.usuario === u)) {
+                    alert("Usuário já existe!");
+                    return;
+                }
                 users.push({ usuario: u, senha: p, role: r });
                 localStorage.setItem('cj_users_list', JSON.stringify(users));
                 currentUser = { usuario: u, role: r };
                 showToast("Conta criada com sucesso!", "success");
             } else {
                 let users = JSON.parse(localStorage.getItem('cj_users_list')) || [];
-                // Admin padrão automático para testes
-                if (u === 'admin' && p === '123456') {
+                
+                // Login com verificação pela senha mestra
+                if (u === 'admin' && p === ADMIN_SECRET_KEY) {
                     currentUser = { usuario: 'Direção Geral', role: 'admin' };
                 } else {
                     let found = users.find(x => x.usuario === u && x.senha === p);
